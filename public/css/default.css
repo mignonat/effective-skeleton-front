@@ -1,0 +1,102 @@
+body {
+    margin: 0px ;
+    font-family: 'Lato', sans-serif;
+    --menu-width: 180px ;
+    --menu-height: 40px ;
+    font-family: 'Raleway', sans-serif;
+}
+
+#layout {
+    display: flex ;
+    flex-flow: row nowrap ;
+    justify-content: flex-start ;
+    align-items: stretch ;
+
+    width: 100%;
+    height: 100%;
+}
+
+#menu {
+    display: flex ;
+    flex-flow: column nowrap ;
+    justify-content: flex-start ;
+    align-items: flex-start ;
+
+    width: var(--menu-width) ;
+    min-width: var(--menu-width) ;
+    background-color: azure;
+}
+
+#menu-logo {
+    width: 100% ;
+    height: 50px ;
+    line-height: 50px;
+    font-size: larger ;
+    font-weight: bold;
+    text-align: center ;
+}
+
+#menu a {
+    display: inline-block ;
+    width: 100%;
+    height : var(--menu-height) ;
+    line-height: var(--menu-height);
+
+    text-decoration: none;
+    text-align: center ;
+}
+
+#menu a:link, #menu a:visited {
+    color : black;
+}
+
+#menu a.active {
+    /* shadow*/
+    -webkit-box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
+    -moz-box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
+    box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
+}
+
+#menu a:hover {
+    font-size: 17px;
+}
+
+#content {
+    display: flex ;
+    flex-flow: column nowrap ;
+    justify-content: flex-start ;
+    align-items: stretch ;
+
+    width: calc(100% - 60px) ;
+}
+
+#content-header {
+    display: flex ;
+    flex-flow: row nowrap ;
+    justify-content: flex-start ;
+    align-items: center ;
+
+    height: 50px ;
+    padding-left: 15px ;
+    padding-right: 5px ;
+    background-color: azure;
+}
+
+#content-main {
+    height: calc(100% - 50px) ;
+    padding-left: 15px ;
+    padding-right: 5px ;
+    padding-top: 10px ;
+}
+
+
+#menu-logo {
+
+}
+
+.inset-shadow,
+#content-main {
+    -webkit-box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
+    -moz-box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
+    box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
+}
