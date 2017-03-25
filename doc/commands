@@ -1,0 +1,8 @@
+npm run build 
+    => run babel transpiler and create javascript in public
+
+npm run dev
+    => run the app in dev mode (with auto refresh)
+
+npm run prod
+    => normal startup
