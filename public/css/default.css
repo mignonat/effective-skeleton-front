@@ -1,35 +1,83 @@
 body {
     margin: 0px ;
     font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
+
     --menu-width: 180px ;
     --menu-height: 40px ;
-    font-family: 'Raleway', sans-serif;
+    --top-height: 50px;
 }
 
-#layout {
-    display: flex ;
-    flex-flow: row nowrap ;
-    justify-content: flex-start ;
-    align-items: stretch ;
+ul {
+    list-style: none;
+    padding: 0px ;
+    margin: 0px ;
+}
 
+li {
     width: 100%;
-    height: 100%;
 }
+
+#app {
+    width : 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+
+    display: flex ;
+    flex-flow: row wrap ;
+    justify-content: flex-start ;
+}
+
+/*********** HEADER *************/
+
+#header {
+    position: relative ;
+    line-height: var(--top-height);
+    width: 100% ;
+    height: var(--top-height) ;
+    padding: 0px ;
+    background-color: azure;
+}
+
+#header:hover {
+    cursor: default;
+}
+
+#mc-name {
+    display: inline-block;
+    font-size: larger;
+    font-weight: bold;
+    width: var(--menu-width);
+    height: var(--top-height);
+    min-width: var(--menu-width);
+    line-height: var(--top-height);
+    text-align: center;
+}
+
+#select-locale {
+    position: absolute ;
+    right: 25px;
+    top:16px;
+    cursor : pointer;
+}
+
+/*********** MENU *************/
 
 #menu {
     display: flex ;
     flex-flow: column nowrap ;
     justify-content: flex-start ;
     align-items: flex-start ;
-
     width: var(--menu-width) ;
     min-width: var(--menu-width) ;
     background-color: azure;
+    height: 100%;
 }
 
 #menu-logo {
     width: 100% ;
-    height: 50px ;
+    height: var(--top-height) ;
     line-height: 50px;
     font-size: larger ;
     font-weight: bold;
@@ -41,7 +89,6 @@ body {
     width: 100%;
     height : var(--menu-height) ;
     line-height: var(--menu-height);
-
     text-decoration: none;
     text-align: center ;
 }
@@ -61,42 +108,37 @@ body {
     font-size: 17px;
 }
 
-#content {
-    display: flex ;
-    flex-flow: column nowrap ;
-    justify-content: flex-start ;
-    align-items: stretch ;
+/*********** CONTENT *************/
 
-    width: calc(100% - 60px) ;
+.content {
+    width: calc(100% - (var(--menu-width) + 20px)) ;
+    max-width: calc(100% - (var(--menu-width) + 20px)) ;
+    padding: 10px;
 }
 
-#content-header {
-    display: flex ;
-    flex-flow: row nowrap ;
-    justify-content: flex-start ;
-    align-items: center ;
-
-    height: 50px ;
-    padding-left: 15px ;
-    padding-right: 5px ;
-    background-color: azure;
+.page-content {
+    margin: 10px;
+    max-width : 98%;
 }
 
-#content-main {
-    height: calc(100% - 50px) ;
-    padding-left: 15px ;
-    padding-right: 5px ;
-    padding-top: 10px ;
-}
-
-
-#menu-logo {
-
-}
+/*********** INSET SHADOW *************/
 
 .inset-shadow,
-#content-main {
+.content {
     -webkit-box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
     -moz-box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
     box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
+}
+
+/*********** NO SELECTION *************/
+
+#header,
+#menu,
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }

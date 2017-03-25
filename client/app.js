@@ -6,61 +6,133 @@ const TestimonyCmp = { template: '<div>Page des témoignages</div>' }
 const ContactCmp = { template: '<div>Page des contacts</div>' }
 
 const router = new VueRouter({
-  mode: 'history',
-  base: '',
-  routes: [
-    { path: '/', component: HomeCmp },
-    { path: '/care', component: CareCmp },
-    { path: '/clean', component: CleanCmp },
-    { path: '/wellbeing', component: WellbeingCmp },
-    { path: '/testimony', component: TestimonyCmp },
-    { path: '/contact', component: ContactCmp }
-  ]
+    mode    : 'history',
+    base    : '',
+    routes  : [
+        { path: '/home', component: HomeCmp },
+        { path: '/care', component: CareCmp },
+        { path: '/clean', component: CleanCmp },
+        { path: '/wellbeing', component: WellbeingCmp },
+        { path: '/testimony', component: TestimonyCmp },
+        { path: '/contact', component: ContactCmp }
+    ]
 })
 
-const store = new Vuex.Store({
-  state: {
-    locales : {
-        'en': "English",
-        'fr': "Français"
+const appLocale = 'fr'
+const appLocales = {
+    'en': {
+        'name' : 'English',
+        'translationMap' : {
+            'main-title' : 'My purpose is to help and heal the maximum of people I can do',
+            'menu-home' : 'Home page',
+            'menu-care' : 'Health care',
+            'menu-clean' : 'Cleaning of places',
+            'menu-wellbeing' : 'Wellness sessions',
+            'menu-testimony' : 'Testimonials',
+            'menu-contact' : 'Contact me'
+        }
     },
-    currentLocale : 'fr'
-  },
-  mutations: {
-    setLocale (locale) {
-        if (state.locales.indexOf(locale) > -1)
-            state.currentLocale = locale ;
-        else 
-            console.log('Locale '+locale+' not supported !') ;
+    'fr': {
+        'name' : 'Français',
+        'translationMap' : {
+            'main-title' : 'Mon objectif est d\'aider et de guérir un maximum de personnes',
+            'menu-home' : 'Page d\'accueil',
+            'menu-care' : 'Soins energétiques',
+            'menu-clean' : 'Nettoyage de lieux',
+            'menu-wellbeing' : 'Séances bien-être',
+            'menu-testimony' : 'Témoignages',
+            'menu-contact' : 'Me contacter'
+        }
     }
-  }
+};
+
+(function checkParams() {
+    var searchParams = location.search //?locale=fr&otherParam=paramValue
+    if (searchParams) {
+        searchParams = searchParams.substring(1, searchParams.length)
+        const params = searchParams.split('&')
+        const i=0, len=params.length
+        var param, key, value
+        for (;i<len;i++) {
+            param = params[i].split('=')
+            key = param[0]
+            if (key != 'locale')
+                continue
+            value = param[1]
+            if (appLocales.hasOwnProperty(value)) {
+                appLocale = value; break ;
+            }
+        }
+    }
+})()
+
+const store = new Vuex.Store({
+    state: {
+        locales : appLocales,
+        currentLocale : appLocale,
+        translationMap : appLocales[appLocale].translationMap
+    },
+    mutations: {
+        setLocale (state, locale) {
+            if (state.locales.hasOwnProperty(locale))
+                if (state.currentLocale != locale) {
+                    state.currentLocale = locale
+                    state.translationMap = state.locales[locale].translationMap
+                }
+                else
+                    console.log('Locale '+locale+' is already used !')
+            else
+                console.log('Locale '+locale+' not supported !')
+        }
+    }
 })
 
 // Route components will be rendered inside <router-view>.
-var app = new Vue({
-    router : router,
-    store : store,
-    template: `
+const app = new Vue({
+    router   : router,
+    store    : store,
+    template : `
         <div id="app">
-            <ul id="menu">
-                <li><router-link to="/">Page d'accueil</router-link></li>
-                <li><router-link to="/care">Soins energétiques</router-link></li>
-                <li><router-link to="/clean">Nettoyage de lieux</router-link></li>
-                <li><router-link to="/wellbeing">Séances bien-être</router-link></li>
-                <li><router-link to="/testimony">Témoignages</router-link></li>
-                <li><router-link to="/contact">Me contacter</router-link></li>
-            </ul>
-            <div id="content">
-                <div id="content-header">
-                    <span id="title">Mon objectif est d'aider et de guérir un maximum de personnes</span>
-                </div>
-                <router-view class="view"></router-view>
+            <div id="header">
+                <span id="mc-name">
+                    Marie-Charlotte
+                </span>
+                <span id="title">
+                    {{ translate("main-title") }}
+                </span>
+                <select id="select-locale" name="selectedLocale" @change="setLocale">
+                    <option value="fr" :selected="getLocale() === 'fr'">
+                        Français
+                    </option>
+                    <option value="en" :selected="getLocale() === 'en'">
+                        English
+                    </option>
+                </select>
             </div>
+            <ul id="menu">
+                <li><router-link to="/home" active-class="active">     {{ translate("menu-home") }}     </router-link></li>
+                <li><router-link to="/care" active-class="active">     {{ translate("menu-care") }}     </router-link></li>
+                <li><router-link to="/clean" active-class="active">    {{ translate("menu-clean") }}    </router-link></li>
+                <li><router-link to="/wellbeing" active-class="active">{{ translate("menu-wellbeing") }}</router-link></li>
+                <li><router-link to="/testimony" active-class="active">{{ translate("menu-testimony") }}</router-link></li>
+                <li><router-link to="/contact" active-class="active">  {{ translate("menu-contact") }}  </router-link></li>
+            </ul>
+            <router-view class="content"></router-view>
         </div>
     `,
     methods : {
-        setLocale : (locale) => {
-            store.commit('setLocale', locale) ;
+        setLocale (locale) {
+            if (locale instanceof Object) 
+                locale = event.target.value
+
+            store.commit('setLocale', locale)
+        },
+        getLocale () {
+            return store.state.currentLocale
+        },
+        translate (key, params) {
+            //TODO : manage translations with params
+            return store.state.translationMap[key]
         }
     }
 }) ;

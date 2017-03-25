@@ -2,7 +2,7 @@
   "name": "marie-project",
   "version": "0.1.0",
   "description": "Website of Marie-Charlotte Mignonat",
-  "main": "index.html",
+  "main": "public/html/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel client -d public/js/app",
