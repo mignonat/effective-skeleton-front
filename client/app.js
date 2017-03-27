@@ -131,8 +131,31 @@ const app = new Vue({
             return store.state.currentLocale
         },
         translate (key, params) {
-            //TODO : manage translations with params
-            return store.state.translationMap[key]
+            
+            var translation = store.state.translationMap[key]
+
+            if (!translation)
+                translation = '??-'+key+'-??'
+
+            if (!params)
+                return translation
+
+            if (params instanceof Array) {
+                const matches = translation.match(/{(\d+)}/g)
+
+                if (!matches || matches.length != params.length)
+                    return translation+'-??-miss-param-??'
+
+                var i= 0, txtPattern, regex
+                for ( ; i<params.length; i++) {
+                    txtPattern = '{['+i+']}'
+                    regex = new RegExp(txtPattern)
+                    translation = translation.replace(regex, params[i])
+                }
+                return translation
+            }
+            else
+                return translation = translation.replace('{0}', params)
         }
     }
 }) ;
