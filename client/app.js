@@ -18,7 +18,7 @@ const router = new VueRouter({
     ]
 })
 
-const appLocale = 'fr'
+var appLocale = 'fr'
 const appLocales = {
     'en': {
         'name' : 'English',
@@ -51,7 +51,7 @@ const appLocales = {
     if (searchParams) {
         searchParams = searchParams.substring(1, searchParams.length)
         const params = searchParams.split('&')
-        const i=0, len=params.length
+        var i=0, len=params.length
         var param, key, value
         for (;i<len;i++) {
             param = params[i].split('=')

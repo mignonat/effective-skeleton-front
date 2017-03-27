@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel client -d public/js/app",
-    "prod": "node server/server.js",
-    "dev": "npm run build ; nodemon server/server.js localhost 8080"
+    "prod": "gulp; node server/server.js",
+    "dev": "gulp; nodemon server/server.js localhost 8080"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",
@@ -20,6 +20,10 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-preset-env": "^1.2.2",
+    "babel-preset-es2015": "^6.24.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
     "nodemon": "^1.11.0"
   }
 }
