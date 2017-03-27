@@ -1,4 +1,10 @@
-npm run build 
+git clone https://github.com/mignonat/healer
+	=> initialize the project
+
+npm install
+	=> download all the dependencies in package.json
+
+npm run build
     => run babel transpiler and create javascript in public
 
 npm run dev
