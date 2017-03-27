@@ -155,7 +155,7 @@ const app = new Vue({
                 return translation
             }
             else
-                return translation = translation.replace('{0}', params)
+                return translation.replace('{0}', params)
         }
     }
 }) ;
