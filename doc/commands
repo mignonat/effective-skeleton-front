@@ -4,6 +4,8 @@ git clone https://github.com/mignonat/healer
 npm install
 	=> download all the dependencies in package.json
 
+npm install --global gulp-cli
+
 npm run build
     => run babel transpiler and create javascript in public
 
