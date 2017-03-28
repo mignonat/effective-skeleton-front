@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel client -d public/js/app",
-    "prod": "gulp; node server/server.js",
-    "dev": "gulp; nodemon server/server.js localhost 8080"
+    "prod": "gulp 'concat-lib' 'concat-app' ; node server/server.js",
+    "dev": "gulp 'concat-lib' 'concat-app' ; nodemon server/server.js localhost 8080"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",
