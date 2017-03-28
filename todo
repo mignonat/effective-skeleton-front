@@ -1,6 +1,3 @@
-- Fix favicon.ico requests
-- Gulp don't use default task create 'concat-lib' & 'concat-app'
-- Automatized gulp and nodemon
 - Manage env PROD & DEV
 - Manage log in file (USER + ERROR)
 - Session management + security

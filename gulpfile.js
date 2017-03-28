@@ -1,7 +1,22 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
- 
+const nodemon = require('gulp-nodemon')
+
+gulp.task('start-dev', function () {
+    nodemon({
+        script: 'server/server.js',
+        ext: 'js html',
+        env: { 'NODE_ENV': 'development' },
+        tasks: [ 'concat-app'],
+        ignore: [ 
+            'doc', '.git', '.gitignore', 'gulpfile.js', 
+            'LICENSE', 'node-modules', 'npm-debug.log', 'package.json', 'public',
+            'README.md', 'todo'
+        ]
+    })
+})
+
 gulp.task('concat-lib', function() {
     return gulp.src([
         './node_modules/vue/dist/vue.js',
@@ -21,5 +36,5 @@ gulp.task('concat-app', function() {
         presets: ['es2015']
     }))
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('./public/js/lib'))
+    .pipe(gulp.dest('./public/js/app'))
 })
