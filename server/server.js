@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const path = require('path')
 
+console.log('Environment : '+process.env.NODE_ENV) ;
+
 //Give access to assets directories
 app.use(express.static('public'))
 

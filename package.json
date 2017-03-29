@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-lib": "gulp 'concat-lib'",
     "build-app": "gulp 'concat-app'",
-    "env-prod": "node server/server.js",
+    "env-prod": "export NODE_ENV=production ; node server/server.js",
     "env-dev": "gulp 'start-dev'"
   },
   "author": "Mignonat Laurent",
