@@ -4,7 +4,7 @@ const CleanCmp = { template: '<div>Page des nettoyages de lieux</div>' }
 const WellbeingCmp = { template: '<div>Page du bien être</div>' }
 const TestimonyCmp = { template: '<div>Page des témoignages</div>' }
 const ContactCmp = { template: '<div>Page des contacts</div>' }
-
+ 
 const router = new VueRouter({
     mode    : 'history',
     base    : '',
@@ -18,33 +18,7 @@ const router = new VueRouter({
     ]
 })
 
-var appLocale = 'fr'
-const appLocales = {
-    'en': {
-        'name' : 'English',
-        'translationMap' : {
-            'main-title' : 'My purpose is to help and heal the maximum of people I can do',
-            'menu-home' : 'Home page',
-            'menu-care' : 'Health care',
-            'menu-clean' : 'Cleaning of places',
-            'menu-wellbeing' : 'Wellness sessions',
-            'menu-testimony' : 'Testimonials',
-            'menu-contact' : 'Contact me'
-        }
-    },
-    'fr': {
-        'name' : 'Français',
-        'translationMap' : {
-            'main-title' : 'Mon objectif est d\'aider et de guérir un maximum de personnes',
-            'menu-home' : 'Page d\'accueil',
-            'menu-care' : 'Soins energétiques',
-            'menu-clean' : 'Nettoyage de lieux',
-            'menu-wellbeing' : 'Séances bien-être',
-            'menu-testimony' : 'Témoignages',
-            'menu-contact' : 'Me contacter'
-        }
-    }
-};
+var appLocale = 'fr' ;
 
 (function checkParams() {
     var searchParams = location.search //?locale=fr&otherParam=paramValue
@@ -59,7 +33,7 @@ const appLocales = {
             if (key != 'locale')
                 continue
             value = param[1]
-            if (appLocales.hasOwnProperty(value)) {
+            if (shared_locales.hasOwnProperty(value)) {
                 appLocale = value; break ;
             }
         }
@@ -68,9 +42,9 @@ const appLocales = {
 
 const store = new Vuex.Store({
     state: {
-        locales : appLocales,
+        locales : shared_locales,
         currentLocale : appLocale,
-        translationMap : appLocales[appLocale].translationMap
+        translationMap : shared_locales[appLocale].translationMap
     },
     mutations: {
         setLocale (state, locale) {

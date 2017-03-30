@@ -29,7 +29,7 @@ gulp.task('concat-lib', function() {
 
 gulp.task('concat-app', function() {
     return gulp.src([
-	//add cmponents here
+	    './shared/locales.js',
         './client/app.js'
     ])
     .pipe(babel({
