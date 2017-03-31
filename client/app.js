@@ -4,6 +4,7 @@ const CleanCmp = { template: '<div>Page des nettoyages de lieux</div>' }
 const WellbeingCmp = { template: '<div>Page du bien être</div>' }
 const TestimonyCmp = { template: '<div>Page des témoignages</div>' }
 const ContactCmp = { template: '<div>Page des contacts</div>' }
+const ErrorCmp = { template: '<div>Oups ! Une erreur s\'est produite !</div>' }
  
 const router = new VueRouter({
     mode    : 'history',
@@ -14,7 +15,8 @@ const router = new VueRouter({
         { path: '/clean', component: CleanCmp },
         { path: '/wellbeing', component: WellbeingCmp },
         { path: '/testimony', component: TestimonyCmp },
-        { path: '/contact', component: ContactCmp }
+        { path: '/contact', component: ContactCmp },
+        { path: '/error', component: ErrorCmp }
     ]
 })
 

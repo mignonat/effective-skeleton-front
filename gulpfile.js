@@ -5,14 +5,13 @@ const nodemon = require('gulp-nodemon')
 
 gulp.task('start-dev', function () {
     nodemon({
-        script: 'server/server.js',
+        script: 'server/front/app.js',
         ext: 'js html',
         env: { 'NODE_ENV': 'development' },
         tasks: [ 'concat-app'],
         ignore: [ 
-            'doc', '.git', '.gitignore', 'gulpfile.js', 
-            'LICENSE', 'node-modules', 'npm-debug.log', 'package.json', 'public',
-            'README.md', 'todo'
+            'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
+            'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
         ]
     })
 })
@@ -29,7 +28,7 @@ gulp.task('concat-lib', function() {
 
 gulp.task('concat-app', function() {
     return gulp.src([
-	    './shared/locales.js',
+	    './client/locales.js',
         './client/app.js'
     ])
     .pipe(babel({
