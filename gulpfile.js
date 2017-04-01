@@ -8,14 +8,15 @@ const prod_env =  {
     'NODE_ENV': 'production',
     'PORT': 8080,
     'LOG_DIR': 'log',
-    'INFO_FILE': 'log/info.log',
-    'ERROR_FILE': 'log/error.log',
+    'LOG_FILE': 'info.log',
+    'LOG_LEVEL': 'info',
     'USER_FILE': 'log/user.log'
 }
 
 const dev_env =  {
     'NODE_ENV': 'development', 
-    'PORT': 8080
+    'PORT': 8080,
+    'LOG_LEVEL': 'debug'
 }
 
 gulp.task('start-front-prod', () => {
