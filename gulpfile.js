@@ -22,7 +22,7 @@ gulp.task('start-front-prod', () => {
     const child = new (forever.Monitor)('./server/front/app.js', {
         'env': prod_env,
         'killTree': true, //kills the entire child process tree on `exit`
-        'max': 2 //remove it, for testing purpose
+        //'max': 2 //remove it, for testing purpose
     })
     child.start()
 })
