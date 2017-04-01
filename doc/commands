@@ -1,16 +1,33 @@
-git clone https://github.com/mignonat/healer
-	=> initialize the project
+Init the project usng git source repo :
 
-npm install
-	=> download all the dependencies in package.json
+    git clone https://github.com/mignonat/healer
 
-npm install --global gulp-cli
 
-npm run build
-    => run babel transpiler and create javascript in public
+Install global dependencies :
 
-npm run dev
-    => run the app in dev mode (with auto refresh)
+    npm install --global gulp-cli
 
-npm run prod
-    => normal startup
+    sudo npm install --global forever //https://www.npmjs.com/package/forever
+
+    sudo npm install --global forever-monitor //https://www.npmjs.com/package/forever-monitor
+
+
+Install app dependencies :
+
+    npm install
+    	=> download all the dependencies in package.json
+
+
+Run :
+
+    npm run build-lib
+         => concat all lib in one file
+
+    npm run build-app
+        => concat in one file and transpile code in 'es-2015'
+
+    npm run start-front-dev
+        => run the app in dev mode (using nodemon)
+
+    npm run start-front-prod
+        => normal startup

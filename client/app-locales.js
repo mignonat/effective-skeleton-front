@@ -1,4 +1,5 @@
-const shared_locales = {
+var app_locale = 'fr'
+const app_locales = {
     'fr': {
         'name' : 'Français',
         'translationMap' : {

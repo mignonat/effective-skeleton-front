@@ -1,0 +1,1 @@
+const HomeCmp = { template: '<div>Page accueil</div>' }

@@ -1,72 +1,7 @@
-const HomeCmp = { template: '<div>Page accueil</div>' }
-const CareCmp = { template: '<div>Page des soins</div>' }
-const CleanCmp = { template: '<div>Page des nettoyages de lieux</div>' }
-const WellbeingCmp = { template: '<div>Page du bien être</div>' }
-const TestimonyCmp = { template: '<div>Page des témoignages</div>' }
-const ContactCmp = { template: '<div>Page des contacts</div>' }
-const ErrorCmp = { template: '<div>Oups ! Une erreur s\'est produite !</div>' }
- 
-const router = new VueRouter({
-    mode    : 'history',
-    base    : '',
-    routes  : [
-        { path: '/home', component: HomeCmp },
-        { path: '/care', component: CareCmp },
-        { path: '/clean', component: CleanCmp },
-        { path: '/wellbeing', component: WellbeingCmp },
-        { path: '/testimony', component: TestimonyCmp },
-        { path: '/contact', component: ContactCmp },
-        { path: '/error', component: ErrorCmp }
-    ]
-})
-
-var appLocale = 'fr' ;
-
-(function checkParams() {
-    var searchParams = location.search //?locale=fr&otherParam=paramValue
-    if (searchParams) {
-        searchParams = searchParams.substring(1, searchParams.length)
-        const params = searchParams.split('&')
-        var i=0, len=params.length
-        var param, key, value
-        for (;i<len;i++) {
-            param = params[i].split('=')
-            key = param[0]
-            if (key != 'locale')
-                continue
-            value = param[1]
-            if (shared_locales.hasOwnProperty(value)) {
-                appLocale = value; break ;
-            }
-        }
-    }
-})()
-
-const store = new Vuex.Store({
-    state: {
-        locales : shared_locales,
-        currentLocale : appLocale,
-        translationMap : shared_locales[appLocale].translationMap
-    },
-    mutations: {
-        setLocale (state, locale) {
-            if (state.locales.hasOwnProperty(locale))
-                if (state.currentLocale != locale) {
-                    state.currentLocale = locale
-                    state.translationMap = state.locales[locale].translationMap
-                }
-                else
-                    console.log('Locale '+locale+' is already used !')
-            else
-                console.log('Locale '+locale+' not supported !')
-        }
-    }
-})
-
-// Route components will be rendered inside <router-view>.
+// Route components will be rendered inside <router-view>
 const app = new Vue({
-    router   : router,
-    store    : store,
+    router   : app_router,
+    store    : app_store,
     template : `
         <div id="app">
             <div id="header">
@@ -101,14 +36,14 @@ const app = new Vue({
             if (locale instanceof Object) 
                 locale = event.target.value
 
-            store.commit('setLocale', locale)
+            this.$store.commit('setLocale', locale)
         },
         getLocale () {
-            return store.state.currentLocale
+            return this.$store.state.currentLocale
         },
         translate (key, params) {
             
-            var translation = store.state.translationMap[key]
+            var translation = this.$store.state.translationMap[key]
 
             if (!translation)
                 translation = '??-'+key+'-??'
