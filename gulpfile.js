@@ -8,9 +8,10 @@ const prod_env =  {
     'NODE_ENV': 'production',
     'PORT': 8080,
     'LOG_DIR': 'log',
-    'LOG_FILE': 'info.log',
-    'LOG_LEVEL': 'info',
-    'USER_FILE': 'log/user.log'
+    'LOG_APP_FILE': 'app.log',
+    'LOG_APP_LEVEL': 'info',
+    'LOG_CUSTOM_FILE': 'user.log',
+    'LOG_CUSTOM_LEVEL': 'info'
 }
 
 const dev_env =  {
