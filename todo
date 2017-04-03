@@ -1,5 +1,4 @@
-- Manage env PROD & DEV
-- Manage log in file (USER + ERROR)
+- Manage env PROD & DEV in files
 - Session management + security
 - Database management (use postgres)
 - Paypal payments
