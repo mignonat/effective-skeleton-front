@@ -4,9 +4,10 @@ const concat = require('gulp-concat')
 const nodemon = require('gulp-nodemon')
 const forever = require('forever-monitor')
 
+/****************** ENVIRONMENTS ******************/
+
 const prod_env =  { 
     'NODE_ENV': 'production',
-    'PORT': 8080,
     'LOG_DIR': 'log',
     'LOG_APP_FILE': 'app.log',
     'LOG_APP_LEVEL': 'info',
@@ -14,26 +15,63 @@ const prod_env =  {
     'LOG_CUSTOM_LEVEL': 'info'
 }
 
+const front_prod_env = Object.assign({}, prod_env, {
+    'PORT': 8080
+})
+
+const back_prod_env = Object.assign({}, prod_env, {
+    'PORT': 5151
+})
+
 const dev_env =  {
     'NODE_ENV': 'development', 
-    'PORT': 8080,
     'LOG_LEVEL': 'debug'
 }
 
+const front_dev_env = Object.assign({}, dev_env, {
+    'PORT': 8080
+})
+
+const back_dev_env = Object.assign({}, dev_env, {
+    'PORT': 5151
+})
+
+/****************** TASKS ******************/
+
+gulp.task('start-back-prod', () => {
+    const child = new (forever.Monitor)('./server/back/app.js', {
+        'env': back_prod_env,
+        'killTree': true, //kills the entire child process tree on `exit`
+    })
+    child.start()
+})
+
 gulp.task('start-front-prod', () => {
     const child = new (forever.Monitor)('./server/front/app.js', {
-        'env': prod_env,
+        'env': front_prod_env,
         'killTree': true, //kills the entire child process tree on `exit`
         //'max': 2 //remove it, for testing purpose
     })
     child.start()
 })
 
+gulp.task('start-back-dev', () => {
+    nodemon({
+        script: 'server/back/app.js',
+        ext: 'js html',
+        env: back_dev_env,
+        ignore: [
+            'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
+            'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
+        ]
+    })
+})
+
 gulp.task('start-front-dev', () => {
     nodemon({
         script: 'server/front/app.js',
         ext: 'js html',
-        env: dev_env,
+        env: front_dev_env,
         tasks: [ 'concat-app'],
         ignore: [
             'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 

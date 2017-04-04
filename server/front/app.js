@@ -47,5 +47,6 @@ app.get('*', (req, res) => {
     catch (ex) { log.error('Redirect "*" to "/error-404" failed !') }
 })
 
-app.listen(process.env.PORT)
+const port = process.env.PORT || 8080
+app.listen(port)
 log.info('Listening on port '+process.env.PORT)

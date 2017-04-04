@@ -7,8 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-lib": "gulp 'concat-lib'",
     "build-app": "gulp 'concat-app'",
+    "mongo": "mongod --auth --port 12345",
+    "mongo-shell": "mongo --port 12345 -u 'myUserAdmin' -p 'abc123' --authenticationDatabase 'admin'",
     "start-front-prod": "gulp start-front-prod",
-    "start-front-dev": "gulp start-front-dev"
+    "start-front-dev": "gulp start-front-dev",
+    "start-back-prod": "gulp start-back-prod",
+    "start-back-dev": "gulp start-back-dev"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",

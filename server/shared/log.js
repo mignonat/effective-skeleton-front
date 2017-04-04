@@ -11,7 +11,7 @@ if (process.env.LOG_DIR) {
 }
 
 // App log logger
-const log_app_level = (process.env.LOG_APP_LEVEL)? process.env.LOG_APP_LEVEL : 'info'
+const log_app_level = process.env.LOG_APP_LEVEL || 'info'
 if (process.env.LOG_APP_FILE) {
     app_logger = new (winston.Logger)({
         transports : [
