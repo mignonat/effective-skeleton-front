@@ -1,5 +1,8 @@
+- Get or set a global variable with the absolute root path and use it in require()
 - Manage env PROD & DEV in files
-- Session management + security
-- Database management (use postgres)
+- Web Token Authentication + security
+- Mongodb database -> make a module with mongoose to give an interface with basic methods
+- Scalable asynch notification & alert system
+- Sys Admin management : show log, manage users and groups, manage maintenance
 - Paypal payments
 
