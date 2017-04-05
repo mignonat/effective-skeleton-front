@@ -1,7 +1,7 @@
-- Get or set a global variable with the absolute root path and use it in require()
+- Set DB config outside config.js
+- Securize token => not use a simple hash, put in the token an object without user password
 - Manage env PROD & DEV in files
-- Web Token Authentication + security
-- Mongodb database -> make a module with mongoose to give an interface with basic methods
+- Mongodb look to how to reconnect automatically
 - Scalable asynch notification & alert system
 - Sys Admin management : show log, manage users and groups, manage maintenance
 - Paypal payments
