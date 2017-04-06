@@ -56,27 +56,31 @@ gulp.task('start-front-prod', () => {
 })
 
 gulp.task('start-back-dev', () => {
-    nodemon({
+    return nodemon({
+        exec: 'node-inspector & node --debug',
         script: 'server/back/app.js',
-        ext: 'js html',
+        ext: 'js',
         env: back_dev_env,
         ignore: [
             'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
             'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
-        ]
+        ],
+        debug: true
     })
 })
 
 gulp.task('start-front-dev', () => {
-    nodemon({
+    return nodemon({
+        exec: 'node-inspector & node --debug',
         script: 'server/front/app.js',
-        ext: 'js html',
+        ext: 'js',
         env: front_dev_env,
         tasks: [ 'concat-app'],
         ignore: [
             'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
             'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
-        ]
+        ],
+        debug: true
     })
 })
 
