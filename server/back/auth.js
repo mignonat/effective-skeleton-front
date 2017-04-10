@@ -2,6 +2,12 @@ const config = require('../shared/config.js')
 const user_model = require(config.get('abs-root-path')+'/server/back/models/user.js')
 const log = require(config.get('abs-root-path')+'/server/shared/log.js')
 const jwt = require('jsonwebtoken')
+const Const = require(config.get('abs-root-path')+'/server/shared/log.js')
+const reader = require('properties-reader')
+const properties = reader('/path/to/properties.file')
+const secret = properties.get(Const.TOKEN_SECRET) //secret has just module scope
+
+//TODO check properties not null
 
 //TODO explore this api : https://www.npmjs.com/package/express-jwt
 
@@ -17,7 +23,7 @@ module.exports = {
                     log.debug('doAuth : bad password for login="'+login+'" and password="'+password+'"')
                     failedAuthFn()
                 } else {
-                    const newToken = jwt.sign(user, config.get('token-secret')) // TODO don't put the password inside
+                    const newToken = jwt.sign(user, secret) // TODO don't put the password inside
                     // TODO : sign with RSA SHA256
                     //https://github.com/auth0/node-jsonwebtoken
                     //const cert = fs.readFileSync('private.key')  // get private key
@@ -32,7 +38,7 @@ module.exports = {
     },
     validToken : (token, successFn, failedVerifingFn) => {
         if (token) {
-            jwt.verify(token, config.get('token-secret'), (err, decoded) => {
+            jwt.verify(token, secret, (err, decoded) => {
                 if (err) {
                     log.err('validToken : error => '+err)
                     failedVerifingFn()

@@ -1,19 +1,23 @@
 const mongoose = require('mongoose')
 const config = require('./config.js')
-const log = require(config.get('abs-root-path')+'/server/shared/log.js')
+const log = require(config.getAbsRootPath()+'/server/shared/log.js')
+const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
+const reader = require('properties-reader')
+const properties = reader('/path/to/properties.file')
 
-config.set('token-secret', 'JSONWebTokenSecretToChange!')
-config.set('db_url', 'mongodb://localhost:12345/back-app')
-config.set('db_user', 'back-app')
-config.set('db_password', 'abc123')
+const dbUrl = properties.get(Const.DB_URL)
+const dbUser = properties.get(Const.DB_USER)
+const dbPassword = properties.get(Const.DB_PASSWORD)
 
-mongoose.connect(config.get('db_url'), {
-    user: config.get('db_user'),
-    pass: config.get('db_password')
+//TODO check properties parameters not null
+
+mongoose.connect(dbUrl, {
+    user: dbUser,
+    pass: dbPassword
 })
 
 mongoose.connection.on('connected', function () {  
-    log.info('Mongoose default connection open to ' + config.get('db_url'))
+    log.info('Mongoose default connection open to '+dbUrl)
 })
 
 mongoose.connection.on('error', function (err) {  

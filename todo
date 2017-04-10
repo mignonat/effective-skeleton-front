@@ -1,4 +1,4 @@
-- Set DB config outside config.js
+- Finish using environement properties file in the differents files ...
 - Securize token => not use a simple hash, put in the token an object without user password
 - Manage env PROD & DEV in files
 - Mongodb look to how to reconnect automatically

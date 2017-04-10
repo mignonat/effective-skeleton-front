@@ -1,15 +1,15 @@
 const path = require('path')
 const absolutePath = path.resolve(".")
 const config = require(absolutePath+'/server/shared/config.js')
-config.set('abs-root-path', absolutePath)
+config.setAbsRootPath(absolutePath)
 
 const express = require('express')
 const bodyParser  = require('body-parser')
 const dbUtils = require(config.get('abs-root-path')+'/server/shared/db-utils.js')
-const log = require(config.get('abs-root-path')+'/server/shared/log.js')
-const auth = require(config.get('abs-root-path')+'/server/back/auth.js')
+const log = require(config.getAbsRootPath()+'/server/shared/log.js')
+const auth = require(config.getAbsRootPath()+'/server/back/auth.js')
 
-const user_model = require(config.get('abs-root-path')+'/server/back/models/user.js')
+const user_model = require(config.getAbsRootPath()+'/server/back/models/user.js')
 const app = express()
 
 // use body parser so we can get info from POST and/or URL parameters

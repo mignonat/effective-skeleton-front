@@ -1,8 +1,11 @@
+const config = require(__dirname+'/../shared/config.js')
+const path = require('path')
+config.setAbsRootPath(path.resolve("."))
+
 const winston = require('winston')
 const express = require('express')
-const path = require('path')
 const compression = require('compression')
-const log = require('../shared/log.js')
+const log = require(config.getAbsRootPath()+'/server/shared/log.js')
 
 const app = express()
 
