@@ -1,7 +1,9 @@
-- Create a module "properties" : possibility to get multiple properties in one shot, and don't get the reader in memory
-- Finish using environement properties file in the differents files
-- Securize token => not use a simple hash, put in the token an object without user password
+- Create a module "properties" : possibility to get multiple properties in one shot, and don't let the reader in memory
+- Put translations in properties files
+- With gulp add a task to copy env.properties file following the environement
+- Finish using environement properties file in the differents modules
 - Manage env PROD & DEV in files
+- Securize token => not use a simple hash, put in the token an object without user password
 - Mongodb look to how to reconnect automatically
 - Scalable asynch notification & alert system
 - Sys Admin management : show log, manage users and groups, manage maintenance
