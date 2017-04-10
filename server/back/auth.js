@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const Const = require(config.get('abs-root-path')+'/server/shared/log.js')
 const reader = require('properties-reader')
 const properties = reader('/path/to/properties.file')
-const secret = properties.get(Const.TOKEN_SECRET) //secret has just module scope
+const secret = properties.get(Const.TOKEN_SECRET) //module scope
 
 //TODO check properties not null
 
