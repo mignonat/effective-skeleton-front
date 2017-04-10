@@ -1,4 +1,5 @@
-- Finish using environement properties file in the differents files ... => create a module "properties" to have a easier way to get a property 
+- Create a module "properties" : possibility to get multiple properties in one shot, and don't get the reader in memory
+- Finish using environement properties file in the differents files
 - Securize token => not use a simple hash, put in the token an object without user password
 - Manage env PROD & DEV in files
 - Mongodb look to how to reconnect automatically
