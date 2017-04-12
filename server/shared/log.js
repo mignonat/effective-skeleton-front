@@ -1,23 +1,25 @@
 const winston = require('winston')
 const fs = require('fs')
 const path = require('path')
+const config = require('./config.js')
+const Const = require('./const.js')
 
 // Check log dir
 var app_log_dir = __dirname+'/../../', app_logger, custom_logger
-if (process.env.LOG_DIR) {
-    app_log_dir = path.join(app_log_dir+process.env.LOG_DIR)
+if (config.getInPropertiesFile(Const.LOG_DIR)) {
+    app_log_dir = path.join(app_log_dir+config.getInPropertiesFile(Const.LOG_DIR))
     if (!fs.existsSync(app_log_dir))
         fs.mkdirSync(app_log_dir) // create missing log directory
 }
 
 // App log logger
-const log_app_level = process.env.LOG_APP_LEVEL || 'info'
-if (process.env.LOG_APP_FILE) {
+const log_app_level = config.getInPropertiesFile(Const.LOG_APP_LEVEL) || 'info'
+if (config.getInPropertiesFile(Const.LOG_APP_FILE)) {
     app_logger = new (winston.Logger)({
         transports : [
             new (winston.transports.File)({
                 name: 'log-file',
-                filename: app_log_dir+'/'+process.env.LOG_APP_FILE,
+                filename: app_log_dir+'/'+config.getInPropertiesFile(Const.LOG_APP_FILE),
                 level: log_app_level
             })
         ]
@@ -28,13 +30,13 @@ if (process.env.LOG_APP_FILE) {
 }
 
 // Custom logger
-if (process.env.LOG_CUSTOM_FILE) {
+if (config.getInPropertiesFile(Const.LOG_CUSTOM_FILE)) {
     custom_logger = new (winston.Logger)({
         transports : [
             new (winston.transports.File)({
                 name: 'custom-file',
-                filename: app_log_dir+'/'+process.env.LOG_CUSTOM_FILE,
-                level: (process.env.LOG_CUSTOM_LEVEL)? process.env.LOG_CUSTOM_LEVEL : 'info'
+                filename: app_log_dir+'/'+config.getInPropertiesFile(Const.LOG_CUSTOM_FILE),
+                level: (config.getInPropertiesFile(Const.LOG_CUSTOM_LEVEL))? config.getInPropertiesFile(Const.LOG_CUSTOM_LEVEL) : 'info'
             })
         ]
     })

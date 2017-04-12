@@ -11,7 +11,7 @@ const User = mongoose.model('User', new Schema({
 }))
 
 const service = {
-    getRoute : (route) => {
+    getRouteFn : (route) => {
         return routesFn[route]
     },
     getUserSchema : () => {

@@ -4,3 +4,4 @@ public/js/app/app.js
 public/js/lib/lib.js
 npm-debug.log
 log/
+env.properties

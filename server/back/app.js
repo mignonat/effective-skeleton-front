@@ -1,16 +1,18 @@
+const config = require(__dirname+'/../shared/config.js')
 const path = require('path')
-const absolutePath = path.resolve(".")
-const config = require(absolutePath+'/server/shared/config.js')
-config.setAbsRootPath(absolutePath)
+config.setAbsRootPath(path.resolve('.'))
 
 const express = require('express')
 const bodyParser  = require('body-parser')
-const dbUtils = require(config.get('abs-root-path')+'/server/shared/db-utils.js')
+const dbUtils = require(config.getAbsRootPath()+'/server/shared/db-utils.js')
 const log = require(config.getAbsRootPath()+'/server/shared/log.js')
 const auth = require(config.getAbsRootPath()+'/server/back/auth.js')
-
+const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
 const user_model = require(config.getAbsRootPath()+'/server/back/models/user.js')
+
 const app = express()
+
+log.info('Starting on environment "'+config.getInPropertiesFile(Const.APP_ENV)+'"')
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -86,10 +88,10 @@ routes.get('/', (req, res) => {
     })
 })
 
-routes.get('/users', user_model.getRoute('/users'))
+routes.get('/users', user_model.getRouteFn('/users'))
 
 app.use('/api', routes)
 
-const port = process.env.PORT || 8080
+const port = config.getInPropertiesFile(Const.APP_PORT) || 8080
 app.listen(port)
 log.info('Back web services started on port ' + port)

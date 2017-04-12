@@ -2,12 +2,15 @@ const mongoose = require('mongoose')
 const config = require('./config.js')
 const log = require(config.getAbsRootPath()+'/server/shared/log.js')
 const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
-const reader = require('properties-reader')
-const properties = reader('/path/to/properties.file')
 
-const dbUrl = properties.get(Const.DB_URL)
-const dbUser = properties.get(Const.DB_USER)
-const dbPassword = properties.get(Const.DB_PASSWORD)
+const dbUrl = config.getInPropertiesFile(Const.DB_URL)
+const dbUser = config.getInPropertiesFile(Const.DB_USER)
+const dbPassword = config.getInPropertiesFile(Const.DB_PASSWORD)
+
+if (!dbUrl || !dbUser || !dbPassword) {
+    log.error('db-utils module : missing param !')
+    return
+}
 
 //TODO check properties parameters not null
 

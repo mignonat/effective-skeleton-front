@@ -3,52 +3,34 @@ const babel = require('gulp-babel')
 const concat = require('gulp-concat')
 const nodemon = require('gulp-nodemon')
 const forever = require('forever-monitor')
+const rename = require('gulp-rename')
 
-/****************** ENVIRONMENTS ******************/
-
-const prod_env =  { 
-    'NODE_ENV': 'production',
-    'LOG_DIR': 'log',
-    'LOG_APP_FILE': 'app.log',
-    'LOG_APP_LEVEL': 'info',
-    'LOG_CUSTOM_FILE': 'user.log',
-    'LOG_CUSTOM_LEVEL': 'info'
-}
-
-const front_prod_env = Object.assign({}, prod_env, {
-    'PORT': 8080
-})
-
-const back_prod_env = Object.assign({}, prod_env, {
-    'PORT': 5151
-})
-
-const dev_env =  {
-    'NODE_ENV': 'development', 
-    'LOG_LEVEL': 'debug'
-}
-
-const front_dev_env = Object.assign({}, dev_env, {
-    'PORT': 8080
-})
-
-const back_dev_env = Object.assign({}, dev_env, {
-    'PORT': 5151
-})
+const envFileName = 'env.properties'
+const envDir = '.'
 
 /****************** TASKS ******************/
 
 gulp.task('start-back-prod', () => {
+    
+    gulp.src('./env/back-prod.properties')
+        .pipe(rename(envFileName))
+        .pipe(gulp.dest(envDir))
+
     const child = new (forever.Monitor)('./server/back/app.js', {
-        'env': back_prod_env,
+        'env': {'NODE_ENV': 'production'},
         'killTree': true, //kills the entire child process tree on `exit`
     })
     child.start()
 })
 
 gulp.task('start-front-prod', () => {
+
+    gulp.src('./env/front-prod.properties')
+        .pipe(rename(envFileName))
+        .pipe(gulp.dest(envDir))
+
     const child = new (forever.Monitor)('./server/front/app.js', {
-        'env': front_prod_env,
+        'env': {'NODE_ENV': 'production'},
         'killTree': true, //kills the entire child process tree on `exit`
         //'max': 2 //remove it, for testing purpose
     })
@@ -56,31 +38,39 @@ gulp.task('start-front-prod', () => {
 })
 
 gulp.task('start-back-dev', () => {
+
+    gulp.src('./env/back-dev.properties')
+        .pipe(rename(envFileName))
+        .pipe(gulp.dest(envDir))
+
     return nodemon({
-        exec: 'node-inspector & node --debug',
+        exec: 'node --inspect', //node-inspector & node --inspect
         script: 'server/back/app.js',
         ext: 'js',
-        env: back_dev_env,
+        env: {'NODE_ENV': 'development'},
         ignore: [
             'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
             'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
-        ],
-        debug: true
+        ]
     })
 })
 
 gulp.task('start-front-dev', () => {
+
+    gulp.src('./env/front-dev.properties')
+        .pipe(rename(envFileName))
+        .pipe(gulp.dest(envDir))
+
     return nodemon({
-        exec: 'node-inspector & node --debug',
+        exec: 'node --inspect',
         script: 'server/front/app.js',
         ext: 'js',
-        env: front_dev_env,
+        env: {'NODE_ENV': 'development'},
         tasks: [ 'concat-app'],
         ignore: [
             'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
             'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
-        ],
-        debug: true
+        ]
     })
 })
 

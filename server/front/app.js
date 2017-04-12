@@ -6,10 +6,11 @@ const winston = require('winston')
 const express = require('express')
 const compression = require('compression')
 const log = require(config.getAbsRootPath()+'/server/shared/log.js')
+const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
 
 const app = express()
 
-log.info('Starting on environment "'+process.env.NODE_ENV+'"')
+log.info('Starting on environment "'+config.getInPropertiesFile(Const.APP_ENV)+'"')
 
 // Give access to assets directories
 app.use(express.static('public'))
