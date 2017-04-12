@@ -1,4 +1,4 @@
-- Put translations in properties files
+- Put translations in properties files and create Language module
 - Manage env PROD & DEV in files
 - Securize token => not use a simple hash, put in the token an object without user password
 - Mongodb look to how to reconnect automatically
