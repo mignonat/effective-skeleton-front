@@ -1,5 +1,8 @@
-- Put translations in properties files and create Language module
-- Manage env PROD & DEV in files
+- Create a langage key const module for server
+- Create a langage module witch read in translation propreties file following the locale
+- Put translations in properties files
+- Client get all keys from a const module templating it in index.html or use gulp to create langage.js
+- Set unit tests and selenium
 - Securize token => not use a simple hash, put in the token an object without user password
 - Mongodb look to how to reconnect automatically
 - Scalable asynch notification & alert system
