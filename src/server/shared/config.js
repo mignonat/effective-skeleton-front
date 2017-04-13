@@ -10,7 +10,7 @@ module.exports = {
         config[key] = object
     },
     getInPropertiesFile : (key) => {
-        const properties = reader(__dirname+'/../../env.properties')
+        const properties = reader(__dirname+'/../../../env.properties')
         if (properties)
             return properties.get(key)
         else

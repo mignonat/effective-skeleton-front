@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const config = require('./config.js')
-const log = require(config.getAbsRootPath()+'/server/shared/log.js')
-const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
+const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
+const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
 const dbUrl = config.getInPropertiesFile(Const.DB_URL)
 const dbUser = config.getInPropertiesFile(Const.DB_USER)

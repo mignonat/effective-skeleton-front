@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
 const config = require('../shared/config.js')
-const user_model = require(config.getAbsRootPath()+'/server/back/models/user.js')
-const log = require(config.getAbsRootPath()+'/server/shared/log.js')
-const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
+const user_model = require(config.getAbsRootPath()+'/src/server/back/models/user.js')
+const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
+const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
 const secret = config.getInPropertiesFile(Const.TOKEN_SECRET)
 if (!secret)

@@ -4,11 +4,11 @@ config.setAbsRootPath(path.resolve('.'))
 
 const express = require('express')
 const bodyParser  = require('body-parser')
-const dbUtils = require(config.getAbsRootPath()+'/server/shared/db-utils.js')
-const log = require(config.getAbsRootPath()+'/server/shared/log.js')
-const auth = require(config.getAbsRootPath()+'/server/back/auth.js')
-const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
-const user_model = require(config.getAbsRootPath()+'/server/back/models/user.js')
+const dbUtils = require(config.getAbsRootPath()+'/src/server/shared/db-utils.js')
+const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
+const auth = require(config.getAbsRootPath()+'/src/server/back/auth.js')
+const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
+const user_model = require(config.getAbsRootPath()+'/src/server/back/models/user.js')
 
 const app = express()
 
@@ -92,6 +92,6 @@ routes.get('/users', user_model.getRouteFn('/users'))
 
 app.use('/api', routes)
 
-const port = config.getInPropertiesFile(Const.APP_PORT) || 8080
+const port = config.getInPropertiesFile(Const.APP_PORT) || 5151
 app.listen(port)
 log.info('Back web services started on port ' + port)

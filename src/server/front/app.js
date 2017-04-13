@@ -5,8 +5,8 @@ config.setAbsRootPath(path.resolve("."))
 const winston = require('winston')
 const express = require('express')
 const compression = require('compression')
-const log = require(config.getAbsRootPath()+'/server/shared/log.js')
-const Const = require(config.getAbsRootPath()+'/server/shared/const.js')
+const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
+const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
 const app = express()
 
@@ -51,6 +51,6 @@ app.get('*', (req, res) => {
     catch (ex) { log.error('Redirect "*" to "/error-404" failed !') }
 })
 
-const port = process.env.PORT || 8080
+const port = config.getInPropertiesFile(Const.APP_PORT) || 8080
 app.listen(port)
-log.info('Listening on port '+process.env.PORT)
+log.info('Listening on port '+port)
