@@ -38,6 +38,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
+    "gulp-ext-replace": "^0.3.0",
     "gulp-insert": "^0.5.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-props2json": "^2.0.0",

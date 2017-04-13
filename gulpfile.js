@@ -7,6 +7,7 @@ const rename = require('gulp-rename')
 const props2json = require('gulp-props2json')
 const insert = require('gulp-insert')
 const clean = require('gulp-clean')
+const extReplace = require('gulp-ext-replace')
 
 const envFileName = 'env.properties'
 const envDir = '.'
@@ -15,120 +16,133 @@ const envDir = '.'
 
 gulp.task('start-back-prod', () => {
     
-    gulp.src('./env/back-prod.properties')
+    return gulp.src('./env/back-prod.properties')
         .pipe(rename(envFileName))
         .pipe(gulp.dest(envDir))
+        .on('end', () => {
 
-    const child = new (forever.Monitor)('./server/back/app.js', {
-        'env': {'NODE_ENV': 'production'},
-        'killTree': true, //kills the entire child process tree on `exit`
-    })
-    child.start()
+            new (forever.Monitor)('./server/back/app.js', {
+                'env': { 'NODE_ENV': 'production' },
+                'killTree': true, //kills the entire child process tree on `exit`
+            }).start()
+        })
 })
 
 gulp.task('start-front-prod', () => {
 
-    gulp.src('./env/front-prod.properties')
+    return gulp.src('./env/front-prod.properties')
         .pipe(rename(envFileName))
         .pipe(gulp.dest(envDir))
-
-    const child = new (forever.Monitor)('./server/front/app.js', {
-        'env': {'NODE_ENV': 'production'},
-        'killTree': true, //kills the entire child process tree on `exit`
-        //'max': 2 //remove it, for testing purpose
-    })
-    child.start()
+        .on('end', () => {
+            new (forever.Monitor)('./server/front/app.js', {
+                'env': { 'NODE_ENV': 'production' },
+                'killTree': true, //kills the entire child process tree on `exit`
+                //'max': 2 //remove it, for testing purpose
+            }).start()
+        })
 })
 
 gulp.task('start-back-dev', () => {
 
-    gulp.src('./env/back-dev.properties')
+    return gulp.src('./env/back-dev.properties')
         .pipe(rename(envFileName))
         .pipe(gulp.dest(envDir))
+        .on('end', () => {
 
-    return nodemon({
-        exec: 'node --inspect', //node-inspector & node --inspect
-        script: 'server/back/app.js',
-        ext: 'js',
-        env: {'NODE_ENV': 'development'},
-        ignore: [
-            'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
-            'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
-        ]
-    })
+            nodemon({
+                exec: 'node --inspect', //node-inspector & node --inspect
+                script: 'server/back/app.js',
+                ext: 'js',
+                env: { 'NODE_ENV': 'development' },
+                ignore: [
+                    'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
+                    'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
+                ]
+            })
+        })
 })
 
 gulp.task('start-front-dev', () => {
 
-    gulp.src('./env/front-dev.properties')
+    return gulp.src('./env/front-dev.properties')
         .pipe(rename(envFileName))
         .pipe(gulp.dest(envDir))
+        .on('end', () => {
 
-    return nodemon({
-        exec: 'node --inspect',
-        script: 'server/front/app.js',
-        ext: 'js',
-        env: {'NODE_ENV': 'development'},
-        tasks: [ 'concat-app'],
-        ignore: [
-            'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
-            'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
-        ]
-    })
+            nodemon({
+                exec: 'node --inspect',
+                script: 'server/front/app.js',
+                ext: 'js',
+                env: { 'NODE_ENV': 'development' },
+                tasks: [ 'concat-app-translations', 'concat-app' ],
+                ignore: [
+                    'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 
+                    'npm-debug.log', 'package.json', 'public', 'README.md', 'todo'
+                ]
+            })
+        })
 })
 
 gulp.task('concat-lib', () => {
+
     return gulp.src([
-        './node_modules/vue/dist/vue.js',
-        './node_modules/vue-router/dist/vue-router.js',
-        './node_modules/vuex/dist/vuex.js'
-    ])
-    .pipe(concat('lib.js'))
-    .pipe(gulp.dest('./public/js/lib'))
+            './node_modules/vue/dist/vue.js',
+            './node_modules/vue-router/dist/vue-router.js',
+            './node_modules/vuex/dist/vuex.js'
+        ])
+        .pipe(concat('lib.js'))
+        .pipe(gulp.dest('./public/js/lib'))
 })
 
 gulp.task('concat-app', () => {
+
     return gulp.src([
-        './client/translations/js/*.json',
-	    './client/app-locales.js',
-        './client/app-check-params.js',
-        './client/components/Error404Cmp.js',
-        './client/components/ErrorCmp.js',
-        './client/components/HomeCmp.js',
-        './client/components/ContactCmp.js',
-        './client/app-router.js',
-        './client/app-store.js',
-        './client/app.js'
-    ])
-    .pipe(babel({
-        presets: ['es2015']
-    }))
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('./public/js/app'))
+            './client/locales/translations/*',
+            './client/locales/app-locales.js',
+            './client/app-check-params.js',
+            './client/components/Error404Cmp.js',
+            './client/components/ErrorCmp.js',
+            './client/components/HomeCmp.js',
+            './client/components/ContactCmp.js',
+            './client/app-router.js',
+            './client/app-store.js',
+            './client/app.js'
+        ])
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('./public/js/app'))
 })
 
-gulp.task('concat-translations', () => {
-    return gulp.src([
-        './client/translations/*.properties'
-    ])
-    .pipe(props2json())
-    .pipe(gulp.dest('./client/translations/json'))
-    .on('end', function() {
-        
-        gulp.src([
-            './client/translations/json/*'
-        ])
-        .pipe(insert.transform(function(contents, file) {
-            const path = file.path
-            const fileName = path.substr(path.lastIndexOf('/')+1, path.length).replace(".json", "")
-            return 'const translation_map_'+fileName+' = '+contents+'\r\n'
-        }))
-        .pipe(gulp.dest('./client/translations/js'))
-        .on('end', function() {
+gulp.task('concat-app-translations', () => {
+    
+    return gulp.src('./translations/client/*.properties')
+        .pipe(props2json())
+        .pipe(gulp.dest('./client/locales/translations/json'))
+        .on('end', () => {
+            
+            gulp.src('./client/locales/translations/json/*')
+            .pipe(insert.transform(function(contents, file) {
+                const path = file.path
+                const fileName = path.substr(path.lastIndexOf('/')+1, path.length).replace(".json", "")
+                return 'const translation_map_'+fileName+' = '+contents+'\r\n'
+            }))
+            .pipe(gulp.dest('./client/locales/translations'))
+            .on('end', () => {
 
-            gulp.src('./client/translations/json', {read: false})
-                .pipe(clean());
-        })
+                gulp.src('./client/locales/translations/*.json')
+                    .pipe(extReplace('js'))
+                    .pipe(gulp.dest('./client/locales/translations'))
+                    .on('end', () => {
+
+                        gulp.src([
+                            './client/locales/translations/json',
+                            './client/locales/translations/*.json'
+                        ], {read: false})
+                        .pipe(clean())
+                    })
+            })
     })
 })
 
