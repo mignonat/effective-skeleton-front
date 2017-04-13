@@ -118,7 +118,7 @@ gulp.task('concat-app', () => {
 gulp.task('concat-app-translations', () => {
     
     return gulp.src('./translations/client/*.properties')
-        .pipe(props2json())
+        .pipe(props2json({ minify : false }))
         .pipe(gulp.dest('./client/locales/translations/json'))
         .on('end', () => {
             
