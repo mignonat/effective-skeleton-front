@@ -36,8 +36,11 @@
     "babel-preset-es2015": "^6.24.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
     "gulp-nodemon": "^2.2.1",
+    "gulp-props2json": "^2.0.0",
     "gulp-shell": "^0.6.3",
     "nodemon": "^1.11.0"
   }

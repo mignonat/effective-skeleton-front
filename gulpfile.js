@@ -4,6 +4,9 @@ const concat = require('gulp-concat')
 const nodemon = require('gulp-nodemon')
 const forever = require('forever-monitor')
 const rename = require('gulp-rename')
+const props2json = require('gulp-props2json')
+const insert = require('gulp-insert')
+const clean = require('gulp-clean')
 
 const envFileName = 'env.properties'
 const envDir = '.'
@@ -86,6 +89,7 @@ gulp.task('concat-lib', () => {
 
 gulp.task('concat-app', () => {
     return gulp.src([
+        './client/translations/js/*.json',
 	    './client/app-locales.js',
         './client/app-check-params.js',
         './client/components/Error404Cmp.js',
@@ -102,3 +106,29 @@ gulp.task('concat-app', () => {
     .pipe(concat('app.js'))
     .pipe(gulp.dest('./public/js/app'))
 })
+
+gulp.task('concat-translations', () => {
+    return gulp.src([
+        './client/translations/*.properties'
+    ])
+    .pipe(props2json())
+    .pipe(gulp.dest('./client/translations/json'))
+    .on('end', function() {
+        
+        gulp.src([
+            './client/translations/json/*'
+        ])
+        .pipe(insert.transform(function(contents, file) {
+            const path = file.path
+            const fileName = path.substr(path.lastIndexOf('/')+1, path.length).replace(".json", "")
+            return 'const translation_map_'+fileName+' = '+contents+'\r\n'
+        }))
+        .pipe(gulp.dest('./client/translations/js'))
+        .on('end', function() {
+
+            gulp.src('./client/translations/json', {read: false})
+                .pipe(clean());
+        })
+    })
+})
+

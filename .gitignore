@@ -5,3 +5,4 @@ public/js/lib/lib.js
 npm-debug.log
 log/
 env.properties
+client/translations/js

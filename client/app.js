@@ -9,7 +9,7 @@ const app = new Vue({
                     Marie-Charlotte
                 </span>
                 <span id="title">
-                    {{ translate("main-title") }}
+                    {{ translate("main.title") }}
                 </span>
                 <select id="select-locale" name="selectedLocale" @change="setLocale">
                     <option value="fr" :selected="getLocale() === 'fr'">
@@ -21,12 +21,12 @@ const app = new Vue({
                 </select>
             </div>
             <ul id="menu">
-                <li><router-link to="/home" active-class="active">     {{ translate("menu-home") }}     </router-link></li>
-                <li><router-link to="/care" active-class="active">     {{ translate("menu-care") }}     </router-link></li>
-                <li><router-link to="/clean" active-class="active">    {{ translate("menu-clean") }}    </router-link></li>
-                <li><router-link to="/wellbeing" active-class="active">{{ translate("menu-wellbeing") }}</router-link></li>
-                <li><router-link to="/testimony" active-class="active">{{ translate("menu-testimony") }}</router-link></li>
-                <li><router-link to="/contact" active-class="active">  {{ translate("menu-contact") }}  </router-link></li>
+                <li><router-link to="/home" active-class="active">     {{ translate("menu.home") }}     </router-link></li>
+                <li><router-link to="/care" active-class="active">     {{ translate("menu.care") }}     </router-link></li>
+                <li><router-link to="/clean" active-class="active">    {{ translate("menu.clean") }}    </router-link></li>
+                <li><router-link to="/wellbeing" active-class="active">{{ translate("menu.wellbeing") }}</router-link></li>
+                <li><router-link to="/testimony" active-class="active">{{ translate("menu.testimony") }}</router-link></li>
+                <li><router-link to="/contact" active-class="active">  {{ translate("menu.contact") }}  </router-link></li>
             </ul>
             <router-view class="content"></router-view>
         </div>
