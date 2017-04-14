@@ -5,8 +5,6 @@
   "main": "public/html/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-lib": "gulp 'concat-lib'",
-    "build-app": "gulp 'concat-app'",
     "mongo": "mongod --auth --port 12345",
     "mongo-shell": "mongo --port 12345 -u 'myUserAdmin' -p 'abc123' --authenticationDatabase 'admin'",
     "start-front-prod": "gulp start-front-prod",
@@ -43,6 +41,7 @@
     "gulp-nodemon": "^2.2.1",
     "gulp-props2json": "^2.0.0",
     "gulp-shell": "^0.6.3",
+    "gulp-sync": "^0.1.4",
     "nodemon": "^1.11.0"
   }
 }

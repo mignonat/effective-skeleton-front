@@ -5,7 +5,7 @@ const config = require('./config.js')
 const Const = require('./const.js')
 
 // Check log dir
-var app_log_dir = __dirname+'/../../', app_logger, custom_logger
+var app_log_dir = config.getAbsRootPath()+'/', app_logger, custom_logger
 if (config.getInPropertiesFile(Const.LOG_DIR)) {
     app_log_dir = path.join(app_log_dir+config.getInPropertiesFile(Const.LOG_DIR))
     if (!fs.existsSync(app_log_dir))
