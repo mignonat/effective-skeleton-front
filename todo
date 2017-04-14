@@ -1,4 +1,3 @@
-- Add concat-app and concat-app-translations in gulp start-front-prod task
 - Create a langage key const module for server
 - Create a langage module witch read in translation propreties file following the locale
 - Put translations in properties files
