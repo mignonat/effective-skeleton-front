@@ -8,6 +8,14 @@ const compression = require('compression')
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
+
+
+//TESTING LOCALES
+const locales = require(config.getAbsRootPath()+'/src/server/shared/locales.js')
+log.info(locales.printD('hello.world.params', 'pouet', 'en'))
+
+
+
 const app = express()
 
 log.info('Starting on environment "'+config.getInPropertiesFile(Const.APP_ENV)+'"')

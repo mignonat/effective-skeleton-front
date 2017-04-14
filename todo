@@ -1,4 +1,3 @@
-- Create a langage key const module for server
 - Create a langage module witch read in translation propreties file following the locale
 - Put translations in properties files
 - Client get all keys from a const module templating it in index.html or use gulp to create langage.js
