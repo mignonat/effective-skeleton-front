@@ -1,10 +1,12 @@
-- Langage file hierarchy => don't use front & back but front or back => use env variable for that
-- Create a langage module witch read in translation propreties file following the locale
-- Put translations in properties files
-- Client get all keys from a const module templating it in index.html or use gulp to create langage.js
-- Set unit tests and selenium
+- Use import for client side instead of concat ...
+- Explore webpack ?
+- Client Preference manager (local storage or cookies)
+- Get locale in local storage or get browser locale
+- Translate all back-end message => how to determine the locale ...
 - Securize token => not use a simple hash, put in the token an object without user password
-- Mongodb look to how to reconnect automatically
-- Scalable asynch notification & alert system
-- Sys Admin management : show log, manage users and groups, manage maintenance
+- Create a simple admin interface : show log, manage user/group, maintenance mode, launch batch, etc ...
+- Set unit tests and selenium
+- Mongodb : how to reconnect automatically
+- Scalable asynch notification & alert system => to define more precisely the need ...
 - Paypal payments
+- Send mail : https://nodemailer.com/about/

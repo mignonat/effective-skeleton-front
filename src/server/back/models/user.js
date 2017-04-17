@@ -17,46 +17,41 @@ const service = {
     getUserSchema : () => {
         return User ;
     },
-    findUserByLogin : (name, successFn, errorFn) => {
-        User.findOne({
-            login: name
-        }, 
-        (err, user) => {
-            if (err)
-                errorFn(err)
-            else
-                successFn(user)
+    findUserByLogin : (name) => {
+        return new Promise(function(resolve, reject) {
+            User.findOne({ login : name }, (err, user) => {
+                if (err) reject(err)
+                else resolve(user)
+            })
         })
     },
-    findAll : (successFn, errorFn) => {
-        User.find({}, 
-        (err, user) => {
-            if (err) 
-                errorFn(err)
-            else
-                successFn(user)
+    findAll : () => {
+        return new Promise(function(resolve, reject) {
+            User.find({}, (err, user) => {
+                if (err) reject(err)
+                else resolve(user)
+            })
         })
     }
 }
 
 const routesFn = {
     '/users' : (req, res) => {
-        service.findAll(
-            (users) => {
+        service.findAll()
+            .then((users) => {
                 res.json({
                     success : true,
                     users : users
                 })
-            },
-            (err) => {
+            })
+            .catch((err) => {
                 log.error('/users : '+err)
-                res.json({
+                res.status(500).json({
                     success : false,
                     message : 'Internal server error'
                 })
-            }
-        )
-    } 
+            })
+    }
 }
 
 module.exports = service

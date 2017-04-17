@@ -3,9 +3,9 @@ const config = require('./config.js')
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
-const dbUrl = config.getInPropertiesFile(Const.DB_URL)
-const dbUser = config.getInPropertiesFile(Const.DB_USER)
-const dbPassword = config.getInPropertiesFile(Const.DB_PASSWORD)
+const dbUrl = config.get(Const.DB_URL)
+const dbUser = config.get(Const.DB_USER)
+const dbPassword = config.get(Const.DB_PASSWORD)
 
 if (!dbUrl || !dbUser || !dbPassword) {
     log.error('db-utils module : missing param !')

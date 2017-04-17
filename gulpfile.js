@@ -73,7 +73,7 @@ gulp.task('front-run-forever', () => {
 
 gulp.task('start-front-prod', gulpSync.sync([
     'front-translations',
-    'front-concat-app',
+    //'front-concat-app',
     'front-concat-lib',
     'front-set-env-prod',
     'front-run-forever'
@@ -114,13 +114,16 @@ gulp.task('front-run-nodemon', () => {
             env : { 'NODE_ENV': 'development' },
             tasks : [ 
                 'front-translations', 
-                'front-concat-app' 
+                //'front-concat-app' 
             ],
             ignore : files_front_nodemon_ignore
         })
 })
 
 gulp.task('start-front-dev', gulpSync.sync([ 
+    'front-translations',
+    //'front-concat-app',
+    'front-concat-lib',
     'front-set-env-dev',
     'front-run-nodemon'
 ]))

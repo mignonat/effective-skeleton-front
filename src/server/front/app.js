@@ -3,22 +3,18 @@ const path = require('path')
 config.setAbsRootPath(path.resolve("."))
 
 const winston = require('winston')
+const http = require("http")
 const express = require('express')
+const locale = require("locale")
 const compression = require('compression')
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
-
-
-
-//TESTING LOCALES
 const locales = require(config.getAbsRootPath()+'/src/server/shared/locales.js')
-log.info(locales.printD('hello.world.params', 'pouet', 'en'))
-
-
 
 const app = express()
+app.use(locale(locales.getSupportedLocales()))
 
-log.info('Starting on environment "'+config.getInPropertiesFile(Const.APP_ENV)+'"')
+log.info('Starting on environment "'+config.get(Const.APP_ENV)+'"')
 
 // Give access to assets directories
 app.use(express.static('public'))
@@ -26,7 +22,7 @@ app.use(express.static('public'))
 // Compress data to reduce network package size
 app.use(compression())
 
-const htmlDir = path.join(__dirname+'/../../public/html/')
+const htmlDir = path.join(__dirname+'/../../../public/html/')
 
 const homePageFn = (req, res) => {
     try {
@@ -51,14 +47,24 @@ app.get('/testimony', homePageFn)
 app.get('/contact', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
-app.get('*', (req, res) => {
-    try {
 
-        res.redirect("/error-404")
-    }
-    catch (ex) { log.error('Redirect "*" to "/error-404" failed !') }
+
+//TESTING
+app.get("/locales", function(req, res) {
+  res.header("Content-Type", "text/plain")
+  res.send(
+    "Our default is: " + locale.Locale["default"] + "\n" +
+    "The best match is: " + req.locale + "\n"
+  )
 })
 
-const port = config.getInPropertiesFile(Const.APP_PORT) || 8080
+
+app.get('*', (req, res) => {
+    try {
+        res.redirect("/error-404")
+    } catch (ex) { log.error('Redirect "*" to "/error-404" failed !') }
+})
+
+const port = config.get(Const.APP_PORT) || 8080
 app.listen(port)
 log.info('Listening on port '+port)

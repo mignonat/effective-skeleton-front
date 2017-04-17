@@ -1,5 +1,6 @@
 const reader = require('properties-reader')
 const config = require('./config.js')
+const Const = require('./const.js')
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 
 const locales = [ 'fr', 'en']
@@ -7,11 +8,16 @@ const default_locale = locales[0]
 const cache = {}
 locales.forEach((locale) => { cache[locale] = {} })
 
-const file_hierarchy = [
-    config.getAbsRootPath()+'/translations/server/back/',
-    config.getAbsRootPath()+'/translations/server/front/',
-    config.getAbsRootPath()+'/translations/server/shared/'
-]
+const file_hierarchy = (config.get(Const.APP_STACK) == 'back')? 
+    [
+        config.getAbsRootPath()+'/translations/server/back/',
+        config.getAbsRootPath()+'/translations/server/shared/',
+        config.getAbsRootPath()+'/translations/server/front/'
+    ] : [
+        config.getAbsRootPath()+'/translations/server/front/',
+        config.getAbsRootPath()+'/translations/server/shared/',
+        config.getAbsRootPath()+'/translations/server/back/'
+    ]
 
 const getInFileHierarchyFn = (key, locale) => {
     var i=0, file, result, properties
@@ -52,7 +58,7 @@ const exportsFn = {
         }
     },
 
-    // d for dynamic
+    // d for dynamic label
     printD : (key, params, locale) => {
         var translation = exportsFn.print(key)
         if (translation.indexOf("??") > -1)
@@ -86,6 +92,9 @@ const exportsFn = {
             return translation = translation.replace('{0}', params)
 
         return translation
+    },
+    getSupportedLocales : () => {
+        return locales.slice()
     }
 }
 

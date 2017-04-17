@@ -21,6 +21,7 @@
     "forever-monitor": "^1.7.1",
     "gulp-rename": "^1.2.2",
     "jsonwebtoken": "^7.3.0",
+    "locale": "^0.1.0",
     "mongoose": "^4.9.3",
     "properties-reader": "0.0.15",
     "vue": "^2.2.5",

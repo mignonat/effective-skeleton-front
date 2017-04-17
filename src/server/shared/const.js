@@ -1,7 +1,10 @@
 module.exports = {
     APP_ENV : 'app.env',
+    APP_STACK : 'app.stack',
     APP_PORT : 'app.port',
     ABS_ROOT_PATH: 'absolute.root.path',
+    APP_VERSION : 'app.version',
+    APP_API_VERSION : 'app.api.version',
     LOG_LEVEL : 'log.level',
     LOG_DIR : 'log.dir',
     LOG_APP_FILE : 'log.app.file',
