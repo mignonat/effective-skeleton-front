@@ -1,5 +1,4 @@
-- Use import for client side instead of concat ...
-- Explore webpack ?
+- Use webpack to import client side dependencies
 - Client Preference manager (local storage or cookies)
 - Get locale in local storage or get browser locale
 - Translate all back-end message => how to determine the locale ...
