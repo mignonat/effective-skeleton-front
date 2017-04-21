@@ -1,4 +1,4 @@
-- Use webpack to import client side dependencies
+- Configure web pack for prod and dev env 
 - Client Preference manager (local storage or cookies)
 - Get locale in local storage or get browser locale
 - Translate all back-end message => how to determine the locale ...

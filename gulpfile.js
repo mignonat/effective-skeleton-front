@@ -8,6 +8,7 @@ const props2json = require('gulp-props2json')
 const insert = require('gulp-insert')
 const clean = require('gulp-clean')
 const extReplace = require('gulp-ext-replace')
+const webpack = require('webpack-stream')
 const gulpSync = require('gulp-sync')(gulp)
 
 /****************** CONST ******************/
@@ -142,6 +143,16 @@ gulp.task('front-concat-lib', () => {
 
 /****************** CONCAT APP ******************/
 
+//TODO use import and export everywhere
+//Concat translation in a vue module
+
+gulp.task('webpack', () => {
+    return gulp.src('src/client/app.js')
+        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(gulp.dest('public/js/app'));
+})
+
+/*
 gulp.task('front-concat-app', () => {
     return gulp.src([
             dir_client_translation+'/*',
@@ -160,7 +171,7 @@ gulp.task('front-concat-app', () => {
         }))
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js/app'))
-})
+})*/
 
 /****************** FRONT TRANSLATIONS ******************/
 
