@@ -7,47 +7,38 @@
             <span id="title">
                 { translate("main.title") }
             </span>
-            <select id="select-locale" name="currentLocale" @change="setLocale">
-                <option value="fr" :selected="currentLocale === 'fr'">
+            <select id="select-locale" v-model="selectedLocale" v-on:change="setLocale()">
+                <option value="fr" :selected="selectedLocale === 'fr'">
                     Français
                 </option>
-                <option value="en" :selected="currentLocale === 'en'">
+                <option value="en" :selected="selectedLocale === 'en'">
                     English
                 </option>
             </select>
         </div>
         <ul id="menu">
-            <li><router-link to="/home" active-class="active">     { translate("menu.home") }     </router-link></li>
-            <li><router-link to="/care" active-class="active">     { translate("menu.care") }     </router-link></li>
-            <li><router-link to="/clean" active-class="active">    { translate("menu.clean") }    </router-link></li>
-            <li><router-link to="/wellbeing" active-class="active">{ translate("menu.wellbeing") }</router-link></li>
-            <li><router-link to="/testimony" active-class="active">{ translate("menu.testimony") }</router-link></li>
-            <li><router-link to="/contact" active-class="active">  { translate("menu.contact") }  </router-link></li>
+            <li><router-link to="/home" active-class="active">     { translate("menu.home") }}     </router-link></li>
+            <li><router-link to="/care" active-class="active">     { translate("menu.care") }}     </router-link></li>
+            <li><router-link to="/clean" active-class="active">    { translate("menu.clean") }}    </router-link></li>
+            <li><router-link to="/wellbeing" active-class="active">{ translate("menu.wellbeing") }}</router-link></li>
+            <li><router-link to="/testimony" active-class="active">{ translate("menu.testimony") }}</router-link></li>
+            <li><router-link to="/contact" active-class="active">  { translate("menu.contact") }}  </router-link></li>
         </ul>
         <router-view class="content"></router-view>
     </div>
 </template>
 
 <script>
-    import { setLocale } from '../vuex/actions'
-
     export default {
-        vuex : {
-            getters : {
-                currentLocale : state => state.currentLocale,
-                translationMap : state => state.translationMap
-            },
-            actions : {
-                setLocale
-            }
-        },/*
         data () {
             return {
-                //currentLocale : 'fr'
+                selectedLocale : this.$store.state.currentLocale
             }
-        },*/
+        },
         computed : {
-            //TODO CONTINUE HERE
+            setLocale () {
+                this.$store.commit('SET_LOCALE', this.selectedLocale)
+            },
             translate (key, params) {
                 
                 var translation = this.$store.state.translationMap[key]
