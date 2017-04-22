@@ -1,28 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-const HomeCmp = { template: '<div>Page d\'accueil</div>' }
-const CareCmp = { template: '<div>Page des soins</div>' }
-const CleanCmp = { template: '<div>Page des nettoyages de lieux</div>' }
-const WellbeingCmp = { template: '<div>Page du bien être</div>' }
-const TestimonyCmp = { template: '<div>Page des témoignages</div>' }
-const ContactCmp = { template: '<div>Page des contacts</div>' }
-const ErrorCmp = { template: '<div>Page erreur</div>' }
-const Error404Cmp = { template: '<div>Page erreur 404</div>' }
+import Home from './components/Home.vue'
+import Contact from './components/Contact.vue'
+import ErrorUnknown from './components/Error.vue'
+import Error404 from './components/Error404.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-export const router = new VueRouter({
+export default new VueRouter({
     mode    : 'history',
     base    : '',
     routes  : [
-        { path: '/home', component: HomeCmp },
-        { path: '/care', component: CareCmp },
-        { path: '/clean', component: CleanCmp },
-        { path: '/wellbeing', component: WellbeingCmp },
-        { path: '/testimony', component: TestimonyCmp },
-        { path: '/contact', component: ContactCmp },
-        { path: '/error', component: ErrorCmp },
-        { path: '/error-404', component: Error404Cmp }
+        { path: '/home', component: Home },
+        { path: '/contact', component: Contact },
+        { path: '/error', component: ErrorUnknown },
+        { path: '/error-404', component: Error404 }
     ]
 })

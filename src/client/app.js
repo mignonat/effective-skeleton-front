@@ -7,6 +7,6 @@ import App from './components/App.vue'
 new Vue({
     store, // inject store to all children
     router,
-    el: 'app',
+    el : 'app',
     components: { App }
 })

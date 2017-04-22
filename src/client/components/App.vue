@@ -2,12 +2,12 @@
     <div id="app">
         <div id="header">
             <span id="mc-name">
-                Marie-Charlotte
+                {{ translate("app.name") }}
             </span>
             <span id="title">
-                { translate("main.title") }
+                {{ translate("home.title") }}
             </span>
-            <select id="select-locale" v-model="selectedLocale" v-on:change="setLocale()">
+            <select id="select-locale" v-model="selectedLocale" v-on:change="setLocale">
                 <option value="fr" :selected="selectedLocale === 'fr'">
                     Français
                 </option>
@@ -17,12 +17,8 @@
             </select>
         </div>
         <ul id="menu">
-            <li><router-link to="/home" active-class="active">     { translate("menu.home") }}     </router-link></li>
-            <li><router-link to="/care" active-class="active">     { translate("menu.care") }}     </router-link></li>
-            <li><router-link to="/clean" active-class="active">    { translate("menu.clean") }}    </router-link></li>
-            <li><router-link to="/wellbeing" active-class="active">{ translate("menu.wellbeing") }}</router-link></li>
-            <li><router-link to="/testimony" active-class="active">{ translate("menu.testimony") }}</router-link></li>
-            <li><router-link to="/contact" active-class="active">  { translate("menu.contact") }}  </router-link></li>
+            <li><router-link to="/home" active-class="active">     {{ translate("menu.home") }}     </router-link></li>
+            <li><router-link to="/contact" active-class="active">  {{ translate("menu.contact") }}  </router-link></li>
         </ul>
         <router-view class="content"></router-view>
     </div>
@@ -35,36 +31,15 @@
                 selectedLocale : this.$store.state.currentLocale
             }
         },
-        computed : {
-            setLocale () {
-                this.$store.commit('SET_LOCALE', this.selectedLocale)
+        computed : { 
+            /* use when complexe check has to be done in the template */
+        },
+        methods : { // here no dom manipulation
+            setLocale (event) {
+                return this.$store.commit('LOCALE_SET', this.selectedLocale)
             },
             translate (key, params) {
-                
-                var translation = this.$store.state.translationMap[key]
-
-                if (!translation)
-                    translation = '??-'+key+'-??'
-
-                if (!params)
-                    return translation
-
-                if (params instanceof Array) {
-                    const matches = translation.match(/{(\d+)}/g)
-
-                    if (!matches || matches.length != params.length)
-                        return translation+'-??-miss-param-??'
-
-                    var i= 0, txtPattern, regex
-                    for ( ; i<params.length; i++) {
-                        txtPattern = '{['+i+']}'
-                        regex = new RegExp(txtPattern)
-                        translation = translation.replace(regex, params[i])
-                    }
-                    return translation
-                }
-                else
-                    return translation.replace('{0}', params)
+                return this.$store.getters.translate(key, params)
             }
         }
     }

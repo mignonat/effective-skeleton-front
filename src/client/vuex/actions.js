@@ -1,3 +1,3 @@
-export const setLocale = ({ dispatch }, locale) => {
-  dispatch('SET_LOCALE', locale)
-}
+export default {
+    LOCALE_SET : 'LOCALE_SET'
+} 

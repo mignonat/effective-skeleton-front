@@ -5,4 +5,4 @@ public/js/lib/lib.js
 npm-debug.log
 log/
 env.properties
-src/client/locales/translations
+src/client/vuex/locales/translations

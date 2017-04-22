@@ -13,19 +13,18 @@ const gulpSync = require('gulp-sync')(gulp)
 
 /****************** CONST ******************/
 
+const dir_env = '.'
+const dir_client_translation = './src/client/vuex/locales/translations'
+
 const file_front_app = './src/server/front/app.js'
 const file_back_app = './src/server/back/app.js'
 const file_env = 'env.properties'
 
-const dir_env = '.'
-const dir_client_translation = './src/client/locales/translations'
-
 const nodemon_common_ignore = [
-    'doc', '.git', '.gitignore', 'gulpfile.js', 'LICENSE', 'node-modules', 'log',
-    'npm-debug.log', 'package.json', 'public', 'README.md', 'todo', 'env.properties'
+    // nodemon is only listening for .js and .vue files
+    'gulpfile.js', 'node-modules', 'public'
 ]
 const files_front_nodemon_ignore = nodemon_common_ignore.concat([
-    dir_client_translation,
     'src/back/'
 ])
 const files_back_nodemon_ignore = nodemon_common_ignore.concat([
@@ -75,7 +74,6 @@ gulp.task('front-run-forever', () => {
 gulp.task('start-front-prod', gulpSync.sync([
     'front-translations',
     'webpack',
-    'front-concat-lib',
     'front-set-env-prod',
     'front-run-forever'
 ]))
@@ -90,7 +88,7 @@ gulp.task('back-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug', //node-inspector & node --inspect
             script : file_back_app,
-            ext : 'js',
+            ext : 'js vue',
             env : { 'NODE_ENV': 'development' },
             ignore : files_back_nodemon_ignore
         })
@@ -111,10 +109,9 @@ gulp.task('front-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug',
             script : file_front_app,
-            ext : 'js',
+            ext : 'js vue',
             env : { 'NODE_ENV': 'development' },
             tasks : [ 
-                'front-translations', 
                 'webpack' 
             ],
             ignore : files_front_nodemon_ignore
@@ -124,22 +121,9 @@ gulp.task('front-run-nodemon', () => {
 gulp.task('start-front-dev', gulpSync.sync([ 
     'front-translations',
     'webpack',
-    'front-concat-lib',
     'front-set-env-dev',
     'front-run-nodemon'
 ]))
-
-/****************** CONCAT FRONT LIB ******************/
-
-gulp.task('front-concat-lib', () => {
-    return gulp.src([
-            './node_modules/vue/dist/vue.js',
-            './node_modules/vue-router/dist/vue-router.js',
-            './node_modules/vuex/dist/vuex.js'
-        ])
-        .pipe(concat('lib.js'))
-        .pipe(gulp.dest('./public/js/lib'))
-})
 
 /****************** CONCAT APP ******************/
 
@@ -149,29 +133,8 @@ gulp.task('front-concat-lib', () => {
 gulp.task('webpack', () => {
     return gulp.src('src/client/app.js')
         .pipe(webpack(require('./webpack.config.js')))
-        .pipe(gulp.dest('public/js/app'));
+        .pipe(gulp.dest('public/js'));
 })
-
-/*
-gulp.task('front-concat-app', () => {
-    return gulp.src([
-            dir_client_translation+'/*',
-            './src/client/locales/app-locales.js',
-            './src/client/app-check-params.js',
-            './src/client/components/Error404Cmp.js',
-            './src/client/components/ErrorCmp.js',
-            './src/client/components/HomeCmp.js',
-            './src/client/components/ContactCmp.js',
-            './src/client/app-router.js',
-            './src/client/app-store.js',
-            './src/client/app.js'
-        ])
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('./public/js/app'))
-})*/
 
 /****************** FRONT TRANSLATIONS ******************/
 
@@ -199,9 +162,7 @@ gulp.task('front-translation-rename-json-to-js', () => {
 gulp.task('front-translation-add-js-variable', () => {
     return gulp.src(dir_client_translation+'/json/*')
         .pipe(insert.transform(function(contents, file) {
-            const path = file.path
-            const fileName = path.substr(path.lastIndexOf('/')+1, path.length).replace(".json", "")
-            return 'const translation_map_'+fileName+' = '+contents+'\r\n'
+            return 'export default '+contents+'\r\n'
         }))
         .pipe(gulp.dest(dir_client_translation))
 })

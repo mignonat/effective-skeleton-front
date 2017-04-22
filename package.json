@@ -24,7 +24,7 @@
     "locale": "^0.1.0",
     "mongoose": "^4.9.3",
     "properties-reader": "0.0.15",
-    "vue": "^2.2.5",
+    "vue": "^2.2.6",
     "vue-router": "^2.3.0",
     "vuex": "^2.2.1",
     "winston": "^2.3.1"
