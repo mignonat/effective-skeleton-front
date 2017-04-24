@@ -1,3 +1,1 @@
-export default {
-    LOCALE_SET : 'LOCALE_SET'
-} 
+export const SET_LOCALE = 'SET_LOCALE'

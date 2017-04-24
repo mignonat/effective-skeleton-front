@@ -1,15 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import localeManager from './locales/locales.js'
+import locale from './modules/locale/locale.js'
 
 Vue.use(Vuex);
 
-const state = Object.assign({}, localeManager.getStoreInitialState())
-const mutations = Object.assign({}, localeManager.getStoreMutations())
-const getters = Object.assign({}, localeManager.getStoreGetters())
+const actions = {}
+const getters = {}
+const state = {}
+const mutations = {}
 
 export default new Vuex.Store({
-    state : state,
-    mutations : mutations,
-    getters : getters
+    actions,
+    getters,
+    modules: {
+        locale
+    }
 })

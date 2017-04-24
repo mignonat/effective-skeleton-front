@@ -1,8 +1,6 @@
 node_modules/
-public/js
-public/js/app/app.js
-public/js/lib/lib.js
+public/
 npm-debug.log
 log/
 env.properties
-src/client/vuex/locales/translations
+src/client/vuex/modules/locale/translations

@@ -1,9 +1,9 @@
-- Configure web pack for prod and dev env
-- Don't load all components, look for loading asynch components
-- Client Preference manager (local storage or cookies)
-- Reload app when changing the locale and just load one language
+- Block browser < IE8
+- HTML5 app manifest
+- Display error in user in App.vue
+- Manage session : store the token in local storage
+- Create a separate interface for application administration, in another tab
 - Create components for menu and top-bar
-- Get locale in local storage or get browser locale
 - Translate all back-end message => how to determine the locale ...
 - Securize token => not use a simple hash, put in the token an object without user password
 - Create a simple admin interface : show log, manage user/group, maintenance mode, launch batch, etc ...

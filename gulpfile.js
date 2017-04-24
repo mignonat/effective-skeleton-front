@@ -14,8 +14,9 @@ const gulpSync = require('gulp-sync')(gulp)
 /****************** CONST ******************/
 
 const dir_env = '.'
-const dir_client_translation = './src/client/vuex/locales/translations'
-
+const dir_client_translation = './src/client/vuex/modules/locale/translations'
+const dir_asset_src = './src/client/resources/*'
+const dir_asset_dest = './public'
 const file_front_app = './src/server/front/app.js'
 const file_back_app = './src/server/back/app.js'
 const file_env = 'env.properties'
@@ -72,9 +73,9 @@ gulp.task('front-run-forever', () => {
 })
 
 gulp.task('start-front-prod', gulpSync.sync([
+    'front-set-env-prod',
     'front-translations',
     'webpack',
-    'front-set-env-prod',
     'front-run-forever'
 ]))
 
@@ -119,26 +120,24 @@ gulp.task('front-run-nodemon', () => {
 })
 
 gulp.task('start-front-dev', gulpSync.sync([ 
+    'front-set-env-dev',
     'front-translations',
     'webpack',
-    'front-set-env-dev',
     'front-run-nodemon'
 ]))
 
-/****************** CONCAT APP ******************/
-
-//TODO use import and export everywhere
-//Concat translation in a vue module
+/****************** WEBPACK ******************/
 
 gulp.task('webpack', () => {
+    const webpackConfig = require('./webpack.config.js')
     return gulp.src('src/client/app.js')
-        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('public/js'));
 })
 
 /****************** FRONT TRANSLATIONS ******************/
 
-gulp.task('front-translations', gulpSync.sync([ 
+gulp.task('front-translations', gulpSync.sync([
     'front-translation-prop-to-json',
     'front-translation-add-js-variable',
     'front-translation-rename-json-to-js',
