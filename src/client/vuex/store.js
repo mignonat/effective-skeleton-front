@@ -6,8 +6,6 @@ Vue.use(Vuex);
 
 const actions = {}
 const getters = {}
-const state = {}
-const mutations = {}
 
 export default new Vuex.Store({
     actions,
