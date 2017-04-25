@@ -1,9 +1,10 @@
 - Block browser < IE8
 - HTML5 app manifest
+- Vendors and uglify (not removed licenses) 
 - Display error in user in App.vue
-- Manage session : store the token in local storage
+- Manage session : store the token in local storage ==> induce running front and back
 - Create a separate interface for application administration, in another tab
-- Create components for menu and top-bar
+- Possibility to change properties and restart the app
 - Translate all back-end message => how to determine the locale ...
 - Securize token => not use a simple hash, put in the token an object without user password
 - Create a simple admin interface : show log, manage user/group, maintenance mode, launch batch, etc ...

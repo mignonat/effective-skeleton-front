@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from './components/Home.vue'
-import Contact from './components/Contact.vue'
-import ErrorUnknown from './components/Error.vue'
-import Error404 from './components/Error404.vue'
+import Home from './components/contents/Home.vue'
+import Contact from './components/contents/Contact.vue'
+import ErrorUnknown from './components/contents/Error.vue'
+import Error404 from './components/contents/Error404.vue'
 
 Vue.use(VueRouter)
 

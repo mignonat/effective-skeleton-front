@@ -29,9 +29,9 @@ li {
     justify-content: flex-start ;
 }
 
-/*********** HEADER *************/
+/*********** TOP BAR *************/
 
-#header {
+.top_bar {
     position: relative ;
     line-height: var(--top-height);
     width: 100% ;
@@ -40,11 +40,11 @@ li {
     background-color: azure;
 }
 
-#header:hover {
+.top_bar:hover {
     cursor: default;
 }
 
-#mc-name {
+.top_bar_left_title {
     display: inline-block;
     font-size: larger;
     font-weight: bold;
@@ -55,7 +55,7 @@ li {
     text-align: center;
 }
 
-#select-locale {
+.select_locale {
     position: absolute ;
     right: 25px;
     top:16px;
@@ -64,7 +64,7 @@ li {
 
 /*********** MENU *************/
 
-#menu {
+.left_menu {
     display: flex ;
     flex-flow: column nowrap ;
     justify-content: flex-start ;
@@ -75,16 +75,7 @@ li {
     height: 100%;
 }
 
-#menu-logo {
-    width: 100% ;
-    height: var(--top-height) ;
-    line-height: 50px;
-    font-size: larger ;
-    font-weight: bold;
-    text-align: center ;
-}
-
-#menu a {
+.left_menu a {
     display: inline-block ;
     width: 100%;
     height : var(--menu-height) ;
@@ -93,18 +84,18 @@ li {
     text-align: center ;
 }
 
-#menu a:link, #menu a:visited {
+.left_menu a:link, .left_menu a:visited {
     color : black;
 }
 
-#menu a.active {
+.left_menu a.active {
     /* shadow*/
     -webkit-box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
     -moz-box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
     box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
 }
 
-#menu a:hover {
+.left_menu a:hover {
     font-size: 17px;
 }
 
@@ -132,8 +123,8 @@ li {
 
 /*********** NO SELECTION *************/
 
-#header,
-#menu,
+.top_bar,
+.left_menu,
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
