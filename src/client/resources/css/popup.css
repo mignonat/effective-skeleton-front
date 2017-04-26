@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -40,26 +36,4 @@
 .form-label {
     display: block;
     margin-bottom: 1em;
-}
-
-.form-label > .form-control {
-    margin-top: 0.5em;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-    padding: 0.5em 1em;
-    line-height: 1.5;
-    border: 1px solid #ddd;
-}
-
-.modal-enter, .modal-leave {
-    opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave .modal-container {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
 }

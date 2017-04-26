@@ -1,0 +1,16 @@
+
+/*************** MODAL ***************/
+
+.modal-enter,
+.modal-leave-to {
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.modal-enter-to,
+.modal-leave {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition-duration: 1s; /* Safari */
+    transition-duration: 1s;
+}

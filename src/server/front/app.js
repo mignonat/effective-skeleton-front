@@ -40,11 +40,8 @@ app.get('/', (req, res) => {
     catch (ex) { log.error('Redirect "/" to "/home" failed !') }
 })
 app.get('/home', homePageFn)
-app.get('/care', homePageFn)
-app.get('/clean', homePageFn)
-app.get('/wellbeing', homePageFn)
-app.get('/testimony', homePageFn)
 app.get('/contact', homePageFn)
+app.get('/sample', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
 
