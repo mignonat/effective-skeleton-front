@@ -1,6 +1,6 @@
 <template>
-    <div class="modal-mask" v-show="show" transition="modal">
-        <div class="modal-container">
+    <div class="modal-mask" @click="close" v-show="show" transition="modal">
+        <div class="modal-container" @click.stop>
 
             <div class="modal-header">
                 <h3>New Post</h3>
@@ -29,8 +29,20 @@
         props : [ 'show' ],
         methods : {
             close : function() {
-                this.$emit('closeModalPopup'); // signal emit to parent component
+                this.$emit('closeModalPopup', this); // signal emit to parent component
+            },
+            testMe : function() {
+                return 'POUET TEST ME'
             }
+        },
+        mounted: function () {
+            this.$nextTick(function () { // here the document is ready
+                document.addEventListener("keydown", (e) => { // escape key is pressed
+                    if (this.show && e.keyCode == 27) {
+                        this.close();
+                    }
+                });
+            })
         }
     }
 </script>
