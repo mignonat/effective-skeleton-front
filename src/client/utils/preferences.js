@@ -1,4 +1,14 @@
-const method = {
+const isBrowserOK = () => {
+    try {
+        localStorage.setItem('test-browser-support', true);
+        localStorage.removeItem('test-browser-support');
+        return true;
+    } catch (ex) {
+        return false;
+    }
+}
+
+const method = isBrowserOK()? {
     get : (key) => {
         try {
             const value = localStorage.getItem(key)
@@ -15,6 +25,13 @@ const method = {
             return false
         }
         return true ;
+    }
+} : {
+    get : (key) => {
+        console.error('preference.get : browser does not support local storage !') ;
+    },
+    set : (key, value) => {
+        console.error('preference.set : browser does not support local storage !') ;
     }
 }
 
