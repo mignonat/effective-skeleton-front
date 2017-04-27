@@ -9,7 +9,8 @@
                     <label class="form-label">{{ data.content }}</label>
                 </div>
                 <div class="modal-footer text-right">
-                    <button class="modal-default-button" @click="close()">{{ data.closeLabel }}</button>
+                    <button class="modal-default-button" @click="confirm()">{{ data.confirmLabel }}</button>
+                    <button class="modal-default-button" @click="close()">{{ data.cancelLabel }}</button>
                 </div>
             </div>
         </transition>
@@ -22,6 +23,9 @@
         methods : {
             close : function() {
                 this.$emit('close'); // signal emit to parent component
+            },
+            confirm : function() {
+                this.$emit('confirm'); // signal emit to parent component
             }
         },
         mounted: function () {

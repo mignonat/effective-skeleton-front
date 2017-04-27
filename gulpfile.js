@@ -89,7 +89,7 @@ gulp.task('back-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug', //node-inspector & node --inspect
             script : file_back_app,
-            ext : 'js vue',
+            ext : 'js',
             env : { 'NODE_ENV': 'development' },
             ignore : files_back_nodemon_ignore
         })
@@ -110,7 +110,7 @@ gulp.task('front-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug',
             script : file_front_app,
-            ext : 'js vue',
+            ext : 'js vue css html',
             env : { 'NODE_ENV': 'development' },
             tasks : [ 
                 'webpack' 
