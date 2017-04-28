@@ -22,12 +22,12 @@ app.use(express.static('public'))
 // Compress data to reduce network package size
 app.use(compression())
 
-const htmlDir = path.join(__dirname+'/../../../public/html/')
+const publicDir = path.join(__dirname+'/../../../public/')
 
 const homePageFn = (req, res) => {
     try {
         log.debug('New request on url = "'+req.url+'"')
-        res.sendFile(htmlDir+'/index.html')
+        res.sendFile(publicDir+'/index.html')
     }
     catch (ex) { log.error('Send file index.html file failed !') }
 }

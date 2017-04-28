@@ -1,15 +1,13 @@
 <template>
-    <div class="modal-mask" @click="close" v-show="data.show">
+    <div class="modal_mask" @click="close" v-show="data.show">
         <transition name="modal">
-            <div class="modal-container" @click.stop v-show="data.show">
-                <div class="modal-header">
+            <div class="modal_container" @click.stop v-show="data.show">
+                <div class="modal_header">
                     <h3>{{ data.title }}</h3>
+                    <div class="modal_close_button" @click="close()"/>
                 </div>
-                <div class="modal-body">
-                    <label class="form-label">{{ data.content }}</label>
-                </div>
-                <div class="modal-footer text-right">
-                    <button class="modal-default-button" @click="close()">{{ data.closeLabel }}</button>
+                <div class="modal_body">
+                    <label class="form_label">{{ data.content }}</label>
                 </div>
             </div>
         </transition>
@@ -17,6 +15,7 @@
 </template>
 
 <script>
+    const closeImgUrl = require("file-loader!../../../resources/img/close.png")
     export default {
         props : [ 'data' ],
         methods : {

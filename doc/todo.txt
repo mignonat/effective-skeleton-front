@@ -1,7 +1,9 @@
 - Block browser < IE8
 - HTML5 app manifest
 - Vendors and uglify (not removed licenses)
+- Modify internet speed with chrome and add a loader screen like in the Designer
 - Display error in user in App.vue => create an html modal popup, and or slide message which disapears
+- https://webpack.github.io/docs/optimization.html
 - Manage session : store the token in local storage ==> induce running front and back
 - Create a separate interface for application administration, in another tab
 - Possibility to change properties and restart the app

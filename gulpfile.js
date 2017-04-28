@@ -132,7 +132,7 @@ gulp.task('webpack', () => {
     const webpackConfig = require('./webpack.config.js')
     return gulp.src('src/client/app.js')
         .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest('public/assets'));
 })
 
 /****************** FRONT TRANSLATIONS ******************/

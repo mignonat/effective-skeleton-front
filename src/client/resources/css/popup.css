@@ -1,4 +1,4 @@
-.modal-mask {
+.modal_mask {
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -8,7 +8,7 @@
     background-color: rgba(0, 0, 0, .5);
 }
 
-.modal-container {
+.modal_container {
     width: 300px;
     margin: 40px auto 0;
     padding: 20px 30px;
@@ -18,19 +18,34 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
+.modal_header {
+    position: relative ;
+}
+
+.modal_header h3 {
     margin-top: 0;
 }
 
-.modal-body {
+.modal_body {
     margin: 10px 0;
 }
 
-.text-right {
+.text_right {
     text-align: right;
 }
 
-.form-label {
+.form_label {
     display: block;
     margin-bottom: 1em;
+}
+
+.modal_close_button {
+    width: 24px;
+    height: 24px;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-image: url('../img/close.png');
+    position : absolute ;
+    top : -17px ;
+    right: -27px;
 }
