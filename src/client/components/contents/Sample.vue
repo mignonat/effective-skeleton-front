@@ -2,6 +2,11 @@
     <div>
         <span>Page d'exemple</span>
         <br/><br/>
+        <div>
+            <label>Test import image webpack</label>
+            <img src="../../resources/img/close.png"></src>
+        </div>
+        <br/><br/>
         <modal-popup :data.sync="popup_data" @close="closePopup"></modal-popup>
         <button @click="popup_data.show = true">Open message popup</button>
         <br/><br/>
@@ -13,6 +18,7 @@
 <script>
     import ModalPopup from '../layouts/pc/ModalPopup.vue'
     import ConfirmModalPopup from '../layouts/pc/ConfirmModalPopup.vue'
+    const closeImgUrl = require("file-loader!../../resources/img/close.png")
 
     export default {
         data : function() { return {
@@ -28,7 +34,8 @@
                 content : 'Vous êtes sûre de vouloir tout casser ?',
                 confirmLabel : 'Oui',
                 cancelLabel : 'Non'
-            }
+            },
+            closeImgUrl : closeImgUrl
         }},
         methods : {
             closePopup : function() {

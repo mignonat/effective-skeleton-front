@@ -15,7 +15,6 @@
 </template>
 
 <script>
-    const closeImgUrl = require("file-loader!../../../resources/img/close.png")
     export default {
         props : [ 'data' ],
         methods : {
