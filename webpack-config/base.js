@@ -13,22 +13,22 @@ module.exports = {
     filename: 'app.js'
   },
   module: {
-    loaders: [
-      {
+    loaders: [{
         test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/
-      },
-      {
+      },{
         test: /\.vue$/,
         loader: 'vue'
-      }
-    ]
-  },
+      },{
+        test: /\.css$/, 
+        loader: "style-loader!css-loader"
+    }]
+  }/*,
   plugins : [
-    new CopyWebpackPlugin([{ 
-      from : assetsFromDir, 
+    new CopyWebpackPlugin([{
+      from : assetsFromDir,
       to : assetsToDir
     }])
-  ]
+  ]*/
 }
