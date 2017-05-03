@@ -40,12 +40,18 @@
 }
 
 .modal_close_button {
-    width: 24px;
-    height: 24px;
-    background-position: 0px 0px;
-    background-repeat: no-repeat;
-    background-image: url('../img/close.png');
+    width: 25px;
+    height: 25px;
     position : absolute ;
     top : -17px ;
     right: -27px;
+}
+
+.modal_close_button:before {
+    font-icon: 200% url('../svg/icons/close.svg');
+    transition: 0.5s color;
+}
+
+.modal_close_button:hover:before {
+    color: blue;
 }

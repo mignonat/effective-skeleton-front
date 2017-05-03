@@ -1,11 +1,13 @@
+:root {
+    --menu-width: 180px ;
+    --menu-height: 40px ;
+    --top-height: 50px;
+}
+
 body {
     margin: 0px ;
     font-family: 'Lato', sans-serif;
     font-family: 'Raleway', sans-serif;
-
-    --menu-width: 180px ;
-    --menu-height: 40px ;
-    --top-height: 50px;
 }
 
 ul {
