@@ -13,11 +13,6 @@
     import ModalPopup from './layouts/pc/ModalPopup.vue'
     import bus from '../utils/bus.js'
 
-    bus.$on('popupError', function (msg) {
-        console.log(msg)
-        //TODO display error message ...
-    })
-
     export default {
         data : function() { return {
             error_popup_data : {
@@ -38,6 +33,14 @@
                 this.error_popup_data.show = true
             }
         },  
-        components : { TopBar, LeftMenu, ModalPopup }
+        components : { TopBar, LeftMenu, ModalPopup },
+        mounted: function () {
+            const me = this
+            this.$nextTick(function () { // here the document is ready
+                bus.$on('popupError', function (msg) {
+                    me.showErrorPopup(msg, 'pouet error')
+                })
+            })
+        }
     }
 </script>
