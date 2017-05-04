@@ -6,21 +6,8 @@
 </template>
 
 <script>
-    import * as action_types from '../../vuex/actions.js'
-
+    import locale from '../../utils/locale.js'
     export default {
-        methods : {
-            getLocale () {
-                return this.$store.getters.getLocale()
-            },
-            setLocale (locale) {
-                this.$store
-                    .dispatch(action_types.SET_LOCALE, locale)
-                    .catch((ex) => {
-                        // TODO display error to user
-                        console.error('App.setLocale : '+ex)
-                    })
-            }
-        }
+        methods : locale
     }
 </script>

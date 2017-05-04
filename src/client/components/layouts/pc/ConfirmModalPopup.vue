@@ -4,7 +4,7 @@
             <div class="modal_container" @click.stop v-show="data.show">
                 <div class="modal_header">
                     <h3>{{ data.title }}</h3>
-                    <div class="modal_close_button" @click="close()"/>
+                    <i class="material-icons modal_close_button" :title="translate('all.close')" @click="close()">close</i>
                 </div>
                 <div class="modal_body">
                     <label class="form_label">{{ data.content }}</label>
@@ -22,10 +22,13 @@
     export default {
         props : [ 'data' ],
         methods : {
-            close : function() {
+            translate (key, params) {
+                return this.$store.getters.translate(key, params)
+            },
+            close () {
                 this.$emit('close'); // signal emit to parent component
             },
-            confirm : function() {
+            confirm () {
                 this.$emit('confirm'); // signal emit to parent component
             }
         },

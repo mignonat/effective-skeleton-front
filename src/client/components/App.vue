@@ -11,8 +11,8 @@
     import LeftMenu from './layouts/pc/LeftMenu.vue'
 
     export default {
-        computed : { }, // use when complexe check has to be done in the template
-        methods : { },  // here no dom manipulation
+        computed : {}, // use when complexe check has to be done in the template
+        methods : {},  // here no dom manipulation
         components : { TopBar, LeftMenu }
     }
 </script>

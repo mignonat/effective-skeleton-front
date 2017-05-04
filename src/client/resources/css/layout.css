@@ -4,6 +4,11 @@
     --top-height: 50px;
 }
 
+*[class$="_button"] {
+    cursor: pointer;
+    cursor: hand;
+}
+
 body {
     margin: 0px ;
     font-family: 'Lato', sans-serif;
