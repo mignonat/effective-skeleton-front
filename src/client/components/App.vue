@@ -3,16 +3,41 @@
         <top-bar></top-bar>
         <left-menu></left-menu>
         <router-view class="content"></router-view>
+        <modal-popup :data.sync="error_popup_data" @close="closeErrorPopup"></modal-popup>
     </div>
 </template>
 
 <script>
     import TopBar from './layouts/pc/TopBar.vue'
     import LeftMenu from './layouts/pc/LeftMenu.vue'
+    import ModalPopup from './layouts/pc/ModalPopup.vue'
+    import bus from '../utils/bus.js'
+
+    bus.$on('popupError', function (msg) {
+        console.log(msg)
+        //TODO display error message ...
+    })
 
     export default {
+        data : function() { return {
+            error_popup_data : {
+                show : false,
+                title : 'Titre de la popup',
+                content : 'Contenu ultra long de la mort qui tue de la popup modal personnalisable via vue js',
+                closeLabel : 'Fermer'
+            }
+        }},
         computed : {}, // use when complexe check has to be done in the template
-        methods : {},  // here no dom manipulation
-        components : { TopBar, LeftMenu }
+        methods : { // here no dom manipulation
+            closeErrorPopup : function() {
+                this.error_popup_data.show = false ;
+            },
+            showErrorPopup (title, message) {
+                this.error_popup_data.title = title
+                this.error_popup_data.content = message
+                this.error_popup_data.show = true
+            }
+        },  
+        components : { TopBar, LeftMenu, ModalPopup }
     }
 </script>
