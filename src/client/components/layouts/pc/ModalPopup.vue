@@ -4,7 +4,7 @@
             <div class="modal_container" @click.stop v-show="data.show">
                 <div class="modal_header">
                     <h3>{{ data.title }}</h3>
-                    <div class="modal_close_button" @click="close()"/>
+                    <i class="material-icons modal_close_button" @click="close()">face</i>
                 </div>
                 <div class="modal_body">
                     <label class="form_label">{{ data.content }}</label>

@@ -1,5 +1,4 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const IconfontWebpackPlugin = require('iconfont-webpack-plugin')
 const path = require('path')
 
 const entryFilePath = './src/client/app.js'
@@ -8,7 +7,9 @@ const assetsFromDir = './src/client/resources/html' // relative to this webpack 
 const assetsToDir = '../' // relative to appDir
 
 module.exports = {
-  entry : entryFilePath,
+  entry: {
+    app : entryFilePath
+  },
   output: {
     path: appDir,
     publicPath: 'assets/',
@@ -23,21 +24,19 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue',
         exclude: /node_modules/
+      },{ 
+        test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|svg|woff2)$/, 
+        loader: "file?name=[name].[ext]" 
       },{
         test: /\.css$/, 
-        loader: "style-loader!css-loader!postcss-loader",
+        loader: "style-loader!css-loader",
         exclude: /node_modules/
-      },{
-        test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, 
-        loader: "file",
-        exclude: /node_modules/
-    }]
+      }]
   },
   plugins : [
     new CopyWebpackPlugin([{
       from : assetsFromDir,
       to : assetsToDir
-    }]),
-    new IconfontWebpackPlugin()
+    }])
   ]
 }
