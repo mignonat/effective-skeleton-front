@@ -84,7 +84,6 @@ const actions = {
     [action_types.SET_LOCALE] ({ commit }, locale) {
         return new Promise((resolve, reject) => {
             try {
-                throw "Pouet"
                 commit(mutation_types.SET_LOCALE, locale)
                 preference.set(preference.LOCALE, locale)
                 resolve()
