@@ -9,8 +9,11 @@ export default {
         this.$store
             .dispatch(action_types.SET_LOCALE, locale)
             .catch((ex) => {
-                bus.$emit('popupError', 'Error', 'Error content !!!');
-                console.error('App.setLocale : '+ex)
+                console.error('locale.setLocale : error, '+ex)
+                bus.emit(bus.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.locale.set') ]);
             })
+    },
+    translate (key, params) {
+        return this.$store.getters.translate(key, params)
     }
 }

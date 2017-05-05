@@ -37,8 +37,11 @@
         mounted: function () {
             const me = this
             this.$nextTick(function () { // here the document is ready
-                bus.$on('popupError', function (msg) {
-                    me.showErrorPopup(msg, 'pouet error')
+                bus.listen(bus.POPUP_ERROR, function(arg) {
+                    if (arg && Object.prototype.toString.call(arg) == '[object Array]' && arg.length > 1)
+                        me.showErrorPopup(arg[0], arg[1])
+                    else
+                        console.log('App.vue : POPUP_ERROR, arg is not good !')
                 })
             })
         }
