@@ -39,9 +39,9 @@
             this.$nextTick(function () { // here the document is ready
                 bus.listen(bus.POPUP_ERROR, function(arg) {
                     if (arg && Object.prototype.toString.call(arg) == '[object Array]' && arg.length > 1)
-                        me.showErrorPopup(arg[0], arg[1])
+                        me.showErrorPopup(arg[0]/*title*/, arg[1]/*content*/)
                     else
-                        console.log('App.vue : POPUP_ERROR, arg is not good !')
+                        console.error('App.vue : POPUP_ERROR, arg is not good !')
                 })
             })
         }

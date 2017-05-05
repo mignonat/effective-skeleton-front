@@ -24,6 +24,15 @@ app.use(compression())
 
 const publicDir = path.join(__dirname+'/../../../public/')
 
+const adminPageFn = (req, res) => {
+    try {
+        log.debug('New request on url = "'+req.url+'"')
+        res.sendFile(publicDir+'/admin.html')
+    }
+    catch (ex) { log.error('Send file index.html file failed !') }
+}
+app.get('/admin', adminPageFn)
+
 const homePageFn = (req, res) => {
     try {
         log.debug('New request on url = "'+req.url+'"')
@@ -32,7 +41,6 @@ const homePageFn = (req, res) => {
     catch (ex) { log.error('Send file index.html file failed !') }
 }
 
-// Routes
 app.get('/', (req, res) => {
     try {
         res.redirect("/home")
