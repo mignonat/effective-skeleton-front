@@ -1,20 +1,20 @@
 const Const = require('./const.js')
 const reader = require('properties-reader')
 
-const config = {}
+const cache = {}
 
 const exportFn = {
     get : (key) => {
-        if (config.hasOwnProperty(key))
-            return config[key]
+        if (cache.hasOwnProperty(key))
+            return cache[key]
         else {
             const value = exportFn.getInPropertiesFile(key)
-            config[key] = value
+            cache[key] = value
             return value
         }
     },
     set : (key, object) => {
-        config[key] = object
+        cache[key] = object
     },
     getInPropertiesFile : (key) => {
         try {
@@ -26,10 +26,13 @@ const exportFn = {
         }
     },
     setAbsRootPath : (absRootPath) => {
-        config[Const.ABS_ROOT_PATH] = absRootPath
+        cache[Const.ABS_ROOT_PATH] = absRootPath
     },
     getAbsRootPath : () => {
-        return config[Const.ABS_ROOT_PATH]
+        return cache[Const.ABS_ROOT_PATH]
+    },
+    resetCache : () => {
+        cache = {}
     }
 }
 

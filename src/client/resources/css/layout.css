@@ -60,6 +60,8 @@ li {
     min-width: var(--menu-width);
     line-height: var(--top-height);
     text-align: center;
+    animation: scale-up-text 0.8s ease-in-out;
+    -webkit-animation: scale-up-text 0.8s ease-in-out ;
 }
 
 .select_locale {
