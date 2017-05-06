@@ -1,6 +1,6 @@
 :root {
     --menu-width: 180px ;
-    --menu-height: 40px ;
+    --menu-height: 45px ;
     --top-height: 50px;
 }
 
@@ -84,11 +84,15 @@ li {
 
 .left_menu a {
     display: inline-block ;
-    width: 100%;
-    height : var(--menu-height) ;
     line-height: var(--menu-height);
     text-decoration: none;
     text-align: center ;
+}
+
+.left_menu a,
+.left_menu li {
+    width: 100%;
+    height : var(--menu-height) ;
 }
 
 .left_menu a:link, .left_menu a:visited {
@@ -102,8 +106,26 @@ li {
     box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
 }
 
-.left_menu a:hover {
-    font-size: 17px;
+ul.left_menu a {
+    position: relative;
+}
+
+ul.left_menu i.material-icons {
+    position: absolute;
+    left: 8px;
+    top: 8px ;
+    color: #6D76AF;
+}
+
+ul.left_menu span {
+    position: absolute;
+    left: 38px;
+    top: 0px ;
+}
+
+ul li:hover {
+    animation: scale-up-text 0.4s ease-in-out;
+    -webkit-animation: scale-up-text 0.4s ease-in-out ;
 }
 
 /*********** CONTENT *************/
