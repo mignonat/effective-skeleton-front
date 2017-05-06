@@ -2,7 +2,6 @@ const config = require(__dirname+'/../shared/config.js')
 const path = require('path')
 config.setAbsRootPath(path.resolve("."))
 
-const winston = require('winston')
 const http = require("http")
 const express = require('express')
 const locale = require("locale")
@@ -24,15 +23,6 @@ app.use(compression())
 
 const publicDir = path.join(__dirname+'/../../../public/')
 
-const adminPageFn = (req, res) => {
-    try {
-        log.debug('New request on url = "'+req.url+'"')
-        res.sendFile(publicDir+'/admin.html')
-    }
-    catch (ex) { log.error('Send file index.html file failed !') }
-}
-app.get('/admin', adminPageFn)
-
 const homePageFn = (req, res) => {
     try {
         log.debug('New request on url = "'+req.url+'"')
@@ -53,7 +43,6 @@ app.get('/sample', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
 
-
 //TESTING
 app.get("/locales", function(req, res) {
   res.header("Content-Type", "text/plain")
@@ -63,9 +52,9 @@ app.get("/locales", function(req, res) {
   )
 })
 
-
 app.get('*', (req, res) => {
     try {
+        log.debug('front-app : url "'+req.url+'" not found')
         res.redirect("/error-404")
     } catch (ex) { log.error('Redirect "*" to "/error-404" failed !') }
 })

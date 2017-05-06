@@ -5,7 +5,6 @@ module.exports = {
     ABS_ROOT_PATH: 'absolute.root.path',
     APP_VERSION : 'app.version',
     APP_API_VERSION : 'app.api.version',
-    LOG_LEVEL : 'log.level',
     LOG_DIR : 'log.dir',
     LOG_APP_FILE : 'log.app.file',
     LOG_APP_LEVEL : 'log.app.level',
