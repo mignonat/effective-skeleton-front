@@ -11,7 +11,7 @@
     import TopBar from './layouts/pc/TopBar.vue'
     import LeftMenu from './layouts/pc/LeftMenu.vue'
     import ModalPopup from './layouts/pc/ModalPopup.vue'
-    import bus from '../utils/bus.js'
+    import event from '../utils/event.js'
 
     export default {
         data : function() { return {
@@ -37,7 +37,7 @@
         mounted: function () {
             const me = this
             this.$nextTick(function () { // here the document is ready
-                bus.listen(bus.POPUP_ERROR, function(arg) {
+                event.on(event.POPUP_ERROR, function(arg) {
                     if (arg && Object.prototype.toString.call(arg) == '[object Array]' && arg.length > 1)
                         me.showErrorPopup(arg[0]/*title*/, arg[1]/*content*/)
                     else

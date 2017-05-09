@@ -3,7 +3,7 @@
 - Vendors and uglify (not removed licenses)
 - Modify internet speed with chrome and add a loader screen like in the Designer
 - https://webpack.github.io/docs/optimization.html
-- Add admin webpack output
+- authenticate : test params injection with owasp ?
 - Manage session : store the token in local storage ==> induce running front and back
 - Create a separate interface for application administration, in another tab
 - Possibility to change properties and restart the app

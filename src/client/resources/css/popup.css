@@ -44,3 +44,8 @@
     top : -17px ;
     right: -27px;
 }
+
+.modal-enter-active {
+    animation: scale-up 0.4s ease-in-out;
+    -webkit-animation: scale-up 0.4s ease-in-out ;
+}

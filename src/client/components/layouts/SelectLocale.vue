@@ -7,7 +7,7 @@
 
 <script>
     import * as action_types from '../../vuex/actions.js'
-    import bus from '../../utils/bus.js'
+    import event from '../../utils/event.js'
 
     export default {
         data : function() { return {
@@ -25,7 +25,7 @@
                     .catch((ex) => {
                         console.error('locale.setLocale : error, '+ex)
                         this.selected = oldLocale
-                        bus.emit(bus.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.locale.set') ]);
+                        event.emit(event.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.locale.set') ]);
                     })
             },
             translate (key, params) {

@@ -2,36 +2,43 @@ const config = require(__dirname+'/../shared/config.js')
 const path = require('path')
 config.setAbsRootPath(path.resolve("."))
 
-const winston = require('winston')
 const http = require("http")
 const express = require('express')
 const locale = require("locale")
 const compression = require('compression')
+const request = require('request-promise')
+const bodyParser  = require('body-parser')
+
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 const locales = require(config.getAbsRootPath()+'/src/server/shared/locales.js')
 
 const app = express()
 app.use(locale(locales.getSupportedLocales()))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+const api_url = config.get(Const.API_URL)
 
 log.info('Starting on environment "'+config.get(Const.APP_ENV)+'"')
 
 // Give access to assets directories
-app.use(express.static('public'))
+app.use(express.static('public', {
+    index: false // to ignore serving static file index.html
+}))
 
 // Compress data to reduce network package size
 app.use(compression())
 
 const publicDir = path.join(__dirname+'/../../../public/')
 
-const adminPageFn = (req, res) => {
-    try {
-        log.debug('New request on url = "'+req.url+'"')
-        res.sendFile(publicDir+'/admin.html')
-    }
-    catch (ex) { log.error('Send file index.html file failed !') }
+const err500Fn = (res, err) => {
+    log.error('app.err500Fn : '+err)
+    res.status(500).json({
+        success: false,
+        message: 'Internal server error'
+    })
 }
-app.get('/admin', adminPageFn)
 
 const homePageFn = (req, res) => {
     try {
@@ -43,6 +50,7 @@ const homePageFn = (req, res) => {
 
 app.get('/', (req, res) => {
     try {
+        log.debug('New request on /')
         res.redirect("/home")
     }
     catch (ex) { log.error('Redirect "/" to "/home" failed !') }
@@ -52,20 +60,52 @@ app.get('/contact', homePageFn)
 app.get('/sample', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
+app.post('/authenticate', (req, res) => {
+    try {
+        const params = req.body
+        if (!params || !params.login || !params.password) {
+            err500Fn(res, 'incorrect params')
+            return
+        }
 
+        //TODO : check the problem here, login and password are good 
 
-//TESTING
+        options = {
+            uri: api_url+'authenticate',
+            form: {
+                login: params.login,
+                password: params.password
+            },
+            headers: { 'User-Agent': 'Request-Promise' },
+            json: true  
+        };
+        request(options)
+            .then((data) => {
+                res.json({
+                    success : true
+                })
+                log.debug('OK : '+JSON.stringify(data))
+            })
+            .catch((err) => {
+                err500Fn(res, err)
+            });
+    } catch(ex) {
+        err500Fn(res, ex)
+    }
+})
+
+/*TESTING
 app.get("/locales", function(req, res) {
   res.header("Content-Type", "text/plain")
   res.send(
     "Our default is: " + locale.Locale["default"] + "\n" +
     "The best match is: " + req.locale + "\n"
   )
-})
-
+})*/
 
 app.get('*', (req, res) => {
     try {
+        log.debug('front-app : url "'+req.url+'" not found')
         res.redirect("/error-404")
     } catch (ex) { log.error('Redirect "*" to "/error-404" failed !') }
 })

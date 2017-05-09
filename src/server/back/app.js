@@ -20,8 +20,8 @@ app.use(bodyParser.json())
 
 const routes = express.Router(); 
 
-const err500Fn = (req, err) => {
-    log.error('app.processSafeRoute : '+err)
+const err500Fn = (res, err) => {
+    log.error('app.err500Fn : '+err)
     res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -31,8 +31,8 @@ const err500Fn = (req, err) => {
 const processSafeRoute = (req, res, routeFn) => {
     try {
         if (routeFn) routeFn(req, res)
-        else err500Fn(req, 'app.processSafeRoute : routeFn not defined')
-    } catch (ex) { errFn(req, ex) }
+        else err500Fn(res, 'app.processSafeRoute : routeFn not defined')
+    } catch (ex) { err500Fn(res, ex) }
 }
 
 /*routes.get('/setup', function(req, res) {
@@ -71,7 +71,7 @@ routes.post('/authenticate', (req, res) => {
                     message: isFailedAuth? 'Authentication failed' : 'Internal server error'
                 })
             })
-    } catch (ex) { err500Fn(req, 'authenticate'+ex) }
+    } catch (ex) { err500Fn(res, 'authenticate'+ex) }
 })
 
 // Before this routes doesn't need to be authenticated
@@ -92,7 +92,7 @@ routes.use((req, res, next) => {
                 })
             }
         )
-    } catch (ex) { err500Fn(req, 'app.use : '+ex) }
+    } catch (ex) { err500Fn(res, 'app.use : '+ex) }
 })
 // After this routes need to be authenticated
 
@@ -102,7 +102,7 @@ routes.get('/', (req, res) => {
             success : true,
             message: "REST API on version "+config.get(Const.APP_API_VERSION)+" is running" + ((req.decoded._doc)? (" | request user '"+req.decoded._doc.login+"'") : "")
         })
-    } catch (ex) { err500Fn(req, '/ : '+ex) }
+    } catch (ex) { err500Fn(res, '/ : '+ex) }
 })
 
 routes.get('/users', (req, res) => {
