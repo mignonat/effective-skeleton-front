@@ -36,7 +36,9 @@ const method = isBrowserOK()? {
 }
 
 const constants = {
-    LOCALE : 'locale'
+    LOCALE : 'locale',
+    TOKEN : 'token',
+    TOKEN_TIME : 'token-time'
 }
 
 export default Object.assign(method, constants)

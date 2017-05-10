@@ -82,9 +82,9 @@ app.post('/authenticate', (req, res) => {
         request(options)
             .then((data) => {
                 res.json({
-                    success : true
+                    success : true,
+                    token : data.token
                 })
-                //TODO continue here !
             })
             .catch((err) => {
                 err500Fn(res, err)

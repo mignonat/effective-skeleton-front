@@ -3,6 +3,7 @@
 - Vendors and uglify (not removed licenses)
 - Modify internet speed with chrome and add a loader screen like in the Designer
 - https://webpack.github.io/docs/optimization.html
+- User info : login, firstName, lastName, email, mail, locale, phone
 - use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/
 - authenticate : test params injection with owasp ?
 - Manage session : store the token in local storage ==> induce running front and back
@@ -16,3 +17,4 @@
 - Scalable asynch notification & alert system => to define more precisely the need ...
 - Paypal payments
 - Send mail : https://nodemailer.com/about/
+

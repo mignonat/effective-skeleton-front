@@ -1,7 +1,5 @@
 const defaultTimeOut = 2000
 
-//get token in the token util then xmlhttp.setRequestHeader('x-access-token', token);
-
 export default {
     post (url, params) {
         return new Promise((resolve, reject) => {
@@ -24,6 +22,7 @@ export default {
                 xhr.open('POST', url, true)
                 xhr.timeout = defaultTimeOut
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+                //get token in the token util then xmlhttp.setRequestHeader('x-access-token', token);
                 xhr.onload = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         result = JSON.parse(xhr.responseText)
