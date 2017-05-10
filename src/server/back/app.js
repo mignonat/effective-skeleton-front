@@ -35,7 +35,8 @@ const processSafeRoute = (req, res, routeFn) => {
     } catch (ex) { err500Fn(res, ex) }
 }
 
-/*routes.get('/setup', function(req, res) {
+/*
+routes.get('/setup', function(req, res) {
     // create a sample user
     const User = user_model.getUserSchema()
     const me = new User({ 
@@ -43,7 +44,7 @@ const processSafeRoute = (req, res, routeFn) => {
         firstname: 'Laurent',
         lastname: 'Mignonat',
         password: 'petasse@31',
-        admin: true 
+        admin: true
     })
 
     // save the sample user
@@ -53,7 +54,8 @@ const processSafeRoute = (req, res, routeFn) => {
         log.info('User saved successfully')
         res.json({ success: true })
     })
-})*/
+})
+*/
 
 routes.post('/authenticate', (req, res) => {
     try {
@@ -90,8 +92,7 @@ routes.use((req, res, next) => {
                     success: false,
                     message: isInvalidToken? 'Token validation failed' : 'Internal server error'
                 })
-            }
-        )
+            })
     } catch (ex) { err500Fn(res, 'app.use : '+ex) }
 })
 // After this routes need to be authenticated

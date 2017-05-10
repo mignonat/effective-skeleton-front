@@ -67,10 +67,8 @@ app.post('/authenticate', (req, res) => {
             err500Fn(res, 'incorrect params')
             return
         }
-
-        //TODO : check the problem here, login and password are good 
-
         options = {
+            method: 'POST',
             uri: api_url+'authenticate',
             form: {
                 login: params.login,
@@ -78,17 +76,17 @@ app.post('/authenticate', (req, res) => {
             },
             headers: { 'User-Agent': 'Request-Promise' },
             json: true  
-        };
+        }
         request(options)
             .then((data) => {
                 res.json({
                     success : true
                 })
-                log.debug('OK : '+JSON.stringify(data))
+                //TODO continue here !
             })
             .catch((err) => {
                 err500Fn(res, err)
-            });
+            })
     } catch(ex) {
         err500Fn(res, ex)
     }

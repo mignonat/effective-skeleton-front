@@ -45,3 +45,7 @@ Create app user
             ]
         }
     )
+
+LINUX :
+sudo service mongod start
+sudo service mongod stop
