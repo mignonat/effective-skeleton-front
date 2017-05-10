@@ -74,7 +74,9 @@ app.post('/authenticate', (req, res) => {
                 login: params.login,
                 password: params.password
             },
-            headers: { 'User-Agent': 'Request-Promise' },
+            headers: { 
+                'User-Agent': 'Request-Promise', 
+            },
             json: true  
         }
         request(options)
@@ -83,6 +85,39 @@ app.post('/authenticate', (req, res) => {
                     success : true
                 })
                 //TODO continue here !
+            })
+            .catch((err) => {
+                err500Fn(res, err)
+            })
+    } catch(ex) {
+        err500Fn(res, ex)
+    }
+})
+
+app.post('/users', (req, res) => {
+    try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token']
+        if (!token)
+            err500Fn(res, 'No token provided')
+
+        options = {
+            method: 'GET',
+            uri: api_url+'users',
+            headers: { 
+                'User-Agent': 'Request-Promise',
+                'x-access-token': token
+            },
+            json: true
+        }
+        request(options)
+            .then((result) => {
+                if (result.success) {
+                    res.json({
+                        success : true,
+                        data : result.users
+                    })
+                } else
+                    err500Fn(res, result.error)
             })
             .catch((err) => {
                 err500Fn(res, err)

@@ -1,5 +1,7 @@
 const defaultTimeOut = 2000
 
+//get token in the token util then xmlhttp.setRequestHeader('x-access-token', token);
+
 export default {
     post (url, params) {
         return new Promise((resolve, reject) => {
