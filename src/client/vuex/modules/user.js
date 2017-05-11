@@ -4,7 +4,7 @@ import * as mutation_types from '../mutations.js'
 
 /**************** STATE ****************/
 
-const tokenLifeSpan = 1000*60*60*24 //milli seconds
+const tokenLifeSpan = 2000 //1000*60*60*24 milli seconds
 const isTokenValid = (token, token_time) => {
     return token && tokenLifeSpan > (token_time-Date.now())
 }

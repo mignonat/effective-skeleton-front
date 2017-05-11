@@ -72,7 +72,8 @@ li {
 }
 
 .user {
-    display: inline-block
+    display: inline-block;
+    line-height: normal;
 }
 
 /*********** MENU *************/

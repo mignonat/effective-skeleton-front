@@ -3,6 +3,7 @@
 - Vendors and uglify (not removed licenses)
 - Modify internet speed with chrome and add a loader screen like in the Designer
 - Error code between front and vue
+- Use template in Vue files => for popup layout
 - Nodemon : remove src/back from front and vice versa
 - https://webpack.github.io/docs/optimization.html
 - User info : login, firstName, lastName, email, mail, locale, phone

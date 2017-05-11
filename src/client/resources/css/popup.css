@@ -30,6 +30,10 @@
     margin: 10px 0;
 }
 
+.modal_body > input {
+    margin-top: 10px;
+}
+
 .text_right {
     text-align: right;
 }
