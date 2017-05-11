@@ -25,6 +25,15 @@ const method = isBrowserOK()? {
             return false
         }
         return true ;
+    },
+    remove : (key) => {
+        try {
+            localStorage.removeItem(key)
+        } catch (ex) {
+            console.error('preference.remove key "'+key+'" failed : '+ex)
+            return false
+        }
+        return true ;
     }
 } : {
     get : (key) => {
@@ -32,13 +41,17 @@ const method = isBrowserOK()? {
     },
     set : (key, value) => {
         console.error('preference.set : browser does not support local storage !') ;
+    },
+    remove : (key) => {
+        console.error('preference.remove : browser does not support local storage !') ;
     }
 }
 
 const constants = {
     LOCALE : 'locale',
     TOKEN : 'token',
-    TOKEN_TIME : 'token-time'
+    TOKEN_TIME : 'token-time',
+    USER : 'user'
 }
 
 export default Object.assign(method, constants)

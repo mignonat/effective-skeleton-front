@@ -1,1 +1,3 @@
 export const SET_LOCALE = 'SET_LOCALE'
+export const SET_TOKEN = 'SET_TOKEN'
+export const INVALIDATE_TOKEN = 'INVALIDATE_TOKEN'

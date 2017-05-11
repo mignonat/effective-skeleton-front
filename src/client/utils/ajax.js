@@ -25,7 +25,7 @@ export default {
                 //get token in the token util then xmlhttp.setRequestHeader('x-access-token', token);
                 xhr.onload = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        result = JSON.parse(xhr.responseText)
+                        const result = JSON.parse(xhr.responseText)
                         if (!result.success)
                             reject('ajax.get : not success, '+result.error)
                         

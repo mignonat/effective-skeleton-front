@@ -71,6 +71,10 @@ li {
     cursor : pointer;
 }
 
+.user {
+    display: inline-block
+}
+
 /*********** MENU *************/
 
 .left_menu {
