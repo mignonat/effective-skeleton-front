@@ -7,7 +7,7 @@ const User = mongoose.model('User', new Schema({
     lastname: String,
     login: String,
     password: String, 
-    admin: Boolean 
+    admin: Boolean
 }))
 
 const service = {

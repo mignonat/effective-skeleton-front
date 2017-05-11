@@ -59,12 +59,12 @@ const getters = {
 
 const actions = {
 
-    [action_types.SET_TOKEN] ({ commit }, token, user) {
+    [action_types.SET_TOKEN] ({ commit }, params) {
         return new Promise((resolve, reject) => {
             try {
-                if (!user)
+                if (!params.user)
                     reject('users.actions.setToken : Invalid user')
-                commit(mutation_types.SET_TOKEN, token, user)
+                commit(mutation_types.SET_TOKEN, params.token, params.user)
                 resolve()
             } catch (ex) {
                 reject('users.actions.setToken : '+ex)

@@ -60,10 +60,11 @@ routes.get('/setup', function(req, res) {
 routes.post('/authenticate', (req, res) => {
     try {
         auth.doAuth(req.body.login, req.body.password)
-            .then((newToken) => { // auth successed
+            .then((data) => { // auth successed
                 res.json({
                     success: true,
-                    token: newToken
+                    token: data.token,
+                    user : data.user
                 })
             })
             .catch((isFailedAuth) => { // auth failed

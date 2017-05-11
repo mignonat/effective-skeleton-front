@@ -8,6 +8,7 @@
 <script>
     import SelectLocale from '../SelectLocale.vue'
     import ajax from '../../../utils/ajax.js'
+    import * as action_types from '../../../vuex/actions.js'
 
     export default {
         data : function() { return {
@@ -26,7 +27,7 @@
                 this.error_credential = credential
                 this.error_internal = internal
                 this.error_server = server
-            },
+            },  
             translate (key, params) {
                 return this.$store.getters.translate(key, params)
             },
@@ -38,21 +39,23 @@
                     .then((data) => {
                         if (data.success) {
                             this.$store
-                                .dispatch(action_types.SET_TOKEN, data.token, data.user)
+                                .dispatch(action_types.SET_TOKEN, data)
                                 .then(() => {
                                     this.setErrorMessages(false, false, false)
+                                    this.user = data.user
                                 })
                                 .catch((ex) => {
                                     this.setErrorMessages(false, true, false)
                                     console.error('user.auth.setToken : error, '+ex)
                                 })
                         } else {
+                            console.error(data.message)
                             this.setErrorMessages(true, false, false)
                         }
                     })
                     .catch((err) => {
-                        this.setErrorMessages(false, false, true)
                         console.log('user.authenticate : '+err) 
+                        this.setErrorMessages(false, false, true)
                     })
             }
         },

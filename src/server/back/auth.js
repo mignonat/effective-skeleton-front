@@ -27,11 +27,20 @@ module.exports = {
                                 log.debug('doAuth : bad password for login="'+login+'" and password="'+password+'"')
                                 reject(true)
                             } else {
+                                const userInterface = {
+                                    firstname: user.firstname,
+                                    lastname: user.lastname,
+                                    login: user.login,
+                                    admin: user.admin
+                                }
                                 // TODO : sign with RSA SHA256
                                 //https://github.com/auth0/node-jsonwebtoken
                                 //const cert = fs.readFileSync('private.key')  // get private key
                                 //const token = jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256'})
-                                resolve(jwt.sign(user, secret)) // TODO don't put the password inside
+                                resolve({
+                                    token : jwt.sign(userInterface, secret), 
+                                    user : userInterface
+                                })
                             }
                         }
                     })

@@ -3,6 +3,7 @@
 - Vendors and uglify (not removed licenses)
 - Modify internet speed with chrome and add a loader screen like in the Designer
 - Error code between front and vue
+- Nodemon : remove src/back from front and vice versa
 - https://webpack.github.io/docs/optimization.html
 - User info : login, firstName, lastName, email, mail, locale, phone
 - use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/

@@ -83,7 +83,8 @@ app.post('/authenticate', (req, res) => {
             .then((data) => {
                 res.json({
                     success : true,
-                    token : data.token
+                    token : data.token,
+                    user : data.user
                 })
             })
             .catch((err) => {
