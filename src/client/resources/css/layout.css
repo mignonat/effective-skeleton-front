@@ -2,6 +2,7 @@
     --menu-width: 180px ;
     --menu-height: 45px ;
     --top-height: 50px;
+    --border-color: rgba(127, 63, 191, 0.3);
 }
 
 *[class$="_button"] {
@@ -25,6 +26,10 @@ li {
     width: 100%;
 }
 
+input {
+    padding-left: 5px;
+}
+
 #app {
     width : 100%;
     height: 100%;
@@ -36,6 +41,11 @@ li {
     justify-content: flex-start ;
 }
 
+.error {
+    color : darkred;
+    font-size: smaller;
+}
+
 /*********** TOP BAR *************/
 
 .top_bar {
@@ -44,7 +54,6 @@ li {
     width: 100% ;
     height: var(--top-height) ;
     padding: 0px ;
-    background-color: azure;
 }
 
 .top_bar:hover {
@@ -71,9 +80,66 @@ li {
     cursor : pointer;
 }
 
+/*********** USER *************/
+
 .user {
+    position: absolute ;
+    right: 110px;
+    top: 0px;
     display: inline-block;
+    height: var(--top-height);
     line-height: normal;
+}
+
+.user > div {
+    position: relative ;
+}
+
+.user_info {
+    height: var(--top-height)
+}
+
+.user_name_display {
+    display: inline-block;
+    height: var(--top-height)
+}
+
+.user_connection_btn {
+    margin-top : 15px ;
+}
+
+.login_window {
+    position: absolute ;
+    width : 200px;
+    right: 0px;
+    top: var(--top-height);
+    border: 1px solid var(--border-color);
+    padding : 10px ;
+}
+
+.login_button {
+    margin-top: 10px ;
+}
+
+.login,
+.password {
+    margin-top: 10px;
+}
+
+.hide_button {
+    position : absolute ;
+    bottom : 0px ;
+    right: -7px;
+}
+
+.login-leave-active {
+    animation: fade_out_up 0.4s ease-in-out;
+    -webkit-animation: fade_out_up 0.4s ease-in-out ;
+}
+
+.login-enter-active {
+    animation: fade_in_down 0.4s ease-in-out;
+    -webkit-animation: fade_in_down 0.4s ease-in-out ;
 }
 
 /*********** MENU *************/
@@ -108,9 +174,9 @@ li {
 
 .left_menu a.active {
     /* shadow*/
-    -webkit-box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
-    -moz-box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
-    box-shadow: inset 0px 0px 5px 4px rgba(127, 63, 191, 0.3);
+    -webkit-box-shadow: inset 0px 0px 5px 4px var(--border-color);
+    -moz-box-shadow: inset 0px 0px 5px 4px var(--border-color);
+    box-shadow: inset 0px 0px 5px 4px var(--border-color);
 }
 
 ul.left_menu a {
@@ -152,9 +218,9 @@ ul li:hover {
 
 .inset-shadow,
 .content {
-    -webkit-box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
-    -moz-box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
-    box-shadow: inset 6px 3px 15px 0px rgba(196,196,196,0.59);
+    -webkit-box-shadow: inset 6px 3px 15px 0px var(--border-color);
+    -moz-box-shadow: inset 6px 3px 15px 0px var(--border-color);
+    box-shadow: inset 6px 3px 15px 0px var(--border-color);
 }
 
 /*********** NO SELECTION *************/

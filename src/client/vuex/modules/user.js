@@ -4,7 +4,7 @@ import * as mutation_types from '../mutations.js'
 
 /**************** STATE ****************/
 
-const tokenLifeSpan = 2000 //1000*60*60*24 milli seconds
+const tokenLifeSpan = 1000*60*60*24 //milli seconds
 const isTokenValid = (token, token_time) => {
     return token && tokenLifeSpan > (token_time-Date.now())
 }
@@ -62,7 +62,7 @@ const actions = {
     [action_types.SET_TOKEN] ({ commit }, params) {
         return new Promise((resolve, reject) => {
             try {
-                if (!params.user)
+                if (params.token && !params.user)
                     reject('users.actions.setToken : Invalid user')
                 commit(mutation_types.SET_TOKEN, params.token, params.user)
                 resolve()

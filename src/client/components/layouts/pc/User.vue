@@ -1,20 +1,22 @@
 <template>
-    <div v-if="isLogged" class="user">
-        <span>{{ user.lastname }} {{ user.firstname }}</span>
-    </div>
-    <div v-else class="user">
-        <button @click="open">Connection</button>
-        <div class="modal_mask" @click="close" v-show="popup.show">
-            <transition name="modal">
-                <div class="modal_container" @click.stop v-show="popup.show">
+    <div class="user">
+        <div v-if="isLogged" class="user_info">
+            <i class="material-icons">account_circle</i>
+            <div class="user_name_display">{{ user.lastname }} {{ user.firstname }}</div>
+        </div>
+        <div v-else>
+            <button @click="toggle" class="user_connection_btn">{{ translate('all.connection') }}</button>
+            <transition name="login">
+                <div class="login_window" @click.stop v-show="show">
                     <div class="modal_header">
-                        <h3>{{ popup.title }}</h3>
-                        <i class="material-icons modal_close_button" :title="translate('all.close')" @click="close()">close</i>
+                        <h3>{{ title }}</h3>
+                        <i class="material-icons hide_button" :title="translate('all.hide')" @click="hide()">keyboard_arrow_up</i>
                     </div>
-                    <div class="modal_body">
-                        <input v-model="login" placeholder="Login"></input>
-                        <input v-model="password" placeholder="Password"></input>
-                        <button @click="auth">Connection</button>
+                    <div>
+                        <span v-show="hasError" class="error">{{ this.displayError() }}</span>
+                        <input v-model="login" :placeholder="translate('all.login')" class="login"></input>
+                        <input v-model="password" type="password" :placeholder="translate('all.password')" class="password"></input>
+                        <button @click="auth" class="login_button">{{ translate('all.valid') }}</button>
                     </div>
                 </div>
             </transition>
@@ -27,22 +29,29 @@
     import ajax from '../../../utils/ajax.js'
     import * as action_types from '../../../vuex/actions.js'
 
+    //TODO : continue working on user info display
+
     export default {
-        data : function() { return {
-            popup : {
+        data : function() { 
+            return {
                 show : false,
-                title : 'Saisir vos identifiants'
-            },
-            login : undefined,
-            password : undefined,
-            user : undefined,
-            error_credential : false,
-            error_internal : false,
-            error_server : false
-        }},
+                login : undefined,
+                password : undefined,
+                user : undefined,
+                error_credential : false,
+                error_internal : false,
+                error_server : false
+            }
+        },
         computed : {
             isLogged () {
                 return this.user != undefined
+            },
+            hasError () {
+                return this.error_credential || this.error_internal || this.error_server
+            },
+            title () {
+                return this.translate('all.input.credential')
             }
         },
         methods : {
@@ -65,6 +74,10 @@
                     })
                     .then((data) => {
                         if (data.success) {
+                            if (!data.token || !data.user) {
+                                return this.setErrorMessages(true, false, false)
+                            }
+
                             this.$store
                                 .dispatch(action_types.SET_TOKEN, data)
                                 .then(() => {
@@ -85,11 +98,19 @@
                         this.setErrorMessages(false, false, true)
                     })
             },
-            open() {
-                this.popup.show = true
+            displayError() {
+                if (this.error_credential)
+                    return this.translate('all.error.bad.credential')
+                if (this.error_internal)
+                    return this.translate('all.error.internal')
+                if (this.error_server)
+                    return this.translate('all.error.server')
             },
-            close() {
-                this.popup.show = false
+            toggle() {
+                this.show = !this.show
+            },
+            hide() {
+                this.show = false
             }
         },
         components : { SelectLocale }
