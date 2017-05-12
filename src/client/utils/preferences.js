@@ -14,7 +14,7 @@ const method = isBrowserOK()? {
             const value = localStorage.getItem(key)
             return (!value)? undefined : JSON.parse(value)
         } catch (ex) {
-            console.error('preference.get : '+ex)
+            console.warn('preference.get : '+ex)
         }
     },
     set : (key, value) => {

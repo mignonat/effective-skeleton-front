@@ -101,7 +101,9 @@ input {
 
 .user_name_display {
     display: inline-block;
-    height: var(--top-height)
+    height: var(--top-height);
+    vertical-align: middle;
+    text-align: center
 }
 
 .user_connection_btn {

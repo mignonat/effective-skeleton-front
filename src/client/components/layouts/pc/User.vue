@@ -1,8 +1,7 @@
 <template>
     <div class="user">
         <div v-if="isLogged" class="user_info">
-            <i class="material-icons">account_circle</i>
-            <div class="user_name_display">{{ user.lastname }} {{ user.firstname }}</div>
+            <span class="user_name_display"><i class="material-icons">account_circle</i>{{ user.lastname }} {{ user.firstname }}</span>
         </div>
         <div v-else>
             <button @click="toggle" class="user_connection_btn">{{ translate('all.connection') }}</button>
@@ -37,7 +36,7 @@
                 show : false,
                 login : undefined,
                 password : undefined,
-                user : undefined,
+                user : this.$store.getters.getUser(),
                 error_credential : false,
                 error_internal : false,
                 error_server : false

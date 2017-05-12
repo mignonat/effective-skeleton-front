@@ -8,9 +8,15 @@ const tokenLifeSpan = 1000*60*60*24 //milli seconds
 const isTokenValid = (token, token_time) => {
     return token && tokenLifeSpan > (token_time-Date.now())
 }
-const token = isTokenValid(preference.get(preference.TOKEN))? preference.get(preference.TOKEN) : undefined
-const token_time = (token)? preference.get(preference.TOKEN_TIME) : undefined
-const user = (token)? preference.get(preference.USER) : undefined
+var token = preference.get(preference.TOKEN)
+var token_time = preference.get(preference.TOKEN_TIME)
+if (!isTokenValid(token, token_time)) {
+    token = undefined
+    token_time = undefined
+    //TODO remove in localstorage
+} 
+    
+const user = (!token)? undefined : preference.get(preference.USER)
 
 const state = {
     user : user,
@@ -64,7 +70,7 @@ const actions = {
             try {
                 if (params.token && !params.user)
                     reject('users.actions.setToken : Invalid user')
-                commit(mutation_types.SET_TOKEN, params.token, params.user)
+                commit(mutation_types.SET_TOKEN, params)
                 resolve()
             } catch (ex) {
                 reject('users.actions.setToken : '+ex)
@@ -75,7 +81,7 @@ const actions = {
     [action_types.INVALIDATE_TOKEN] ({ commit }) {
         return new Promise((resolve, reject) => {
             try {
-                commit(mutation_types.SET_TOKEN, undefined)
+                commit(mutation_types.SET_TOKEN)
                 resolve()
             } catch (ex) {
                 reject('users.actions.invalidateToken : '+ex)
@@ -87,8 +93,8 @@ const actions = {
 
 const mutations = {
 
-    [mutation_types.SET_TOKEN] (state, token) {
-        methods.setToken(state, token)
+    [mutation_types.SET_TOKEN] (state, params) {
+        methods.setToken(state, params.token, params.user)
     }
 
 }

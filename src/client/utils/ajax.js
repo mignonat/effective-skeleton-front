@@ -16,8 +16,6 @@ export default {
                     }
                     encodedParams = encodedParams.replace(/%20/g, '+')
                 }
-                console.log(encodedParams)
-
                 const xhr = new XMLHttpRequest()
                 xhr.open('POST', url, true)
                 xhr.timeout = defaultTimeOut
