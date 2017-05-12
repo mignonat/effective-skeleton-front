@@ -1,14 +1,16 @@
+- Check token in localstorage 
+- All input : test params injection with owasp in ajax util for all parameters
 - Block browser < IE8
 - HTML5 app manifest
+- Webpack smart caching
 - Vendors and uglify (not removed licenses)
 - Modify internet speed with chrome and add a loader screen like in the Designer
-- Error code between front and vue
-- Use template in Vue files => for popup layout
+- Set up error code protocol between front and vue
+- Use template in Vue files ??? for popup layout
 - Nodemon : remove src/back from front and vice versa
 - https://webpack.github.io/docs/optimization.html
 - User info : login, firstName, lastName, email, mail, locale, phone
 - use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/
-- authenticate : test params injection with owasp ?
 - Manage session : store the token in local storage ==> induce running front and back
 - Create a separate interface for application administration, in another tab
 - Possibility to change properties and restart the app
