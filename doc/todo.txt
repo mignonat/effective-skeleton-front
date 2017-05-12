@@ -1,4 +1,6 @@
-- Check token in localstorage 
+- Login window also manage "enter" input to valid
+- Check token in localstorage
+- Manage logout
 - All input : test params injection with owasp in ajax util for all parameters
 - Block browser < IE8
 - HTML5 app manifest
