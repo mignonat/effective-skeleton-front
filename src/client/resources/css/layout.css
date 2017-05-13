@@ -146,7 +146,7 @@ button {
 .user_win {
     position: absolute ;
     width : auto;
-    right: 0px;
+    right: 12px;
     top: var(--top-height);
     border: 1px solid var(--border-color);
     padding : 10px ;

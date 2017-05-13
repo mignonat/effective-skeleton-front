@@ -24,20 +24,28 @@ export default {
                 xhr.onload = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         const result = JSON.parse(xhr.responseText)
-                        if (!result.success)
-                            reject('ajax.get : not success, '+result.error)
+                        if (result.success)
+                            resolve(result)
                         
-                        resolve(result)
+                        console.error('ajax.get : error message | '+result.error)
+                        reject('server')
                     } else {
-                        reject('ajax.get : error '+xhr.status)
+                        console.error('ajax.post status '+xhr.status)
+                        reject('server')
                     }
                 }
-                xhr.ontimeout = (err) => {
-                    reject('ajax.get : timeout ('+defaultTimeOut+'ms)')
+                xhr.ontimeout = () => {
+                    console.error('ajax.post ontimeout')
+                    reject('timeout')
+                }
+                xmlhttp.onerror = function () {
+                    console.error('ajax.post onerror')
+                    reject('server')
                 }
                 xhr.send(encodedParams)
             } catch (ex) {
-                reject('ajax.get : '+ex)
+                console.error('ajax.post | '+ex)
+                reject('internal')
             }
         })
     }

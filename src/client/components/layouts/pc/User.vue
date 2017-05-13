@@ -112,7 +112,7 @@
             },
             auth () {
                 if (!this.login || !this.password) {
-                    return
+                    this.setErrorMessages(true, false, false)
                 }
                     
                 ajax.post('/authenticate', {
@@ -142,6 +142,7 @@
                         }
                     })
                     .catch((err) => {
+                        //TODO check err :  server | timeout | internal
                         console.log('user.authenticate : '+err) 
                         this.setErrorMessages(false, false, true)
                     })

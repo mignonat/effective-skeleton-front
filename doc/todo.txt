@@ -1,7 +1,7 @@
-- No password => nothing displayed
 - Check login error message ...
+- User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
 - All input : test params injection with owasp in ajax util for all parameters
-- Possibility too set an icon for popup : warning, info, error
+- Possibility to set an icon for popup : warning, info, error
 - Block browser < IE8
 - HTML5 app manifest
 - Webpack smart caching
@@ -11,7 +11,6 @@
 - Use template in Vue files ??? for popup layout
 - Nodemon : remove src/back from front and vice versa
 - https://webpack.github.io/docs/optimization.html
-- User info : login, firstName, lastName, email, mail, locale, phone
 - use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/
 - Manage session : store the token in local storage ==> induce running front and back
 - Create a separate interface for application administration, in another tab
