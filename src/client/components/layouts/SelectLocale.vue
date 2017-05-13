@@ -1,5 +1,5 @@
 <template>
-    <select class="select_locale" value="selected" v-on:change="setLocale($event.target.value)">
+    <select value="selected" v-on:change="setLocale($event.target.value)">
         <option value="fr" :selected="selected === 'fr'">Français</option>
         <option value="en" :selected="selected === 'en'">English</option>
     </select>

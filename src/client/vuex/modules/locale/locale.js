@@ -4,6 +4,7 @@ import preference from '../../../utils/preferences.js'
 import urlParam from '../../../utils/url-params.js'
 import * as action_types from '../../actions.js'
 import * as mutation_types from '../../mutations.js'
+import event from '../../../utils/event.js'
 
 /**************** STATE ****************/
 
@@ -105,6 +106,7 @@ const mutations = {
         if (methods.getLocale(state) != locale) {
             methods.setLocale(state, locale)
             methods.setTranslationMap(state, locale)
+            event.emit(event.LOCALE_CHANGE)
         }
     }
 

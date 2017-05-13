@@ -3,15 +3,15 @@
         <transition name="modal">
             <div class="modal_container" @click.stop v-show="data.show">
                 <div class="modal_header">
-                    <h3>{{ data.title }}</h3>
+                    <h3>{{ getTitle() }}</h3>
                     <i class="material-icons modal_close_button" :title="translate('all.close')" @click="close()">close</i>
                 </div>
                 <div class="modal_body">
                     <label class="form_label">{{ data.content }}</label>
                 </div>
                 <div class="modal_footer text_right">
-                    <button class="default_button" @click="confirm()">{{ data.confirmLabel }}</button>
-                    <button class="default_button" @click="close()">{{ data.cancelLabel }}</button>
+                    <button @click="confirm()" class="default_button">{{ data.confirmLabel }}</button>
+                    <button @click="close()">{{ data.cancelLabel }}</button>
                 </div>
             </div>
         </transition>
@@ -26,19 +26,26 @@
                 return this.$store.getters.translate(key, params)
             },
             close () {
-                this.$emit('close'); // signal emit to parent component
+                this.$emit('close') // signal emit to parent component
             },
             confirm () {
-                this.$emit('confirm'); // signal emit to parent component
+                this.$emit('confirm') // signal emit to parent component
+            },
+            getTitle() {
+                if (!this.data.title)
+                    return this.translate('all.confirm')
+                else 
+                    return this.data.title
             }
         },
-        mounted: function () {
+        mounted () {
             this.$nextTick(function () { // here the document is ready
-                document.addEventListener("keydown", (e) => { // escape key is pressed
-                    if (this.data.show && e.keyCode == 27) {
-                        this.close();
-                    }
-                });
+                document.addEventListener("keydown", (e) => { 
+                    if (this.data.show && e.keyCode == 27)      // escape key is pressed
+                        this.close()
+                    else if (this.data.show && e.keyCode == 13) // enter key is pressed
+                        this.$emit('confirm')
+                })
             })
         }
     }

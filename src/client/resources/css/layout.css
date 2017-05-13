@@ -3,11 +3,7 @@
     --menu-height: 45px ;
     --top-height: 50px;
     --border-color: rgba(127, 63, 191, 0.3);
-}
-
-*[class$="_button"] {
-    cursor: pointer;
-    cursor: hand;
+    --layout-color: azure;
 }
 
 body {
@@ -30,20 +26,66 @@ input {
     padding-left: 5px;
 }
 
+h3 {
+    margin: 5px;
+    margin-top: 0;
+}
+
+select {
+    border-radius: 2px;
+}
+
 #app {
     width : 100%;
     height: 100%;
     padding: 0px;
     margin: 0px;
-
-    display: flex ;
-    flex-flow: row wrap ;
-    justify-content: flex-start ;
 }
 
 .error {
     color : darkred;
     font-size: smaller;
+    margin-left: 5px;
+}
+
+button {
+    background-color: var(--layout-color);
+    border: 1px solid var(--border-color);
+}
+
+.link,
+button {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.default_button {
+    background-color: var(--border-color);
+}
+
+.small-icon {
+    font-size: 14px;
+}
+
+.m_left_5 {
+    margin-left: 5px
+}
+
+.table {
+    display: table;
+    border-spacing: 5px;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 /*********** TOP BAR *************/
@@ -54,6 +96,7 @@ input {
     width: 100% ;
     height: var(--top-height) ;
     padding: 0px ;
+    background-color: var(--layout-color);
 }
 
 .top_bar:hover {
@@ -73,73 +116,75 @@ input {
     -webkit-animation: scale-up-text 0.8s ease-in-out ;
 }
 
-.select_locale {
+.top_bar_right {
     position: absolute ;
-    right: 25px;
-    top:16px;
-    cursor : pointer;
+    right: 0px;
+    top:0px;
+    line-height: var(--top-height);
+    height: var(--top-height) ;
 }
 
 /*********** USER *************/
 
 .user {
-    position: absolute ;
-    right: 110px;
-    top: 0px;
     display: inline-block;
     height: var(--top-height);
     line-height: normal;
+    margin-right: 10px;
 }
 
-.user > div {
-    position: relative ;
-}
-
-.user_info {
-    height: var(--top-height)
-}
-
-.user_name_display {
-    display: inline-block;
+.user_info,
+.user_login {
     height: var(--top-height);
-    vertical-align: middle;
-    text-align: center
+    margin-left: 10px;
 }
 
-.user_connection_btn {
-    margin-top : 15px ;
+.user_name {
+    margin-right: 5px;
 }
 
-.login_window {
+.user_win {
     position: absolute ;
-    width : 200px;
+    width : auto;
     right: 0px;
     top: var(--top-height);
     border: 1px solid var(--border-color);
     padding : 10px ;
 }
 
-.login_button {
-    margin-top: 10px ;
+.user_win > div {
+    position: relative ;
 }
 
-.login,
-.password {
-    margin-top: 10px;
+.user_win_title {
+    min-width : 210px ;
 }
 
-.hide_button {
+.user_win_hide {
     position : absolute ;
     bottom : 0px ;
     right: -7px;
 }
 
-.login-leave-active {
+.user_valid {
+    margin-top: 10px ;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.login,
+.password {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.user_win-leave-active {
     animation: fade_out_up 0.4s ease-in-out;
     -webkit-animation: fade_out_up 0.4s ease-in-out ;
 }
 
-.login-enter-active {
+.user_win-enter-active {
     animation: fade_in_down 0.4s ease-in-out;
     -webkit-animation: fade_in_down 0.4s ease-in-out ;
 }
@@ -147,13 +192,9 @@ input {
 /*********** MENU *************/
 
 .left_menu {
-    display: flex ;
-    flex-flow: column nowrap ;
-    justify-content: flex-start ;
-    align-items: flex-start ;
     width: var(--menu-width) ;
     min-width: var(--menu-width) ;
-    background-color: azure;
+    background-color: var(--layout-color);
     height: 100%;
 }
 
@@ -236,4 +277,32 @@ ul li:hover {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+/*********** FLEX CONTAINERS *************/
+
+.vertical_align_container,
+.top_bar_right,
+.user_info,
+.user_login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.column_container,
+left_menu {
+    display: flex ;
+    flex-flow: column nowrap ;
+    justify-content: flex-start ;
+    align-items: flex-start ;
+}
+
+.row_justify_top,
+#app {
+    display: flex ;
+    flex-flow: row wrap ;
+    justify-content: flex-start ;
 }

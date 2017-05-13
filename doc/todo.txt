@@ -1,6 +1,7 @@
-- Login window also manage "enter" input to valid
-- Manage logout
+- No password => nothing displayed
+- Check login error message ...
 - All input : test params injection with owasp in ajax util for all parameters
+- Possibility too set an icon for popup : warning, info, error
 - Block browser < IE8
 - HTML5 app manifest
 - Webpack smart caching

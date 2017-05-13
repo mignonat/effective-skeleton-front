@@ -1,6 +1,7 @@
 import preference from '../../utils/preferences.js'
 import * as action_types from '../actions.js'
 import * as mutation_types from '../mutations.js'
+import event from '../../utils/event.js'
 
 /**************** STATE ****************/
 
@@ -35,6 +36,7 @@ const methods = {
             preference.set(preference.TOKEN, state.token)
             preference.set(preference.TOKEN_TIME, state.token_time)
             preference.set(preference.USER, state.user)
+            event.emit(event.LOGIN)
         } else {
             state.token = undefined
             state.token_time = undefined
@@ -42,6 +44,7 @@ const methods = {
             preference.remove(preference.TOKEN)
             preference.remove(preference.TOKEN_TIME)
             preference.remove(preference.USER)
+            event.emit(event.LOGOUT)
         }
     },
     getToken : (state) => {
@@ -81,7 +84,7 @@ const actions = {
     [action_types.INVALIDATE_TOKEN] ({ commit }) {
         return new Promise((resolve, reject) => {
             try {
-                commit(mutation_types.SET_TOKEN)
+                commit(mutation_types.SET_TOKEN, {})
                 resolve()
             } catch (ex) {
                 reject('users.actions.invalidateToken : '+ex)

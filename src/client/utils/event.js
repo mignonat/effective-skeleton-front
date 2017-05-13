@@ -1,7 +1,10 @@
 const handlersByEventName = {}
 
 const events = {
-    POPUP_ERROR : 'POPUP_ERROR'
+    POPUP_ERROR : 'POPUP_ERROR',
+    LOCALE_CHANGE : 'LOCALE_CHANGE',
+    LOGIN : 'LOGIN',
+    LOGOUT : 'LOGOUT'
 }
 
 const methods = {

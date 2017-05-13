@@ -39,14 +39,14 @@
         }},
         methods : {
             closePopup : function() {
-                this.popup_data.show = false ;
+                this.popup_data.show = false
             },
             closeConfirmPopup : function() {
-                this.confirm_popup_data.show = false ;
+                this.confirm_popup_data.show = false
             },
             confirmPopup : function() {
                 console.log('Do action here and when finish close popup')
-                this.confirm_popup_data.show = false ;
+                this.confirm_popup_data.show = false
             }
         },
         components : { ModalPopup, ConfirmModalPopup }
