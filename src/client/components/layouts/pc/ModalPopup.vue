@@ -7,7 +7,7 @@
                     <i class="material-icons modal_close_button" :title="translate('all.close')" @click="close()">close</i>
                 </div>
                 <div class="modal_body">
-                    <label class="form_label">{{ data.content }}</label>
+                    <label class="form_label">{{ data.text }}</label>
                 </div>
             </div>
         </transition>

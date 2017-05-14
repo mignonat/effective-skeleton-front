@@ -14,20 +14,20 @@
                     <div >
                         <div class="table">
                             <div class="row">
-                                <div class="cell bold">{{ label_login }}</div>
+                                <div class="cell bold">{{ label.login }}</div>
                                 <div class="cell">{{ user.login }}</div>
                             </div>
                             <div class="row">
-                                <div class="cell bold">{{ label_firstname }}</div>
+                                <div class="cell bold">{{ label.firstname }}</div>
                                 <div class="cell">{{ user.firstname }} </div>
                             </div>
                             <div class="row">
-                                <div class="cell bold">{{ label_lastname }}</div>
+                                <div class="cell bold">{{ label.lastname }}</div>
                                 <div class="cell">{{ user.lastname }}</div>
                             </div>
                             <div v-show="user.admin" class="row">
                                 <i class="material-icons small-icon">group</i>
-                                    Administrator
+                                Administrator
                             </div>
                         </div>
                     </div>
@@ -46,12 +46,12 @@
                 <div v-show="show" class="user_win">
                     <div>
                         <h3 class="user_win_title">{{ title }}</h3>
-                        <i class="material-icons link user_win_hide" :title="label_hide" @click="hide()">keyboard_arrow_up</i>
+                        <i class="material-icons link user_win_hide" :title="label.hide" @click="hide()">keyboard_arrow_up</i>
                     </div>
                     <div>
                         <div v-show="hasError" class="error">{{ this.displayError() }}</div>
-                        <input v-model="login" :placeholder="placeholder_login" class="login"></input>
-                        <input v-model="password" type="password" :placeholder="placeholder_password" class="password"></input>
+                        <input v-model="login" :placeholder="placeholder.login" class="login"></input>
+                        <input v-model="password" type="password" :placeholder="placeholder.password" class="password"></input>
                     </div>
                     <button @click="auth" class="user_valid default_button vertical_align_container">
                         {{ translate('all.valid') }}
@@ -81,17 +81,22 @@
                 error_internal : false,
                 error_server : false,
                 title : this.translate('all.input.credential'),
-                label_firstname : this.translate('all.firstname'),
-                label_lastname : this.translate('all.lastname'),
-                label_login : this.translate('all.login'),
-                label_hide : this.translate('all.hide'),
-                placeholder_login : this.translate('all.placeholder.login'),
-                placeholder_password : this.translate('all.placeholder.password'),
+                label : {
+                    firstname : this.translate('all.firstname'),
+                    lastname : this.translate('all.lastname'),
+                    login : this.translate('all.login'),
+                    hide : this.translate('all.hide'),
+                    admin : this.translate('all.administrator')
+                },
+                placeholder : {
+                    login : this.translate('all.placeholder.login'),
+                    password : this.translate('all.placeholder.password')
+                },
                 confirm_popup_data : {
                     show : false,
-                    content : this.translate('all.confirm.logout'),
-                    confirmLabel : this.translate('all.yes'),
-                    cancelLabel : this.translate('all.no'),
+                    text : this.translate('all.confirm.logout'),
+                    label_confirm : this.translate('all.yes'),
+                    label_cancel : this.translate('all.no'),
                 }
             }
         },
@@ -143,7 +148,7 @@
                     })
                     .catch((err) => {
                         //TODO check err :  server | timeout | internal
-                        console.log('user.authenticate : '+err) 
+                        console.log('user.authenticate : error '+err)
                         this.setErrorMessages(false, false, true)
                     })
             },
@@ -186,15 +191,16 @@
             },
             setTranslation() {
                 this.title = this.translate('all.input.credential')
-                this.label_firstname = this.translate('all.firstname')
-                this.label_lastname = this.translate('all.lastname')
-                this.label_login = this.translate('all.login')
-                this.label_hide = this.translate('all.hide')
-                this.confirm_popup_data.content = this.translate('all.confirm.logout')
-                this.confirm_popup_data.confirmLabel = this.translate('all.yes')
-                this.confirm_popup_data.cancelLabel = this.translate('all.no')
-                this.placeholder_login = this.translate('all.placeholder.login')
-                this.placeholder_password = this.translate('all.placeholder.password')
+                this.label.firstname = this.translate('all.firstname')
+                this.label.lastname = this.translate('all.lastname')
+                this.label.login = this.translate('all.login')
+                this.label.hide = this.translate('all.hide')
+                this.label.admin = this.translate('all.administrator')
+                this.confirm_popup_data.text = this.translate('all.confirm.logout')
+                this.confirm_popup_data.label_confirm = this.translate('all.yes')
+                this.confirm_popup_data.label_cancel = this.translate('all.no')
+                this.placeholder.login = this.translate('all.placeholder.login')
+                this.placeholder.password = this.translate('all.placeholder.password')
             }
         },
         mounted: function () {

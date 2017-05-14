@@ -25,15 +25,14 @@
             popup_data : {
                 show : false,
                 title : 'Titre de la popup',
-                content : 'Contenu ultra long de la mort qui tue de la popup modal personnalisable via vue js',
-                closeLabel : 'Fermer'
+                text : 'Contenu ultra long de la mort qui tue de la popup modal personnalisable via vue js'
             },
             confirm_popup_data : {
                 show : false,
                 title : 'Confirmer l\'action',
-                content : 'Vous êtes sûre de vouloir tout casser ?',
-                confirmLabel : 'Oui',
-                cancelLabel : 'Non'
+                text : 'Vous êtes sûre de vouloir tout casser ?',
+                label_confirm : 'Oui',
+                label_cancel : 'Non'
             },
             closeImgUrl : closeImgUrl
         }},
