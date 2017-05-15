@@ -1,6 +1,7 @@
+- update node version on ubuntu
 - Check login error message ...
 - Manage auth problem => error code bad token in ajax call and automatic logout
-- Set functional testing with selenium webdriver
+- Implement a selenium test case changing the locale
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
 - All input : test params injection with owasp in ajax util for all parameters
 - Possibility to set an icon for popup : warning, info, error
