@@ -4,7 +4,8 @@
   "description": "Website of Marie-Charlotte Mignonat",
   "main": "public/html/index.html",
   "scripts": {
-    "test": "export PATH=$PATH:/Users/mignonat/project-marie/node_modules/chromedriver/bin/ ; node src/test/selenium/main.js",
+    "test-mac": "export PATH=$PATH:/Users/mignonat/project-marie/node_modules/chromedriver/bin/ ; node src/test/selenium/main.js",
+    "test-ubuntu": "export PATH=$PATH:/home/laurent/XXX/project-marie/node_modules/chromedriver/bin/ ; node src/test/selenium/main.js",
     "mongo": "mongod --auth --port 12345",
     "mongo-shell": "mongo --port 12345 -u 'myUserAdmin' -p 'abc123' --authenticationDatabase 'admin'",
     "start-front-prod": "gulp start-front-prod",
