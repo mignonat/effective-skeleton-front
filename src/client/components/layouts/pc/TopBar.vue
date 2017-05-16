@@ -2,7 +2,7 @@
     <div class="top_bar">
         <span class="top_bar_left_title">{{ label_name }}</span>
         <div class="top_bar_right">
-            <select-locale></select-locale>
+            <select-locale id="top-bar-locale"></select-locale>
             <user></user>
         </div>
     </div>

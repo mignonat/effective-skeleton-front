@@ -1,4 +1,5 @@
 - update node version on ubuntu
+- Set customizable id on different components for testing
 - Check login error message ...
 - Manage auth problem => error code bad token in ajax call and automatic logout
 - Implement a selenium test case changing the locale
