@@ -1,5 +1,5 @@
 <template>
-    <div class="user" @click.stop>
+    <div :id="id" class="user" @click.stop>
         <div v-if="user" class="user_info">
             <!-- USER ALREADY AUHTHENTICATED -->
             <i v-show="!show" @click="toggle" class="material-icons link">keyboard_arrow_down</i>
@@ -36,9 +36,9 @@
         </div>
         <div v-else class="user_login">
             <!-- USER NOT AUHTHENTICATED -->
-            <button @click="toggle" class="link vertical_align_container">
+            <button :id="id+'_login_btn'" @click="toggle" class="link vertical_align_container">
                 <i class="material-icons small-icon">person</i>
-                <span class="m_left_5">{{ translate('all.connection') }}</span>
+                <span :id="id+'_login_btn_label'" class="m_left_5">{{ translate('all.connection') }}</span>
                 <i v-show="!show" class="material-icons small-icon">keyboard_arrow_down</i>
                 <i v-show="show" class="material-icons small-icon">keyboard_arrow_up</i>
             </button>
@@ -71,6 +71,7 @@
     import ConfirmModalPopup from './ConfirmModalPopup.vue'
 
     export default {
+        props : [ 'id' ],
         data : function() { 
             return {
                 show : false,

@@ -2,8 +2,8 @@
     <div class="top_bar">
         <span class="top_bar_left_title">{{ label_name }}</span>
         <div class="top_bar_right">
-            <select-locale id="top-bar-locale"></select-locale>
-            <user></user>
+            <select-locale id="top_bar_locale"></select-locale>
+            <user id="top_bar_user"></user>
         </div>
     </div>
 </template>

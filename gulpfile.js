@@ -23,13 +23,13 @@ const file_env = 'env.properties'
 
 const nodemon_common_ignore = [
     // nodemon is only listening for .js and .vue files
-    'gulpfile.js', 'node-modules', 'public'
+    'gulpfile.js', 'node-modules', 'public', 'src/test'
 ]
 const files_front_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/back/'
+    'src/server/back/'
 ])
 const files_back_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/client/'
+    'src/server/client/'
 ])
 
 const setEnvFn = (server, env) => {
