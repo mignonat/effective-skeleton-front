@@ -1,5 +1,61 @@
 :root {
+    --menu-slide: -200px ;
     --y-down: -20px ;
+}
+
+/*************** MENU ***************/
+
+
+@keyframes menu_reduce {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(var(--menu-slide));
+        -webkit-transform: translateY(var(--menu-slide));
+    }
+}
+
+@keyframes menu_expand {
+    0% {
+        opacity: 0;
+        transform: translateY(var(--menu-slide));
+        -webkit-transform: translateY(var(--menu-slide));
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+}
+
+/*************** FADE IN ***************/
+
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*************** SLIDE LEFT TO RIGHT ***************/
+
+@keyframes slide_left_right {
+    0% {
+        position: absolute;
+        opacity: 1;
+        left: 5px;
+    }
+    100% {
+        position: absolute;
+        opacity: 0;
+        left: 100%;
+    }
 }
 
 /*************** SCALE-UP ***************/
@@ -34,28 +90,61 @@
     }
 }
 
-@keyframes fade_in_down {
-   0% {
-      opacity: 0;
-      transform: translateY(var(--y-down));
-      -webkit-transform: translateY(var(--y-down));
-   }
-   100% {
-      opacity: 1;
-      transform: translateY(0);
-      -webkit-transform: translateY(0);
-   }
+/*************** FADE-SLIDE ***************/
+
+@keyframes fade_in_slide_down {
+    0% {
+        opacity: 0;
+        transform: translateY(var(--y-down));
+        -webkit-transform: translateY(var(--y-down));
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
 }
 
-@keyframes fade_out_up {
-   0% {
-      opacity: 1;
-      transform: translateY(0);
-      -webkit-transform: translateY(0);
-   }
-   100% {
-      opacity: 0;
-      transform: translateY(var(--y-down));
-      -webkit-transform: translateY(var(--y-down));
-   }
+@keyframes fade_out_slide_up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(var(--y-down));
+        -webkit-transform: translateY(var(--y-down));
+    }
+}
+
+/*************** accordion ***************/
+
+@keyframes accordion_in {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+    50% {
+        opacity: 0;
+        height: normal;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes accordion_out {
+    0% {
+        opacity: 1;
+        height: normal;
+    }
+    50% {
+        opacity: 0;
+        height: normal;
+    }
+    100% {
+        opacity: 0;
+        height: 0;
+    }
 }

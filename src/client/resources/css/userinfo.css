@@ -1,0 +1,60 @@
+.user {
+    display: inline-block;
+    height: var(--top-height);
+    line-height: normal;
+    margin-right: 10px;
+}
+
+.user_info, .user_login {
+    height: var(--top-height);
+    margin-left: 10px;
+}
+
+.user_name {
+    margin-right: 5px;
+}
+
+.user_win {
+    position: absolute ;
+    width : auto;
+    right: 12px;
+    top: var(--top-height);
+    border: 1px solid var(--border-color);
+    padding : 10px ;
+}
+
+.user_win > div {
+    position: relative ;
+}
+
+.user_win_title {
+    min-width : 210px ;
+}
+
+.user_win_hide {
+    position : absolute ;
+    bottom : 0px ;
+    right: -7px;
+}
+
+.user_valid {
+    margin-top: 10px ;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.login, .password {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.user_win-leave-active {
+    animation: fade_out_slide_up 0.4s ease-in-out;
+    -webkit-animation: fade_out_slide_up 0.4s ease-in-out ;
+}
+
+.user_win-enter-active {
+    animation: fade_in_slide_down 0.4s ease-in-out;
+    -webkit-animation: fade_in_slide_down 0.4s ease-in-out ;
+}

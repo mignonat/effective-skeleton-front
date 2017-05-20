@@ -1,0 +1,35 @@
+:root {
+    --top-height: 42px;
+}
+
+.top_bar {
+    position: relative ;
+    line-height: var(--top-height);
+    width: 100% ;
+    height: var(--top-height) ;
+    padding: 0px ;
+    background-color: var(--layout-color);
+}
+
+.top_bar:hover {
+    cursor: default;
+}
+
+.top_bar_left_title {
+    position: absolute;
+    left: 40px;
+    display: inline-block;
+    font-size: larger;
+    font-weight: bold;
+    height: var(--top-height);
+    line-height: var(--top-height);
+    text-align: center;
+}
+
+.top_bar_right {
+    position: absolute ;
+    right: 0px;
+    top:0px;
+    line-height: var(--top-height);
+    height: var(--top-height) ;
+}

@@ -1,3 +1,3 @@
 <template>
-    <div>Oups ! Une erreur s\'est produite !</div>
+    <div class="content">Oups ! Une erreur s\'est produite !</div>
 </template>

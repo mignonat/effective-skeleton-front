@@ -1,0 +1,133 @@
+:root {
+    --menu-width : 180px ;
+    --menu-height: 42px ;
+    --menu-background : #41e5f4 ;
+}
+
+.menus {
+    width: var(--menu-width);
+    min-width: var(--menu-width);
+    max-width: var(--menu-width);
+    text-decoration: none;
+    background-color: var(--layout-color);
+}
+
+[id^='menu.'] {
+    display: block;
+    line-height: var(--menu-height);
+    width: var(--menu-width);
+    height: var(--menu-height);
+    background-color: var(--menu-background);
+    border-bottom: 1px solid var(--layout-color);
+}
+
+[id^='menu.'].active {
+   -webkit-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+-moz-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+}
+
+[id^='menu.'] > span {
+    margin-left: 28px ;
+}
+
+.menu-group > div > i {
+    margin-left: 10px;
+}
+
+.menu-group > div > span {
+    margin-left: 0;
+}
+
+.menu-item {
+    background-color: var(--layout-color);
+    border-bottom: 1px solid var(--menu-background);
+}
+
+.menu-item > span {
+    margin-left: 40px;
+}
+
+.menu-enter-active {
+    animation: menu_expand 0.4s ease-in-out;
+    -webkit-animation: menu_expand 0.4s ease-in-out ;
+}
+
+.menu-leave-active {
+    animation: menu_reduce 0.4s ease-in-out;
+    -webkit-animation: menu_reduce 0.4s ease-in-out ;
+}
+
+.menu_item-enter-active {
+    animation: accordion_in 0.4s ease-in-out;
+    -webkit-animation: accordion_in 0.4s ease-in-out ;
+}
+
+.menu_item-leave-active {
+    animation: accordion_out 0.4s ease-in-out;
+    -webkit-animation: accordion_out 0.4s ease-in-out ;
+}
+
+/******************* CLOSE BUTTON *******************/
+
+.menu_button {
+    width: 30px;
+    height: 23px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.menu_button span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: var(--menu-background);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+}
+
+.menu_button span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: var(--menu-background);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+}
+
+.menu_button span:nth-child(1) {
+  top: 0px;
+}
+
+.menu_button span:nth-child(2) {
+  top: 9px;
+}
+
+.menu_button span:nth-child(3) {
+  top: 18px;
+}
+
+.menu_button.open {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}

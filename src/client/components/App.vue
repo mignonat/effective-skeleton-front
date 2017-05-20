@@ -1,15 +1,23 @@
 <template>
-    <div id="app">
-        <top-bar></top-bar>
-        <left-menu></left-menu>
-        <router-view class="content"></router-view>
+    <div id="app" class="table">
+        <div class="row">
+            <menus class="cell"></menus>
+            <div class="cell right-panel">
+                <top-bar></top-bar>
+                <div class="router-content top-inset-shadow">
+                    <transition name="slide_router">
+                        <router-view></router-view>
+                    </transition>
+                </div>
+            </div>
+        </div>
         <modal-popup :data.sync="error_popup_data" @close="closeErrorPopup"></modal-popup>
     </div>
 </template>
 
 <script>
     import TopBar from './layouts/pc/TopBar.vue'
-    import LeftMenu from './layouts/pc/LeftMenu.vue'
+    import Menus from './layouts/pc/Menus.vue'
     import ModalPopup from './layouts/pc/ModalPopup.vue'
     import event from '../utils/event.js'
 
@@ -32,7 +40,7 @@
                 this.error_popup_data.show = true
             }
         },  
-        components : { TopBar, LeftMenu, ModalPopup },
+        components : { TopBar, Menus, ModalPopup },
         mounted: function () {
             const me = this
             this.$nextTick(function () { // here the document is ready

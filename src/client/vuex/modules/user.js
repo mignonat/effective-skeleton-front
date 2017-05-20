@@ -55,6 +55,9 @@ const methods = {
     },
     isTokenValid : (state) => {
         return isTokenValid(state.token, state.token_time)
+    },
+    isAdmin : (state) => {
+        return (state.user && state.user.admin)
     }
 }
 
@@ -63,7 +66,8 @@ const methods = {
 const getters = {
     getToken : (state) => () => methods.getToken(state),
     getUser : (state) => () => methods.getUser(state),
-    isTokenValid : (state) => () => methods.isTokenValid(state)
+    isTokenValid : (state) => () => methods.isTokenValid(state),
+    isAdmin : (state) => () => methods.isAdmin(state)
 }
 
 const actions = {

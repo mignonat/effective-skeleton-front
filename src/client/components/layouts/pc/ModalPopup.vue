@@ -4,7 +4,7 @@
             <div class="modal_container" @click.stop v-show="data.show">
                 <div class="modal_header">
                     <h3>{{ data.title }}</h3>
-                    <i class="material-icons modal_close_button" :title="translate('all.close')" @click="close()">close</i>
+                    <i class="material-icons modal_close_button link" :title="translate('all.close')" @click="close()">close</i>
                 </div>
                 <div class="modal_body">
                     <label class="form_label">{{ data.text }}</label>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <span>Page d'exemple</span>
         <br/><br/>
         <div>
@@ -7,47 +7,49 @@
             <img src="../../resources/img/close.png"></src>
         </div>
         <br/><br/>
-        <modal-popup :data.sync="popup_data" @close="closePopup"></modal-popup>
-        <button @click="popup_data.show = true">Open message popup</button>
+        <modal-popup :data.sync="popup" @close="close"></modal-popup>
+        <button @click="popup.show = true">Open message popup</button>
         <br/><br/>
-        <confirm-modal-popup :data.sync="confirm_popup_data" @close="closeConfirmPopup" @confirm="confirmPopup"></confirm-modal-popup>
-        <button @click="confirm_popup_data.show = true">Open confirm popup</button>
+        <modal-popup-confirm :data.sync="popup_confirm" @close="closeConfirm" @confirm="confirm"></modal-popup-confirm>
+        <button @click="popup_confirm.show = true">Open confirm popup</button>
     </div>
 </template>
 
 <script>
     import ModalPopup from '../layouts/pc/ModalPopup.vue'
-    import ConfirmModalPopup from '../layouts/pc/ConfirmModalPopup.vue'
+    import ModalPopupConfirm from '../layouts/pc/ModalPopupConfirm.vue'
     const closeImgUrl = require("file-loader!../../resources/img/close.png")
 
     export default {
         data : function() { return {
-            popup_data : {
+            popup : {
                 show : false,
                 title : 'Titre de la popup',
                 text : 'Contenu ultra long de la mort qui tue de la popup modal personnalisable via vue js'
             },
-            confirm_popup_data : {
+            popup_confirm : {
                 show : false,
                 title : 'Confirmer l\'action',
                 text : 'Vous êtes sûre de vouloir tout casser ?',
-                label_confirm : 'Oui',
-                label_cancel : 'Non'
+                label : {
+                    confirm : 'Oui',
+                    cancel : 'Non'
+                }
             },
             closeImgUrl : closeImgUrl
         }},
         methods : {
-            closePopup : function() {
-                this.popup_data.show = false
+            close : function() {
+                this.popup.show = false
             },
-            closeConfirmPopup : function() {
-                this.confirm_popup_data.show = false
+            closeConfirm : function() {
+                this.popup_confirm.show = false
             },
-            confirmPopup : function() {
+            confirm : function() {
                 console.log('Do action here and when finish close popup')
-                this.confirm_popup_data.show = false
+                this.popup_confirm.show = false
             }
         },
-        components : { ModalPopup, ConfirmModalPopup }
+        components : { ModalPopup, ModalPopupConfirm }
     }
 </script>

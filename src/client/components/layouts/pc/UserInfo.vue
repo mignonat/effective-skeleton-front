@@ -1,9 +1,9 @@
 <template>
     <div :id="id" class="user" @click.stop>
-        <div v-if="user" class="user_info">
+        <div v-if="user" class="user_info v_align_container">
             <!-- USER ALREADY AUHTHENTICATED -->
-            <i v-show="!show" @click="toggle" class="material-icons link">keyboard_arrow_down</i>
-            <i v-show="show" @click="toggle" class="material-icons link">keyboard_arrow_up</i>
+            <i v-show="!show" @click="toggle" class="material-icons link">keyboard_arrow_up</i>
+            <i v-show="show" @click="toggle" class="material-icons link">keyboard_arrow_down</i>
             <span @click="toggle" class="link user_name">{{ user.firstname }}</span>
             <i @click="showConfirmPopup" class="material-icons link" :title="translate('all.logout')">exit_to_app</i>
             <transition name="user_win"> 
@@ -12,7 +12,7 @@
                         <h3 class="user_win_title">{{ translate('all.my.info') }}</h3>
                     </div>
                     <div >
-                        <div class="table">
+                        <div class="table table_space_5">
                             <div class="row">
                                 <div class="cell bold">{{ label.login }}</div>
                                 <div class="cell">{{ user.login }}</div>
@@ -27,16 +27,16 @@
                             </div>
                             <div v-show="user.admin" class="row">
                                 <i class="material-icons small-icon">group</i>
-                                Administrator
+                                {{ label.admin }}
                             </div>
                         </div>
                     </div>
                 </div>
             </transition>
         </div>
-        <div v-else class="user_login">
+        <div v-else class="user_login v_align_container">
             <!-- USER NOT AUHTHENTICATED -->
-            <button :id="id+'_login_btn'" @click="toggle" class="link vertical_align_container">
+            <button :id="id+'_login_btn'" @click="toggle" class="link v_align_container">
                 <i class="material-icons small-icon">person</i>
                 <span :id="id+'_login_btn_label'" class="m_left_5">{{ translate('all.connection') }}</span>
                 <i v-show="!show" class="material-icons small-icon">keyboard_arrow_down</i>
@@ -53,14 +53,14 @@
                         <input v-model="login" :placeholder="placeholder.login" class="login"></input>
                         <input v-model="password" type="password" :placeholder="placeholder.password" class="password"></input>
                     </div>
-                    <button @click="auth" class="user_valid default_button vertical_align_container">
+                    <button @click="auth" class="user_valid default_button v_align_container">
                         {{ translate('all.valid') }}
                         <i class="material-icons m_left_5 small-icon">check</i>
                     </button>
                 </div>
             </transition>
         </div>
-        <confirm-modal-popup :data.sync="confirm_popup_data" @close="closeConfirmPopup" @confirm="confirmLogout"></confirm-modal-popup>
+        <modal-popup-confirm :data.sync="popup_confirm" @close="closeConfirmPopup" @confirm="confirmLogout"></modal-popup-confirm>
     </div>
 </template>
 
@@ -68,7 +68,7 @@
     import ajax from '../../../utils/ajax.js'
     import * as action_types from '../../../vuex/actions.js'
     import event from '../../../utils/event.js'
-    import ConfirmModalPopup from './ConfirmModalPopup.vue'
+    import ModalPopupConfirm from './ModalPopupConfirm.vue'
 
     export default {
         props : [ 'id' ],
@@ -93,11 +93,13 @@
                     login : this.translate('all.placeholder.login'),
                     password : this.translate('all.placeholder.password')
                 },
-                confirm_popup_data : {
+                popup_confirm : {
                     show : false,
                     text : this.translate('all.confirm.logout'),
-                    label_confirm : this.translate('all.yes'),
-                    label_cancel : this.translate('all.no'),
+                    label : {
+                        confirm : this.translate('all.yes'),
+                        cancel : this.translate('all.no')
+                    }
                 }
             }
         },
@@ -185,10 +187,10 @@
                 this.closeConfirmPopup()
             },
             showConfirmPopup() {
-                this.confirm_popup_data.show = true
+                this.popup_confirm.show = true
             },
             closeConfirmPopup() {
-                this.confirm_popup_data.show = false
+                this.popup_confirm.show = false
             },
             setTranslation() {
                 this.title = this.translate('all.input.credential')
@@ -197,9 +199,9 @@
                 this.label.login = this.translate('all.login')
                 this.label.hide = this.translate('all.hide')
                 this.label.admin = this.translate('all.administrator')
-                this.confirm_popup_data.text = this.translate('all.confirm.logout')
-                this.confirm_popup_data.label_confirm = this.translate('all.yes')
-                this.confirm_popup_data.label_cancel = this.translate('all.no')
+                this.popup_confirm.text = this.translate('all.confirm.logout')
+                this.popup_confirm.label.confirm = this.translate('all.yes')
+                this.popup_confirm.label.cancel = this.translate('all.no')
                 this.placeholder.login = this.translate('all.placeholder.login')
                 this.placeholder.password = this.translate('all.placeholder.password')
             }
@@ -215,6 +217,6 @@
                 })
             })
         },
-        components: { ConfirmModalPopup }
+        components: { ModalPopupConfirm }
     }
 </script>

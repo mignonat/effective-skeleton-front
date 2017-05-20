@@ -4,7 +4,9 @@ const events = {
     POPUP_ERROR : 'POPUP_ERROR',
     LOCALE_CHANGE : 'LOCALE_CHANGE',
     LOGIN : 'LOGIN',
-    LOGOUT : 'LOGOUT'
+    LOGOUT : 'LOGOUT',
+    MENU_OPENED : 'MENU_OPENED',
+    MENU_CLOSED : 'MENU_CLOSED'
 }
 
 const methods = {

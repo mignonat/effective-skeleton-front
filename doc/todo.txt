@@ -1,6 +1,5 @@
-- update node version on ubuntu
-- Set customizable id on different components for testing
 - Check login error message ...
+- Change menu translations when locale switch
 - Manage auth problem => error code bad token in ajax call and automatic logout
 - Implement a selenium test case changing the locale
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive

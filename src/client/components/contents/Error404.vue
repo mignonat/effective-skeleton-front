@@ -1,3 +1,3 @@
 <template>
-    <div>La page demandé est introuvable !</div>
+    <div class="content">La page demandé est introuvable !</div>
 </template>

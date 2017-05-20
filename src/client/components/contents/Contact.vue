@@ -1,3 +1,3 @@
 <template>
-    <div>Page des contacts</div>
+    <div class="content">Page des contacts</div>
 </template>
