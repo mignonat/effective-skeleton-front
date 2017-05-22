@@ -48,15 +48,15 @@
                         <h3 class="user_win_title">{{ title }}</h3>
                         <i class="material-icons link user_win_hide" :title="label.hide" @click="hide()">keyboard_arrow_up</i>
                     </div>
-                    <div>
-                        <div v-show="hasError" class="error">{{ this.displayError() }}</div>
-                        <input v-model="login" :placeholder="placeholder.login" class="login"></input>
-                        <input v-model="password" type="password" :placeholder="placeholder.password" class="password"></input>
-                    </div>
-                    <button @click="auth" class="user_valid default_button v_align_container">
+                    <div class="table table_space_5">
+                        <div v-show="hasError" class="row error">{{ this.displayError() }}</div>
+                        <input v-model="login" :placeholder="placeholder.login" class="login row"></input>
+                        <input v-model="password" type="password" :placeholder="placeholder.password" class="password row"></input>
+                        <button @click="auth" class="row user_valid default_button v_align_container">
                         {{ translate('all.valid') }}
-                        <i class="material-icons m_left_5 small-icon">check</i>
-                    </button>
+                            <i class="material-icons m_left_5 small-icon">check</i>
+                        </button>
+                    </div>
                 </div>
             </transition>
         </div>

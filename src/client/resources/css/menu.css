@@ -15,16 +15,15 @@
 [id^='menu.'] {
     display: block;
     line-height: var(--menu-height);
-    width: var(--menu-width);
     height: var(--menu-height);
     background-color: var(--menu-background);
     border-bottom: 1px solid var(--layout-color);
 }
 
 [id^='menu.'].active {
-   -webkit-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
--moz-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+    -webkit-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+    -moz-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+    box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
 }
 
 [id^='menu.'] > span {
