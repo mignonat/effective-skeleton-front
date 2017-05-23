@@ -1,36 +1,34 @@
 <template>
-    <transition name="menu">
-        <div v-show="show" class="menus noselect">
-            <template v-for="menu in menus">
-                <template v-if="!menu.admin || (menu.admin && isAdmin)">
-                    <router-link :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active">
+    <div :id="id" class="menus noselect">
+        <template v-for="menu in menus">
+            <template v-if="!menu.admin || (menu.admin && isAdmin)">
+                <router-link :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active">
+                    <span>{{ menu.label }}</span>
+                </router-link>
+                <div v-else class="menu-group">
+                    <div @click="menu.open=!menu.open" :id="menu.id" class="link">
+                        <i v-show="!menu.open" class="material-icons small-icon">keyboard_arrow_up</i>
+                        <i v-show="menu.open" class="material-icons small-icon">keyboard_arrow_down</i>
                         <span>{{ menu.label }}</span>
-                    </router-link>
-                    <div v-else class="menu-group">
-                        <div @click="menu.open=!menu.open" :id="menu.id" class="link">
-                            <i v-show="!menu.open" class="material-icons small-icon">keyboard_arrow_up</i>
-                            <i v-show="menu.open" class="material-icons small-icon">keyboard_arrow_down</i>
-                            <span>{{ menu.label }}</span>
-                        </div>
-                        <transition v-for="child in menu.children" v-bind:key="child.id" name="menu_item">
-                            <router-link :id="child.id" v-show="menu.open" :to="child.router_link" active-class="active" class="menu-item">
-                                <span>{{ child.label }}</span>
-                            </router-link>
-                        </transition>
                     </div>
-                </template>
+                    <transition v-for="child in menu.children" v-bind:key="child.id" name="menu_item">
+                        <router-link :id="child.id" v-show="menu.open" :to="child.router_link" active-class="active" class="menu-item">
+                            <span>{{ child.label }}</span>
+                        </router-link>
+                    </transition>
+                </div>
             </template>
-        </div>
-    </transition>
+        </template>
+    </div>
 </template>
 
 <script>
     import event from '../../../utils/event.js'
 
     export default {
+        props : [ 'id' ],
         data : function() { 
             return {
-                show : true,
                 isAdmin : this.isAdmin(),
                 menus : [
                     {
@@ -95,10 +93,14 @@
                     this.isAdmin = false
                 })
                 event.on(event.MENU_OPENED, () => {
-                    this.show = true
+                    console.log(this.id)
+                    document.getElementById(this.id).style.width = '180px'
+                    document.getElementById('main_panel').style.marginLeft = '180px'
                 })
                 event.on(event.MENU_CLOSED, () => {
-                    this.show = false
+                    console.log(this.id)
+                    document.getElementById(this.id).style.width = '0'
+                    document.getElementById('main_panel').style.marginLeft= '0'
                 })
             })
         }

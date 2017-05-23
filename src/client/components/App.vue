@@ -1,14 +1,12 @@
 <template>
-    <div id="app" class="table">
-        <div class="row">
-            <menus class="cell"></menus>
-            <div class="cell right-panel">
-                <top-bar></top-bar>
-                <div class="router-content top-inset-shadow">
-                    <transition name="slide_router">
-                        <router-view></router-view>
-                    </transition>
-                </div>
+    <div id="app">
+        <menus id="sidenav"></menus>
+        <div id="main_panel">
+            <top-bar></top-bar>
+            <div class="router-content top-inset-shadow">
+                <transition name="slide_router">
+                    <router-view></router-view>
+                </transition>
             </div>
         </div>
         <modal-popup :data.sync="error_popup_data" @close="closeErrorPopup"></modal-popup>

@@ -6,14 +6,20 @@
 
 .menus {
     width: var(--menu-width);
-    min-width: var(--menu-width);
-    max-width: var(--menu-width);
     text-decoration: none;
     background-color: var(--layout-color);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: var(--animation-speed);
 }
 
 [id^='menu.'] {
     display: block;
+    min-width: var(--menu-width);
     line-height: var(--menu-height);
     height: var(--menu-height);
     background-color: var(--menu-background);
@@ -47,24 +53,14 @@
     margin-left: 40px;
 }
 
-.menu-enter-active {
-    animation: menu_expand 0.4s ease-in-out;
-    -webkit-animation: menu_expand 0.4s ease-in-out ;
-}
-
-.menu-leave-active {
-    animation: menu_reduce 0.4s ease-in-out;
-    -webkit-animation: menu_reduce 0.4s ease-in-out ;
-}
-
 .menu_item-enter-active {
-    animation: accordion_in 0.4s ease-in-out;
-    -webkit-animation: accordion_in 0.4s ease-in-out ;
+    animation: accordion_in var(--animation-speed) ease-in-out;
+    -webkit-animation: accordion_in var(--animation-speed) ease-in-out ;
 }
 
 .menu_item-leave-active {
-    animation: accordion_out 0.4s ease-in-out;
-    -webkit-animation: accordion_out 0.4s ease-in-out ;
+    animation: accordion_out var(--animation-speed) ease-in-out;
+    -webkit-animation: accordion_out var(--animation-speed) ease-in-out ;
 }
 
 /******************* CLOSE BUTTON *******************/

@@ -51,6 +51,6 @@
 }
 
 .modal-enter-active {
-    animation: scale-up 0.4s ease-in-out;
-    -webkit-animation: scale-up 0.4s ease-in-out ;
+    animation: scale-up var(--animation-speed) ease-in-out;
+    -webkit-animation: scale-up var(--animation-speed) ease-in-out ;
 }
