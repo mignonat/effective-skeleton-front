@@ -1,5 +1,5 @@
-- Menu don't use vuex transition => https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sidenav_push
-- Manage responsive design
+- Create a list component : where we can set pagination number, the properties to display (ex firstname lastname of users), possibility to hide/show column, sort, etc ...
+- Manage responsive design (at least for top bar)
 - Check login error message ...
 - Manage auth problem => error code bad token in ajax call and automatic logout
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive

@@ -11,7 +11,9 @@
     "start-front-prod": "gulp start-front-prod",
     "start-front-dev": "gulp start-front-dev",
     "start-back-prod": "gulp start-back-prod",
-    "start-back-dev": "gulp start-back-dev"
+    "start-back-dev": "gulp start-back-dev",
+    "webpack-dev": "gulp webpack-dev",
+    "webpack-prod": "gulp webpack-prod"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",

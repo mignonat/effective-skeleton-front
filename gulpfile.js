@@ -13,59 +13,48 @@ const gulpSync = require('gulp-sync')(gulp)
 
 /****************** CONST ******************/
 
-const dir_env = '.'
 const dir_client_translation = './src/client/vuex/modules/locale/translations'
 const dir_asset_src = './src/client/resources/*'
 const dir_asset_dest = './public'
 const file_front_app = './src/server/front/app.js'
 const file_back_app = './src/server/back/app.js'
-const file_env = 'env.properties'
 
 const nodemon_common_ignore = [
     // nodemon is only listening for .js and .vue files
-    'gulpfile.js', 'node-modules', 'public', 'src/test'
+    'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
 ]
 const files_front_nodemon_ignore = nodemon_common_ignore.concat([
     'src/server/back/'
 ])
 const files_back_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/client/'
+    'src/server/front/'
 ])
-
-const setEnvFn = (server, env) => {
-    return gulp.src('./env/'+server+'-'+env+'.properties')
-        .pipe(rename(file_env))
-        .pipe(gulp.dest(dir_env))
-} 
 
 /****************** BACK PROD ******************/
 
-gulp.task('back-set-env-prod', () => {
-    return setEnvFn('back','prod')
-})
-
 gulp.task('back-run-forever', () => {
     return new (forever.Monitor)(file_back_app, {
-            'env': { NODE_ENV : 'production' },
+            'env': {
+                NODE_ENV : 'production', 
+                APP_TYPE : 'back'
+            },
             'killTree': true, //kills the entire child process tree on `exit`
         })
         .start()
 })
 
-gulp.task('start-back-prod', gulpSync.sync([ 
-    'back-set-env-prod',
+gulp.task('start-back-prod', gulpSync.sync([
     'back-run-forever'
 ]))
 
 /****************** FRONT PROD ******************/
 
-gulp.task('front-set-env-prod', () => {
-    return setEnvFn('front','prod')
-})
-
 gulp.task('front-run-forever', () => {
     return new (forever.Monitor)(file_front_app, {
-            'env': { NODE_ENV : 'production' },
+            'env': { 
+                NODE_ENV : 'production', 
+                APP_TYPE : 'front'
+            },
             'killTree': true, //kills the entire child process tree on `exit`
             //'max': 2 //remove it, for testing purpose
         })
@@ -73,63 +62,64 @@ gulp.task('front-run-forever', () => {
 })
 
 gulp.task('start-front-prod', gulpSync.sync([
-    'front-set-env-prod',
     'front-translations',
-    'webpack',
+    'webpack-prod',
     'front-run-forever'
 ]))
 
 /****************** BACK DEV ******************/
-
-gulp.task('back-set-env-dev', () => {
-    return setEnvFn('back','dev')
-})
 
 gulp.task('back-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug', //node-inspector & node --inspect
             script : file_back_app,
             ext : 'js',
-            env : { 'NODE_ENV': 'development' },
+            env : { 
+                'NODE_ENV': 'development', 
+                'APP_TYPE': 'back' 
+            },
             ignore : files_back_nodemon_ignore
         })
 })
 
 gulp.task('start-back-dev', gulpSync.sync([ 
-    'back-set-env-dev',
     'back-run-nodemon'
 ]))
 
 /****************** FRONT DEV ******************/
 
-gulp.task('front-set-env-dev', () => {
-    return setEnvFn('front','dev')
-})
-
 gulp.task('front-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug',
+            verbose: true,
             script : file_front_app,
             ext : 'js vue css html',
-            env : { 'NODE_ENV': 'development' },
-            tasks : [ 
-                'webpack' 
-            ],
+            env : { 
+                'NODE_ENV': 'development', 
+                'APP_TYPE': 'front' 
+            },
+            tasks : [ /* 'webpack' */ ],
             ignore : files_front_nodemon_ignore
         })
 })
 
 gulp.task('start-front-dev', gulpSync.sync([ 
-    'front-set-env-dev',
     'front-translations',
-    'webpack',
+    'webpack-dev',
     'front-run-nodemon'
 ]))
 
 /****************** WEBPACK ******************/
 
-gulp.task('webpack', () => {
-    const webpackConfig = require('./webpack.config.js')
+gulp.task('webpack-dev', () => {
+    const webpackConfig = require('./webpack-config/dev.js')
+    return gulp.src('src/client/app.js')
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest('public/assets'));
+})
+
+gulp.task('webpack-prod', () => {
+    const webpackConfig = require('./webpack-config/prod.js')
     return gulp.src('src/client/app.js')
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('public/assets'));

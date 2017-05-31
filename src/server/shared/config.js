@@ -3,6 +3,10 @@ const reader = require('properties-reader')
 
 const cache = {}
 
+const app_type = process.env.APP_TYPE=='back'? 'back' : 'front'
+const env_type = process.env.NODE_ENV=='production'? 'prod' : 'dev'
+const env_file_path = __dirname+'/../../../env/'+app_type+'-'+env_type+'.properties'
+
 const exportFn = {
     get : (key) => {
         if (cache.hasOwnProperty(key))
@@ -18,7 +22,7 @@ const exportFn = {
     },
     getInPropertiesFile : (key) => {
         try {
-            const properties = reader(__dirname+'/../../../env.properties')
+            const properties = reader(env_file_path)
             if (properties)
                 return properties.get(key)
         } catch (ex) {
