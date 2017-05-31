@@ -20,6 +20,22 @@ app.use(bodyParser.json())
 
 const routes = express.Router(); 
 
+const err401Fn = (res, err) => {
+    log.error('app.err401Fn : '+err)
+    res.status(401).json({
+        success: false,
+        message: 'Unauthorized : provide authentication token'
+    })
+}
+
+const err403Fn = (res, err) => {
+    log.error('app.err403Fn : '+err)
+    res.status(403).json({
+        success: false,
+        message: 'Forbidden : you are not allowed to access the resource'
+    })
+}
+
 const err500Fn = (res, err) => {
     log.error('app.err500Fn : '+err)
     res.status(500).json({
@@ -68,11 +84,10 @@ routes.post('/authenticate', (req, res) => {
                 })
             })
             .catch((isFailedAuth) => { // auth failed
-                if (!isFailedAuth) res.status(500)
-                res.json({
-                    success: false,
-                    message: isFailedAuth? 'Authentication failed' : 'Internal server error'
-                })
+                if (!isFailedAuth)
+                    err500Fn(res, '/authenticate server error')
+                else
+                    err401Fn(res, 'Authentication failed')
             })
     } catch (ex) { err500Fn(res, 'authenticate'+ex) }
 })
@@ -86,13 +101,10 @@ routes.use((req, res, next) => {
                 next() // Data will be available in req.decoded._doc
             })
             .catch((isInvalidToken) => { // failed validation
-                if (isInvalidToken) res.status(403)
-                else res.status(500)
-
-                return res.send({
-                    success: false,
-                    message: isInvalidToken? 'Token validation failed' : 'Internal server error'
-                })
+                if (isInvalidToken) 
+                    err403Fn(res, 'auth.validToken failed')
+                else 
+                    err500Fn(res, 'auth.validToken error')
             })
     } catch (ex) { err500Fn(res, 'app.use : '+ex) }
 })

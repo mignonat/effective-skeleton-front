@@ -93,12 +93,10 @@
                     this.isAdmin = false
                 })
                 event.on(event.MENU_OPENED, () => {
-                    console.log(this.id)
                     document.getElementById(this.id).style.width = '180px'
                     document.getElementById('main_panel').style.marginLeft = '180px'
                 })
                 event.on(event.MENU_CLOSED, () => {
-                    console.log(this.id)
                     document.getElementById(this.id).style.width = '0'
                     document.getElementById('main_panel').style.marginLeft= '0'
                 })

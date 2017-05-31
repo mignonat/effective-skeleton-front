@@ -1,3 +1,5 @@
+import store from '../vuex/store.js'
+
 const defaultTimeOut = 2000
 
 export default {
@@ -20,7 +22,7 @@ export default {
                 xhr.open('POST', url, true)
                 xhr.timeout = defaultTimeOut
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-                //get token in the token util then xmlhttp.setRequestHeader('x-access-token', token);
+                xhr.setRequestHeader('x-access-token', store.getters.getToken());
                 xhr.onload = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         const result = JSON.parse(xhr.responseText)

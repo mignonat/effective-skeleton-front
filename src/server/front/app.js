@@ -32,6 +32,22 @@ app.use(compression())
 
 const publicDir = path.join(__dirname+'/../../../public/')
 
+const err401Fn = (res, err) => {
+    log.error('app.err401Fn : '+err)
+    res.status(401).json({
+        success: false,
+        message: 'Unauthorized : provide authentication token'
+    })
+}
+
+const err403Fn = (res, err) => {
+    log.error('app.err403Fn : '+err)
+    res.status(403).json({
+        success: false,
+        message: 'Forbidden : you are not allowed to access the resource'
+    })
+}
+
 const err500Fn = (res, err) => {
     log.error('app.err500Fn : '+err)
     res.status(500).json({
@@ -39,6 +55,8 @@ const err500Fn = (res, err) => {
         message: 'Internal server error'
     })
 }
+
+
 
 const homePageFn = (req, res) => {
     try {
@@ -98,10 +116,12 @@ app.post('/authenticate', (req, res) => {
 app.post('/users', (req, res) => {
     try {
         const token = req.body.token || req.query.token || req.headers['x-access-token']
-        if (!token)
-            err500Fn(res, 'No token provided')
+        if (!token) {
+            err401Fn(res, 'No token provided')
+            return ;
+        }
 
-        options = {
+        const options = {
             method: 'GET',
             uri: api_url+'users',
             headers: { 
@@ -115,7 +135,42 @@ app.post('/users', (req, res) => {
                 if (result.success) {
                     res.json({
                         success : true,
-                        data : result.users
+                        users : result.users
+                    })
+                } else
+                    err401Fn(res, result.error)
+            })
+            .catch((err) => {
+                err500Fn(res, err)
+            })
+    } catch(ex) {
+        err500Fn(res, ex)
+    }
+})
+
+app.delete('/user', (req, res) => {
+    try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token']
+        if (!token) {
+            err500Fn(res, 'No token provided')
+            return ;
+        }
+
+        const options = {
+            method: 'GET',
+            uri: api_url+'users',
+            headers: { 
+                'User-Agent': 'Request-Promise',
+                'x-access-token': token
+            },
+            json: true
+        }
+        request(options)
+            .then((result) => {
+                if (result.success) {
+                    res.json({
+                        success : true,
+                        users : result.users
                     })
                 } else
                     err500Fn(res, result.error)

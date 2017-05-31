@@ -1,13 +1,13 @@
 :root {
     --menu-width : 180px ;
     --menu-height: 42px ;
-    --menu-background : #41e5f4 ;
+    --menu-background : var(--main-color) ;
 }
 
 .menus {
     width: var(--menu-width);
     text-decoration: none;
-    background-color: var(--layout-color);
+    background-color: var(--secondary-color);
     position: fixed;
     z-index: 1;
     top: 0;
@@ -23,7 +23,7 @@
     line-height: var(--menu-height);
     height: var(--menu-height);
     background-color: var(--menu-background);
-    border-bottom: 1px solid var(--layout-color);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 [id^='menu.'].active {
@@ -45,7 +45,7 @@
 }
 
 .menu-item {
-    background-color: var(--layout-color);
+    background-color: var(--secondary-color);
     border-bottom: 1px solid var(--menu-background);
 }
 

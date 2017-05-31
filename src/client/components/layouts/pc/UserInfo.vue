@@ -12,7 +12,7 @@
                         <h3 class="user_win_title">{{ translate('all.my.info') }}</h3>
                     </div>
                     <div >
-                        <div class="table table_space_5">
+                        <div class="table">
                             <div class="row">
                                 <div class="cell bold">{{ label.login }}</div>
                                 <div class="cell">{{ user.login }}</div>
@@ -48,7 +48,7 @@
                         <h3 class="user_win_title">{{ title }}</h3>
                         <i class="material-icons link user_win_hide" :title="label.hide" @click="hide()">keyboard_arrow_up</i>
                     </div>
-                    <div class="table table_space_5">
+                    <div class="table">
                         <div v-show="hasError" class="row error">{{ this.displayError() }}</div>
                         <input v-model="login" :placeholder="placeholder.login" class="login row"></input>
                         <input v-model="password" type="password" :placeholder="placeholder.password" class="password row"></input>

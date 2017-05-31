@@ -35,9 +35,27 @@
     }
 }
 
-/*************** FADE IN ***************/
+/*************** FADE ***************/
 
 @keyframes fade_in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade_out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes page_fade_in {
     0% {
         opacity: 0;
     }
