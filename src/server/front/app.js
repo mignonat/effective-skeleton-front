@@ -82,7 +82,7 @@ app.post('/authenticate', (req, res) => {
     try {
         const params = req.body
         if (!params || !params.login || !params.password) {
-            err500Fn(res, 'incorrect params')
+            err401Fn(res, 'incorrect params')
             return
         }
         options = {
@@ -106,7 +106,10 @@ app.post('/authenticate', (req, res) => {
                 })
             })
             .catch((err) => {
-                err500Fn(res, err)
+                if (err.statusCode == 401)
+                    err401Fn(res, 'Authentication failed')
+                else
+                    err500Fn(res, err)
             })
     } catch(ex) {
         err500Fn(res, ex)
@@ -114,41 +117,6 @@ app.post('/authenticate', (req, res) => {
 })
 
 app.post('/users', (req, res) => {
-    try {
-        const token = req.body.token || req.query.token || req.headers['x-access-token']
-        if (!token) {
-            err401Fn(res, 'No token provided')
-            return ;
-        }
-
-        const options = {
-            method: 'GET',
-            uri: api_url+'users',
-            headers: { 
-                'User-Agent': 'Request-Promise',
-                'x-access-token': token
-            },
-            json: true
-        }
-        request(options)
-            .then((result) => {
-                if (result.success) {
-                    res.json({
-                        success : true,
-                        users : result.users
-                    })
-                } else
-                    err401Fn(res, result.error)
-            })
-            .catch((err) => {
-                err500Fn(res, err)
-            })
-    } catch(ex) {
-        err500Fn(res, ex)
-    }
-})
-
-app.delete('/user', (req, res) => {
     try {
         const token = req.body.token || req.query.token || req.headers['x-access-token']
         if (!token) {
@@ -178,6 +146,14 @@ app.delete('/user', (req, res) => {
             .catch((err) => {
                 err500Fn(res, err)
             })
+    } catch(ex) {
+        err500Fn(res, ex)
+    }
+})
+
+app.delete('/user', (req, res) => {
+    try {
+        //todo
     } catch(ex) {
         err500Fn(res, ex)
     }
