@@ -16,11 +16,13 @@
 
 .user_win {
     position: absolute ;
+    z-index: 10000;
     width : auto;
     right: 12px;
     top: var(--top-height);
     border: 1px solid var(--border-color);
     padding : 10px ;
+    background-color: white;
 }
 
 .user_win > div {

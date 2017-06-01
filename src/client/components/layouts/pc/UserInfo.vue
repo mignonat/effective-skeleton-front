@@ -128,31 +128,31 @@
                         password : this.password//'petasse@31'
                     })
                     .then((data) => {
-                        if (data.success) {
-                            if (!data.token || !data.user)
-                                return this.setErrorMessages(true, false, false)
-                                
-                            this.$store
-                                .dispatch(action_types.SET_TOKEN, data)
-                                .then(() => {
-                                    this.setErrorMessages(false, false, false)
-                                    this.password = undefined
-                                    this.user = data.user
-                                    this.show = false
-                                })
-                                .catch((ex) => {
-                                    console.error('user.auth.setToken : error, '+ex)
-                                    this.setErrorMessages(false, true, false)
-                                })
-                        } else {
-                            console.error(data.message)
-                            this.setErrorMessages(true, false, false)
-                        }
+                        if (!data.token || !data.user)
+                            return this.setErrorMessages(false, true, false)
+
+                        this.$store
+                            .dispatch(action_types.SET_TOKEN, data)
+                            .then(() => {
+                                this.setErrorMessages(false, false, false)
+                                this.password = undefined
+                                this.user = data.user
+                                this.show = false
+                            })
+                            .catch((ex) => {
+                                console.error('user.auth.setToken : error, '+ex)
+                                this.setErrorMessages(false, true, false)
+                            })
                     })
                     .catch((err) => {
-                        //TODO check err :  server | timeout | internal
-                        console.log('user.authenticate : error '+err)
-                        this.setErrorMessages(false, false, true)
+                        switch (err.status) {
+                            case 401 :
+                                this.setErrorMessages(true, false, false)
+                                break
+                            default : //other like 500
+                                this.setErrorMessages(false, false, true)
+                                console.log('user.authenticate : error '+err.message)
+                        }
                     })
             },
             logout() {
