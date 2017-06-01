@@ -51,15 +51,14 @@ const processSafeRoute = (req, res, routeFn) => {
     } catch (ex) { err500Fn(res, ex) }
 }
 
-/*
-routes.get('/setup', function(req, res) {
+/*routes.get('/setup', function(req, res) {
     // create a sample user
     const User = user_model.getUserSchema()
     const me = new User({ 
         login: 'mignonat',
         firstname: 'Laurent',
         lastname: 'Mignonat',
-        password: 'petasse@31',
+        password: 'mignonat',
         admin: true
     })
 
@@ -67,11 +66,27 @@ routes.get('/setup', function(req, res) {
     me.save(function(err) {
         if (err) throw err
 
-        log.info('User saved successfully')
+        log.info('User me saved successfully')
         res.json({ success: true })
     })
-})
-*/
+
+    const flo = new User({ 
+        login: 'bonacina',
+        firstname: 'Florian',
+        lastname: 'Bonacina',
+        password: 'bonacina',
+        admin: true
+    })
+
+    // save the sample user
+    flo.save(function(err) {
+        if (err) throw err
+
+        log.info('User flo saved successfully')
+        res.json({ success: true })
+    })
+})*/
+
 
 routes.post('/authenticate', (req, res) => {
     try {
