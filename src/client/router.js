@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import event from './utils/event.js'
+
 import Home from './components/contents/Home.vue'
 import AdminUsers from './components/contents/admin/Users.vue'
 import AdminGroups from './components/contents/admin/Groups.vue'
@@ -11,16 +13,49 @@ import Error404 from './components/contents/Error404.vue'
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const homeRoute = { 
+    name : 'home',
+    path: '/home', 
+    component: Home 
+}
+
+const router = new VueRouter({
     mode    : 'history',
     base    : '',
     routes  : [
-        { path: '/home', component: Home },
-        { path: '/admin/users', component: AdminUsers },
-        { path: '/admin/groups', component: AdminGroups },
-        { path: '/contact', component: Contact },
-        { path: '/sample', component: Sample },
-        { path: '/error', component: ErrorUnknown },
-        { path: '/error-404', component: Error404 }
+        homeRoute,
+        { 
+            name : 'admin-users',
+            path: '/admin/users', 
+            component: AdminUsers
+        },{ 
+            name : 'admin-groups',
+            path: '/admin/groups', 
+            component: AdminGroups 
+        },{ 
+            name : 'contact',
+            path: '/contact', 
+            component: Contact 
+        },{ 
+            name : 'sample',
+            path: '/sample', 
+            component: Sample 
+        },{ 
+            name : 'error',
+            path: '/error', 
+            component: ErrorUnknown 
+        },{ 
+            name : 'error-404',
+            path: '/error-404', 
+            component: Error404 
+        }
     ]
 })
+
+// redirect on home page when user logout and was on an admin page
+event.on(event.LOGOUT, () => {
+    if (router.currentRoute.path && router.currentRoute.path.startsWith('/admin/'))
+        router.push(homeRoute)
+})
+
+export default router
