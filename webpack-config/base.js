@@ -18,15 +18,15 @@ module.exports = {
   module: {
     loaders: [{
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },{
         test: /\.vue$/,
-        loader: 'vue',
+        loader: 'vue-loader',
         exclude: /node_modules/
       },{ 
         test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|svg|woff2)$/, 
-        loader: "file?name=[name].[ext]"
+        loader: "file-loader?name=[name].[ext]"
       },{
         test: /\.css$/, 
         loader: "style-loader!css-loader",
@@ -38,5 +38,10 @@ module.exports = {
       from : assetsFromDir,
       to : assetsToDir
     }])
-  ]
+  ],
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  }
 }
