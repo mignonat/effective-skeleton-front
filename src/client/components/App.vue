@@ -14,9 +14,9 @@
 </template>
 
 <script>
-    import TopBar from './layouts/pc/TopBar.vue'
-    import Menus from './layouts/pc/Menus.vue'
-    import ModalPopup from './layouts/pc/ModalPopup.vue'
+    import TopBar from './layouts/TopBar.vue'
+    import Menus from './layouts/Menus.vue'
+    import ModalPopup from './layouts/ModalPopup.vue'
     import event from '../utils/event.js'
 
     export default {

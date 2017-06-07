@@ -16,8 +16,8 @@
 </template>
 
 <script>
-    import ModalPopup from '../layouts/pc/ModalPopup.vue'
-    import ModalPopupConfirm from '../layouts/pc/ModalPopupConfirm.vue'
+    import ModalPopup from '../layouts/ModalPopup.vue'
+    import ModalPopupConfirm from '../layouts/ModalPopupConfirm.vue'
     const closeImgUrl = require("file-loader!../../resources/img/close.png")
 
     export default {

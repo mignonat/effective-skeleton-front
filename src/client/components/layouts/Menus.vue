@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import event from '../../../utils/event.js'
+    import event from '../../utils/event.js'
 
     export default {
         props : [ 'id' ],

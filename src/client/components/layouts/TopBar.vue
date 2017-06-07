@@ -10,10 +10,10 @@
 </template>
 
 <script>
-    import SelectLocale from '../SelectLocale.vue'
+    import SelectLocale from './SelectLocale.vue'
     import UserInfo from './UserInfo.vue'
     import MenuButton from './MenuButton.vue'
-    import event from '../../../utils/event.js'
+    import event from '../../utils/event.js'
 
     export default {
         data : function() { 

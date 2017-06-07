@@ -65,9 +65,9 @@
 </template>
 
 <script>
-    import ajax from '../../../utils/ajax.js'
-    import * as action_types from '../../../vuex/actions.js'
-    import event from '../../../utils/event.js'
+    import ajax from '../../utils/ajax.js'
+    import * as action_types from '../../vuex/actions.js'
+    import event from '../../utils/event.js'
     import ModalPopupConfirm from './ModalPopupConfirm.vue'
 
     export default {

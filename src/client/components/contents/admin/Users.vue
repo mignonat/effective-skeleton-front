@@ -38,7 +38,7 @@
 <script>
     import event from '../../../utils/event.js'
     import ajax from '../../../utils/ajax.js'
-    import Loading from '../../layouts/pc/Loading.vue'
+    import Loading from '../../layouts/Loading.vue'
 
     export default {
         data : function() { return {
