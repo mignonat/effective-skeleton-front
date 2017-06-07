@@ -109,6 +109,13 @@ gulp.task('start-front-dev', gulpSync.sync([
     'front-run-nodemon'
 ]))
 
+/****************** BACK & FRONT PROD ******************/
+
+gulp.task('start-both-prod', gulpSync.sync([
+    'start-back-prod',
+    'start-front-dev'
+]))
+
 /****************** WEBPACK ******************/
 
 gulp.task('webpack-dev', () => {

@@ -38,10 +38,10 @@ module.exports = {
       from : assetsFromDir,
       to : assetsToDir
     }])
-  ],
+  ]/*,
   resolve: {
     alias: {
       vue: 'vue/dist/vue.js'
     }
-  }
+  }*/
 }
