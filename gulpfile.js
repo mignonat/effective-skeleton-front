@@ -113,7 +113,7 @@ gulp.task('start-front-dev', gulpSync.sync([
 
 gulp.task('start-both-prod', gulpSync.sync([
     'start-back-prod',
-    'start-front-dev'
+    'start-front-prod'
 ]))
 
 /****************** WEBPACK ******************/
