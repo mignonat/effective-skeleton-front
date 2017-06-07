@@ -3,13 +3,13 @@ import VueRouter from 'vue-router';
 
 import event from './utils/event.js'
 
-import Home from './components/contents/Home.vue'
-import AdminUsers from './components/contents/admin/Users.vue'
-import AdminGroups from './components/contents/admin/Groups.vue'
-import Contact from './components/contents/Contact.vue'
-import Sample from './components/contents/Sample.vue'
-import ErrorUnknown from './components/contents/Error.vue'
-import Error404 from './components/contents/Error404.vue'
+import Home from './component/content/Home.vue'
+import AdminUsers from './component/content/admin/Users.vue'
+import AdminGroups from './component/content/admin/Groups.vue'
+import Contact from './component/content/Contact.vue'
+import Sample from './component/content/Sample.vue'
+import ErrorUnknown from './component/content/Error.vue'
+import Error404 from './component/content/Error404.vue'
 
 Vue.use(VueRouter)
 

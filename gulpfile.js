@@ -119,14 +119,14 @@ gulp.task('start-both-prod', gulpSync.sync([
 /****************** WEBPACK ******************/
 
 gulp.task('webpack-dev', () => {
-    const webpackConfig = require('./webpack-config/dev.js')
+    const webpackConfig = require('./webpack/dev.js')
     return gulp.src('src/client/app.js')
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('public/assets'));
 })
 
 gulp.task('webpack-prod', () => {
-    const webpackConfig = require('./webpack-config/prod.js')
+    const webpackConfig = require('./webpack/prod.js')
     return gulp.src('src/client/app.js')
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('public/assets'));

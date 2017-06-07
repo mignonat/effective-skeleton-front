@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const config = require('../shared/config.js')
-const user_model = require(config.getAbsRootPath()+'/src/server/back/models/user.js')
+const user_model = require(config.getAbsRootPath()+'/src/server/back/model/user.js')
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 

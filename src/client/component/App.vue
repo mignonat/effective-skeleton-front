@@ -9,14 +9,14 @@
                 </transition>
             </div>
         </div>
-        <modal-popup :data.sync="error_popup_data" @close="closeErrorPopup"></modal-popup>
+        <popup :data.sync="error_popup_data" @close="closeErrorPopup"></popup>
     </div>
 </template>
 
 <script>
-    import TopBar from './layouts/TopBar.vue'
-    import Menus from './layouts/Menus.vue'
-    import ModalPopup from './layouts/ModalPopup.vue'
+    import TopBar from './layout/TopBar.vue'
+    import Menus from './layout/Menus.vue'
+    import Popup from './layout/popup/Popup.vue'
     import event from '../utils/event.js'
 
     export default {
@@ -38,7 +38,7 @@
                 this.error_popup_data.show = true
             }
         },  
-        components : { TopBar, Menus, ModalPopup },
+        components : { TopBar, Menus, Popup },
         mounted: function () {
             const me = this
             this.$nextTick(function () { // here the document is ready

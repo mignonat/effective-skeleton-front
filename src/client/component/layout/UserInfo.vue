@@ -60,7 +60,7 @@
                 </div>
             </transition>
         </div>
-        <modal-popup-confirm :data.sync="popup_confirm" @close="closeConfirmPopup" @confirm="confirmLogout"></modal-popup-confirm>
+        <confirm-popup :data.sync="popup_confirm" @close="closeConfirmPopup" @confirm="confirmLogout"></confirm-popup>
     </div>
 </template>
 
@@ -68,7 +68,7 @@
     import ajax from '../../utils/ajax.js'
     import * as action_types from '../../vuex/actions.js'
     import event from '../../utils/event.js'
-    import ModalPopupConfirm from './ModalPopupConfirm.vue'
+    import ConfirmPopup from './popup/ConfirmPopup.vue'
 
     export default {
         props : [ 'id' ],
@@ -231,6 +231,6 @@
                 })
             })
         },
-        components: { ModalPopupConfirm }
+        components: { ConfirmPopup }
     }
 </script>

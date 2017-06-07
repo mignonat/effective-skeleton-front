@@ -7,17 +7,17 @@
             <img src="../../resources/img/close.png"></src>
         </div>
         <br/><br/>
-        <modal-popup :data.sync="popup" @close="close"></modal-popup>
+        <popup :data.sync="popup" @close="close"></popup>
         <button @click="popup.show = true">Open message popup</button>
         <br/><br/>
-        <modal-popup-confirm :data.sync="popup_confirm" @close="closeConfirm" @confirm="confirm"></modal-popup-confirm>
+        <confirm-popup :data.sync="popup_confirm" @close="closeConfirm" @confirm="confirm"></confirm-popup>
         <button @click="popup_confirm.show = true">Open confirm popup</button>
     </div>
 </template>
 
 <script>
-    import ModalPopup from '../layouts/ModalPopup.vue'
-    import ModalPopupConfirm from '../layouts/ModalPopupConfirm.vue'
+    import Popup from '../layout/popup/Popup.vue'
+    import ConfirmPopup from '../layout/popup/ConfirmPopup.vue'
     const closeImgUrl = require("file-loader!../../resources/img/close.png")
 
     export default {
@@ -50,6 +50,6 @@
                 this.popup_confirm.show = false
             }
         },
-        components : { ModalPopup, ModalPopupConfirm }
+        components : { Popup, ConfirmPopup }
     }
 </script>

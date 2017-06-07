@@ -8,7 +8,7 @@ const dbUtils = require(config.getAbsRootPath()+'/src/server/shared/db-utils.js'
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
 const auth = require(config.getAbsRootPath()+'/src/server/back/auth.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
-const user_model = require(config.getAbsRootPath()+'/src/server/back/models/user.js')
+const user_model = require(config.getAbsRootPath()+'/src/server/back/model/user.js')
 
 const app = express()
 

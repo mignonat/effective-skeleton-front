@@ -53,12 +53,12 @@
                                 id : 'menu.admin.groups',
                                 router_link : '/admin/groups',
                                 label : this.translate('menu.admin.groups')
-                            },{
-                                id : 'menu.sample',
-                                router_link : '/sample',
-                                label : this.translate('menu.sample')
                             }
                         ]
+                    },{
+                        id : 'menu.sample',
+                        router_link : '/sample',
+                        label : this.translate('menu.sample')
                     }
                 ]
             }
