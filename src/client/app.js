@@ -5,7 +5,7 @@ import App from './components/App.vue'
 import css from './resources/css/main.css' // managed by webpack
 
 // Route components will be rendered inside <router-view>
-new Vue({
+export default new Vue({
     store, // inject store to all children
     router,
     el : 'app',

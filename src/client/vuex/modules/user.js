@@ -14,7 +14,6 @@ var token_time = preference.get(preference.TOKEN_TIME)
 if (!isTokenValid(token, token_time)) {
     token = undefined
     token_time = undefined
-    //TODO remove in localstorage
 } 
     
 const user = (!token)? undefined : preference.get(preference.USER)

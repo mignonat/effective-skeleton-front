@@ -1,25 +1,33 @@
 import store from '../vuex/store.js'
+import event from './event.js'
+import * as action_types from '../vuex/actions.js'
 
 const defaultTimeOut = 4000
+
+const translate = (key, params) => {
+    return store.getters.translate(key, params)
+}
+
 const isTokenValid = () => {
-    if (store.getters.isTokenValid) {
+    if (!store.getters.isTokenValid) {
         store.dispatch(action_types.INVALIDATE_TOKEN)
             .then(() => {
-                //TODO CONTINUE HERE
-                event.emit(event.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.logout') ]);
+                event.emit(event.POPUP_ERROR, [ translate('all.error'), translate('all.error.token.timeout') ])
             })
             .catch((err) => {
-                console.error('Ajax.isTokenValid error : '+err)
+                console.error('Ajax.isTokenValid | error while invalidate token '+err)
             })
+        return false
     }
+    return true
 }
 
 export default {
     post (url, params) {
         return new Promise((resolve, reject) => {
             try {
-                if (!isTokenValid()) {
-
+                const token = store.getters.getToken()
+                if (token && !isTokenValid()) {
                     reject({ success : false, status : -1, message : 'token invalid' })
                     return
                 }
@@ -51,7 +59,7 @@ export default {
 
                 xhr.open('POST', url, true)
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-                xhr.setRequestHeader('x-access-token', store.getters.getToken());
+                xhr.setRequestHeader('x-access-token', token);
                 xhr.onload = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         resolve(JSON.parse(xhr.responseText))
@@ -64,7 +72,7 @@ export default {
                 xhr.send(encodedParams)
             } catch (ex) {
                 console.error('ajax.post | '+ex)
-                reject({ success : false, status : 0, message : 'internal error'})
+                reject({ success : false, status : -1, message : 'internal error'})
             }
         })
     }

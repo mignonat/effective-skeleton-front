@@ -81,7 +81,6 @@
                 this.label.del = this.translate('all.delete')
             },
             loadUsers() {
-                
                 this.loading = true
                 const me = this
                 setTimeout(() => {

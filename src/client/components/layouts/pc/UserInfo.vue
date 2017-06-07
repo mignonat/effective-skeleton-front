@@ -159,14 +159,17 @@
                 this.$store
                     .dispatch(action_types.INVALIDATE_TOKEN)
                     .then(() => {
-                        this.setErrorMessages(false, false, false)
-                        this.user = undefined
-                        this.show = false
+                        this.setDataToLogoutState()
                     })
                     .catch((ex) => {
                         console.error('user.auth.logout : error, '+ex)
                         event.emit(event.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.logout') ]);
                     })
+            },
+            setDataToLogoutState() {
+                this.setErrorMessages(false, false, false)
+                this.user = undefined
+                this.show = false
             },
             displayError() {
                 if (this.error_credential)
@@ -214,6 +217,9 @@
                 })
                 event.on(event.LOCALE_CHANGE, () => {
                     this.setTranslation()
+                })
+                event.on(event.LOGOUT, () => {
+                    this.setDataToLogoutState()
                 })
             })
         },
