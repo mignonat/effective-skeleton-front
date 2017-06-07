@@ -14,7 +14,7 @@ const gulpSync = require('gulp-sync')(gulp)
 /****************** CONST ******************/
 
 const dir_client_translation = './src/client/vuex/modules/locale/translations'
-const dir_asset_src = './src/client/resources/*'
+const dir_asset_src = './src/client/resource/*'
 const dir_asset_dest = './public'
 const file_front_app = './src/server/front/app.js'
 const file_back_app = './src/server/back/app.js'

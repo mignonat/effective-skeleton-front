@@ -4,7 +4,7 @@
         <br/><br/>
         <div>
             <label>Test import image webpack</label>
-            <img src="../../resources/img/close.png"></src>
+            <img src="../../resource/img/close.png"></src>
         </div>
         <br/><br/>
         <popup :data.sync="popup" @close="close"></popup>
@@ -18,7 +18,7 @@
 <script>
     import Popup from '../layout/popup/Popup.vue'
     import ConfirmPopup from '../layout/popup/ConfirmPopup.vue'
-    const closeImgUrl = require("file-loader!../../resources/img/close.png")
+    const closeImgUrl = require("file-loader!../../resource/img/close.png")
 
     export default {
         data : function() { return {

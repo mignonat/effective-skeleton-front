@@ -3,7 +3,7 @@ const path = require('path')
 
 const entryFilePath = './src/client/app.js'
 const appDir = path.join(path.resolve('.'), '/public/assets') // let as an absolute path
-const assetsFromDir = './src/client/resources/html' // relative to this webpack config file path
+const assetsFromDir = './src/client/resource/html' // relative to this webpack config file path
 const assetsToDir = '../' // relative to appDir
 
 module.exports = {

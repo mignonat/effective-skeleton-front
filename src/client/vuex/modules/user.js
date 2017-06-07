@@ -1,7 +1,7 @@
-import preference from '../../utils/preferences.js'
+import preference from '../../tool/preferences.js'
 import * as action_types from '../actions.js'
 import * as mutation_types from '../mutations.js'
-import event from '../../utils/event.js'
+import event from '../../tool/event.js'
 
 /**************** STATE ****************/
 

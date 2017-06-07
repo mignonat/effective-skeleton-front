@@ -1,10 +1,10 @@
 import locale_fr from './translations/fr.js'
 import locale_en from './translations/en.js'
-import preference from '../../../utils/preferences.js'
-import urlParam from '../../../utils/url-params.js'
+import preference from '../../../tool/preferences.js'
+import urlParam from '../../../tool/url-params.js'
 import * as action_types from '../../actions.js'
 import * as mutation_types from '../../mutations.js'
-import event from '../../../utils/event.js'
+import event from '../../../tool/event.js'
 
 /**************** STATE ****************/
 

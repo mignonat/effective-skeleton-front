@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import event from './utils/event.js'
+import event from './tool/event.js'
 
 import Home from './component/content/Home.vue'
 import AdminUsers from './component/content/admin/Users.vue'

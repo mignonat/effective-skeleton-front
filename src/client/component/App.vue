@@ -17,7 +17,7 @@
     import TopBar from './layout/TopBar.vue'
     import Menus from './layout/Menus.vue'
     import Popup from './layout/popup/Popup.vue'
-    import event from '../utils/event.js'
+    import event from '../tool/event.js'
 
     export default {
         data : function() { return {

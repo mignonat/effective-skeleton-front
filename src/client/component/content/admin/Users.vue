@@ -36,8 +36,8 @@
 </template>
 
 <script>
-    import event from '../../../utils/event.js'
-    import ajax from '../../../utils/ajax.js'
+    import event from '../../../tool/event.js'
+    import ajax from '../../../tool/ajax.js'
     import Loading from '../../layout/Loading.vue'
 
     export default {
