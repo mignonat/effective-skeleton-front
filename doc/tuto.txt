@@ -1,1 +1,2 @@
 Load asynch components : https://webpack.github.io/docs/code-splitting.html
+Webpack optimization : https://webpack.github.io/docs/optimization.html

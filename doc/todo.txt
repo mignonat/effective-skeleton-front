@@ -1,29 +1,24 @@
-- userinfo : 3 labels are directly in the template => put them on the label object
-- Manage auth problem => error code bad token in ajax call and automatic logout- Create a list component : where we can set pagination number, the properties to display (ex firstname lastname of users), possibility to hide/show column, sort, etc ...
-- Define global actions (admin/users, admin/users/add, admin/users/delete, etc ...) to put on a user or group
-- Manage responsive design (at least for top bar)
-- Remove npm global install dependencies for deployment
+- Define global actions (admin/users, admin/users/add, admin/users/delete, etc ...) to put on a user or group- Add a screen loader like in the Designer
+- Mongodb : how to reconnect automatically, put constraints on schema
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
-- All input : test params injection with owasp in ajax util for all parameters
-- Possibility to set an icon for popup : warning, info, error
-- Block browser < IE8
-- HTML5 app manifest
-- Webpack smart caching
-- Vendors and uglify (not removed licenses)
-- Modify internet speed with chrome and add a loader screen like in the Designer
-- Set up error code protocol between front and vue
-- Use template in Vue files ??? for popup layout
-- Nodemon : remove src/back from front and vice versa
-- https://webpack.github.io/docs/optimization.html
-- use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/
-- Manage session : store the token in local storage ==> induce running front and back
-- Create a separate interface for application administration, in another tab
-- Possibility to change properties and restart the app
-- Translate all back-end message => how to determine the locale ...
+- Crypt user password => bcrypt
 - Securize token => not use a simple hash, put in the token an object without user password
-- Create a simple admin interface : show log, manage user/group, maintenance mode, launch batch, etc ...
-- Set unit tests and selenium
-- Mongodb : how to reconnect automatically
-- Scalable asynch notification & alert system => to define more precisely the need ...
+- Translate all back-end message => how to determine the locale ...
+- Create a list component : pagination, properties to display, hide/show column, sort, etc ...
+- Possibility to set an icon for popup : warning, info, error
+- Manage responsive design (at least for top bar)
+- Try to remove npm global install dependencies for deployment
+- All input : test params injection with owasp in ajax util for all parameters
+- Define minimum version of browser then check & block old browser
+- Webpack : smart caching, vendors and uglify (not removed licenses), HTML5 app manifest
+- Use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/
+- Possibility to change properties and restart the app
+- Make selenium and unit test for each functionality
 - Paypal payments
-- Send mail : https://nodemailer.com/about/ 
+- Send emails : https://nodemailer.com/about/
+- Scalable asynch notification & alert system => to define more precisely the need ...
+
+- Manage Users & groups
+- Consult logs file (and search on it)
+- Schedule and manage maintenance mode
+- Schedule and manage batch
