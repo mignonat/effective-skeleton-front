@@ -2,6 +2,7 @@
 - Manage auth problem => error code bad token in ajax call and automatic logout- Create a list component : where we can set pagination number, the properties to display (ex firstname lastname of users), possibility to hide/show column, sort, etc ...
 - Define global actions (admin/users, admin/users/add, admin/users/delete, etc ...) to put on a user or group
 - Manage responsive design (at least for top bar)
+- Remove npm global install dependencies for deployment
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
 - All input : test params injection with owasp in ajax util for all parameters
 - Possibility to set an icon for popup : warning, info, error
