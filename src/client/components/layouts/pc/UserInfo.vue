@@ -5,11 +5,11 @@
             <i v-show="!show" @click="toggle" class="material-icons link">keyboard_arrow_up</i>
             <i v-show="show" @click="toggle" class="material-icons link">keyboard_arrow_down</i>
             <span @click="toggle" class="link user_name">{{ user.firstname }}</span>
-            <i @click="showConfirmPopup" class="material-icons link" :title="translate('all.logout')">exit_to_app</i>
+            <i @click="showConfirmPopup" class="material-icons link" :title="label.logout">exit_to_app</i>
             <transition name="user_win"> 
                 <div v-show="show" @click="toggle" class="user_win link">
                     <div>
-                        <h3 class="user_win_title">{{ translate('all.my.info') }}</h3>
+                        <h3 class="user_win_title">{{ label.info }}</h3>
                     </div>
                     <div >
                         <div class="table">
@@ -38,7 +38,7 @@
             <!-- USER NOT AUHTHENTICATED -->
             <button :id="id+'_login_btn'" @click="toggle" class="link v_align_container">
                 <i class="material-icons small-icon">person</i>
-                <span :id="id+'_login_btn_label'" class="m_left_5">{{ translate('all.connection') }}</span>
+                <span :id="id+'_login_btn_label'" class="m_left_5">{{ label.connection }}</span>
                 <i v-show="!show" class="material-icons small-icon">keyboard_arrow_down</i>
                 <i v-show="show" class="material-icons small-icon">keyboard_arrow_up</i>
             </button>
@@ -53,7 +53,7 @@
                         <input v-model="login" :placeholder="placeholder.login" class="login row"></input>
                         <input v-model="password" type="password" :placeholder="placeholder.password" class="password row"></input>
                         <button @click="auth" class="row user_valid default_button v_align_container">
-                        {{ translate('all.valid') }}
+                            {{ label.valid }}
                             <i class="material-icons m_left_5 small-icon">check</i>
                         </button>
                     </div>
@@ -87,7 +87,11 @@
                     lastname : this.translate('all.lastname'),
                     login : this.translate('all.login'),
                     hide : this.translate('all.hide'),
-                    admin : this.translate('all.administrator')
+                    admin : this.translate('all.administrator'),
+                    logout : this.translate('all.logout'),
+                    info : this.translate('all.my.info'),
+                    valid : this.translate('all.valid'),
+                    connection : this.translate('all.connection')
                 },
                 placeholder : {
                     login : this.translate('all.placeholder.login'),
@@ -202,6 +206,10 @@
                 this.label.login = this.translate('all.login')
                 this.label.hide = this.translate('all.hide')
                 this.label.admin = this.translate('all.administrator')
+                this.label.logout = this.translate('all.logout')
+                this.label.info = this.translate('all.my.info')
+                this.label.valid = this.translate('all.valid')
+                this.label.connection = this.translate('all.connection')
                 this.popup_confirm.text = this.translate('all.confirm.logout')
                 this.popup_confirm.label.confirm = this.translate('all.yes')
                 this.popup_confirm.label.cancel = this.translate('all.no')
