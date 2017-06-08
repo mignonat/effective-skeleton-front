@@ -1,3 +1,7 @@
+:root {
+    --background-color-logo:#52c9ff;
+    --color-app-text:#52c9ff;
+}
 div#sidenav {
     height: 100%;
     width: 250px;
@@ -14,4 +18,43 @@ div#sidenav {
 }
 .link-menu:hover{
     background-color: var( --menu-background-hover);
+}
+#app-logo{
+    width: 100%;
+    height:var(--top-height);
+    border-bottom:1px solid var(--menu-border-color);
+}
+#logo{
+    background :url("");
+    height: var(--top-height);
+    width: var(--top-height);
+    background-color:var(--background-color-logo);
+    display: inline-block;
+}
+.icon-defaultdesigner2:before{
+    font-size: 3rem;
+    line-height: 1.5;
+    margin-left: 0.6rem;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgb(0, 94, 135);
+}
+#text-logo{
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:var(--color-app-text);
+    display: inline-block;
+    position: absolute;
+    top: 10;
+    margin-left: 20px;
+}
+#text-sub-logo{
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: normal;
+    color:var(--color-app-text);
+    display: inline-block;
+    position: absolute;
+    top: 40;
+    margin-left: 20px;
 }

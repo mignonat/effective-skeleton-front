@@ -1,5 +1,16 @@
 <template>
     <div :id="id" class="menus noselect closed-main-menu">
+        <div id="app-logo">
+            <div id="logo" class="icon-defaultdesigner2">
+
+            </div>
+            <div id="text-logo">
+                Real App
+            </div>
+            <div id="text-sub-logo">
+                By Effective
+            </div>
+        </div>
         <template v-for="menu in menus">
             <template v-if="!menu.admin || (menu.admin && isAdmin)">
                 <router-link :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active" class="link-menu">
@@ -59,6 +70,10 @@
                         id : 'menu.sample',
                         router_link : '/sample',
                         label : this.translate('menu.sample')
+                    },{
+                        id : 'menu.sampleWithLeftPanel',
+                        router_link : '/samplewithleftpanel',
+                        label : this.translate('menu.samplewithpanel')
                     }
                 ]
             }

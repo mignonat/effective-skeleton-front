@@ -1,7 +1,7 @@
 <template>
     <div class="top_bar noselect">
         <menu-button></menu-button>
-        <span class="top_bar_left_title m_left_10">{{ app_name }}</span>
+        <span class="top_bar_left_title m_left_10"></span>
         <div class="top_bar_right v_align_container">
             <select-locale id="top_bar_locale"></select-locale>
             <user-info id="top_bar_user"></user-info>
