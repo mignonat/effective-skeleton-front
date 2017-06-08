@@ -1,19 +1,19 @@
 <template>
-    <div :id="id" class="menus noselect">
+    <div :id="id" class="menus noselect closed-main-menu">
         <template v-for="menu in menus">
             <template v-if="!menu.admin || (menu.admin && isAdmin)">
-                <router-link :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active">
-                    <span>{{ menu.label }}</span>
+                <router-link :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active" class="link-menu">
+                    <span class="menu-text-link">{{ menu.label }}</span>
                 </router-link>
                 <div v-else class="menu-group">
                     <div @click="menu.open=!menu.open" :id="menu.id" class="link">
                         <i v-show="!menu.open" class="material-icons small-icon">keyboard_arrow_up</i>
                         <i v-show="menu.open" class="material-icons small-icon">keyboard_arrow_down</i>
-                        <span>{{ menu.label }}</span>
+                        <span class="menu-text-link">{{ menu.label }}</span>
                     </div>
                     <transition v-for="child in menu.children" v-bind:key="child.id" name="menu_item">
                         <router-link :id="child.id" v-show="menu.open" :to="child.router_link" active-class="active" class="menu-item">
-                            <span>{{ child.label }}</span>
+                            <span class="sub-menu-text-link">{{ child.label }}</span>
                         </router-link>
                     </transition>
                 </div>
@@ -93,11 +93,11 @@
                     this.isAdmin = false
                 })
                 event.on(event.MENU_OPENED, () => {
-                    document.getElementById(this.id).style.width = '180px'
-                    document.getElementById('main_panel').style.marginLeft = '180px'
+                    document.getElementById(this.id).classList.remove("closed-main-menu")
+                    document.getElementById('main_panel').style.marginLeft = '250px'
                 })
                 event.on(event.MENU_CLOSED, () => {
-                    document.getElementById(this.id).style.width = '0'
+                    document.getElementById(this.id).classList.add("closed-main-menu")
                     document.getElementById('main_panel').style.marginLeft= '0'
                 })
             })

@@ -1,7 +1,13 @@
 :root {
-    --menu-width : 180px ;
-    --menu-height: 42px ;
-    --menu-background : var(--main-color) ;
+    --menu-width : 250px ;
+    --menu-height: 70px ;
+    --menu-background : #f9f9f9 ;
+    --menu-background-hover : #f4fbff ;
+    --menu-background-selected : #dcf4ff ;
+    --menu-background-selected-border: #5dcdff;
+    --menu-border-color:#eaeaea;
+    --menu-item-background:#fff;
+    --menu-link-color:#37474f;
 }
 
 .menus {
@@ -19,17 +25,15 @@
 
 [id^='menu.'] {
     display: block;
-    min-width: var(--menu-width);
     line-height: var(--menu-height);
     height: var(--menu-height);
     background-color: var(--menu-background);
-    border-bottom: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--menu-border-color);
 }
 
 [id^='menu.'].active {
-    -webkit-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
-    -moz-box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
-    box-shadow: inset 1px 0px 17px -2px rgba(88,62,173,0.59);
+    background: var(--menu-background-selected);
+    border-right: 5px solid var(--menu-background-selected-border);
 }
 
 [id^='menu.'] > span {
@@ -45,8 +49,8 @@
 }
 
 .menu-item {
-    background-color: var(--secondary-color);
-    border-bottom: 1px solid var(--menu-background);
+    background-color: var(--menu-item-background);
+    border-bottom: 1px solid var(--menu-border-color);
 }
 
 .menu-item > span {
@@ -68,9 +72,6 @@
 .menu_button {
     width: 30px;
     height: 23px;
-    position: absolute;
-    top: 9px;
-    left: 10px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -80,32 +81,51 @@
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
+    display: inline-block;
+    margin-top: 24px;
+    margin-left: 30px;
 }
 
 .menu_button span {
-    display: block;
+   display: block;
     position: absolute;
-    height: 4px;
-    width: 100%;
-    background: var(--menu-background);
+    height: 3px;
+    width: 23px;
+    background: #999999;
     border-radius: 9px;
     opacity: 1;
     left: 0;
-}
-
-.menu_button span {
-    display: block;
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    background: var(--menu-background);
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: var(--animation-speed) ease-in-out;
+    -moz-transition: var(--animation-speed) ease-in-out;
+    -o-transition: var(--animation-speed) ease-in-out;
+    transition: var(--animation-speed) ease-in-out;
 }
 
 .menu_button span:nth-child(1) {
   top: 0px;
+}
+.menu_button.open span:nth-child(3) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 10px;
+    left: 4px;
+}
+.menu_button.open span:nth-child(2) {
+    display:none;
+}
+.menu_button.open span:nth-child(1) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 10px;
+    left: 4px;
 }
 
 .menu_button span:nth-child(2) {
@@ -115,7 +135,7 @@
 .menu_button span:nth-child(3) {
   top: 18px;
 }
-
+/*
 .menu_button.open {
     -webkit-transform: rotate(-180deg);
     -moz-transform: rotate(-180deg);
@@ -125,4 +145,15 @@
     -moz-transition: .5s ease-in-out;
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
+}
+*/
+.menu-text-link{
+    font-family: Roboto, Lato, Arial, Helvetica, sans-serif;
+    font-size: 0.97rem;
+    color:var(--menu-link-color);
+}
+.sub-menu-text-link{
+    font-family: Roboto, Lato, Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+    color:var(--menu-link-color);
 }

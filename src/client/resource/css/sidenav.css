@@ -1,0 +1,17 @@
+div#sidenav {
+    height: 100%;
+    width: 250px;
+    border-right: 1px solid #cccccc;
+    background-color: var( --menu-background);
+    transition: var(--animation-speed);
+    z-index: 11;
+}
+.closed-main-menu{
+    width: 0px!important;
+}
+.link-menu{
+    background-color: var( --menu-background);
+}
+.link-menu:hover{
+    background-color: var( --menu-background-hover);
+}

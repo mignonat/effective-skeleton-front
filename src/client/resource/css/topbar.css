@@ -1,14 +1,19 @@
 :root {
-    --top-height: 42px;
+    --top-height: 70px;
 }
 
 .top_bar {
     position: relative ;
     line-height: var(--top-height);
     width: 100% ;
-    height: var(--top-height) ;
+    height: var(--top-height);
     padding: 0px ;
-    background-color: var(--secondary-color);
+    -webkit-box-shadow: 0 2px 3px 0 #c6cacc;
+    -o-box-shadow: 0 2px 3px 0 #c6cacc;
+    box-shadow: 0 2px 3px 0 #c6cacc;
+    background-color: white;
+    display: inline-flex;
+    z-index: 10;
 }
 
 .top_bar:hover {
@@ -16,14 +21,13 @@
 }
 
 .top_bar_left_title {
-    position: absolute;
-    left: 40px;
-    display: inline-block;
+    margin-left: 40px;
     font-size: larger;
     font-weight: bold;
     height: var(--top-height);
     line-height: var(--top-height);
     text-align: center;
+    display: inline-block;
 }
 
 .top_bar_right {

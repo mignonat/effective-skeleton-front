@@ -1,11 +1,12 @@
 :root {
-    --main-color : #41e5f4 ;
+    --main-color : #282e2f;
     --secondary-color: azure;
     --border-color: rgba(127, 63, 191, 0.3);
-    --animation-speed: 0.4s;
+    --animation-speed: 0.25s;
     --table-header-background : var(--main-color) ;
     --table-odd-background : var(--secondary-color) ;
     --table-even-background : white;
+    --bg-background-content : #f1f1f1;
 }
 
 * {
@@ -17,6 +18,7 @@ body {
     margin: 0px ;
     font-family: 'Lato', sans-serif;
     font-family: 'Raleway', sans-serif;
+    font-size: 16px;
 }
 
 textarea, input, button, select { 
@@ -141,12 +143,14 @@ a, a:-webkit-any-link {
 
 .content {
     width: calc (100% -20px) ;
+    height: calc(100% - 90px);
     padding: 10px;
+    background: var(--bg-background-content);
 }
 
 #main_panel {
     transition: margin-left var(--animation-speed);
-    margin-left: var(--menu-width);
+    margin-left: 0;
     position: relative;
 }
 
@@ -307,9 +311,7 @@ a, a:-webkit-any-link {
 /*********** INSET SHADOW *************/
 
 .top-inset-shadow {
-    -webkit-box-shadow: inset 0px 11px 12px -9px var(--border-color);
-    -moz-box-shadow: inset 0px 11px 12px -9px var(--border-color);
-    box-shadow: inset 0px 11px 12px -9px var(--border-color);
+   
 }
 
 .inset-shadow {
