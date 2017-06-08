@@ -28,24 +28,13 @@ const nativeTypes = {
 }
 
 const fieldTypes = {
-    id : {
-        fieldType : nativeTypes.string,
-        unique : true,
-        notNull : true
-    },
-    string : {
-        fieldType : nativeTypes.string
-    },
-    boolean : {
-        fieldType : nativeTypes.boolean
-    },
-    integer : {
-        fieldType : nativeTypes.number
-    },
-    float : {
-        fieldType : nativeTypes.number
-    },
-    locale : {
+    string  : { fieldType : nativeTypes.string },
+    boolean : { fieldType : nativeTypes.boolean },
+    integer : { fieldType : nativeTypes.number },
+    float   : { fieldType : nativeTypes.number },
+    array   : { fieldType : nativeTypes.array },
+    object  : { fieldType : nativeTypes.object },
+    locale  : {
         fieldType : nativeTypes.string,
         regex : new RegExp(/([f][r])|([e][n])/ig)
     },
@@ -61,11 +50,10 @@ const fieldTypes = {
         fieldType : nativeTypes.string,
         format : new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ig)
     },
-    array : {
-        fieldType : nativeTypes.array
-    },
-    object : {
-        fieldType : nativeTypes.object
+    id : {
+        fieldType : nativeTypes.string,
+        unique : true,
+        notNull : true
     },
     entity : {
         fieldType : nativeTypes.object
