@@ -1,9 +1,9 @@
-- Define global actions (admin/users, admin/users/add, admin/users/delete, etc ...) to put on a user or group- Add a screen loader like in the Designer
+- test all regex in model
 - Mongodb : how to reconnect automatically, put constraints on schema
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
 - Crypt user password => bcrypt
 - Securize token => not use a simple hash, put in the token an object without user password
-- Translate all back-end message => how to determine the locale ...
+- Translate all back-end message => how to get the locale ...
 - Create a list component : pagination, properties to display, hide/show column, sort, etc ...
 - Possibility to set an icon for popup : warning, info, error
 - Manage responsive design (at least for top bar)
