@@ -7,7 +7,6 @@ Init the project using git source repo :
 
 Install global dependencies :
 
-    npm install --global gulp-cli
     sudo npm install --global forever //https://www.npmjs.com/package/forever
     sudo npm install --global forever-monitor //https://www.npmjs.com/package/forever-monitor
 
