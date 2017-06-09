@@ -31,14 +31,14 @@
                 {{ label.empty }}
             </div>
         </transition>
-        <loading v-show="loading"></loading>
+        <loader v-show="loading"></loader>
     </div>
 </template>
 
 <script>
     import event from '../../../tool/event.js'
     import ajax from '../../../tool/ajax.js'
-    import Loading from '../../layout/Loading.vue'
+    import Loader from '../../layout/Loader.vue'
 
     export default {
         data : function() { return {
@@ -124,6 +124,6 @@
                 })
             })
         },
-        components: { Loading }
+        components: { Loader }
     }
 </script>
