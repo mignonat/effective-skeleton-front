@@ -1,6 +1,6 @@
 <template>
     <div class="top_bar noselect">
-        <menu-button></menu-button>
+        <side-nav-button></side-nav-button>
         <span class="top_bar_left_title m_left_10">{{ title }}</span>
         <div class="top_bar_right v_align_container">
             <select-locale id="top_bar_locale"></select-locale>
@@ -12,7 +12,7 @@
 <script>
     import SelectLocale from './SelectLocale.vue'
     import UserInfo from './UserInfo.vue'
-    import MenuButton from './MenuButton.vue'
+    import SideNavButton from './SideNavButton.vue'
     import event from '../../tool/event.js'
 
     export default {
@@ -30,7 +30,7 @@
                 this.title = this.translate(this.menuLabelKey+'.title')
             }
         },
-        components : { SelectLocale, UserInfo, MenuButton },
+        components : { SelectLocale, UserInfo, SideNavButton },
         mounted: function () {
             this.$nextTick(function () {
                 event.on(event.MENU_CHANGE, (menu) => {
