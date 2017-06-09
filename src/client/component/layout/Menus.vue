@@ -58,6 +58,18 @@
                         id : 'menu.admin.groups',
                         router_link : '/admin/groups',
                         label : this.translate('menu.admin.groups')
+                    },{
+                        id : 'menu.admin.logs',
+                        router_link : '/admin/logs',
+                        label : this.translate('menu.admin.logs')
+                    },{
+                        id : 'menu.admin.maintenance',
+                        router_link : '/admin/maintenance',
+                        label : this.translate('menu.admin.maintenance')
+                    },{
+                        id : 'menu.admin.batch',
+                        router_link : '/admin/batch',
+                        label : this.translate('menu.admin.batch')
                     }]
                 },{
                     id : 'menu.sample',
@@ -69,9 +81,9 @@
                         router_link : '/sample-component',
                         label : this.translate('menu.sample.component')
                     },{
-                        id : 'menu.sample.left.panel',
+                        id : 'menu.sample.contextual.panel',
                         router_link : '/sample-contextual-panel',
-                        label : this.translate('menu.sample.left.panel')
+                        label : this.translate('menu.sample.contextual.panel')
                     }]
                 }]
             }

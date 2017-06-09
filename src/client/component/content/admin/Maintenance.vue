@@ -1,5 +1,5 @@
 <template>
     <div class="content">
-        <span>Content of home page</span>
+        <div>Here we'll manage app maintenance</div>
     </div>
 </template>
