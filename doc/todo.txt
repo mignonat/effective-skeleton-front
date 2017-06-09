@@ -1,5 +1,5 @@
-- When activating a menu throw an event MENU_ACTIVATED, then listen and change label in top bar
 - Test all regex in model
+- Add sample page with all icons available
 - Mongodb : how to reconnect automatically, put constraints on schema
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
 - Crypt user password => bcrypt

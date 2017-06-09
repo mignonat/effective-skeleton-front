@@ -6,7 +6,8 @@ const events = {
     LOGIN : 'LOGIN',
     LOGOUT : 'LOGOUT',
     MENU_OPENED : 'MENU_OPENED',
-    MENU_CLOSED : 'MENU_CLOSED'
+    MENU_CLOSED : 'MENU_CLOSED',
+    MENU_CHANGE : 'MENU_CHANGE'
 }
 
 const methods = {

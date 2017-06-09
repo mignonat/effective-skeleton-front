@@ -1,5 +1,6 @@
 @import "../../../../node_modules/material-design-icons/iconfont/material-icons.css" ;
 @import "./layout.css" ;
+@import "../fonts/style.css" ;
 @import "./loader.css";
 @import "./menu.css" ;
 @import "./topbar.css" ;
