@@ -1,19 +1,13 @@
 <template>
     <div :id="id" class="menus noselect closed-main-menu">
         <div id="app-logo">
-            <div id="logo" class="icon-defaultdesigner2">
-
-            </div>
-            <div id="text-logo">
-                Real App
-            </div>
-            <div id="text-sub-logo">
-                By Effective
-            </div>
+            <div id="logo" class="icon-menu5"></div>
+            <div id="text-logo">{{ app_name }}</div>
+            <div id="text-sub-logo">{{ app_by }}</div>
         </div>
         <template v-for="menu in menus">
             <template v-if="!menu.admin || (menu.admin && isAdmin)">
-                <router-link :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active" class="link-menu">
+                <router-link v-on:click.native="notify(menu)" :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active" class="link-menu">
                     <span class="menu-text-link">{{ menu.label }}</span>
                 </router-link>
                 <div v-else class="menu-group">
@@ -23,7 +17,7 @@
                         <span class="menu-text-link">{{ menu.label }}</span>
                     </div>
                     <transition v-for="child in menu.children" v-bind:key="child.id" name="menu_item">
-                        <router-link :id="child.id" v-show="menu.open" :to="child.router_link" active-class="active" class="menu-item">
+                        <router-link v-on:click.native="notify(child)" :id="child.id" v-show="menu.open" :to="child.router_link" active-class="active" class="menu-item">
                             <span class="sub-menu-text-link">{{ child.label }}</span>
                         </router-link>
                     </transition>
@@ -41,41 +35,45 @@
         data : function() { 
             return {
                 isAdmin : this.isAdmin(),
-                menus : [
-                    {
-                        id : 'menu.home',
-                        router_link : '/home',
-                        label : this.translate('menu.home')
+                app_name : this.translate('app.name'),
+                app_by : this.translate('app.by'),
+                menus : [{
+                    id : 'menu.home',
+                    router_link : '/home',
+                    label : this.translate('menu.home')
+                },{
+                    id : 'menu.contact',
+                    router_link : '/contact',
+                    label : this.translate('menu.contact')
+                },{
+                    id : 'menu.admin',
+                    label : this.translate('menu.admin'),
+                    open : false,
+                    admin : true,
+                    children : [{
+                        id : 'menu.admin.users',
+                        router_link : '/admin/users',
+                        label : this.translate('menu.admin.users')
                     },{
-                        id : 'menu.contact',
-                        router_link : '/contact',
-                        label : this.translate('menu.contact')
+                        id : 'menu.admin.groups',
+                        router_link : '/admin/groups',
+                        label : this.translate('menu.admin.groups')
+                    }]
+                },{
+                    id : 'menu.sample',
+                    label : this.translate('menu.sample'),
+                    open : false,
+                    admin : true,
+                    children : [{
+                        id : 'menu.sample.component',
+                        router_link : '/sample-component',
+                        label : this.translate('menu.sample.component')
                     },{
-                        id : 'menu.admin',
-                        label : this.translate('menu.admin'),
-                        open : false,
-                        admin : true,
-                        children : [
-                            {
-                                id : 'menu.admin.users',
-                                router_link : '/admin/users',
-                                label : this.translate('menu.admin.users')
-                            },{
-                                id : 'menu.admin.groups',
-                                router_link : '/admin/groups',
-                                label : this.translate('menu.admin.groups')
-                            }
-                        ]
-                    },{
-                        id : 'menu.sample',
-                        router_link : '/sample',
-                        label : this.translate('menu.sample')
-                    },{
-                        id : 'menu.sampleWithLeftPanel',
-                        router_link : '/samplewithleftpanel',
-                        label : this.translate('menu.samplewithpanel')
-                    }
-                ]
+                        id : 'menu.sample.left.panel',
+                        router_link : '/sample-contextual-panel',
+                        label : this.translate('menu.sample.left.panel')
+                    }]
+                }]
             }
         },
         methods : {
@@ -93,6 +91,14 @@
                             child.label = this.translate(child.id)
                         })
                     }
+                })
+                this.app_name = this.translate('app.name')
+                this.app_by = this.translate('app.by')
+            },
+            notify(menu) {
+                event.emit(event.MENU_CHANGE, { 
+                    id : menu.id,
+                    router_link : menu.router_link
                 })
             }
         },

@@ -169,6 +169,11 @@ gulp.task('front-translation-prop-to-json', () => {
         .pipe(gulp.dest(dir_client_translation+'/json'))
 })
 
+gulp.task('translations-assets', gulpSync.sync([
+    'front-translations',
+    'webpack-dev'
+]))
+
 /****************** BACK TRANSLATIONS ******************/
 
 gulp.task('back-translations', gulpSync.sync([ '' ]))

@@ -1,3 +1,5 @@
+- Add sample page with all icons available
+- Script translation + assets
 - Define global actions (admin/users, admin/users/add, admin/users/delete, etc ...) to put on a user or group- Add a screen loader like in the Designer
 - Mongodb : how to reconnect automatically, put constraints on schema
 - User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive

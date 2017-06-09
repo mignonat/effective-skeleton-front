@@ -25,13 +25,12 @@ div#sidenav {
     border-bottom:1px solid var(--menu-border-color);
 }
 #logo{
-    background :url("");
     height: var(--top-height);
     width: var(--top-height);
     background-color:var(--background-color-logo);
     display: inline-block;
 }
-.icon-defaultdesigner2:before{
+#logo:before{
     font-size: 3rem;
     line-height: 1.5;
     margin-left: 0.6rem;

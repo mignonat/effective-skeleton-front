@@ -75,7 +75,8 @@ app.get('/', (req, res) => {
 })
 app.get('/home', homePageFn)
 app.get('/contact', homePageFn)
-app.get('/sample', homePageFn)
+app.get('/sample-component', homePageFn)
+app.get('/sample-contextual-panel', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
 app.post('/authenticate', (req, res) => {

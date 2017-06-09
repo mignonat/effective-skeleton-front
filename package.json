@@ -15,7 +15,8 @@
     "webpack-dev": "gulp webpack-dev",
     "webpack-prod": "gulp webpack-prod",
     "start": "gulp start-both-prod",
-    "assets" : "gulp webpack-dev"
+    "assets" : "gulp webpack-dev",
+    "translations" : "gulp translations-assets"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",
