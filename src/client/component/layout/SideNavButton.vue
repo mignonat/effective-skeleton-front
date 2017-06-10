@@ -13,7 +13,7 @@
     
     export default {
         data : function() { return {
-            open : true,
+            open : false,
             label : {
                 show : this.translate('all.show.main.menu'),
                 hide : this.translate('all.hide.main.menu')

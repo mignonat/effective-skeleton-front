@@ -1,3 +1,3 @@
 <template>
-    <div class="content">Page des contacts</div>
+    <div class="content">Here users will be able to contact us</div>
 </template>

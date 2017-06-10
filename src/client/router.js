@@ -6,8 +6,12 @@ import event from './tool/event.js'
 import Home from './component/content/Home.vue'
 import AdminUsers from './component/content/admin/Users.vue'
 import AdminGroups from './component/content/admin/Groups.vue'
+import AdminBatch from './component/content/admin/Batch.vue'
+import AdminMaintenance from './component/content/admin/Maintenance.vue'
+import AdminLogs from './component/content/admin/Logs.vue'
 import Contact from './component/content/Contact.vue'
-import Sample from './component/content/Sample.vue'
+import SampleComponent from './component/content/SampleComponent.vue'
+import SampleContextualPanel from './component/content/SampleContextualPanel.vue'
 import ErrorUnknown from './component/content/Error.vue'
 import Error404 from './component/content/Error404.vue'
 
@@ -28,23 +32,39 @@ const router = new VueRouter({
             name : 'admin-users',
             path: '/admin/users', 
             component: AdminUsers
-        },{ 
+        },{
             name : 'admin-groups',
             path: '/admin/groups', 
             component: AdminGroups 
-        },{ 
+        },{
+            name : 'admin-batch',
+            path: '/admin/batch', 
+            component: AdminBatch 
+        },{
+            name : 'admdddin-maintenance',
+            path: '/admin/maintenance', 
+            component: AdminMaintenance 
+        },{
+            name : 'admin-logs',
+            path: '/admin/logs', 
+            component: AdminLogs 
+        },{
             name : 'contact',
             path: '/contact', 
             component: Contact 
-        },{ 
-            name : 'sample',
-            path: '/sample', 
-            component: Sample 
-        },{ 
+        },{
+            name : 'sample-component',
+            path: '/sample-component', 
+            component: SampleComponent 
+        },{
+            name : 'sample-contextual-panel',
+            path: '/sample-contextual-panel', 
+            component: SampleContextualPanel 
+        },{
             name : 'error',
             path: '/error', 
             component: ErrorUnknown 
-        },{ 
+        },{
             name : 'error-404',
             path: '/error-404', 
             component: Error404 

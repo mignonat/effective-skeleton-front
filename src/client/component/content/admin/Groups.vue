@@ -1,3 +1,3 @@
 <template>
-    <div class="content">Page d'administration des groupes d'utilisateurs</div>
+    <div class="content">Here we'll manage the groups</div>
 </template>

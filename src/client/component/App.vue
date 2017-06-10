@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <menus id="sidenav"></menus>
+        <side-nav id="sidenav"></side-nav>
         <div id="main_panel">
             <top-bar></top-bar>
             <div class="router-content top-inset-shadow">
@@ -15,7 +15,7 @@
 
 <script>
     import TopBar from './layout/TopBar.vue'
-    import Menus from './layout/Menus.vue'
+    import SideNav from './layout/SideNav.vue'
     import Popup from './layout/popup/Popup.vue'
     import event from '../tool/event.js'
 
@@ -38,7 +38,7 @@
                 this.error_popup_data.show = true
             }
         },  
-        components : { TopBar, Menus, Popup },
+        components : { TopBar, SideNav, Popup },
         mounted: function () {
             const me = this
             this.$nextTick(function () { // here the document is ready
