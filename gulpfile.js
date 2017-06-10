@@ -30,7 +30,7 @@ const files_back_nodemon_ignore = nodemon_common_ignore.concat([
     'src/server/front/'
 ])
 
-/****************** BACK PROD ******************/
+/****************** FOREVER ******************/
 
 gulp.task('back-run-forever', () => {
     return new (forever.Monitor)(file_back_app, {
@@ -42,12 +42,6 @@ gulp.task('back-run-forever', () => {
         })
         .start()
 })
-
-gulp.task('start-back-prod', gulpSync.sync([
-    'back-run-forever'
-]))
-
-/****************** FRONT PROD ******************/
 
 gulp.task('front-run-forever', () => {
     return new (forever.Monitor)(file_front_app, {
@@ -61,13 +55,7 @@ gulp.task('front-run-forever', () => {
         .start()
 })
 
-gulp.task('start-front-prod', gulpSync.sync([
-    'front-translations',
-    'webpack-prod',
-    'front-run-forever'
-]))
-
-/****************** BACK DEV ******************/
+/****************** NODEMON ******************/
 
 gulp.task('back-run-nodemon', () => {
     return nodemon({
@@ -81,12 +69,6 @@ gulp.task('back-run-nodemon', () => {
             ignore : files_back_nodemon_ignore
         })
 })
-
-gulp.task('start-back-dev', gulpSync.sync([ 
-    'back-run-nodemon'
-]))
-
-/****************** FRONT DEV ******************/
 
 gulp.task('front-run-nodemon', () => {
     return nodemon({
@@ -103,18 +85,65 @@ gulp.task('front-run-nodemon', () => {
         })
 })
 
+/****************** START ******************/
+
+gulp.task('start-back-prod', gulpSync.sync([
+    'back-run-forever'
+]))
+
+gulp.task('start-front-prod', gulpSync.sync([
+    'front-translations',
+    'webpack-prod',
+    'front-run-forever'
+]))
+
+gulp.task('start-back-dev', gulpSync.sync([ 
+    'back-run-nodemon'
+]))
+
 gulp.task('start-front-dev', gulpSync.sync([ 
     'front-translations',
     'webpack-dev',
     'front-run-nodemon'
 ]))
 
-/****************** BACK & FRONT PROD ******************/
+gulp.task('start-both-prod-no-build', gulpSync.sync([
+    'back-run-forever',
+    'front-run-forever'
+]))
 
 gulp.task('start-both-prod', gulpSync.sync([
     'start-back-prod',
     'start-front-prod'
 ]))
+
+/****************** BUILD ******************/
+
+gulp.task('build', gulpSync.sync([
+    'front-translations',
+    'webpack-prod',
+]))
+
+/****************** LOG ******************/
+
+const fs = require('fs')
+const path = require('path')
+const dir = './log'
+const files = [
+    'app.back.log',
+    'app.front.log'
+]
+
+gulp.task('create-log-files', () => {
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir)
+    }
+    files.forEach((file) => {
+        if (!fs.existsSync(file)){
+            fs.writeFile(path.join(dir, file));
+        }
+    })
+})
 
 /****************** WEBPACK ******************/
 

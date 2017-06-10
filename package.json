@@ -1,7 +1,7 @@
 {
-  "name": "marie-project",
+  "name": "effective-project-skeleton",
   "version": "0.1.0",
-  "description": "Website of Marie-Charlotte Mignonat",
+  "description": "Skeleton of web application with minimum functionalities",
   "main": "public/html/index.html",
   "scripts": {
     "test-mac": "export PATH=$PATH:/Users/mignonat/project-marie/node_modules/chromedriver/bin/ ; node src/test/selenium/main.js",
@@ -14,7 +14,9 @@
     "start-back-dev": "gulp start-back-dev",
     "webpack-dev": "gulp webpack-dev",
     "webpack-prod": "gulp webpack-prod",
-    "start": "gulp start-both-prod",
+    "start": "gulp start-both-prod-no-build",
+    "build-and-start": "gulp start-both-prod",
+    "build" : "gulp build",
     "assets" : "gulp webpack-dev"
   },
   "author": "Mignonat Laurent",
