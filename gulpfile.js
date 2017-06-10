@@ -19,17 +19,6 @@ const dir_asset_dest = './public'
 const file_front_app = './src/server/front/app.js'
 const file_back_app = './src/server/back/app.js'
 
-const nodemon_common_ignore = [
-    // nodemon is only listening for .js and .vue files
-    'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
-]
-const files_front_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/back/'
-])
-const files_back_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/front/'
-])
-
 /****************** FOREVER ******************/
 
 gulp.task('back-run-forever', () => {
@@ -56,6 +45,17 @@ gulp.task('front-run-forever', () => {
 })
 
 /****************** NODEMON ******************/
+
+const nodemon_common_ignore = [
+    // nodemon is only listening for .js and .vue files
+    'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
+]
+const files_front_nodemon_ignore = nodemon_common_ignore.concat([
+    'src/server/back/'
+])
+const files_back_nodemon_ignore = nodemon_common_ignore.concat([
+    'src/server/front/'
+])
 
 gulp.task('back-run-nodemon', () => {
     return nodemon({
@@ -123,27 +123,6 @@ gulp.task('build', gulpSync.sync([
     'front-translations',
     'webpack-prod',
 ]))
-
-/****************** LOG ******************/
-
-const fs = require('fs')
-const path = require('path')
-const dir = './log'
-const files = [
-    'app.back.log',
-    'app.front.log'
-]
-
-gulp.task('create-log-files', () => {
-    if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir)
-    }
-    files.forEach((file) => {
-        if (!fs.existsSync(file)){
-            fs.writeFile(path.join(dir, file));
-        }
-    })
-})
 
 /****************** WEBPACK ******************/
 
