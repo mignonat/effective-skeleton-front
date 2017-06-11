@@ -1,30 +1,42 @@
 # effective-project-skeleton
 
-Init the project using git source repo :
+This project is an app skeleton, designed to be reusable. The whole project is written in Javascript. For scalability, backend and Frontend apps are splitted and can be run independently. Also, they are written with node js and express. Client side is written with vue js. Database used is mongodb.
+
+This project run fine with now : https://zeit.co/now
+You can test this app with a free mongodb here : https://mlab.com/welcome/
+
+
+Init the project :
 
     git clone https://github.com/mignonat/effective-project-skeleton
 
 
-Install global dependencies :
+Install global dependencies (for production) :
 
     sudo npm install --global forever //https://www.npmjs.com/package/forever
     sudo npm install --global forever-monitor //https://www.npmjs.com/package/forever-monitor
 
 
-Download and install all app dependencies in package.json :
+Download and install app dependencies :
 
     npm install
 
 
-Run :
+Build app :
 
-    npm run start            //run both front and back apps in prod env
-    npm run start-front-dev  //run front app in dev env (using nodemon)
-    npm run start-front-prod //run front app in prod env (using forever)
-    npm run start-back-dev   //run back app in dev env (using nodemon)
-    npm run start-back-prod  //run back app in prod env (using forever)
+    npm run build     //prod build. webpack + creation of translation files from .properties to js
+    npm run build-dev //same that build but for dev environement
+    npm run assets    //run developpement webpack script
 
-    npm run assets  //build resources assets using webpack
+Start app :
+
+    npm run start            //run front & back apps in prod env
+
+    npm run start-front-dev  //build and run front app in dev env (using nodemon)
+    npm run start-front-prod //build and run front app in prod env (using forever)
+
+    npm run start-back-dev   //build and run back app in dev env (using nodemon)
+    npm run start-back-prod  //build and run back app in prod env (using forever)
 
 
 Environement :

@@ -17,7 +17,7 @@
     "start": "gulp start-both-prod-no-build",
     "build-and-start": "gulp start-both-prod",
     "build" : "gulp build",
-    "translations" : "gulp translations-assets"
+    "build-dev" : "gulp build-dev"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",

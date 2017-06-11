@@ -124,6 +124,11 @@ gulp.task('build', gulpSync.sync([
     'webpack-prod',
 ]))
 
+gulp.task('build-dev', gulpSync.sync([
+    'front-translations',
+    'webpack-dev',
+]))
+
 /****************** WEBPACK ******************/
 
 gulp.task('webpack-dev', () => {
@@ -176,11 +181,6 @@ gulp.task('front-translation-prop-to-json', () => {
         .pipe(props2json({ minify : false }))
         .pipe(gulp.dest(dir_client_translation+'/json'))
 })
-
-gulp.task('translations-assets', gulpSync.sync([
-    'front-translations',
-    'webpack-dev'
-]))
 
 /****************** BACK TRANSLATIONS ******************/
 
