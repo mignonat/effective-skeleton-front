@@ -26,8 +26,8 @@ Download and install app dependencies :
 Build app :
 
     npm run build     //prod build. webpack + creation of translation files from .properties to js
-    npm run build-dev //same that build but for dev environement
-    npm run assets    //run developpement webpack script
+    npm run build-dev //same that build but for dev environment
+    npm run assets    //run development webpack script
 
 Start app :
 
