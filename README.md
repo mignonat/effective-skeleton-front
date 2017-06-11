@@ -2,8 +2,9 @@
 
 This project is an app skeleton, designed to be reusable. The whole project is written in Javascript. For scalability, backend and Frontend apps are splitted and can be run independently. Also, they are written with node js and express. Client side is written with vue js. Database used is mongodb.
 
-This project run fine with now : https://zeit.co/now
-You can test this app with a free mongodb here : https://mlab.com/welcome/
+This project run fine with now : https://zeit.co/now.
+
+You can test this app with a free mongodb here : https://mlab.com/welcome/.
 
 
 Init the project :
