@@ -12,6 +12,7 @@ import AdminLogs from './component/content/admin/Logs.vue'
 import Contact from './component/content/Contact.vue'
 import SampleComponent from './component/content/SampleComponent.vue'
 import SampleContextualPanel from './component/content/SampleContextualPanel.vue'
+import SampleForm from './component/content/Sampleform.vue'
 import ErrorUnknown from './component/content/Error.vue'
 import Error404 from './component/content/Error404.vue'
 
@@ -60,6 +61,10 @@ const router = new VueRouter({
             name : 'sample-contextual-panel',
             path: '/sample-contextual-panel', 
             component: SampleContextualPanel 
+        },{ 
+            name : 'sample-form',
+            path: '/sample-form', 
+            component: SampleForm 
         },{
             name : 'error',
             path: '/error', 

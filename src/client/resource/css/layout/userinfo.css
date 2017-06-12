@@ -15,14 +15,14 @@
 }
 
 .user_win {
-    position: absolute ;
+    position: absolute;
     z-index: 10000;
-    width : auto;
+    width: auto;
     right: 12px;
-    top: var(--top-height);
-    border: 1px solid var(--border-color);
-    padding : 10px ;
+    top: calc(var(--top-height) + 10px);
+    padding: 30px;
     background-color: white;
+    box-shadow: 0px 4px 8px 0px #cecece;
 }
 
 .user_win > div {
@@ -30,7 +30,11 @@
 }
 
 .user_win_title {
-    min-width : 210px ;
+    min-width: 210px;
+    margin-bottom: 20px;
+    font-family: Roboto, Arial, sans-serif;
+    text-transform: uppercase;
+    color: #54495e;
 }
 
 .user_win_hide {
@@ -57,4 +61,26 @@
 .user_win-enter-active {
     animation: fade_in_slide_down var(--animation-speed) ease-in-out;
     -webkit-animation: fade_in_slide_down var(--animation-speed) ease-in-out ;
+}
+
+.group-row{
+    padding-top: 10px;
+    padding-bottom:10px;
+}
+.f-label {
+    font-family: Roboto;
+    font-size: 0.7rem;
+    color: #8d8d8d;
+    margin-top: 10px;
+}
+.f-value {
+    font-family: Roboto;
+    font-size: 1rem;
+    color: #34495e;
+}
+.type-user{
+    font-family: Roboto;
+    font-size: 1rem;
+    color: #34495e;
+    margin-top: 20px;
 }

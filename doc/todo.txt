@@ -23,3 +23,6 @@
 - Consult logs file (and search on it)
 - Schedule and manage maintenance mode
 - Schedule and manage batch
+- Separer les elements du formulaire d'exemple en composants
+- finir la popup 
+- définir des medias queries

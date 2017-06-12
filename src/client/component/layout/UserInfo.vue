@@ -12,22 +12,22 @@
                         <h3 class="user_win_title">{{ label.info }}</h3>
                     </div>
                     <div >
-                        <div class="table">
-                            <div class="row">
-                                <div class="cell bold">{{ label.login }}</div>
-                                <div class="cell">{{ user.login }}</div>
+                        <div class="fields">
+                            <div class="field">
+                                <div class="f-label">{{ label.login }}</div>
+                                <div class="f-value">{{ user.login }}</div>
                             </div>
-                            <div class="row">
-                                <div class="cell bold">{{ label.firstname }}</div>
-                                <div class="cell">{{ user.firstname }} </div>
+                            <div class="field">
+                                <div class="f-label">{{ label.firstname }}</div>
+                                <div class="f-value">{{ user.firstname }} </div>
                             </div>
-                            <div class="row">
-                                <div class="cell bold">{{ label.lastname }}</div>
-                                <div class="cell">{{ user.lastname }}</div>
+                            <div class="field">
+                                <div class="f-label">{{ label.lastname }}</div>
+                                <div class="f-value">{{ user.lastname }}</div>
                             </div>
-                            <div v-show="user.admin" class="row">
+                            <div v-show="user.admin" class="type-user">
                                 <i class="material-icons small-icon">group</i>
-                                {{ label.admin }}
+                                {{ label.admin }}s
                             </div>
                         </div>
                     </div>

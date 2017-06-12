@@ -36,4 +36,16 @@
     top:0px;
     line-height: var(--top-height);
     height: var(--top-height) ;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+.form-group.select-local{
+    margin-top: 30px;
+    margin-right: 20px;
+}
+.user_name {
+    margin-right: 5px;
+    color: #34495e;
+    font-family: Roboto;
+    font-size: 0.9rem;
 }
