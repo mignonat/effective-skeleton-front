@@ -1,0 +1,83 @@
+:root {
+    --table-header-background : var(--main-color) ;
+    --table-odd-background : var(--secondary-color) ;
+    --table-even-background : white;
+    --bg-background-content : #f1f1f1;
+}
+
+:root {
+    --users-cell-height : 30px;
+}
+/*
+.empty, .users_list {
+    margin-top: 10px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+}
+
+.empty {
+    padding: 10px;
+    display: inline-block;
+}
+
+.empty_row {
+    line-height: var(--users-cell-height) ;
+    padding-left : 10px;
+    display: table-row;
+    width: 100%;
+}
+
+.user_row {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.user_row > .cell {
+    line-height: var(--users-cell-height) ;
+    padding-left : 10px;
+}
+
+.user_row > .cell:first-child {
+    padding-left : inherit;
+}
+
+.user_row > .cell:last-child {
+    padding-right : 10px;
+}
+
+.users_list > .user_row:nth-child(odd) {
+    background-color : var(--table-odd-background)
+}
+
+.users_list > .user_row:nth-child(even) {
+    background-color : var( --table-even-background)
+}
+*/
+.user_row.row {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+.user_row.row.user_header_row {
+    border-right: 1px solid #e7e7e7;
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+    background: #f9f9f9;
+}
+
+.users_list.table {
+    display: table;
+    border-collapse: collapse;
+    width: calc(100% - 80px);
+    margin: 40px;
+    box-shadow: 0 2px 3px 0 #c6cacc;
+}
+.user_row.row .cell {
+    padding: 20px;
+}
+.users_list.table:hover {
+    box-shadow:0px 4px 8px 0px #b0b0b0;
+}
+.user_header_row.user_row.row .cell {
+    font-weight: bold;
+    color: #37474f;
+}

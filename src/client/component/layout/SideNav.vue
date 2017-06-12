@@ -84,6 +84,10 @@
                         id : 'menu.sample.contextual.panel',
                         router_link : '/sample-contextual-panel',
                         label : this.translate('menu.sample.contextual.panel')
+                    },{
+                        id : 'menu.sample.form',
+                        router_link : '/sample-form',
+                        label : this.translate('menu.sample.form')
                     }]
                 }]
             }

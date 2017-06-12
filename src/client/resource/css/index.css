@@ -8,4 +8,10 @@
 @import "./layout/sidenav-button.css" ;
 @import "./layout/topbar.css" ;
 @import "./layout/userinfo.css" ;
+@import "./layout/content.css" ;
+@import "./layout/scrollbar.css" ;
+@import "./layout/tables.css" ;
+@import "./content/error404.css" ;
 @import "./content/admin/users.css" ;
+@import "./component/forms.css" ;
+@import "./modal.css" ;
