@@ -19,18 +19,7 @@ const dir_asset_dest = './public'
 const file_front_app = './src/server/front/app.js'
 const file_back_app = './src/server/back/app.js'
 
-const nodemon_common_ignore = [
-    // nodemon is only listening for .js and .vue files
-    'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
-]
-const files_front_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/back/'
-])
-const files_back_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/front/'
-])
-
-/****************** BACK PROD ******************/
+/****************** FOREVER ******************/
 
 gulp.task('back-run-forever', () => {
     return new (forever.Monitor)(file_back_app, {
@@ -42,12 +31,6 @@ gulp.task('back-run-forever', () => {
         })
         .start()
 })
-
-gulp.task('start-back-prod', gulpSync.sync([
-    'back-run-forever'
-]))
-
-/****************** FRONT PROD ******************/
 
 gulp.task('front-run-forever', () => {
     return new (forever.Monitor)(file_front_app, {
@@ -61,13 +44,18 @@ gulp.task('front-run-forever', () => {
         .start()
 })
 
-gulp.task('start-front-prod', gulpSync.sync([
-    'front-translations',
-    'webpack-prod',
-    'front-run-forever'
-]))
+/****************** NODEMON ******************/
 
-/****************** BACK DEV ******************/
+const nodemon_common_ignore = [
+    // nodemon is only listening for .js and .vue files
+    'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
+]
+const files_front_nodemon_ignore = nodemon_common_ignore.concat([
+    'src/server/back/'
+])
+const files_back_nodemon_ignore = nodemon_common_ignore.concat([
+    'src/server/front/'
+])
 
 gulp.task('back-run-nodemon', () => {
     return nodemon({
@@ -81,12 +69,6 @@ gulp.task('back-run-nodemon', () => {
             ignore : files_back_nodemon_ignore
         })
 })
-
-gulp.task('start-back-dev', gulpSync.sync([ 
-    'back-run-nodemon'
-]))
-
-/****************** FRONT DEV ******************/
 
 gulp.task('front-run-nodemon', () => {
     return nodemon({
@@ -103,17 +85,48 @@ gulp.task('front-run-nodemon', () => {
         })
 })
 
+/****************** START ******************/
+
+gulp.task('start-back-prod', gulpSync.sync([
+    'back-run-forever'
+]))
+
+gulp.task('start-front-prod', gulpSync.sync([
+    'front-translations',
+    'webpack-prod',
+    'front-run-forever'
+]))
+
+gulp.task('start-back-dev', gulpSync.sync([ 
+    'back-run-nodemon'
+]))
+
 gulp.task('start-front-dev', gulpSync.sync([ 
     'front-translations',
     'webpack-dev',
     'front-run-nodemon'
 ]))
 
-/****************** BACK & FRONT PROD ******************/
+gulp.task('start-both-prod-no-build', gulpSync.sync([
+    'back-run-forever',
+    'front-run-forever'
+]))
 
 gulp.task('start-both-prod', gulpSync.sync([
     'start-back-prod',
     'start-front-prod'
+]))
+
+/****************** BUILD ******************/
+
+gulp.task('build', gulpSync.sync([
+    'front-translations',
+    'webpack-prod',
+]))
+
+gulp.task('build-dev', gulpSync.sync([
+    'front-translations',
+    'webpack-dev',
 ]))
 
 /****************** WEBPACK ******************/
@@ -168,11 +181,6 @@ gulp.task('front-translation-prop-to-json', () => {
         .pipe(props2json({ minify : false }))
         .pipe(gulp.dest(dir_client_translation+'/json'))
 })
-
-gulp.task('translations-assets', gulpSync.sync([
-    'front-translations',
-    'webpack-dev'
-]))
 
 /****************** BACK TRANSLATIONS ******************/
 
