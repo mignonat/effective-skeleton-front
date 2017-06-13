@@ -12,7 +12,7 @@ import AdminLogs from './component/content/admin/Logs.vue'
 import Contact from './component/content/Contact.vue'
 import SampleComponent from './component/content/SampleComponent.vue'
 import SampleContextualPanel from './component/content/SampleContextualPanel.vue'
-import SampleForm from './component/content/Sampleform.vue'
+import SampleForm from './component/content/SampleForm.vue'
 import ErrorUnknown from './component/content/Error.vue'
 import Error404 from './component/content/Error404.vue'
 
