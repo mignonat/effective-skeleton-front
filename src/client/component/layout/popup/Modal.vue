@@ -2,37 +2,51 @@
         <div id="id01" class="modalAlt">
             <div class="modal-content animate">
                 <div class="modal-header">
-                    <span class="title-modal">Popup / Modal Title</span>
+                    <span class="title-modal">{{ data.title }}</span>
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
-                <div class="modal-body">
-                    <form class="" action=""> 
-                        <div class="form-group drop">
-                            <select type="multiple" class="dropdown">
-                                <option>User 1</option>
-                                <option>User 2</option>
-                                <option>User 3</option>
-                                <option>User 4</option>
-                            </select>
-                            <label class="control-label" for="select">Dropdown list <span class="required"> * </span></label><i class="bar"></i>
-                        </div>
-                        <div class="form-group">
-                            <textarea required="required"></textarea>
-                            <label class="control-label" for="textarea">Add a description</label><i class="bar"></i>
-                        </div>
-                        <div class="form-toggle">
-                            <div class="row press">
-                                <input type="checkbox" id="checked2" class="cbx hidden"/>
-                                <label for="checked2" class="lbl"></label>   <span class="ToggleLabel">Activate option </span> 
-                            </div>
-                        </div>
-                    </form>
+                <div class="modal-body" v-html="data.text">
+                     
                 </div>
                 <div class="modal-footer">
                     <div class="button-container">
-                        <button class="button" onclick="closeAndSlide()" type="button"><span>Submit</span></button><button onclick="document.getElementById('id01').style.display='none'" class="button cancel" type="button"><span>Cancel</span></button>
+                        <button class="button" onclick="closeAndSlide()" type="button"><span>{{ data.label.confirm }}</span></button>
+                        <button onclick="document.getElementById('id01').style.display='none'" class="button cancel" type="button"><span>{{ data.label.cancel }}</span></button>
                     </div>   
                 </div>
             </div>
         </div>
 </template>
+
+<script>
+    export default {
+        props : [ 'data' ],
+        methods : {
+            translate (key, params) {
+                return this.$store.getters.translate(key, params)
+            },
+            close () {
+                this.$emit('close') // signal emit to parent component
+            },
+            confirm () {
+                this.$emit('confirm') // signal emit to parent component
+            },
+            getTitle() {
+                if (!this.data.title)
+                    return this.translate('all.confirm')
+                else 
+                    return this.data.title
+            }
+        },
+        mounted () {
+            this.$nextTick(function () { // here the document is ready
+                document.addEventListener("keydown", (e) => { 
+                    if (this.data.show && e.keyCode == 27)      // escape key is pressed
+                        this.close()
+                    else if (this.data.show && e.keyCode == 13) // enter key is pressed
+                        this.$emit('confirm')
+                })
+            })
+        }
+    }
+</script>

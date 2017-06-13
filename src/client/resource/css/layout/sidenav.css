@@ -68,9 +68,16 @@
     font-size: 0.95rem;
     color:var(--menu-link-color);
 }
+#logo:before{
+    font-size: 3rem;
+    line-height: 1.5;
+    margin-left: 0.6rem;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgb(0, 94, 135);
+}
 div#sidenav {
     height: 100%;
-    width: 250px;
+    width: var(--menu-width);
     border-right: 1px solid #cccccc;
     background-color: var( --menu-background);
     transition: var(--animation-speed);
@@ -96,12 +103,12 @@ div#sidenav {
     background-color:var(--background-color-logo);
     display: inline-block;
 }
-#logo:before{
-    font-size: 3rem;
-    line-height: 1.5;
-    margin-left: 0.6rem;
+.icon-defaultdesigner2:before{
+    font-size: 2.8rem;
+    line-height: 1.6;
+    margin-left: 0.7rem;
     color: #fff;
-    text-shadow: 2px 2px 5px rgb(0, 94, 135);
+    text-shadow: 2px 2px 5px rgb(0, 143, 205);
 }
 #text-logo{
     font-family: Roboto, Arial, sans-serif;
@@ -122,4 +129,7 @@ div#sidenav {
     position: absolute;
     top: 40;
     margin-left: 20px;
+}
+.opened-main-menu{
+    margin-left: var(--menu-width)!important;
 }
