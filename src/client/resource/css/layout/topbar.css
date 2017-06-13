@@ -28,6 +28,9 @@
     line-height: var(--top-height);
     text-align: center;
     display: inline-block;
+    color: #34495e;
+    font-family: Roboto;
+    font-size: 1rem;
 }
 
 .top_bar_right {

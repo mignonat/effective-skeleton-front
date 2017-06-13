@@ -1,17 +1,27 @@
-@import "../../../../node_modules/material-design-icons/iconfont/material-icons.css" ;
-@import "../fonts/style.css" ;
-@import "./app.css" ;
-@import "./transitions.css" ;
+/******** 3RD PARTY ********/
+@import "../../../../node_modules/material-design-icons/iconfont/material-icons.css";
+
+/******** GENERAL ********/
+@import "../fonts/style.css";
+@import "./app.css";
+@import "./transitions.css";
+
+/******** LAYOUT ********/
 @import "./layout/loader.css";
-@import "./layout/popup.css" ;
-@import "./layout/sidenav.css" ;
-@import "./layout/sidenav-button.css" ;
-@import "./layout/topbar.css" ;
-@import "./layout/userinfo.css" ;
-@import "./layout/content.css" ;
-@import "./layout/scrollbar.css" ;
-@import "./layout/tables.css" ;
-@import "./content/error404.css" ;
-@import "./content/admin/users.css" ;
-@import "./component/forms.css" ;
-@import "./modal.css" ;
+@import "./layout/popup.css";
+@import "./layout/sidenav.css";
+@import "./layout/sidenav-button.css";
+@import "./layout/topbar.css";
+@import "./layout/userinfo.css";
+@import "./layout/content.css";
+@import "./layout/scrollbar.css";
+@import "./layout/tables.css";
+@import "./layout/contextual-panel.css";
+@import "./layout/contextual-panel-item.css";
+
+/******** CONTENT ********/
+@import "./content/error404.css";
+@import "./content/admin/users.css";
+
+/******** ELEMENT ********/
+@import "./element/form-element.css";

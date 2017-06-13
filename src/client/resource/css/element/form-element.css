@@ -604,6 +604,6 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 input[type="range"] {
-    border-bottom: 2px solid #a5e3ff;;
+  border-bottom: 3px solid #80c7e7;
 }
 

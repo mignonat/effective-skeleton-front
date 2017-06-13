@@ -1,0 +1,10 @@
+.contextual-panel-item{
+    width:100%;
+    height: 200px;
+    background: red;
+}
+.retracted{
+    width:100%;
+    height: 200px;
+    background: #ccc;
+}

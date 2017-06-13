@@ -1,20 +1,19 @@
 <template>
-    <div class="modal_mask" @click="close" v-show="data.show">
-        <transition name="modal">
-            <div class="modal_container" @click.stop v-show="data.show">
-                <div class="modal_header">
-                    <h3>{{ getTitle() }}</h3>
-                    <i class="material-icons modal_close_button link" :title="translate('all.close')" @click="close()">close</i>
+     <div id="confirmPopup" class="modalAlt">
+            <div class="modal-content animate">
+                <div class="modal-header">
+                    <span class="title-modal">{{ getTitle() }}</span>
+                    <span onclick="document.getElementById('confirmPopup').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
-                <div class="modal_body">
-                    <label class="form_label">{{ data.text }}</label>
+                <div class="modal-body">
+                   <div class="content-modal-body"> {{ data.text }}</div>
                 </div>
-                <div class="modal_footer text_right">
-                    <button @click="confirm()" class="default_button">{{ data.label.confirm }}</button>
-                    <button @click="close()">{{ data.label.cancel }}</button>
+                <div class="modal-footer">
+                    <div class="button-container">
+                        <button class="button" onclick="closeAndSlide()" type="button"><span>{{ data.label.confirm }}</span></button><button onclick="document.getElementById('confirmPopup').style.display='none'" class="button cancel" type="button"><span>{{ data.label.cancel }}</span></button>
+                    </div>   
                 </div>
             </div>
-        </transition>
     </div>
 </template>
 

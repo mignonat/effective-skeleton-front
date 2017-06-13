@@ -131,7 +131,7 @@
                 })
                 event.on(event.MENU_OPENED, () => {
                     document.getElementById(this.id).classList.remove("closed-main-menu")
-                    document.getElementById('main_panel').style.marginLeft = '250px'
+                    document.getElementById('main_panel').style.marginLeft = '310px'
                 })
                 event.on(event.MENU_CLOSED, () => {
                     document.getElementById(this.id).classList.add("closed-main-menu")
