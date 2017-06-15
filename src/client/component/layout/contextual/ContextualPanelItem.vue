@@ -1,11 +1,11 @@
 <template>  
     <div class="contextual-panel-item">
-        <div id="title-container" class="title-container" @click="open=!open">
+        <div class="title-container" @click="open=!open">
             <i :class="open? 'icon-moveUp' : 'icon-moveDown'"></i>  
-            <span id="title-panel-item" class="title-panel-item">{{ data.title }}</span>
+            <span class="title-panel-item">{{ data.title }}</span>
         </div>
-        <transition name="slide-up">
-            <div v-show="open" id="content-panel-item" class="content-panel-item">
+        <transition name="context-panel-item">
+            <div v-show="open" class="content-panel-item">
                 <template v-if="data.type=='sample1'">
                     <sample1></sample1>
                 </template>

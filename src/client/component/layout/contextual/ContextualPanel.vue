@@ -1,7 +1,7 @@
 <template>    
     <div class="contextual-panel">
-        <contextual-panel-item :data.sync="contextual_panel_item_sample1" ></contextual-panel-item>
         <contextual-panel-item :data.sync="contextual_panel_item_sample2" ></contextual-panel-item>
+        <contextual-panel-item :data.sync="contextual_panel_item_sample1" ></contextual-panel-item>
     </div>
 </template>
 

@@ -44,7 +44,7 @@
 }
 .content-panel-item{
     width: 100%;
-    min-height: 250px;
+    /*min-height: 250px;*/
     padding-top: 30px;
     background: #fff;
     margin-bottom: 10px;
@@ -60,36 +60,40 @@
     font-size: 1.4rem;
     color: white;
 }
-.slide-up-enter-active {
-    animation: panel_accordion_in 0.2s ease-in-out;
-    -webkit-animation: panel_accordion_in 0.2s ease-in-out;
+.context-panel-item-enter-active {
+    animation: context-panel-item-expand 0.2s ;
+    -webkit-animation: context-panel-item-expand 0.2s ;
 }
-.slide-up-leave-active {
-    animation: panel_accordion_out 0.1s ease-in-out;
-    -webkit-animation: panel_accordion_out 0.1s ease-in-out;
+.context-panel-item-leave-active {
+    animation: context-panel-item-reduce 0.1s ;
+    -webkit-animation: context-panel-item-reduce 0.1s ;
 }
 /******************Accordion Panel item******************/
-@keyframes panel_accordion_in {
+@keyframes context-panel-item-expand {
     0% {
         opacity: 0;
-        height: 0;
-        transform: scale(0);
+        min-height: 0px;
+        max-height: 0px;
+        transform: scaleY(0);
     }
     100% {
         opacity: 1;
-        height: inherit;
+        min-height: inherit;
+        max-height: inherit;
         transform: scaleY(1);
     }
 }
-@keyframes panel_accordion_out {
+@keyframes context-panel-item-reduce {
     0% {
         opacity: 1;
-        height: initial;
+        min-height: initial;
+        max-height: initial;
         transform: scaleY(1);
     }
     100% {
         opacity: 0;
-        height: 0;
+        min-height: 0px;
+        max-height: 0px;
         transform: scaleY(0);
     }
 }
