@@ -24,7 +24,10 @@
             error_popup_data : {
                 show : false,
                 title : 'Message',
-                text : '--'
+                text : '--',
+                label : {
+                    confirm : 'Ok'
+                }
             }
         }},
         computed : {}, // use when complexe check has to be done in the template

@@ -6,7 +6,8 @@
 </template>
 
 <script>
-    import ContextualPanelItem from '../layout/ContextualPanelItem.vue'
+    import ContextualPanelItem from './ContextualPanelItem.vue'
+    
     export default {
         data : function() { return {
             contextual_panel_item_sample1 : {

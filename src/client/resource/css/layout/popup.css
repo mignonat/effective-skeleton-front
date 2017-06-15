@@ -4,72 +4,72 @@
 }
 /**************modal model ******************/
 .button {
-  position: relative;
-  background: currentColor;
-  border: 1px solid currentColor;
-  font-size: 0.9rem;
-  color: #4f93ce;
-  margin: 3rem 0;
-  padding: 0.75rem 3rem;
-  cursor: pointer;
-  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-  overflow: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    position: relative;
+    background: currentColor;
+    border: 1px solid currentColor;
+    font-size: 0.9rem;
+    color: #4f93ce;
+    margin: 3rem 0;
+    padding: 0.75rem 3rem;
+    cursor: pointer;
+    -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+    transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .button span {
-  color: #fff;
-  position: relative;
-  z-index: 1;
+    color: #fff;
+    position: relative;
+    z-index: 1;
 }
 .button::before {
-  content: '';
-  position: absolute;
-  background: #071017;
-  border: 50vh solid #1d4567;
-  width: 30vh;
-  height: 30vh;
-  border-radius: 50%;
-  display: block;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-          transform: translate(-50%, -50%) scale(0);
+    content: '';
+    position: absolute;
+    background: #071017;
+    border: 50vh solid #1d4567;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0);
 }
 .button.cancel::before {
-  content: '';
-  position: absolute;
-  background: #071017;
-  border: 50vh solid red;
-  width: 30vh;
-  height: 30vh;
-  border-radius: 50%;
-  display: block;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-          transform: translate(-50%, -50%) scale(0);
+    content: '';
+    position: absolute;
+    background: #071017;
+    border: 50vh solid red;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0);
 }
 .button.cancel:hover {
-  color: #d9534f;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    color: #d9534f;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
 .button:hover {
-  color: #337ab7;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    color: #337ab7;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
 .button:active::before, .button:focus::before {
-  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
-  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
+    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
+    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
+    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
+    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
 }
 .button:focus {
   outline: none;
@@ -80,13 +80,13 @@
     color: #ff3e3e;
 }
 .button.cancel:active::before, .button.cancel:focus::before {
-  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
-  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
+    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
+    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
+    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
+    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
 }
 /* Center the image and position the close button */
 .imgcontainer {
@@ -119,13 +119,13 @@ span.psw {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
-/* Modal Content/Box */
-.modal-content {
+/* Modal container/Box */
+.modal-container {
+    display: table;
     text-align: left;
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
     max-width: 800px;
 }
 /* The Close Button (x) */
@@ -192,74 +192,72 @@ span.psw {
     transition: all 0.3s ease;
 }
 .lbl:after {
-        position: absolute;
-        left: -2px;
-        top: -3px;
-        display: block;
-        width: 20px;
-        height: 20px;
-        border-radius: 100px;
-        background: #898989;
-        box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
-        content: '';
-        transition: all 0.3s ease;
+    position: absolute;
+    left: -2px;
+    top: -3px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background: #898989;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+    content: '';
+    transition: all 0.3s ease;
 }
 .lbl:active:after {
-        transform: scale(1.15, 0.85);
+    transform: scale(1.15, 0.85);
 }
 .cbx:checked ~ label {
-        background: #aed7f8;
+    background: #aed7f8;
 }
 .cbx:checked ~ label:after {
-        left: 15px;
-        background: #2196f3;
+    left: 15px;
+    background: #2196f3;
  }
 .cbx:disabled ~ label {
-        background: #d5d5d5;
-        pointer-events: none;
-        }
-        .cbx:disabled ~ label:after {
-        background: #bcbdbc;
+    background: #d5d5d5;
+    pointer-events: none;
+    }
+    .cbx:disabled ~ label:after {
+    background: #bcbdbc;
 }
 .cntr {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .hidden {
-        display: none;
+    display: none;
 }
 span.ToggleLabel {
-                text-align: left;
-                display: block;
-                margin-top: -1.0rem;
-                margin-left: 2.8rem;
-                font-size: 0.8rem;
-                color: #34495e;
+    text-align: left;
+    display: block;
+    margin-top: -1.0rem;
+    margin-left: 2.8rem;
+    font-size: 0.8rem;
+    color: #34495e;
 }
 .modal-body .form-group {
-            position: relative;
-            height: 28px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            height: auto;
+    position: relative;
+    height: 28px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: auto;
 }
 .modal-body.form-toggle{
-             margin-top: 10px;
-            margin: 10px;
-            margin-bottom: 20px;
+    margin-top: 10px;
+    margin: 10px;
+    margin-bottom: 20px;
  }
 .modal-footer .button {
-        margin-top: 12px;
-        margin-bottom: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 .modal-footer {
-        margin-top: 30px;
-        background: #f1f1f1;
+    background: #f1f1f1;
 }
-.modalAlt {
-    display: none; /* Hidden by default */
+.modal-mask {
     position: fixed; /* Stay in place */
     left: 0;
     top: 0;
@@ -271,7 +269,7 @@ span.ToggleLabel {
     padding-top: 60px;
     z-index: 12;
 }
-.content-modal-body {
+.modal-body-content {
     font-size: 1rem;
     font-family: Roboto;
     color: #34495e;

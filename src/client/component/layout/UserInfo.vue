@@ -52,7 +52,7 @@
                         <div v-show="hasError" class="row error">{{ this.displayError() }}</div>
                         <input v-model="login" :placeholder="placeholder.login" class="login row"></input>
                         <input v-model="password" type="password" :placeholder="placeholder.password" class="password row"></input>
-                        <button @click="auth" class="row user_valid default_button v_align_container">
+                        <button @click="auth" class="row user_valid v_align_container">
                             {{ label.valid }}
                             <i class="material-icons m_left_5 small-icon">check</i>
                         </button>

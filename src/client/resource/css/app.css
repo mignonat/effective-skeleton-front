@@ -69,6 +69,7 @@ select {
     right: 40px;
 }
 
+button,
 .default_button {
     background-color: var(--border-color);
 }

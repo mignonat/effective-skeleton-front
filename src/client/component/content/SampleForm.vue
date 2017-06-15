@@ -1,14 +1,14 @@
 <template>
   <div class="content">
     <div class="contentPage">  
-      <form-element></form-element>
+      <form></form>
     </div>
   </div>
 </template>
 
 <script>
-    import FormElement from '../element/FormElement.vue'
+    import Form from '../panel/Form.vue'
     export default {
-        components : { FormElement }
+        components : { Form }
     }
 </script>

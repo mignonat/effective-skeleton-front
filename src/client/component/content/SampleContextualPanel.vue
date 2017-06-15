@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import ContextualPanel from '../layout/ContextualPanel.vue'
+    import ContextualPanel from '../layout/contextual/ContextualPanel.vue'
     export default {
         components : { ContextualPanel }
     }

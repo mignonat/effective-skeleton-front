@@ -16,16 +16,14 @@
 @import "./layout/content.css";
 @import "./layout/scrollbar.css";
 @import "./layout/tables.css";
-@import "./layout/contextual-panel.css";
-@import "./layout/contextual-panel-item.css";
+@import "./layout/contextual/contextual-panel.css";
+@import "./layout/contextual/contextual-panel-item.css";
 
 /******** CONTENT ********/
 @import "./content/error404.css";
 @import "./content/admin/users.css";
 
-/******** ELEMENT ********/
-@import "./element/form-element.css";
-
-/******** FRAGMENT ********/
-@import "./fragment/Sample2.css";
-@import "./fragment/Sample1.css";
+/******** PANEL ********/
+@import "./panel/form.css";
+@import "./panel/sample2.css";
+@import "./panel/sample1.css";

@@ -1,3 +1,8 @@
+- Move fragment into panel
+- Use translate (and setTranslation) mixin everywhere
+- Translate (and setTranslation) in 404 page
+- Manage parametrable size of Loader
+- Manage locale changes in popup
 - Don't use Object.assign => bad compatibility because not it's transpiled by babel ...
 - Create a component to display non persistent messages 
 - Test all regex in model

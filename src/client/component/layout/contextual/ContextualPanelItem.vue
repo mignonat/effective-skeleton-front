@@ -1,6 +1,6 @@
 <template>  
     <div class="contextual-panel-item">
-        <div id="title-container" class="title-container" @click="toggle">
+        <div id="title-container" class="title-container" @click="open=!open">
             <i :class="open? 'icon-moveUp' : 'icon-moveDown'"></i>  
             <span id="title-panel-item" class="title-panel-item">{{ data.title }}</span>
         </div>
@@ -18,19 +18,14 @@
 </template>
 
 <script>
-    import Sample1 from '../fragment/Sample1.vue'
-    import Sample2 from '../fragment/Sample2.vue'
+    import Sample1 from '../../panel/Sample1.vue'
+    import Sample2 from '../../panel/Sample2.vue'
 
     export default {
         props : [ 'data' ],
         data : function() { return {
             open : false,
         }},
-        methods : {
-            toggle() {
-                this.open = !this.open
-            }
-        },
         components : { Sample1, Sample2 }
     }
 </script>

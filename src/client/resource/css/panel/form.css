@@ -503,7 +503,7 @@ span.ToggleLabel {
     transition: all 0.2s;
 }
 .button-container {
-    margin-left: calc(50% - 155px);
+    text-align: center;
 }
 .exemple-button{
     margin-top: 2px!important;

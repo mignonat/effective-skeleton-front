@@ -14,6 +14,31 @@
         <div class="sk-circle11 sk-child"></div>
         <div class="sk-circle12 sk-child"></div>
         </div>
-        <div class="please-loading">Please Loading...</div>
+        <div class="please-loading">{{ label }}</div>
     </div>
 </template>
+
+<script>
+    import mixin from '../../tool/mixin.js'
+    import event from '../../tool/event.js'
+    
+    export default {
+        props : [ 'size' ],
+        data : function() { return {
+            label : this.translate('all.loading')
+        }},
+        mixins : mixin.get(mixin.TRANSLATE),
+        methods : {
+            setTranslation() {
+                this.label = this.translate('all.loading')
+            }
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+                event.on(event.LOCALE_CHANGE, () => {
+                    this.setTranslation()
+                })
+            })
+        }
+    }
+</script>
