@@ -1,6 +1,5 @@
 
 /*********** CONTENT *************/
-
 .router-content {
     width: 100%;
     max-width: 100%;
@@ -10,22 +9,20 @@
     transition: margin-left var(--animation-speed);
     margin-left: 0;
     position: relative;
+    overflow: hidden;
 }
 .fade-enter-active {
     animation: fade_in var(--animation-speed) ease-in-out;
     -webkit-animation: fade_in var(--animation-speed) ease-in-out ;
 }
-
 .fade-leave-active {
     animation: fade_out var(--animation-speed) ease-in-out;
     -webkit-animation: fade_out var(--animation-speed) ease-in-out ;
 }
-
 .fade-in-enter-active {
     animation: fade_in var(--animation-speed) ease-in-out;
     -webkit-animation: fade_in var(--animation-speed) ease-in-out ;
 }
-
 .fade-out-leave-active {
     animation: fade_out var(--animation-speed) ease-in-out;
     -webkit-animation: fade_out var(--animation-speed) ease-in-out ;
@@ -46,8 +43,8 @@
     width: calc(100% -20px) ;
     height: calc(100% - 70px);
     background: var(--bg-background-content);
-    overflow-y: auto;
 }
 .contentPage{
     padding:40px 40px 60px 40px;
+    overflow-y: auto;
 }
