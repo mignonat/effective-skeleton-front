@@ -1,3 +1,5 @@
+- Don't use Object.assign => bad compatibility because not it's transpiled by babel ...
+- Create a component to display non persistent messages 
 - Test all regex in model
 - Add sample page with all icons available
 - Mongodb : how to reconnect automatically, put constraints on schema

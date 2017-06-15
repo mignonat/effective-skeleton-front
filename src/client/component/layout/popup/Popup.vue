@@ -15,23 +15,10 @@
 </template>
 
 <script>
+    import toolMixin from '../../../tool/mixin.js'
+    import popupMixin from './mixin.js'
+    
     export default {
-        props : [ 'data' ],
-        methods : {
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
-            },
-            close () {
-                this.$emit('close') // signal emit to parent component
-            }
-        },
-        mounted: function () {
-            this.$nextTick(function () { // here the document is ready
-                document.addEventListener("keydown", (e) => { // escape key is pressed
-                    if (this.data.show && e.keyCode == 27)
-                        this.close()
-                })
-            })
-        }
+        mixins : toolMixin.get(toolMixin.TRANSLATE).concat(popupMixin.get(popupMixin.SIMPLE))
     }
 </script>

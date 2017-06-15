@@ -4,6 +4,7 @@
        <div class="contentPage"></div>
     </div>
 </template>
+
 <script>
     import ContextualPanel from '../layout/ContextualPanel.vue'
     export default {

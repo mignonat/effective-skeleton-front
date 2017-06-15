@@ -3,7 +3,7 @@
         <transition name="modal">
             <div class="modal_container" @click.stop v-show="data.show">
                 <div class="modal_header">
-                    <h3>{{ getTitle() }}</h3>
+                    <h3>{{ data.title }}</h3>
                     <i class="material-icons modal_close_button link" :title="translate('all.close')" @click="close()">close</i>
                 </div>
                 <div class="modal_body">
@@ -19,34 +19,10 @@
 </template>
 
 <script>
+    import toolMixin from '../../../tool/mixin.js'
+    import popupMixin from './mixin.js'
+
     export default {
-        props : [ 'data' ],
-        methods : {
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
-            },
-            close () {
-                this.$emit('close') // signal emit to parent component
-            },
-            confirm () {
-                this.$emit('confirm') // signal emit to parent component
-            },
-            getTitle() {
-                if (!this.data.title)
-                    return this.translate('all.confirm')
-                else 
-                    return this.data.title
-            }
-        },
-        mounted () {
-            this.$nextTick(function () { // here the document is ready
-                document.addEventListener("keydown", (e) => { 
-                    if (this.data.show && e.keyCode == 27)      // escape key is pressed
-                        this.close()
-                    else if (this.data.show && e.keyCode == 13) // enter key is pressed
-                        this.$emit('confirm')
-                })
-            })
-        }
+        mixins : toolMixin.get(toolMixin.TRANSLATE).concat(popupMixin.get(popupMixin.CONFIRM))
     }
 </script>

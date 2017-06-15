@@ -36,7 +36,7 @@ const fieldTypes = {
     object  : { fieldType : nativeTypes.object },
     locale  : {
         fieldType : nativeTypes.string,
-        regex : new RegExp(/(^[f][r]$)|(^[e][n]$)/i)
+        regex : new RegExp(/^fr|en$/i)
     },
     date : {
         fieldType : nativeTypes.string,
