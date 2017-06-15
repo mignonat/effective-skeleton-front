@@ -44,7 +44,8 @@
     height: calc(100% - 70px);
     background: var(--bg-background-content);
 }
-.contentPage{
-    padding:40px 40px 60px 40px;
+.contentPage {
+    padding: 0px 2px 60px 40px;
     overflow-y: auto;
+    height: calc(100% - var(--top-height));
 }

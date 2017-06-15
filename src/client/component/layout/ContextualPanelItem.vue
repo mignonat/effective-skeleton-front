@@ -9,9 +9,6 @@
                 <template v-if="data.type=='sample1'">
                     <sample1></sample1>
                 </template>
-                <template v-if="data.type=='sample3'">
-                    <div>lorem ipsum dolor sit amet consecture</div>
-                </template>
                 <template v-if="data.type=='sample2'">
                     <sample2></sample2>
                 </template>
@@ -32,8 +29,6 @@
         methods : {
             toggle() {
                 this.open = !this.open
-                document.getElementById(instance).classList.remove("icon-moveDown");
-                document.getElementById(instance).classList.add("icon-moveUp");
             }
         },
         components : { Sample1, Sample2 }

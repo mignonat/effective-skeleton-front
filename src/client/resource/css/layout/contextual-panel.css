@@ -9,4 +9,5 @@
     box-shadow: 0 2px 3px 0 #c6cacc;
     padding: 20px;
     overflow-y: auto;
+    display: inline-block;
 }

@@ -25,3 +25,7 @@
 
 /******** ELEMENT ********/
 @import "./element/form-element.css";
+
+/******** FRAGMENT ********/
+@import "./fragment/Sample2.css";
+@import "./fragment/Sample1.css";

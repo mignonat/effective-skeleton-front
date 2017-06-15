@@ -1,0 +1,49 @@
+div#visualize-loan {
+    transition: all 0.2s;
+    background: #fff;
+    display: flex;
+}
+div#informations-vizualize-loan {
+    height: 300px;
+    width: 100px;
+    float: left;
+    padding-top: 20px;
+    display: inline-block;
+}
+div#piechart {
+    width: 170px;
+    height: 300px;
+    display: inline-block;
+}
+span.value-visualize-loan {
+    font-size: 1rem;
+    font-family: Roboto;
+    color: #34495e;
+    display: inline-block;
+}
+.label-visualize-loan {
+    font-size: 0.8rem;
+    font-family: Roboto;
+    color: #a5a5a5;
+    display: block;
+    word-wrap: break-word;
+}
+span.unit-visualize-loan {
+    font-size: 1rem;
+    font-family: Roboto;
+    color: #a5a5a5;
+    display: inline-block;
+    margin-left: 5px;
+}
+div#project-amount {
+    margin-bottom: 20px;
+}
+div#real-estate-investment {
+    margin-bottom: 20px;
+}
+div#notary-fees {
+    margin-bottom: 20px;
+}
+div#others-fees{
+    margin-bottom: 20px;
+}

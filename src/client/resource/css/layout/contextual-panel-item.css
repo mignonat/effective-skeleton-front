@@ -11,6 +11,7 @@
     font-family: Roboto,Arial, Helvetica, sans-serif;
     transition: all 0.2s;
     cursor: pointer;
+    text-align: left;
 }
 .retracted{
     padding: 10px;
@@ -26,11 +27,15 @@
     content: "\e97f";
     font-size: 1.2rem;
     color: #fff;
+    display: inline-block;
+    position: relative;
 }
 .icon-moveUp:before {
     content: "\e942";
     font-size: 1.2rem;
     color: #fff;
+    display: inline-block;;
+    position: relative;
 }
 .title-panel-item{
     margin-left: 20px;
