@@ -1,5 +1,5 @@
 :root {
-    --panel-width : 350px ;
+    --panel-width : 380px ;
 }
 .contextual-panel {
     height: 100%;
@@ -7,4 +7,6 @@
     background: #f9f9f9;
     border-right: 1px solid #ccc;
     box-shadow: 0 2px 3px 0 #c6cacc;
+    padding: 20px;
+    overflow-y: auto;
 }
