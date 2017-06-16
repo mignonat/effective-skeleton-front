@@ -28,10 +28,10 @@
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: var(--animation-speed) ease-in-out;
-    -moz-transition: var(--animation-speed) ease-in-out;
-    -o-transition: var(--animation-speed) ease-in-out;
-    transition: var(--animation-speed) ease-in-out;
+    -webkit-transition: var(--animation-speed-fast) ease-in-out;
+    -moz-transition: var(--animation-speed-fast) ease-in-out;
+    -o-transition: var(--animation-speed-fast) ease-in-out;
+    transition: var(--animation-speed-fast) ease-in-out;
 }
 
 .menu_button span:nth-child(1) {

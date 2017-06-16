@@ -18,8 +18,8 @@
 </template>
 
 <script>
-    import Sample1 from '../../panel/Sample1.vue'
-    import Sample2 from '../../panel/Sample2.vue'
+    import Sample1 from '../../container/Sample1.vue'
+    import Sample2 from '../../container/Sample2.vue'
 
     export default {
         props : [ 'data' ],

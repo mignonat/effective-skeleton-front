@@ -1,6 +1,8 @@
 .contextual-panel-item{
-    background: #f9f9f9;   
+    background: white;   
     margin-bottom: 1px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 2px 0 #d0d0d0;
 }
 .title-container{
     padding: 10px;
@@ -44,13 +46,8 @@
 }
 .content-panel-item{
     width: 100%;
-    /*min-height: 250px;*/
-    padding-top: 30px;
-    background: #fff;
-    margin-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    box-shadow: 0 2px 2px 0 #d0d0d0;
 }   
 .content-panel-item form{
     padding: 0px;
@@ -61,12 +58,12 @@
     color: white;
 }
 .context-panel-item-enter-active {
-    animation: context-panel-item-expand 0.2s ;
-    -webkit-animation: context-panel-item-expand 0.2s ;
+    animation: context-panel-item-expand var(--animation-speed-fast) ;
+    -webkit-animation: context-panel-item-expand var(--animation-speed-fast) ;
 }
 .context-panel-item-leave-active {
-    animation: context-panel-item-reduce 0.1s ;
-    -webkit-animation: context-panel-item-reduce 0.1s ;
+    animation: context-panel-item-reduce var(--animation-speed-fast) ;
+    -webkit-animation: context-panel-item-reduce var(--animation-speed-fast) ;
 }
 /******************Accordion Panel item******************/
 @keyframes context-panel-item-expand {

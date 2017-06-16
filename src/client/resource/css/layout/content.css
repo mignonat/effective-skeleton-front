@@ -6,37 +6,37 @@
     position: relative;
 }
 #main_panel {
-    transition: margin-left var(--animation-speed);
+    transition: margin-left var(--animation-speed-fast);
     margin-left: 0;
     position: relative;
     overflow: hidden;
 }
 .fade-enter-active {
-    animation: fade_in var(--animation-speed) ease-in-out;
-    -webkit-animation: fade_in var(--animation-speed) ease-in-out ;
+    animation: fade_in var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_in var(--animation-speed-fast) ease-in-out ;
 }
 .fade-leave-active {
-    animation: fade_out var(--animation-speed) ease-in-out;
-    -webkit-animation: fade_out var(--animation-speed) ease-in-out ;
+    animation: fade_out var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_out var(--animation-speed-fast) ease-in-out ;
 }
 .fade-in-enter-active {
-    animation: fade_in var(--animation-speed) ease-in-out;
-    -webkit-animation: fade_in var(--animation-speed) ease-in-out ;
+    animation: fade_in var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_in var(--animation-speed-fast) ease-in-out ;
 }
 .fade-out-leave-active {
-    animation: fade_out var(--animation-speed) ease-in-out;
-    -webkit-animation: fade_out var(--animation-speed) ease-in-out ;
+    animation: fade_out var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_out var(--animation-speed-fast) ease-in-out ;
 }
 
 .slide_router-enter-active {
-    animation: page_fade_in var(--animation-speed) ease-in-out;
-    -webkit-animation: page_fade_in var(--animation-speed) ease-in-out ;
+    animation: page_fade_in var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: page_fade_in var(--animation-speed-fast) ease-in-out ;
 }
 .page_title {
     font-size: 1.5rem;
     font-family: Roboto;
     margin-left: 40px;
-    margin-top: 40px;
+    padding-top: 40px;
     color: #34495e;
 }
 .content {
@@ -47,5 +47,5 @@
 .contentPage {
     padding: 0px 2px 60px 40px;
     overflow-y: auto;
-    height: calc(100% - var(--top-height));
+    height: 100%;
 }

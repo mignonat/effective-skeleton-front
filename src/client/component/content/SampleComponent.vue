@@ -12,6 +12,15 @@
             <button class="button exemple-button" @click="popup.show=true">
                 <span>Open modal popup</span>
             </button>
+            <br/><br/>
+            <span>Loader big</span>
+            <loader size="big"></loader>
+            <br/><br/>
+            <span>Loader small</span>
+            <loader size="small"></loader>
+            <br/><br/>
+            <span>Loader normal</span>
+            <loader></loader>
         </div>
     </div>
 </template>
@@ -19,6 +28,7 @@
 <script>
     import ConfirmPopup from '../layout/popup/ConfirmPopup.vue'
     import Popup from '../layout/popup/Popup.vue'
+    import Loader from '../layout/Loader.vue'
 
     export default {
         data : function() { return {
@@ -52,6 +62,6 @@
                 this.popup_confirm.show = false
             }
         },
-        components : { ConfirmPopup, Popup }
+        components : { ConfirmPopup, Popup, Loader }
     }
 </script>

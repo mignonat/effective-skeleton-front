@@ -1,0 +1,1 @@
+- CSS : nom des classes en minusclules, séparé par des tirets

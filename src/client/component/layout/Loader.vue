@@ -1,18 +1,18 @@
 <template>
-    <div class="content-loading">
-        <div class="sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
+    <div :class="'loader '+getClass()">
+        <div class="loader-circle">
+        <div class="loader-circle1 loader-child"></div>
+        <div class="loader-circle2 loader-child"></div>
+        <div class="loader-circle3 loader-child"></div>
+        <div class="loader-circle4 loader-child"></div>
+        <div class="loader-circle5 loader-child"></div>
+        <div class="loader-circle6 loader-child"></div>
+        <div class="loader-circle7 loader-child"></div>
+        <div class="loader-circle8 loader-child"></div>
+        <div class="loader-circle9 loader-child"></div>
+        <div class="loader-circle10 loader-child"></div>
+        <div class="loader-circle11 loader-child"></div>
+        <div class="loader-circle12 loader-child"></div>
         </div>
         <div class="please-loading">{{ label }}</div>
     </div>
@@ -31,6 +31,14 @@
         methods : {
             setTranslation() {
                 this.label = this.translate('all.loading')
+            },
+            getClass() {
+                console.log('this.size='+this.size)
+                switch (this.size) {
+                    case 'big' : return 'loader-big'
+                    case 'small' : return 'loader-small'
+                    default : return ''
+                }
             }
         },
         mounted: function () {

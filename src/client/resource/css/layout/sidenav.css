@@ -21,7 +21,7 @@
     left: 0;
     overflow-x: hidden;
     overflow-y: hidden;
-    transition: var(--animation-speed);
+    transition: var(--animation-speed-fast);
 }
 [id^='menu.'] {
     display: block;
@@ -51,12 +51,12 @@
     margin-left: 40px;
 }
 .menu_item-enter-active {
-    animation: accordion_in var(--animation-speed) ease-in-out;
-    -webkit-animation: accordion_in var(--animation-speed) ease-in-out ;
+    animation: accordion_in var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: accordion_in var(--animation-speed-fast) ease-in-out ;
 }
 .menu_item-leave-active {
-    animation: accordion_out var(--animation-speed) ease-in-out;
-    -webkit-animation: accordion_out var(--animation-speed) ease-in-out ;
+    animation: accordion_out var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: accordion_out var(--animation-speed-fast) ease-in-out ;
 }
 .menu-text-link{
     font-family: Roboto, Lato, Arial, Helvetica, sans-serif;
@@ -80,7 +80,7 @@ div#sidenav {
     width: var(--menu-width);
     border-right: 1px solid #cccccc;
     background-color: var( --menu-background);
-    transition: var(--animation-speed);
+    transition: var(--animation-speed-fast);
     z-index: 11;
 }
 .closed-main-menu{

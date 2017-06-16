@@ -2,7 +2,9 @@
     --main-color : #282e2f;
     --secondary-color: azure;
     --border-color: rgba(127, 63, 191, 0.3);
-    --animation-speed: 0.25s;
+    --animation-speed-fast: 0.25s;
+    --animation-speed-medium: 0.45s;
+    --animation-speed-slow: 0.6s;
 }
 
 * {
@@ -113,12 +115,6 @@ a, a:-webkit-any-link {
 .bold {
     font-weight: bold;
 }
-
-
-/*.slide_router-leave-active {
-    animation: page_fade_out var(--animation-speed) ease-in-out;
-    -webkit-animation: page_fade_out var(--animation-speed) ease-in-out ;
-}*/
 
 /*********** INSET SHADOW *************/
 

@@ -31,7 +31,7 @@
                 {{ label.empty }}
             </div>
         </transition>
-        <loader v-show="loading"></loader>
+        <loader v-show="loading" size="big"></loader>
     </div>
 </template>
 

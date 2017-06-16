@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import Form from '../panel/Form.vue'
+    import Form from '../container/Form.vue'
     export default {
         components : { Form }
     }

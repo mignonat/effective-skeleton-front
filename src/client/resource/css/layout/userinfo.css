@@ -54,13 +54,13 @@
 }
 
 .user_win-leave-active {
-    animation: fade_out_slide_up var(--animation-speed) ease-in-out;
-    -webkit-animation: fade_out_slide_up var(--animation-speed) ease-in-out ;
+    animation: fade_out_slide_up var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_out_slide_up var(--animation-speed-fast) ease-in-out ;
 }
 
 .user_win-enter-active {
-    animation: fade_in_slide_down var(--animation-speed) ease-in-out;
-    -webkit-animation: fade_in_slide_down var(--animation-speed) ease-in-out ;
+    animation: fade_in_slide_down var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_in_slide_down var(--animation-speed-fast) ease-in-out ;
 }
 
 .group-row{

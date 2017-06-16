@@ -1,3 +1,4 @@
+------ LAURENT --------
 - Move fragment into panel
 - Use translate (and setTranslation) mixin everywhere
 - Translate (and setTranslation) in 404 page
@@ -30,6 +31,9 @@
 - Consult logs file (and search on it)
 - Schedule and manage maintenance mode
 - Schedule and manage batch
+
+------ FLORIAN --------
 - Separer les elements du formulaire d'exemple en composants
 - finir la popup 
 - définir des medias queries
+- rajouter les transitions @-webkit-keyframes
