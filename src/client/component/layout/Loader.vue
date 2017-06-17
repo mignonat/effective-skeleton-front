@@ -23,11 +23,11 @@
     import event from '../../tool/event.js'
     
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         props : [ 'size' ],
         data : function() { return {
             label : this.translate('all.loading')
         }},
-        mixins : mixin.get(mixin.TRANSLATE),
         computed : {
             sizeClass() {
                 switch (this.size) {

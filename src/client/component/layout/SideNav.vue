@@ -29,8 +29,10 @@
 
 <script>
     import event from '../../tool/event.js'
+    import mixin from '../../tool/mixin.js'
 
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         props : [ 'id' ],
         data : function() { 
             return {
@@ -95,9 +97,6 @@
         methods : {
             isAdmin () {
                 return this.$store.getters.isAdmin()
-            },
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
             },
             setTranslation() {
                 this.menus.forEach((menu) => {

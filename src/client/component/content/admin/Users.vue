@@ -39,8 +39,10 @@
     import event from '../../../tool/event.js'
     import ajax from '../../../tool/ajax.js'
     import Loader from '../../layout/Loader.vue'
+    import mixin from '../../../tool/mixin.js'
 
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         data : function() { return {
             loading : true,
             users : [],
@@ -60,9 +62,6 @@
             }
         }},
         methods : {
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
-            },
             displayIsAdmin(isAdmin) {
                 return this.translate(isAdmin? 'all.yes' : 'all.no')
             },

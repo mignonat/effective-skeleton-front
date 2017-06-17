@@ -67,8 +67,10 @@
     import ajax from '../../tool/ajax.js'
     import * as action_types from '../../vuex/actions.js'
     import event from '../../tool/event.js'
+    import mixin from '../../tool/mixin.js'
 
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         props : [ 'id' ],
         data : function() { 
             return {
@@ -112,9 +114,6 @@
                 this.error_internal = internal
                 this.error_server = server
                 this.password = undefined
-            },
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
             },
             auth () {
                 if (!this.login || !this.password) {

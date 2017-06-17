@@ -10,8 +10,10 @@
 
 <script>
     import event from '../../tool/event.js'
+    import mixin from '../../tool/mixin.js'
     
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         data : function() { return {
             open : false,
             label : {
@@ -26,9 +28,6 @@
                     event.emit(event.MENU_OPENED)
                 else
                     event.emit(event.MENU_CLOSED)
-            },
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
             },
             setTranslation() {
                 this.label.show = this.translate('all.show.main.menu')
