@@ -1,4 +1,4 @@
-- Add visual extensions to Flo
+- Add visual extensions to Flo : git blame, git history, vetur
 - Move fragment into panel
 - Use translate (and setTranslation) mixin everywhere
 - Translate (and setTranslation) in 404 page
