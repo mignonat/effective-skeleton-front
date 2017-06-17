@@ -14,8 +14,10 @@
     import UserInfo from './UserInfo.vue'
     import SideNavButton from './SideNavButton.vue'
     import event from '../../tool/event.js'
+    import mixin from '../../tool/mixin.js'
 
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         data : function() { 
             return {
                 menuLabelKey : 'menu.home',
@@ -23,9 +25,6 @@
             }
         },
         methods : {
-            translate (key, params) {
-                return this.$store.getters.translate(key, params)
-            },
             setTranslation() {
                 this.title = this.translate(this.menuLabelKey+'.title')
             }

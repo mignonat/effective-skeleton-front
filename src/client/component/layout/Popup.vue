@@ -30,6 +30,7 @@
     import mixin from '../../tool/mixin.js'
     
     export default {
+        mixins : mixin.get(mixin.TRANSLATE),
         props : [ 'data' ], //data : type, show, title, text, confirmLabel, closeLabel, callback, closeCallback
         data : function() { return {
             label : {
@@ -47,7 +48,6 @@
                 }
             }
         },
-        mixins : mixin.get(mixin.TRANSLATE),
         computed : {
             confirmLabel() {
                 if (this.data.confirmLabel)
