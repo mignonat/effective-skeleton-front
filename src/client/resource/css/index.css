@@ -19,11 +19,11 @@
 @import "./layout/contextual/contextual-panel.css";
 @import "./layout/contextual/contextual-panel-item.css";
 
-/******** CONTENT ********/
-@import "./content/error404.css";
-@import "./content/admin/users.css";
+/******** PAGE ********/
+@import "./page/error404.css";
+@import "./page/admin/users.css";
 
-/******** PANEL ********/
-@import "./panel/form.css";
-@import "./panel/sample2.css";
-@import "./panel/sample1.css";
+/******** CONTENT ********/
+@import "./content/form-content.css";
+@import "./content/sample2.css";
+@import "./content/sample1.css";

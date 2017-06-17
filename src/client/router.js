@@ -3,18 +3,18 @@ import VueRouter from 'vue-router';
 
 import event from './tool/event.js'
 
-import Home from './component/content/Home.vue'
-import AdminUsers from './component/content/admin/Users.vue'
-import AdminGroups from './component/content/admin/Groups.vue'
-import AdminBatch from './component/content/admin/Batch.vue'
-import AdminMaintenance from './component/content/admin/Maintenance.vue'
-import AdminLogs from './component/content/admin/Logs.vue'
-import Contact from './component/content/Contact.vue'
-import SampleComponent from './component/content/SampleComponent.vue'
-import SampleContextualPanel from './component/content/SampleContextualPanel.vue'
-import SampleForm from './component/content/SampleForm.vue'
-import ErrorUnknown from './component/content/Error.vue'
-import Error404 from './component/content/Error404.vue'
+import Home from './component/page/Home.vue'
+import AdminUsers from './component/page/admin/Users.vue'
+import AdminGroups from './component/page/admin/Groups.vue'
+import AdminBatch from './component/page/admin/Batch.vue'
+import AdminMaintenance from './component/page/admin/Maintenance.vue'
+import AdminLogs from './component/page/admin/Logs.vue'
+import Contact from './component/page/Contact.vue'
+import SampleComponent from './component/page/SampleComponent.vue'
+import SampleContextualPanel from './component/page/SampleContextualPanel.vue'
+import SampleForm from './component/page/SampleForm.vue'
+import ErrorUnknown from './component/page/Error.vue'
+import Error404 from './component/page/Error404.vue'
 
 Vue.use(VueRouter)
 

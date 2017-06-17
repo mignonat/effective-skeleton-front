@@ -34,3 +34,4 @@
 - finir la popup 
 - définir des medias queries
 - rajouter les transitions @-webkit-keyframes
+- reprendre les noms css de la 404

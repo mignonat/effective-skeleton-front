@@ -1,14 +1,14 @@
 <template>
   <div class="content">
     <div class="contentPage">  
-      <form></form>
+      <form-content></form-content>
     </div>
   </div>
 </template>
 
 <script>
-    import Form from '../container/Form.vue'
+    import FormContent from '../content/FormContent.vue'
     export default {
-        components : { Form }
+        components : { FormContent }
     }
 </script>
