@@ -501,12 +501,12 @@ span.ToggleLabel {
     padding-left: 10px;
     padding-right: 10px;
 }
-.exemple-button{
+.sample-button{
     margin-top: 2px!important;
     margin-bottom: 2px!important;
-    width: 300px !important;
+    width: 200px !important;
 }
-.exemple-button span{
+.sample-button span{
     color: #fff;
 }
 

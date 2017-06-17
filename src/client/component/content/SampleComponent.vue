@@ -2,38 +2,36 @@
     <div class="content">
         <div class="contentPage">
             <br/><br/>
-            <span>Sample page</span>
+            <span>Modal popup sample</span>
             <br/><br/>
-            <button class="button exemple-button" @click="openInfo()">
-                <span>Open modal Info</span>
+            <button class="button sample-button" @click="openInfo()">
+                <span>Info modal</span>
             </button>
-            <br/><br/>
-            <button class="button exemple-button" @click="openWarning()">
-                <span>Open modal warning</span>
+            <button class="button sample-button" @click="openWarning()">
+                <span>Warning modal</span>
             </button>
-            <br/><br/>
-            <button class="button exemple-button" @click="openError()">
-                <span>Open modal error</span>
+            <button class="button sample-button" @click="openError()">
+                <span>Error modal</span>
             </button>
-            <br/><br/>
-            <button class="button exemple-button" @click="openConfirm()">
-                <span>Open modal confirm</span>
+            <button class="button sample-button" @click="openConfirm()">
+                <span>Confirm modal</span>
             </button>
-            <br/><br/>
-            <span>Loader big</span>
-            <loader size="big"></loader>
             <br/><br/>
             <span>Loader small</span>
             <loader size="small"></loader>
             <br/><br/>
-            <span>Loader normal</span>
+            <span>Loader medium</span>
             <loader></loader>
+            <br/><br/>
+            <span>Loader big</span>
+            <loader size="big"></loader>
         </div>
     </div>
 </template>
 
 <script>
     import event from '../../tool/event.js'
+    import Loader from '../layout/Loader.vue'
 
     export default {
         methods : {
@@ -73,6 +71,7 @@
                     closeLabel : 'I close'
                 })
             }
-        }
+        },
+        components : { Loader }
     }
 </script>
