@@ -1,262 +1,3 @@
-.modal-enter-active {
-    animation: animatezoom 0.6s;
-    -webkit-animation: animatezoom 0.6s;
-}
-/**************modal model ******************/
-.button {
-    position: relative;
-    background: currentColor;
-    border: 1px solid currentColor;
-    font-size: 0.9rem;
-    color: #4f93ce;
-    margin: 3rem 0;
-    padding: 0.75rem 3rem;
-    cursor: pointer;
-    -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-    transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-    overflow: hidden;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-.button span {
-    color: #fff;
-    position: relative;
-    z-index: 1;
-}
-.button::before {
-    content: '';
-    position: absolute;
-    background: #071017;
-    border: 50vh solid #1d4567;
-    width: 30vh;
-    height: 30vh;
-    border-radius: 50%;
-    display: block;
-    top: 50%;
-    left: 50%;
-    z-index: 0;
-    opacity: 1;
-    -webkit-transform: translate(-50%, -50%) scale(0);
-    transform: translate(-50%, -50%) scale(0);
-}
-.button.cancel::before {
-    content: '';
-    position: absolute;
-    background: #071017;
-    border: 50vh solid red;
-    width: 30vh;
-    height: 30vh;
-    border-radius: 50%;
-    display: block;
-    top: 50%;
-    left: 50%;
-    z-index: 0;
-    opacity: 1;
-    -webkit-transform: translate(-50%, -50%) scale(0);
-    transform: translate(-50%, -50%) scale(0);
-}
-.button.cancel:hover {
-    color: #d9534f;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-}
-.button:hover {
-    color: #337ab7;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-}
-.button:active::before, .button:focus::before {
-    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
-    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-}
-.button:focus {
-  outline: none;
-}
-.cancel{
-    margin-left:20px;
-    background: #ff3e3e;
-    color: #ff3e3e;
-}
-.button.cancel:active::before, .button.cancel:focus::before {
-    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
-    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-}
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-.container-popup {
-    padding: 16px;
-}
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-/* Modal container/Box */
-.modal-container {
-    display: table;
-    text-align: left;
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    max-width: 800px;
-}
-/* The Close Button (x) */
-.close {
-    position: relative;
-    top: -0.6rem;
-    color: #8f8f8f;
-    font-size: 35px;
-    font-weight: bold;
-    float: right;
-    margin-right: 1rem;
-}
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-.title-modal{
-    font-family: Roboto;
-    font-size: 1rem;
-    color:#34495e;
-}
-.modal-header {
-    display: inline-block;
-    width: 100%;
-    align-items: left;
-    height: 40px;
-    padding-left: 20px;
-    padding-top: 10px;
-    background: #eaeaea;
-}
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}   
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-}
- /***********Toggle*************/
-.lbl {
-    position: relative;
-    display: block;
-    height: 14px;
-    width: 30px;
-    background: #d8d8d8;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.lbl:after {
-    position: absolute;
-    left: -2px;
-    top: -3px;
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-radius: 100px;
-    background: #898989;
-    box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
-    content: '';
-    transition: all 0.3s ease;
-}
-.lbl:active:after {
-    transform: scale(1.15, 0.85);
-}
-.cbx:checked ~ label {
-    background: #aed7f8;
-}
-.cbx:checked ~ label:after {
-    left: 15px;
-    background: #2196f3;
- }
-.cbx:disabled ~ label {
-    background: #d5d5d5;
-    pointer-events: none;
-    }
-    .cbx:disabled ~ label:after {
-    background: #bcbdbc;
-}
-.cntr {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.hidden {
-    display: none;
-}
-span.ToggleLabel {
-    text-align: left;
-    display: block;
-    margin-top: -1.0rem;
-    margin-left: 2.8rem;
-    font-size: 0.8rem;
-    color: #34495e;
-}
-.modal-body .form-group {
-    position: relative;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    height: auto;
-}
-.modal-body.form-toggle{
-    margin-top: 10px;
-    margin: 10px;
-    margin-bottom: 20px;
- }
-.modal-footer .button {
-    margin-top: 12px;
-    margin-bottom: 12px;
-}
-.modal-footer {
-    background: #f1f1f1;
-}
 .modal-mask {
     position: fixed; /* Stay in place */
     left: 0;
@@ -269,9 +10,72 @@ span.ToggleLabel {
     padding-top: 60px;
     z-index: 12;
 }
+.modal-container {
+    display: table;
+    text-align: left;
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    max-width: 600px;
+    min-width: 200px;
+}
+.modal-header {
+    position: relative ;
+    display: inline-block;
+    width: 100%;
+    align-items: left;
+    height: 40px;
+    line-height: 40px;
+    background: #eaeaea;
+}
+.modal-type-icon {
+    position: absolute;
+    top: 8px;
+    left: 1rem;
+}
+.modal-title {
+    font-family: Roboto;
+    font-size: 1rem;
+    color:#34495e;
+    margin-left: 3rem;
+}
+.modal-close-button {
+    position: relative;
+    color: #8f8f8f;
+    line-height: 100%;
+    font-size: 35px;
+    font-weight: bold;
+    float: right;
+    margin-right: 1rem;
+}
+.modal-close-button:hover,
+.modal-close-button:focus {
+    color: red;
+    cursor: pointer;
+}
 .modal-body-content {
     font-size: 1rem;
     font-family: Roboto;
     color: #34495e;
     padding: 40px;
+}
+.modal-footer .button {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.modal-footer {
+    background: #f1f1f1;
+}
+/* Animation */
+.modal-enter-active {
+    animation: modal-zoom 0.6s;
+    -webkit-animation: modal-zoom 0.6s;
+}
+@-webkit-keyframes modal-zoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}   
+@keyframes modal-zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
 }

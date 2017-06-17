@@ -1,5 +1,5 @@
 <template>
-    <div :id="id" class="menus noselect closed-main-menu">
+    <div :id="id" class="menus noselect sidenav-hidden">
         <div id="app-logo">
             <div id="logo" class="icon-menu5"></div>
             <div id="text-logo">{{ app_name }}</div>
@@ -130,11 +130,11 @@
                     this.isAdmin = false
                 })
                 event.on(event.MENU_OPENED, () => {
-                    document.getElementById(this.id).classList.remove("closed-main-menu")
+                    document.getElementById(this.id).classList.remove("sidenav-hidden")
                     document.getElementById('main_panel').style.marginLeft = '310px'
                 })
                 event.on(event.MENU_CLOSED, () => {
-                    document.getElementById(this.id).classList.add("closed-main-menu")
+                    document.getElementById(this.id).classList.add("sidenav-hidden")
                     document.getElementById('main_panel').style.marginLeft= '0'
                 })
             })

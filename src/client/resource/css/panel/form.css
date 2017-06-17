@@ -459,12 +459,6 @@ textarea{
 .cbx:disabled ~ label:after {
     background: #bcbdbc;
 }
-.cntr {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
  .hidden {
     display: none;
 }
@@ -504,6 +498,8 @@ span.ToggleLabel {
 }
 .button-container {
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .exemple-button{
     margin-top: 2px!important;

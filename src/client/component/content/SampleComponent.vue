@@ -1,16 +1,23 @@
 <template>
     <div class="content">
         <div class="contentPage">
-            <span>Page d'exemple</span>
             <br/><br/>
-            <confirm-popup :data.sync="popup_confirm" @close="closeConfirm" @confirm="confirm"></confirm-popup>
-            <button class="button exemple-button" @click="popup_confirm.show=true">
-                <span>Open confirm popup</span>
+            <span>Sample page</span>
+            <br/><br/>
+            <button class="button exemple-button" @click="openInfo()">
+                <span>Open modal Info</span>
             </button>
             <br/><br/>
-            <popup :data.sync="popup" @close="close"></popup>
-            <button class="button exemple-button" @click="popup.show=true">
-                <span>Open modal popup</span>
+            <button class="button exemple-button" @click="openWarning()">
+                <span>Open modal warning</span>
+            </button>
+            <br/><br/>
+            <button class="button exemple-button" @click="openError()">
+                <span>Open modal error</span>
+            </button>
+            <br/><br/>
+            <button class="button exemple-button" @click="openConfirm()">
+                <span>Open modal confirm</span>
             </button>
             <br/><br/>
             <span>Loader big</span>
@@ -26,42 +33,46 @@
 </template>
 
 <script>
-    import ConfirmPopup from '../layout/popup/ConfirmPopup.vue'
-    import Popup from '../layout/popup/Popup.vue'
-    import Loader from '../layout/Loader.vue'
+    import event from '../../tool/event.js'
 
     export default {
-        data : function() { return {
-            popup_confirm : {
-                show : false,
-                title : 'Confirmer l\'action',
-                text : 'Vous êtes sûre de vouloir tout casser ?',
-                label : {
-                    confirm : 'Oui',
-                    cancel : 'Non'
-                }
-            },
-            popup : {
-                show : false,
-                title : 'Information',
-                text : 'Ceci est un message d\'information !',
-                label : {
-                    confirm : 'Ok'
-                }
-            }
-        }},
         methods : {
-            closeConfirm : function() {
-                this.popup_confirm.show = false
+            openInfo : function() {
+                event.emit(event.POPUP, {
+                    type : 'info',
+                    title: 'Information message',
+                    text: 'This is the content of the INFO modal popup'
+                })
             },
-            close : function() {
-                this.popup.show = false
+            openWarning : function() {
+                event.emit(event.POPUP, {
+                    type : 'warning',
+                    title: 'Warning message',
+                    text: 'This is the content of the WARNING modal popup'
+                })
             },
-            confirm : function() {
-                console.log('Do action here and when finish close popup')
-                this.popup_confirm.show = false
+            openError : function() {
+                event.emit(event.POPUP, {
+                    type : 'error',
+                    title: 'Error message',
+                    text: 'This is the content of the ERROR modal popup'
+                })
+            },
+            openConfirm : function() {
+                event.emit(event.POPUP, {
+                    type : 'warning',
+                    title: 'Confirm answer',
+                    text: 'Are you sure that you want to display a javascript test alert which potentialy cannot hurt your conputer ?',
+                    callback : () => {
+                        alert('Action processed !')
+                    },
+                    closeCallback : () => {
+                        alert('Close action processed !')
+                    },
+                    confirmLabel : 'I agree',
+                    closeLabel : 'I close'
+                })
             }
-        },
-        components : { ConfirmPopup, Popup, Loader }
+        }
     }
 </script>
