@@ -9,47 +9,72 @@
                 </transition>
             </div>
         </div>
-        <popup :data.sync="error_popup_data" @close="closeErrorPopup"></popup>
+        <popup :data.sync="popup" @close="closePopup"></popup>
     </div>
 </template>
 
 <script>
     import TopBar from './layout/TopBar.vue'
     import SideNav from './layout/SideNav.vue'
-    import Popup from './layout/popup/Popup.vue'
+    import Popup from './layout/Popup.vue'
     import event from '../tool/event.js'
+    import mixin from '../tool/mixin.js'
 
     export default {
         data : function() { return {
-            error_popup_data : {
+            popup : {
                 show : false,
-                title : 'Message',
-                text : '--',
-                label : {
-                    confirm : 'Ok'
-                }
+                type : 'info',
+                title : '',
+                text : '',
+                confirmLabel : undefined, 
+                closeLabel : undefined,
+                callback : undefined,
+                closeCallback : undefined, 
             }
         }},
+        mixins : mixin.get(mixin.TRANSLATE),
         computed : {}, // use when complexe check has to be done in the template
         methods : { // here no dom manipulation
-            closeErrorPopup : function() {
-                this.error_popup_data.show = false ;
+            closePopup : function() {
+                this.popup.show = false ;
             },
-            showErrorPopup (title, message) {
-                this.error_popup_data.title = title
-                this.error_popup_data.text = message
-                this.error_popup_data.show = true
+            displayPopup (params) {
+                if (!params || Object.prototype.toString.call(params) != '[object Object]') {
+                    console.log('App.vue - displayPopup : bad params')
+                    return
+                }
+
+                if (params.type) this.popup.type = params.type
+                else this.popup.type = 'info'
+                
+                if (params.title) this.popup.title = params.title
+                else this.popup.title = 'Missing title param'
+
+                if (params.text) this.popup.text = params.text
+                else this.popup.text = 'Missing text param'
+
+                if (params.confirmLabel) this.popup.confirmLabel = params.confirmLabel
+                else this.popup.confirmLabel = undefined
+
+                if (params.closeLabel) this.popup.closeLabel = params.closeLabel
+                else this.popup.closeLabel = undefined
+
+                if (params.callback) this.popup.callback = params.callback
+                else this.popup.callback = undefined
+
+                if (params.closeCallback) this.popup.closeCallback = params.closeCallback
+                else this.popup.closeCallback = undefined
+
+                this.popup.show = true
             }
         },  
         components : { TopBar, SideNav, Popup },
         mounted: function () {
             const me = this
-            this.$nextTick(function () { // here the document is ready
-                event.on(event.POPUP_ERROR, function(arg) {
-                    if (arg && Object.prototype.toString.call(arg) == '[object Array]' && arg.length > 1)
-                        me.showErrorPopup(arg[0]/*title*/, arg[1]/*text*/)
-                    else
-                        console.error('App.vue : POPUP_ERROR, arg is not good !')
+            me.$nextTick(function () { // here the document is ready
+                event.on(event.POPUP, function(params) {
+                    me.displayPopup(params)
                 })
             })
         }

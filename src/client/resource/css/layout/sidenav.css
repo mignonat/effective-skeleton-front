@@ -83,7 +83,7 @@ div#sidenav {
     transition: var(--animation-speed);
     z-index: 11;
 }
-.closed-main-menu{
+.sidenav-hidden {
     width: 0px!important;
 }
 .link-menu{

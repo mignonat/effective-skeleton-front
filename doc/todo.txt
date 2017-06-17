@@ -1,3 +1,4 @@
+- Add visual extensions to Flo
 - Move fragment into panel
 - Use translate (and setTranslation) mixin everywhere
 - Translate (and setTranslation) in 404 page

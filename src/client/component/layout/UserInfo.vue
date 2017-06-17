@@ -60,7 +60,6 @@
                 </div>
             </transition>
         </div>
-        <confirm-popup :data.sync="popup_confirm" @close="closeConfirmPopup" @confirm="confirmLogout"></confirm-popup>
     </div>
 </template>
 
@@ -68,7 +67,6 @@
     import ajax from '../../tool/ajax.js'
     import * as action_types from '../../vuex/actions.js'
     import event from '../../tool/event.js'
-    import ConfirmPopup from './popup/ConfirmPopup.vue'
 
     export default {
         props : [ 'id' ],
@@ -91,19 +89,15 @@
                     logout : this.translate('all.logout'),
                     info : this.translate('all.my.info'),
                     valid : this.translate('all.valid'),
-                    connection : this.translate('all.connection')
+                    connection : this.translate('all.connection'),
+                    popup_title : this.translate('all.confirm'),
+                    popup_text : this.translate('all.confirm.logout'),
+                    popup_confirm : this.translate('all.logout'),
+                    popup_close : this.translate('all.cancel')
                 },
                 placeholder : {
                     login : this.translate('all.placeholder.login'),
                     password : this.translate('all.placeholder.password')
-                },
-                popup_confirm : {
-                    show : false,
-                    text : this.translate('all.confirm.logout'),
-                    label : {
-                        confirm : this.translate('all.yes'),
-                        cancel : this.translate('all.no')
-                    }
                 }
             }
         },
@@ -189,15 +183,15 @@
             hide() {
                 this.show = false
             },
-            confirmLogout() {
-                this.logout()
-                this.closeConfirmPopup()
-            },
             showConfirmPopup() {
-                this.popup_confirm.show = true
-            },
-            closeConfirmPopup() {
-                this.popup_confirm.show = false
+                event.emit(event.POPUP, {
+                    type : 'warning',
+                    title : this.label.popup_title,
+                    text : this.label.popup_text,
+                    confirmLabel : this.label.popup_confirm, 
+                    closeLabel : this.label.popup_close,
+                    callback : this.logout
+                })
             },
             setTranslation() {
                 this.title = this.translate('all.input.credential')
@@ -210,9 +204,10 @@
                 this.label.info = this.translate('all.my.info')
                 this.label.valid = this.translate('all.valid')
                 this.label.connection = this.translate('all.connection')
-                this.popup_confirm.text = this.translate('all.confirm.logout')
-                this.popup_confirm.label.confirm = this.translate('all.yes')
-                this.popup_confirm.label.cancel = this.translate('all.no')
+                this.label.popup_title = this.translate('all.confirm')
+                this.label.popup_text = this.translate('all.confirm.logout')
+                this.label.popup_confirm = this.translate('all.logout')
+                this.label.popup_close = this.translate('all.cancel')
                 this.placeholder.login = this.translate('all.placeholder.login')
                 this.placeholder.password = this.translate('all.placeholder.password')
             }
@@ -230,7 +225,6 @@
                     this.setDataToLogoutState()
                 })
             })
-        },
-        components: { ConfirmPopup }
+        }
     }
 </script>
