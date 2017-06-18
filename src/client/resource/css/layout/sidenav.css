@@ -11,7 +11,7 @@
     --background-color-logo:#52c9ff;
     --color-app-text:#52c9ff;
 }
-.menus {
+.sidenav {
     width: var(--menu-width);
     text-decoration: none;
     background-color: var(--secondary-color);
@@ -68,14 +68,14 @@
     font-size: 0.95rem;
     color:var(--menu-link-color);
 }
-#logo:before{
+.sidenav-company-logo:before{
     font-size: 3rem;
     line-height: 1.5;
     margin-left: 0.6rem;
     color: #fff;
     text-shadow: 2px 2px 5px rgb(0, 94, 135);
 }
-div#sidenav {
+.sidenav {
     height: 100%;
     width: var(--menu-width);
     border-right: 1px solid #cccccc;
@@ -86,31 +86,31 @@ div#sidenav {
 .sidenav-hidden {
     width: 0px!important;
 }
-.link-menu{
+.menu-link {
     background-color: var( --menu-background);
 }
-.link-menu:hover{
+.menu-link:hover {
     background-color: var( --menu-background-hover);
 }
-#app-logo{
+.sidenav-company {
     width: 100%;
     height:var(--top-height);
     border-bottom:1px solid var(--menu-border-color);
 }
-#logo{
+.sidenav-company-logo {
     height: var(--top-height);
     width: var(--top-height);
     background-color:var(--background-color-logo);
     display: inline-block;
 }
-.icon-defaultdesigner2:before{
+.icon-defaultdesigner2:before {
     font-size: 2.8rem;
     line-height: 1.6;
     margin-left: 0.7rem;
     color: #fff;
     text-shadow: 2px 2px 5px rgb(0, 143, 205);
 }
-#text-logo{
+.sidenav-company-name {
     font-family: Roboto, Arial, sans-serif;
     font-size: 1.4rem;
     font-weight: bold;
@@ -120,7 +120,7 @@ div#sidenav {
     top: 10;
     margin-left: 20px;
 }
-#text-sub-logo{
+.sidenav-company-by {
     font-family: Roboto, Arial, sans-serif;
     font-size: 0.8rem;
     font-weight: normal;
@@ -130,6 +130,6 @@ div#sidenav {
     top: 40;
     margin-left: 20px;
 }
-.opened-main-menu{
+.opened-main-menu {
     margin-left: var(--menu-width)!important;
 }

@@ -1,13 +1,13 @@
 <template>
-    <div :id="id" class="menus noselect sidenav-hidden">
-        <div id="app-logo">
-            <div id="logo" class="icon-menu5"></div>
-            <div id="text-logo">{{ app_name }}</div>
-            <div id="text-sub-logo">{{ app_by }}</div>
+    <div :id="id" class="sidenav noselect sidenav-hidden">
+        <div class="sidenav-company">
+            <div class="sidenav-company-logo icon-menu5"></div>
+            <div class="sidenav-company-name">{{ app_name }}</div>
+            <div class="sidenav-company-by">{{ app_by }}</div>
         </div>
         <template v-for="menu in menus">
             <template v-if="!menu.admin || (menu.admin && isAdmin)">
-                <router-link v-on:click.native="notify(menu)" :id="menu.id" v-if="menu.router_link" :to="menu.router_link" active-class="active" class="link-menu">
+                <router-link v-if="menu.router_link" :id="menu.id" :to="menu.router_link" v-on:click.native="notify(menu)" active-class="active" class="menu-link">
                     <span class="menu-text-link">{{ menu.label }}</span>
                 </router-link>
                 <div v-else class="menu-group">
