@@ -14,12 +14,11 @@
 @import "./layout/topbar.css";
 @import "./layout/userinfo.css";
 @import "./layout/scrollbar.css";
-@import "./layout/tables.css";
 @import "./layout/contextual/contextual-panel.css";
 @import "./layout/contextual/contextual-panel-item.css";
 
 /******** PAGE ********/
-@import "./page/all.css";
+@import "./page/all-pages.css";
 @import "./page/error404.css";
 @import "./page/admin/users.css";
 

@@ -1,8 +1,7 @@
 :root {
     --top-height: 70px;
 }
-
-.top_bar {
+.top-bar {
     position: relative ;
     line-height: var(--top-height);
     width: 100% ;
@@ -15,12 +14,10 @@
     display: inline-flex;
     z-index: 10;
 }
-
-.top_bar:hover {
+.top-bar:hover {
     cursor: default;
 }
-
-.top_bar_left_title {
+.top-bar-left-title {
     margin-left: 40px;
     font-size: larger;
     font-weight: bold;
@@ -32,8 +29,7 @@
     font-family: Roboto;
     font-size: 1rem;
 }
-
-.top_bar_right {
+.top-bar-right {
     position: absolute ;
     right: 0px;
     top:0px;
@@ -41,14 +37,4 @@
     height: var(--top-height) ;
     margin-right: 50px;
     margin-left: 50px;
-}
-.form-group.select-local{
-    margin-top: 30px;
-    margin-right: 20px;
-}
-.user_name {
-    margin-right: 5px;
-    color: #34495e;
-    font-family: Roboto;
-    font-size: 0.9rem;
 }

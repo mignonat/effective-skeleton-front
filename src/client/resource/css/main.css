@@ -38,44 +38,33 @@ select {
     border: 1px solid var(--border-color);
     background-color: white;
 }
-.error {
-    color : darkred;
-    font-size: smaller;
-    margin-left: 5px;
+a, a:-webkit-any-link {
+    text-decoration: none ;
+}
+/*********** GLOBAL CLASSES *************/
+.bold {
+    font-weight: bold;
 }
 .link, button {
     cursor: pointer;
     cursor: hand;
 }
-.reload_btn {
-    position: absolute ;
-    top : 10px;
-    right: 10px;
-}
-.add_btn {
-    position: absolute ;
-    top : 10px;
-    right: 40px;
-}
-button,
-.default_button {
+button {
     background-color: var(--border-color);
 }
 .small-icon {
     font-size: 14px;
 }
-.m_left_10 {
+.m-left-10 {
     margin-left: 10px
 }
-.m_left_5 {
+.m-left-5 {
     margin-left: 5px
 }
-a, a:-webkit-any-link {
-    text-decoration: none ;
-}
-/*********** TEXT *************/
-.bold {
-    font-weight: bold;
+.error {
+    color : darkred;
+    font-size: smaller;
+    margin-left: 5px;
 }
 /*********** INSET SHADOW *************/
 .inset-shadow {
@@ -106,7 +95,7 @@ a, a:-webkit-any-link {
     display: table;
     border-collapse: collapse;
 }
-.row {
+.table-row {
     display: table-row;
     vertical-align: top;
 }
@@ -116,20 +105,20 @@ a, a:-webkit-any-link {
     padding-top: 8px;
 }
 /*********** FLEX CONTAINERS *************/
-.v_align_container {
+.valign-center {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
-.column_container {
+.column-container {
     display: flex ;
     flex-flow: column nowrap ;
     justify-content: flex-start ;
     align-items: flex-start ;
 }
-.row_justify_top {
+.row-justify-top {
     display: flex ;
     flex-flow: row wrap ;
     justify-content: flex-start ;

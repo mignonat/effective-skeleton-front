@@ -148,62 +148,62 @@
           animation-delay: -0.1s; }
 /********** ANIMATION **********/
 @-webkit-keyframes loader-bounce {
-    0%{
+    0% {
         background-color: #07467a;
         -webkit-transform: scale(0);
                 transform: scale(0);
-    }20%{
+    } 20% {
         background-color: #bbdefb;
         -webkit-transform: scale(0.5);
                 transform: scale(0.5);
-    }40% {
+    } 40% {
         background-color: #70baf7;
         -webkit-transform: scale(1);
                 transform: scale(1);
-    }50%{
+    } 50% {
         background-color: #0e88ed;
         -webkit-transform: scale(1.5);
                 transform: scale(1.5);
-    }60%{
+    } 60% {
         background-color: #70baf7;
         -webkit-transform: scale(1);
                 transform: scale(1);
-    }80%{
+    } 80% {
         background-color: #bbdefb;
         -webkit-transform: scale(0.5);
                 transform: scale(0.5);
-    }100% {
+    } 100% {
         background-color: #07467a;
         -webkit-transform: scale(0);
                 transform: scale(0);
     }
 }
 @keyframes loader-bounce {
-    0%{
+    0% {
         background-color: #07467a;
         -webkit-transform: scale(0);
                 transform: scale(0);
-    }20%{
+    } 20% {
         background-color: #bbdefb;
         -webkit-transform: scale(0.5);
                 transform: scale(0.5);
-    }40% {
+    } 40% {
         background-color: #70baf7;
         -webkit-transform: scale(1);
                 transform: scale(1);
-    }50%{
+    } 50% {
         background-color: #0e88ed;
         -webkit-transform: scale(1.5);
                 transform: scale(1.5);
-    }60%{
+    } 60% {
         background-color: #70baf7;
         -webkit-transform: scale(1);
                 transform: scale(1);
-    }80%{
+    } 80% {
         background-color: #bbdefb;
         -webkit-transform: scale(0.5);
                 transform: scale(0.5);
-    }100% {
+    } 100% {
         background-color: #07467a;
         -webkit-transform: scale(0);
                 transform: scale(0);

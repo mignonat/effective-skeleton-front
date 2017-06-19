@@ -1,11 +1,11 @@
 <template>
     <div class="page-content noselect">
         <div class="page-title">{{ title }}</div>
-        <i @click="loadUsers" v-show="!loading" class="material-icons link reload_btn" :title="label.refresh">refresh</i>
-        <i @click="addUser" v-show="!loading" class="material-icons link add_btn" :title="label.add">person_add</i>
+        <i @click="loadUsers" v-show="!loading" class="material-icons link page-reload-button" :title="label.refresh">refresh</i>
+        <i @click="addUser" v-show="!loading" class="material-icons link page-add-button" :title="label.add">person_add</i>
         <transition name="fade-in">
             <div v-if="users.length > 0" v-show="!loading" class="users_list table">
-                <div class="user_header_row user_row row">
+                <div class="user_header_row user_row table-row">
                     <span class="cell">{{ label.id }}</span>
                     <span class="cell">{{ label.lastname }}</span>
                     <span class="cell">{{ label.firstname }}</span>
@@ -14,7 +14,7 @@
                     <span class="cell">password</span>
                     <span class="cell">{{ label.actions }}</span>
                 </div>
-                <div v-for="user in users" class="user_row row">
+                <div v-for="user in users" class="user_row table-row">
                     <span class="cell">{{ user._id }}</span>
                     <span class="cell">{{ user.lastname }}</span>
                     <span class="cell">{{ user.firstname }}</span>

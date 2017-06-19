@@ -1,10 +1,10 @@
 <template>
-    <div class="top_bar noselect">
+    <div class="top-bar noselect">
         <side-nav-button></side-nav-button>
-        <span class="top_bar_left_title m_left_10">{{ title }}</span>
-        <div class="top_bar_right v_align_container">
-            <select-locale id="top_bar_locale"></select-locale>
-            <user-info id="top_bar_user"></user-info>
+        <span class="top-bar-left-title m-left-10">{{ title }}</span>
+        <div class="top-bar-right valign-center">
+            <select-locale id="top-bar-locale"></select-locale>
+            <user-info id="top-bar-user"></user-info>
         </div>
     </div>
 </template>

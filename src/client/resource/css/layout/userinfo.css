@@ -1,20 +1,17 @@
-.user {
+.user-info {
     display: inline-block;
     height: var(--top-height);
     line-height: normal;
     margin-right: 10px;
 }
-
-.user_info, .user_login {
+.user-info-panel, .user-login-panel {
     height: var(--top-height);
     margin-left: 10px;
 }
-
-.user_name {
+.user-info-name {
     margin-right: 5px;
 }
-
-.user_win {
+.user-info-win {
     position: absolute;
     z-index: 10000;
     width: auto;
@@ -24,63 +21,52 @@
     background-color: white;
     box-shadow: 0px 4px 8px 0px #cecece;
 }
-
-.user_win > div {
+.user-info-win > div {
     position: relative ;
 }
-
-.user_win_title {
+.user-info-win-title {
     min-width: 210px;
     margin-bottom: 20px;
     font-family: Roboto, Arial, sans-serif;
     text-transform: uppercase;
     color: #54495e;
 }
-
-.user_win_hide {
+.user-info-win-hide {
     position : absolute ;
     bottom : 0px ;
     right: -7px;
 }
-
-.user_valid {
+.user-info-login-valid {
     margin-top: 10px ;
     margin-left: 5px;
 }
-
-.login, .password {
+.user-info-login, .user-info-password {
     margin-top: 10px;
     margin-left: 5px;
 }
-
-.user_win-leave-active {
-    animation: fade_out_slide_up var(--animation-speed-fast) ease-in-out;
-    -webkit-animation: fade_out_slide_up var(--animation-speed-fast) ease-in-out ;
+.user-info-type-user{
+    font-family: Roboto;
+    font-size: 1rem;
+    color: #34495e;
+    margin-top: 20px;
 }
-
-.user_win-enter-active {
-    animation: fade_in_slide_down var(--animation-speed-fast) ease-in-out;
-    -webkit-animation: fade_in_slide_down var(--animation-speed-fast) ease-in-out ;
-}
-
-.group-row{
-    padding-top: 10px;
-    padding-bottom:10px;
-}
-.f-label {
+.user-info-label {
     font-family: Roboto;
     font-size: 0.7rem;
     color: #8d8d8d;
     margin-top: 10px;
 }
-.f-value {
+.user-info-value {
     font-family: Roboto;
     font-size: 1rem;
     color: #34495e;
 }
-.type-user{
-    font-family: Roboto;
-    font-size: 1rem;
-    color: #34495e;
-    margin-top: 20px;
+/* TRANSITION */
+.user-info-win-leave-active {
+    animation: fade_out_slide_up var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_out_slide_up var(--animation-speed-fast) ease-in-out ;
+}
+.user-info-win-enter-active {
+    animation: fade_in_slide_down var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: fade_in_slide_down var(--animation-speed-fast) ease-in-out ;
 }

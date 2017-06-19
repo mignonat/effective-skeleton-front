@@ -1,60 +1,56 @@
 <template>
-    <div :id="id" class="user" @click.stop>
-        <div v-if="user" class="user_info v_align_container">
+    <div :id="id" class="user-info" @click.stop>
+        <div v-if="user" class="user-info-panel valign-center">
             <!-- USER ALREADY AUHTHENTICATED -->
-            <i v-show="!show" @click="toggle" class="material-icons link">keyboard_arrow_up</i>
-            <i v-show="show" @click="toggle" class="material-icons link">keyboard_arrow_down</i>
-            <span @click="toggle" class="link user_name">{{ user.firstname }}</span>
+            <i @click="toggle" class="material-icons link">{{ arrowUpDown }}</i>
+            <span @click="toggle" class="link user-info-name">{{ user.firstname }}</span>
             <i @click="showConfirmPopup" class="material-icons link" :title="label.logout">exit_to_app</i>
-            <transition name="user_win"> 
-                <div v-show="show" @click="toggle" class="user_win link">
+            <transition name="user-info-win">
+                <div v-show="show" @click="toggle" class="user-info-win link">
                     <div>
-                        <h3 class="user_win_title">{{ label.info }}</h3>
+                        <h3 class="user-info-win-title">{{ label.info }}</h3>
                     </div>
-                    <div >
-                        <div class="fields">
-                            <div class="field">
-                                <div class="f-label">{{ label.login }}</div>
-                                <div class="f-value">{{ user.login }}</div>
-                            </div>
-                            <div class="field">
-                                <div class="f-label">{{ label.firstname }}</div>
-                                <div class="f-value">{{ user.firstname }} </div>
-                            </div>
-                            <div class="field">
-                                <div class="f-label">{{ label.lastname }}</div>
-                                <div class="f-value">{{ user.lastname }}</div>
-                            </div>
-                            <div v-show="user.admin" class="type-user">
-                                <i class="material-icons small-icon">group</i>
-                                {{ label.admin }}s
-                            </div>
+                    <div>
+                        <div>
+                            <div class="user-info-label">{{ label.login }}</div>
+                            <div class="user-info-value">{{ user.login }}</div>
+                        </div>
+                        <div>
+                            <div class="user-info-label">{{ label.firstname }}</div>
+                            <div class="user-info-value">{{ user.firstname }} </div>
+                        </div>
+                        <div>
+                            <div class="user-info-label">{{ label.lastname }}</div>
+                            <div class="user-info-value">{{ user.lastname }}</div>
+                        </div>
+                        <div v-show="user.admin" class="user-info-type-user">
+                            <i class="material-icons small-icon">group</i>
+                            {{ label.admin }}s
                         </div>
                     </div>
                 </div>
             </transition>
         </div>
-        <div v-else class="user_login v_align_container">
+        <div v-else class="user-login-panel valign-center">
             <!-- USER NOT AUHTHENTICATED -->
-            <button :id="id+'_login_btn'" @click="toggle" class="link v_align_container">
+            <button :id="id+'-login-button'" @click="toggle" class="link valign-center">
                 <i class="material-icons small-icon">person</i>
-                <span :id="id+'_login_btn_label'" class="m_left_5">{{ label.connection }}</span>
-                <i v-show="!show" class="material-icons small-icon">keyboard_arrow_down</i>
-                <i v-show="show" class="material-icons small-icon">keyboard_arrow_up</i>
+                <span :id="id+'-login-button-label'" class="m-left-5">{{ label.connection }}</span>
+                <i @click="toggle" class="material-icons link">{{ arrowUpDown }}</i>
             </button>
-            <transition name="user_win">
-                <div v-show="show" class="user_win">
+            <transition name="user-info-win">
+                <div v-show="show" class="user-info-win">
                     <div>
-                        <h3 class="user_win_title">{{ title }}</h3>
-                        <i class="material-icons link user_win_hide" :title="label.hide" @click="hide()">keyboard_arrow_up</i>
+                        <h3 class="user-info-win-title">{{ title }}</h3>
+                        <i class="material-icons link user-info-win-hide" :title="label.hide" @click="hide()">keyboard_arrow_up</i>
                     </div>
                     <div class="table">
-                        <div v-show="hasError" class="row error">{{ this.displayError() }}</div>
-                        <input v-model="login" :placeholder="placeholder.login" class="login row"></input>
-                        <input v-model="password" type="password" :placeholder="placeholder.password" class="password row"></input>
-                        <button @click="auth" class="row user_valid v_align_container">
+                        <div v-show="hasError" class="table-row error">{{ this.displayError() }}</div>
+                        <input v-model="login" :placeholder="placeholder.login" class="user-info-login table-row"></input>
+                        <input v-model="password" type="password" :placeholder="placeholder.password" class="user-info-password table-row"></input>
+                        <button @click="auth" class="table-row user-info-login-valid valign-center">
                             {{ label.valid }}
-                            <i class="material-icons m_left_5 small-icon">check</i>
+                            <i class="material-icons m-left-5 small-icon">check</i>
                         </button>
                     </div>
                 </div>
@@ -104,6 +100,9 @@
             }
         },
         computed : {
+            arrowUpDown() {
+                return this.show? 'keyboard_arrow_down' : 'keyboard_arrow_up'
+            },
             hasError () {
                 return this.error_credential || this.error_internal || this.error_server
             }
