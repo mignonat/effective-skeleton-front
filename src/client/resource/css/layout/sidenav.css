@@ -38,7 +38,6 @@
     width: var(--top-height);
     background-color:var(--sidenav-logo-color);
     display: inline-block;
-    color:var(--sidenav-text-color);
 }
 .sidenav-header-logo:before{
     font-family: 'icomoon';
@@ -55,7 +54,8 @@
     font-weight: bold;
     display: inline-block;
     position: absolute;
-    top: 10;
+    top: 14px;
+    color:var(--sidenav-text-color);
     margin-left: 20px;
 }
 .sidenav-header-by {
@@ -65,6 +65,7 @@
     display: inline-block;
     position: absolute;
     top: 40;
+    color:var(--sidenav-text-color);
     margin-left: 20px;
 }
 /*********** SIDENAV ITEM ***********/
