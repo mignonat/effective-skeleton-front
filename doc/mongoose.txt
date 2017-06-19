@@ -1,0 +1,59 @@
+http://mongoosejs.com/docs/schematypes.html
+http://mongoosejs.com/docs/advanced_schemas.html
+
+Validation samples :
+	{
+		type: Number,
+		required: [ true, 'Why no bacon?' ],
+		required: function() {
+			return this.bacon > 3;
+		},
+		validate: {
+			validator: function(v) {
+				return /\d{3}-\d{3}-\d{4}/.test(v);
+		},
+		message : '{VALUE} is not a valid phone number!'
+		},
+			validate: {
+				// `isAsync` is not strictly necessary in mongoose 4.x, but relying
+				// on 2 argument validators being async is deprecated. Set the
+				// `isAsync` option to `true` to make deprecation warnings go away.
+				isAsync: true,
+				validator: function(v, cb) {
+						setTimeout(function() {
+							cb(/\d{3}-\d{3}-\d{4}/.test(v));
+						}, 5);
+				},
+				message: '{VALUE} is not a valid phone number!'
+			},
+			unique : true,
+		enum : ['Coffee', 'Tea'],
+			min : [ 6, 'Too few eggs'],
+			max : [ 12, 'Too much eggs'],
+		lowercase: true /* just for string */
+	}
+
+All Schema Types :
+	required: boolean or function, if true adds a required validator for this property
+	default: Any or function, sets a default value for the path. If the value is a function, the return value of the function is used as the default.
+	select: boolean, specifies default projections for queries
+	`validate: function, adds a validator function for this property
+	get: function, defines a custom getter for this property using Object.defineProperty().
+	set: function, defines a custom setter for this property using Object.defineProperty().
+	alias: string, mongoose >= 4.10.0 only. Defines a virtual with the given name that gets/sets this path.
+
+integerOnly: {
+	type: Number,
+	get: v => Math.round(v),
+	set: v => Math.round(v),
+	alias: 'i'
+}
+
+String
+Number
+Date
+Buffer
+Boolean
+Mixed
+Objectid
+Array

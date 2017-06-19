@@ -1,135 +1,116 @@
 :root {
-    --menu-width : 310px ;
-    --menu-height: 70px ;
-    --menu-background : #f9f9f9 ;
-    --menu-background-hover : #f4fbff ;
-    --menu-background-selected : #dcf4ff ;
-    --menu-background-selected-border: #5dcdff;
-    --menu-border-color:#eaeaea;
-    --menu-item-background:#fff;
-    --menu-link-color:#37474f;
-    --background-color-logo:#52c9ff;
-    --color-app-text:#52c9ff;
+    --sidenav-width : 310px ;
+    --sidenav-min-width : 305px ;
+    --sidenav-item-height: 70px ;
+    --sidenav-background : #f9f9f9 ;
+    --sidenav-background-hover : #f4fbff ;
+    --sidenav-background-selected : #dcf4ff ;
+    --sidenav-background-selected-border: #5dcdff;
+    --sidenav-border-color:#eaeaea;
+    --sidenav-item-child-background:#fff;
+    --sidenav-item-color:#37474f;
+    --sidenav-logo-color:#52c9ff;
+    --sidenav-text-color:#52c9ff;
 }
 .sidenav {
-    width: var(--menu-width);
+    width: var(--sidenav-width);
+    font-family: Roboto, Lato, Arial, Helvetica, sans-serif;
     text-decoration: none;
-    background-color: var(--secondary-color);
+    background-color: var( --sidenav-background);
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: var(--animation-speed-fast);
+    border-right: 1px solid #cccccc;
+    height: 100%;
+    z-index: 11;
 }
-[id^='menu.'] {
-    display: block;
-    line-height: var(--menu-height);
-    height: var(--menu-height);
-    background-color: var(--menu-background);
-    border-bottom: 1px solid var(--menu-border-color);
+/*********** HEADER ***********/
+.sidenav-header {
+    width: 100%;
+    height:var(--top-height);
+    border-bottom:1px solid var(--sidenav-border-color);
 }
-[id^='menu.'].active {
-    background: var(--menu-background-selected);
-    border-right: 5px solid var(--menu-background-selected-border);
+.sidenav-header-logo {
+    height: var(--top-height);
+    width: var(--top-height);
+    background-color:var(--sidenav-logo-color);
+    display: inline-block;
+    color:var(--sidenav-text-color);
 }
-[id^='menu.'] > span {
-    margin-left: 28px ;
-}
-.menu-group > div > i {
-    margin-left: 10px;
-}
-.menu-group > div > span {
-    margin-left: 0;
-}
-.menu-item {
-    background-color: var(--menu-item-background);
-    border-bottom: 1px solid var(--menu-border-color);
-}
-.menu-item > span {
-    margin-left: 40px;
-}
-.menu_item-enter-active {
-    animation: accordion_in var(--animation-speed-fast) ease-in-out;
-    -webkit-animation: accordion_in var(--animation-speed-fast) ease-in-out ;
-}
-.menu_item-leave-active {
-    animation: accordion_out var(--animation-speed-fast) ease-in-out;
-    -webkit-animation: accordion_out var(--animation-speed-fast) ease-in-out ;
-}
-.menu-text-link{
-    font-family: Roboto, Lato, Arial, Helvetica, sans-serif;
-    font-size: 0.97rem;
-    color:var(--menu-link-color);
-}
-.sub-menu-text-link{
-    font-family: Roboto, Lato, Arial, Helvetica, sans-serif;
-    font-size: 0.95rem;
-    color:var(--menu-link-color);
-}
-.sidenav-company-logo:before{
+.sidenav-header-logo:before{
+    font-family: 'icomoon';
+    content: "\e9f4";
     font-size: 3rem;
     line-height: 1.5;
     margin-left: 0.6rem;
     color: #fff;
     text-shadow: 2px 2px 5px rgb(0, 94, 135);
 }
-.sidenav {
-    height: 100%;
-    width: var(--menu-width);
-    border-right: 1px solid #cccccc;
-    background-color: var( --menu-background);
-    transition: var(--animation-speed-fast);
-    z-index: 11;
-}
-.sidenav-hidden {
-    width: 0px!important;
-}
-.menu-link {
-    background-color: var( --menu-background);
-}
-.menu-link:hover {
-    background-color: var( --menu-background-hover);
-}
-.sidenav-company {
-    width: 100%;
-    height:var(--top-height);
-    border-bottom:1px solid var(--menu-border-color);
-}
-.sidenav-company-logo {
-    height: var(--top-height);
-    width: var(--top-height);
-    background-color:var(--background-color-logo);
-    display: inline-block;
-}
-.icon-defaultdesigner2:before {
-    font-size: 2.8rem;
-    line-height: 1.6;
-    margin-left: 0.7rem;
-    color: #fff;
-    text-shadow: 2px 2px 5px rgb(0, 143, 205);
-}
-.sidenav-company-name {
+.sidenav-header-name {
     font-family: Roboto, Arial, sans-serif;
     font-size: 1.4rem;
     font-weight: bold;
-    color:var(--color-app-text);
     display: inline-block;
     position: absolute;
     top: 10;
     margin-left: 20px;
 }
-.sidenav-company-by {
+.sidenav-header-by {
     font-family: Roboto, Arial, sans-serif;
     font-size: 0.8rem;
     font-weight: normal;
-    color:var(--color-app-text);
     display: inline-block;
     position: absolute;
     top: 40;
     margin-left: 20px;
 }
-.opened-main-menu {
-    margin-left: var(--menu-width)!important;
+/*********** SIDENAV ITEM ***********/
+.sidenav-item {
+    display: block;
+    line-height: var(--sidenav-item-height);
+    min-width: var(--sidenav-min-width);
+    height: var(--sidenav-item-height);
+    background-color: var(--sidenav-background);
+    border-bottom: 1px solid var(--sidenav-border-color);
+    color:var(--sidenav-item-color) !important;
+    cursor: pointer;
+    cursor: hand;
+}
+.sidenav-item.active {
+    background: var(--sidenav-background-selected);
+    border-right: 5px solid var(--sidenav-background-selected-border);
+}
+.sidenav-item > span {
+    margin-left: 28px ;
+}
+/*********** SIDENAV GROUP ***********/
+.sidenav-group > div:first-child > i {
+    margin-left: 10px;
+}
+.sidenav-group > div:first-child > span {
+    margin-left: 0;
+}
+/*********** SIDENAV CHILD ***********/
+.sidenav-item.sidenav-child {
+    background-color: var(--sidenav-item-child-background);
+    border-bottom: 1px solid var(--sidenav-border-color);
+}
+.sidenav-item.sidenav-child > span {
+    margin-left: 40px;
+}
+/*********** PANEL ANIMATION ***********/
+.sidenav-hidden {
+    width: 0px!important;
+}
+/*********** CHILD ANIMATION ***********/
+.sidenav-child-enter-active {
+    animation: accordion_in var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: accordion_in var(--animation-speed-fast) ease-in-out ;
+}
+.sidenav-child-leave-active {
+    animation: accordion_out var(--animation-speed-fast) ease-in-out;
+    -webkit-animation: accordion_out var(--animation-speed-fast) ease-in-out ;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="content error-content">
+    <div class="page-content error-content">
         <div class='landscape'>
             <div class="stars"></div>
             <div class="twinkling"></div>

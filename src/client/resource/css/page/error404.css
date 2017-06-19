@@ -1,4 +1,4 @@
-/*** landing creation & animations***/
+/*** landing creation & animations***
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +42,7 @@
   box-shadow: 120px 80px 0 rgba(0, 0, 0, 0.1), 100px -60px 0 -20px rgba(0, 0, 0, 0.1), -70px 40px 0 -20px rgba(0, 0, 0, 0.1), -20px -50px 0 -15px rgba(0, 0, 0, 0.1), -20px 120px 0 -15px rgba(0, 0, 0, 0.1), 50px 50px 0 -15px rgba(0, 0, 0, 0.1);
 }
 
-/* Animation Setup */
+/* Animation Setup *
 .layer {
   position: absolute;
   bottom: 0;
@@ -107,7 +107,7 @@
 }
 
 
-/* Mountain Layer */
+/* Mountain Layer *
 .hills div {
   border-radius: 8%;
   -webkit-transform: rotate(45deg);
@@ -198,7 +198,7 @@
 
 .error-content{
     background: #274461!important;
-    height: calc(100% - var(--menu-height));
+    height: calc(100% - var(--sidenav-item-height));
     width: 100%;
     padding: 0px;
 }
@@ -225,7 +225,7 @@
 }
 
 
-/*****waves creation and animations****/
+/*****waves creation and animations****
 .l3 {
   bottom: 0;
   width: 1000%;
@@ -442,8 +442,8 @@
 
 .l3 {
     z-index: 3;
-    /* -webkit-animation-name: l3; */
-    /* animation-name: l3; */
+    /* -webkit-animation-name: l3; *
+    /* animation-name: l3; *
     left: 0px;
     width: 100%;
     background: #1d3f5f;
@@ -466,7 +466,7 @@
 Nick Mkrtchyan
 https://www.facebook.com/sonick.pk
 http://www.Mkrtchyan.zz.mu
-================================================================================================= */
+================================================================================================= *
 * {
     margin: 0;
     padding: 0;
@@ -568,7 +568,7 @@ header a, a:visited {
   animation:move-clouds-back 200s linear infinite;
 }
 
-/***boat***/
+/***boat***
 .outer
 {
 	display: flex;
@@ -631,4 +631,4 @@ img
     top: -490;
     z-index: 1;
     width: 100px;
-}
+}*/

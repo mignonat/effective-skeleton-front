@@ -32,7 +32,7 @@
         components : { SelectLocale, UserInfo, SideNavButton },
         mounted: function () {
             this.$nextTick(function () {
-                event.on(event.MENU_CHANGE, (menu) => {
+                event.on(event.SIDENAV_CHANGE, (menu) => {
                     this.menuLabelKey = menu.id
                     this.setTranslation()
                 })

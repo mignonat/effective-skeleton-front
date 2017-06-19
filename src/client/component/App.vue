@@ -1,10 +1,10 @@
 <template>
     <div id="app">
         <side-nav id="sidenav"></side-nav>
-        <div id="main_panel">
+        <div id="main-panel" class="main-panel-expanded">
             <top-bar></top-bar>
             <div class="router-content top-inset-shadow">
-                <transition name="slide_router">
+                <transition name="slide-router">
                     <router-view></router-view>
                 </transition>
             </div>

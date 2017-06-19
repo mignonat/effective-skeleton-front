@@ -3,8 +3,8 @@
 
 /******** GENERAL ********/
 @import "../fonts/style.css";
+@import "./main.css";
 @import "./app.css";
-@import "./transitions.css";
 
 /******** LAYOUT ********/
 @import "./layout/loader.css";
@@ -13,13 +13,13 @@
 @import "./layout/sidenav-button.css";
 @import "./layout/topbar.css";
 @import "./layout/userinfo.css";
-@import "./layout/content.css";
 @import "./layout/scrollbar.css";
 @import "./layout/tables.css";
 @import "./layout/contextual/contextual-panel.css";
 @import "./layout/contextual/contextual-panel-item.css";
 
 /******** PAGE ********/
+@import "./page/all.css";
 @import "./page/error404.css";
 @import "./page/admin/users.css";
 

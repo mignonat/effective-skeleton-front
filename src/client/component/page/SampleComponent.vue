@@ -1,31 +1,29 @@
 <template>
-    <div class="content">
-        <div class="contentPage">
-            <br/><br/>
-            <span>Modal popup sample</span>
-            <br/><br/>
-            <button class="button sample-button" @click="openInfo()">
-                <span>Info modal</span>
-            </button>
-            <button class="button sample-button" @click="openWarning()">
-                <span>Warning modal</span>
-            </button>
-            <button class="button sample-button" @click="openError()">
-                <span>Error modal</span>
-            </button>
-            <button class="button sample-button" @click="openConfirm()">
-                <span>Confirm modal</span>
-            </button>
-            <br/><br/>
-            <span>Loader small</span>
-            <loader size="small"></loader>
-            <br/><br/>
-            <span>Loader medium</span>
-            <loader></loader>
-            <br/><br/>
-            <span>Loader big</span>
-            <loader size="big"></loader>
-        </div>
+    <div class="page-content">
+        <br/><br/>
+        <span>Modal popup sample</span>
+        <br/><br/>
+        <button class="button sample-button" @click="openInfo()">
+            <span>Info modal</span>
+        </button>
+        <button class="button sample-button" @click="openWarning()">
+            <span>Warning modal</span>
+        </button>
+        <button class="button sample-button" @click="openError()">
+            <span>Error modal</span>
+        </button>
+        <button class="button sample-button" @click="openConfirm()">
+            <span>Confirm modal</span>
+        </button>
+        <br/><br/>
+        <span>Loader small</span>
+        <loader size="small"></loader>
+        <br/><br/>
+        <span>Loader medium</span>
+        <loader></loader>
+        <br/><br/>
+        <span>Loader big</span>
+        <loader size="big"></loader>
     </div>
 </template>
 

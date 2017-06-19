@@ -1,8 +1,6 @@
 <template>
-  <div class="content">
-    <div class="contentPage">  
+  <div class="page-content">  
       <form-content></form-content>
-    </div>
   </div>
 </template>
 

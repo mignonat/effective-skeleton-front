@@ -1,0 +1,270 @@
+
+:root {
+    --main-color : #282e2f;
+    --secondary-color: azure;
+    --border-color: rgba(127, 63, 191, 0.3);
+    --animation-speed-fast: 0.25s;
+    --animation-speed-medium: 0.45s;
+    --animation-speed-slow: 0.6s;
+    --menu-slide: -180px ;
+    --y-down: -20px ;
+}
+/*********** HTML *************/
+* {
+    margin : 0px;
+    padding: 0px;
+}
+body {
+    margin: 0px ;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+}
+textarea, input, button, select { 
+    outline: none; /* remove focus glow */
+}
+ul {
+    list-style: none;
+    padding: 0px ;
+    margin: 0px ;
+}
+li {
+    width: 100%;
+}
+input {
+    padding-left: 5px;
+}
+select {
+    border: 1px solid var(--border-color);
+    background-color: white;
+}
+.error {
+    color : darkred;
+    font-size: smaller;
+    margin-left: 5px;
+}
+.link, button {
+    cursor: pointer;
+    cursor: hand;
+}
+.reload_btn {
+    position: absolute ;
+    top : 10px;
+    right: 10px;
+}
+.add_btn {
+    position: absolute ;
+    top : 10px;
+    right: 40px;
+}
+button,
+.default_button {
+    background-color: var(--border-color);
+}
+.small-icon {
+    font-size: 14px;
+}
+.m_left_10 {
+    margin-left: 10px
+}
+.m_left_5 {
+    margin-left: 5px
+}
+a, a:-webkit-any-link {
+    text-decoration: none ;
+}
+/*********** TEXT *************/
+.bold {
+    font-weight: bold;
+}
+/*********** INSET SHADOW *************/
+.inset-shadow {
+    -webkit-box-shadow: inset 6px 3px 15px 0px var(--border-color);
+    -moz-box-shadow: inset 6px 3px 15px 0px var(--border-color);
+    box-shadow: inset 6px 3px 15px 0px var(--border-color);
+}
+/*********** NO SELECTION *************/
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+.noselect:hover {
+    cursor: default;
+}
+/*********** BORDER RADIUS *************/
+.border_radius {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+}
+/*********** CSS TABLE *************/
+.table {
+    display: table;
+    border-collapse: collapse;
+}
+.row {
+    display: table-row;
+    vertical-align: top;
+}
+.cell {
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 8px;
+}
+/*********** FLEX CONTAINERS *************/
+.v_align_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.column_container {
+    display: flex ;
+    flex-flow: column nowrap ;
+    justify-content: flex-start ;
+    align-items: flex-start ;
+}
+.row_justify_top {
+    display: flex ;
+    flex-flow: row wrap ;
+    justify-content: flex-start ;
+}
+/*************** TRANSITION MENU ***************/
+@keyframes menu_reduce {
+    0% {
+        opacity: 1;
+        position: absolute;
+        top: var(--top-height);
+        left: 0px;
+    } 100% {
+        opacity: 0;
+        position: absolute;
+        top: var(--top-height);
+        left: var(--menu-slide);
+    }
+}
+@keyframes menu_expand {
+    0% {
+        opacity: 0;
+        position: absolute;
+        top: var(--top-height);
+        left: var(--menu-slide);
+    } 100% {
+        opacity: 1;
+        position: absolute;
+        top: var(--top-height);
+        left: 0px;
+    }
+}
+/*************** TRANSITION FADE ***************/
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+@keyframes fade_out {
+    0% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}
+@keyframes page_fade_in {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+/*************** TRANSITION SLIDE LEFT TO RIGHT ***************/
+@keyframes slide_left_right {
+    0% {
+        position: absolute;
+        opacity: 1;
+        left: 5px;
+    } 100% {
+        position: absolute;
+        opacity: 0;
+        left: -10%;
+    }
+}
+/*************** TRANSITION SCALE-UP ***************/
+@keyframes scale-up {
+    0% {
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+    } 50% {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    } 100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+@keyframes scale-up-text {
+    0% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    } 50% {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+    } 100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+/*************** TRANSITION FADE-SLIDE ***************/
+@keyframes fade_in_slide_down {
+    0% {
+        opacity: 0;
+        transform: translateY(var(--y-down));
+        -webkit-transform: translateY(var(--y-down));
+    } 100% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+}
+@keyframes fade_out_slide_up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    } 100% {
+        opacity: 0;
+        transform: translateY(var(--y-down));
+        -webkit-transform: translateY(var(--y-down));
+    }
+}
+/*************** TRANSITION ACCORDION ***************/
+@keyframes accordion_in {
+    0% {
+        opacity: 0;
+        height: 0;
+    } 50% {
+        opacity: 0.5;
+        height: normal;
+    } 100% {
+        opacity: 1;
+        height: normal;
+    }
+}
+@keyframes accordion_out {
+    0% {
+        opacity: 1;
+        height: normal;
+    } 50% {
+        opacity: 0.5;
+        height: normal;
+    } 100% {
+        opacity: 0;
+        height: 0;
+    }
+}

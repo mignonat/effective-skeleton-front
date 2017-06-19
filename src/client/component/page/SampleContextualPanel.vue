@@ -1,7 +1,7 @@
 <template>
-    <div class="content">
-      <contextual-panel></contextual-panel>
-       <div class="contentPage"></div>
+    <div class="page-content">
+        <contextual-panel></contextual-panel>
+        <div>Content of the page</div>
     </div>
 </template>
 

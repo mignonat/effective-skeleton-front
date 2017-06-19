@@ -1,24 +1,24 @@
 <template>
     <div :id="id" class="sidenav noselect sidenav-hidden">
-        <div class="sidenav-company">
-            <div class="sidenav-company-logo icon-menu5"></div>
-            <div class="sidenav-company-name">{{ app_name }}</div>
-            <div class="sidenav-company-by">{{ app_by }}</div>
+        <div class="sidenav-header">
+            <div class="sidenav-header-logo"></div>
+            <div class="sidenav-header-name">{{ app_name }}</div>
+            <div class="sidenav-header-by">{{ app_by }}</div>
         </div>
-        <template v-for="menu in menus">
-            <template v-if="!menu.admin || (menu.admin && isAdmin)">
-                <router-link v-if="menu.router_link" :id="menu.id" :to="menu.router_link" v-on:click.native="notify(menu)" active-class="active" class="menu-link">
-                    <span class="menu-text-link">{{ menu.label }}</span>
+        <template v-for="item in items">
+            <template v-if="!item.admin || (item.admin && isAdmin)">
+                <router-link v-if="item.router_link" :id="item.id" :to="item.router_link" v-on:click.native="notify(item)" active-class="active" class="sidenav-item">
+                    <span>{{ item.label }}</span>
                 </router-link>
-                <div v-else class="menu-group">
-                    <div @click="menu.open=!menu.open" :id="menu.id" class="link">
-                        <i v-show="!menu.open" class="material-icons small-icon">keyboard_arrow_up</i>
-                        <i v-show="menu.open" class="material-icons small-icon">keyboard_arrow_down</i>
-                        <span class="menu-text-link">{{ menu.label }}</span>
+                <div v-else class="sidenav-group">
+                    <div @click="item.open=!item.open" :id="item.id" class="sidenav-item">
+                        <i v-show="!item.open" class="material-icons small-icon">keyboard_arrow_up</i>
+                        <i v-show="item.open"  class="material-icons small-icon">keyboard_arrow_down</i>
+                        <span>{{ item.label }}</span>
                     </div>
-                    <transition v-for="child in menu.children" v-bind:key="child.id" name="menu_item">
-                        <router-link v-on:click.native="notify(child)" :id="child.id" v-show="menu.open" :to="child.router_link" active-class="active" class="menu-item">
-                            <span class="sub-menu-text-link">{{ child.label }}</span>
+                    <transition v-for="child in item.children" v-bind:key="child.id" name="sidenav-child">
+                        <router-link v-on:click.native="notify(child)" :id="child.id" v-show="item.open" :to="child.router_link" active-class="active" class="sidenav-item sidenav-child">
+                            <span>{{ child.label }}</span>
                         </router-link>
                     </transition>
                 </div>
@@ -39,7 +39,7 @@
                 isAdmin : this.isAdmin(),
                 app_name : this.translate('app.name'),
                 app_by : this.translate('app.by'),
-                menus : [{
+                items : [{
                     id : 'menu.home',
                     router_link : '/home',
                     label : this.translate('menu.home')
@@ -99,10 +99,10 @@
                 return this.$store.getters.isAdmin()
             },
             setTranslation() {
-                this.menus.forEach((menu) => {
-                    menu.label = this.translate(menu.id)
-                    if (menu.hasOwnProperty('children')) {
-                        menu.children.forEach((child) => {
+                this.items.forEach((item) => {
+                    item.label = this.translate(item.id)
+                    if (item.hasOwnProperty('children')) {
+                        item.children.forEach((child) => {
                             child.label = this.translate(child.id)
                         })
                     }
@@ -110,15 +110,18 @@
                 this.app_name = this.translate('app.name')
                 this.app_by = this.translate('app.by')
             },
-            notify(menu) {
-                event.emit(event.MENU_CHANGE, { 
-                    id : menu.id,
-                    router_link : menu.router_link
+            notify(item) {
+                event.emit(event.SIDENAV_CHANGE, { 
+                    id : item.id,
+                    router_link : item.router_link
                 })
             }
         },
         mounted: function () {
             this.$nextTick(function () {
+                const meEl = document.getElementById(this.id)
+                const mainPanelEl = document.getElementById('main-panel')
+
                 event.on(event.LOCALE_CHANGE, () => {
                     this.setTranslation()
                 })
@@ -128,13 +131,13 @@
                 event.on(event.LOGOUT, () => {
                     this.isAdmin = false
                 })
-                event.on(event.MENU_OPENED, () => {
-                    document.getElementById(this.id).classList.remove("sidenav-hidden")
-                    document.getElementById('main_panel').style.marginLeft = '310px'
+                event.on(event.SIDENAV_OPENED, () => {
+                    meEl.classList.remove("sidenav-hidden")
+                    mainPanelEl.classList.remove("main-panel-expanded")
                 })
-                event.on(event.MENU_CLOSED, () => {
-                    document.getElementById(this.id).classList.add("sidenav-hidden")
-                    document.getElementById('main_panel').style.marginLeft= '0'
+                event.on(event.SIDENAV_CLOSED, () => {
+                    meEl.classList.add("sidenav-hidden")
+                    mainPanelEl.classList.add("main-panel-expanded")
                 })
             })
         }

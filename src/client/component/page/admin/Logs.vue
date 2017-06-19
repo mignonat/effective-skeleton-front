@@ -1,3 +1,3 @@
 <template>
-    <div class="content">Here we'll consult the logs</div>
+    <div class="page-content">Here we'll consult the logs</div>
 </template>

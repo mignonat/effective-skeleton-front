@@ -1,6 +1,6 @@
 <template>
     <div @click="toggle" 
-        :class="open? 'menu_button open' : 'menu_button'" 
+        :class="open? 'sidenav-button open' : 'sidenav-button'" 
         :title="open? label.hide : label.show">
         <span></span>
         <span></span>
@@ -25,9 +25,9 @@
             toggle() {
                 this.open = !this.open
                 if (this.open)
-                    event.emit(event.MENU_OPENED)
+                    event.emit(event.SIDENAV_OPENED)
                 else
-                    event.emit(event.MENU_CLOSED)
+                    event.emit(event.SIDENAV_CLOSED)
             },
             setTranslation() {
                 this.label.show = this.translate('all.show.main.menu')

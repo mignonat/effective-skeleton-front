@@ -1,0 +1,14 @@
+.page-title {
+    font-size: 1.5rem;
+    font-family: Roboto;
+    margin-left: 40px;
+    padding-top: 40px;
+    color: #34495e;
+}
+.page-content {
+    width: calc(100% -20px) ;
+    height: calc(100% - 70px);
+    background: var(--bg-background-content);
+    padding: 0px 5px 0px 10px;
+    overflow-y: auto;
+}

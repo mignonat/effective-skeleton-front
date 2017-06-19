@@ -1,3 +1,3 @@
 <template>
-    <div class="content">Here we'll manage the groups</div>
+    <div class="page-content">Here we'll manage the groups</div>
 </template>

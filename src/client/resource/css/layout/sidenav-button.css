@@ -1,4 +1,4 @@
-.menu_button {
+.sidenav-button {
     width: 30px;
     height: 23px;
     -webkit-transform: rotate(0deg);
@@ -14,8 +14,7 @@
     margin-top: 24px;
     margin-left: 30px;
 }
-
-.menu_button span {
+.sidenav-button span {
    display: block;
     position: absolute;
     height: 3px;
@@ -33,11 +32,10 @@
     -o-transition: var(--animation-speed-fast) ease-in-out;
     transition: var(--animation-speed-fast) ease-in-out;
 }
-
-.menu_button span:nth-child(1) {
+.sidenav-button span:nth-child(1) {
   top: 0px;
 }
-.menu_button.open span:nth-child(3) {
+.sidenav-button.open span:nth-child(3) {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
@@ -45,10 +43,10 @@
     top: 10px;
     left: 4px;
 }
-.menu_button.open span:nth-child(2) {
+.sidenav-button.open span:nth-child(2) {
     display:none;
 }
-.menu_button.open span:nth-child(1) {
+.sidenav-button.open span:nth-child(1) {
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
@@ -56,11 +54,9 @@
     top: 10px;
     left: 4px;
 }
-
-.menu_button span:nth-child(2) {
+.sidenav-button span:nth-child(2) {
   top: 9px;
 }
-
-.menu_button span:nth-child(3) {
+.sidenav-button span:nth-child(3) {
   top: 18px;
 }

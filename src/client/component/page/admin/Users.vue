@@ -1,6 +1,6 @@
 <template>
-    <div class="content noselect">
-        <div class="page_title">{{ title }}</div>
+    <div class="page-content noselect">
+        <div class="page-title">{{ title }}</div>
         <i @click="loadUsers" v-show="!loading" class="material-icons link reload_btn" :title="label.refresh">refresh</i>
         <i @click="addUser" v-show="!loading" class="material-icons link add_btn" :title="label.add">person_add</i>
         <transition name="fade-in">
