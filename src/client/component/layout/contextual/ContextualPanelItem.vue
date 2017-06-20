@@ -1,11 +1,11 @@
 <template>  
-    <div class="contextual-panel-item">
-        <div class="title-container" @click="open=!open">
-            <i :class="open? 'icon-moveUp' : 'icon-moveDown'"></i>  
-            <span class="title-panel-item">{{ data.title }}</span>
+    <div class="contextual-item">
+        <div class="contextual-header" @click="open=!open">
+            <i :class="iconClass"></i>  
+            <span class="contextual-title">{{ data.title }}</span>
         </div>
-        <transition name="context-panel-item">
-            <div v-show="open" class="content-panel-item">
+        <transition name="contextual-item">
+            <div v-show="open" class="contextual-item-content">
                 <template v-if="data.type=='sample1'">
                     <sample1></sample1>
                 </template>
@@ -26,6 +26,11 @@
         data : function() { return {
             open : false,
         }},
+        computed : {
+            iconClass() {
+                return this.open? 'contextual-item-icon-up' : 'contextual-item-icon-down'
+            }
+        },
         components : { Sample1, Sample2 }
     }
 </script>

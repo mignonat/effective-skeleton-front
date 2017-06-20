@@ -1,7 +1,7 @@
 <template>    
     <div class="contextual-panel">
-        <contextual-panel-item :data.sync="contextual_panel_item_sample1" ></contextual-panel-item>
-        <contextual-panel-item :data.sync="contextual_panel_item_sample2" ></contextual-panel-item>
+        <contextual-panel-item :data.sync="panel1" ></contextual-panel-item>
+        <contextual-panel-item :data.sync="panel2" ></contextual-panel-item>
     </div>
 </template>
 
@@ -10,12 +10,12 @@
     
     export default {
         data : function() { return {
-            contextual_panel_item_sample1 : {
+            panel1 : {
                 show : false,
                 title : 'Loan infos',
                 type : 'sample1'
             },
-            contextual_panel_item_sample2 : {
+            panel2 : {
                 show : false,
                 title : 'Loan Resume',
                 type : 'sample2'

@@ -1,10 +1,10 @@
-.contextual-panel-item{
+.contextual-item {
     background: white;   
     margin-bottom: 1px;
     margin-bottom: 10px;
     box-shadow: 0 2px 2px 0 #d0d0d0;
 }
-.title-container{
+.contextual-header {
     padding: 10px;
     background: #77c8ec;
     color: white;
@@ -15,79 +15,61 @@
     cursor: pointer;
     text-align: left;
 }
-.retracted{
-    padding: 10px;
-    font-size: 1.21rem;
-    text-align: center;
-    font-family: Roboto,Arial, Helvetica, sans-serif;
-    background: transparent!important;
-    border: 1px solid #7fd1f1;
-    color: #77c8ec!important;
-    transition: all 0.2s;
+.contextual-title {
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
 }
-.icon-moveDown:before {
-    content: "\e97f";
+.contextual-item-content {
+    padding: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.contextual-item-content form {
+    padding: 0px;
+}
+.contextual-item-icon-down:before, .contextual-item-icon-up:before {
+    font-family: 'icomoon';
     font-size: 1.2rem;
     color: #fff;
     display: inline-block;
     position: relative;
 }
-.icon-moveUp:before {
+.contextual-item-icon-down:before {
+    content: "\e97f";
+}
+.contextual-item-icon-up:before {
     content: "\e942";
-    font-size: 1.2rem;
-    color: #fff;
-    display: inline-block;;
-    position: relative;
 }
-.title-panel-item{
-    margin-left: 20px;
-    padding-left: 10px;
-    padding-right: 20px;
+/****************** ANIMATION ******************/
+.contextual-item-enter-active {
+    animation: contextual-item-expand var(--animation-speed-fast) ;
+    -webkit-animation: contextual-item-expand var(--animation-speed-fast) ;
 }
-.content-panel-item{
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-}   
-.content-panel-item form{
-    padding: 0px;
+.contextual-item-leave-active {
+    animation: contextual-item-reduce var(--animation-speed-fast) ;
+    -webkit-animation: contextual-item-reduce var(--animation-speed-fast) ;
 }
-.icon-moreUp:before {
-    content: "\e910";
-    font-size: 1.4rem;
-    color: white;
-}
-.context-panel-item-enter-active {
-    animation: context-panel-item-expand var(--animation-speed-fast) ;
-    -webkit-animation: context-panel-item-expand var(--animation-speed-fast) ;
-}
-.context-panel-item-leave-active {
-    animation: context-panel-item-reduce var(--animation-speed-fast) ;
-    -webkit-animation: context-panel-item-reduce var(--animation-speed-fast) ;
-}
-/******************Accordion Panel item******************/
-@keyframes context-panel-item-expand {
+@keyframes contextual-item-expand {
     0% {
         opacity: 0;
         min-height: 0px;
         max-height: 0px;
         transform: scaleY(0);
-    }
-    100% {
+    } 100% {
         opacity: 1;
         min-height: inherit;
         max-height: inherit;
         transform: scaleY(1);
     }
 }
-@keyframes context-panel-item-reduce {
+@keyframes contextual-item-reduce {
     0% {
         opacity: 1;
-        min-height: initial;
-        max-height: initial;
+        min-height: inherit;
+        max-height: inherit;
         transform: scaleY(1);
-    }
-    100% {
+    } 100% {
         opacity: 0;
         min-height: 0px;
         max-height: 0px;
