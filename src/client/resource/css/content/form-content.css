@@ -1,51 +1,52 @@
-fieldset {
-  margin: 0 0 3rem;
-  padding: 0;
-  border: none;
+/****************** FORM ******************/
+form {
+  padding: 3rem 5rem 0;
+  font-family: Roboto;
 }
-
-.form-radio,
-.form-group {
+.form-container {
+  width: 80%;
+  min-width: 500px;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 2px 2px 0 #bababa;
+  margin-top: 30px;
+  transition: all 0.2s;
+}
+.form-title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: rgba(139, 139, 139, 0.07);
+  text-transform: capitalize;
+  color: #505869;
+}
+.form-container:hover {
+  box-shadow: 0 4px 8px 0 #bababa;
+  transition: all 0.2s;
+}
+.form-radio-box, .form-field {
   position: relative;
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
-    text-align: left;
+  text-align: left;
 }
-.form-group {
+.form-field {
   margin-top: 1.25rem;
-
 }
-
-.form-inline > .form-group,
+.form-inline > .form-field,
 .form-inline > .btn {
   display: inline-block;
   margin-bottom: 0;
 }
-
-.form-help {
-  margin-top: 0.125rem;
-  margin-left: 0.125rem;
-  color: #b3b3b3;
-  font-size: 0.8rem;
+.form-hidden {
+  display: none;
 }
-.checkbox .form-help, .form-radio .form-help, .form-group .form-help {
-  position: absolute;
-  width: 100%;
-}
-.checkbox .form-help {
-  position: relative;
-  margin-bottom: 1rem;
-}
-.form-radio .form-help {
-  padding-top: 0.25rem;
-  margin-top: -1rem;
-}
-
-.form-group input {
+.form-field input {
   height: 1.9rem;
 }
-
-.form-group select {
+.form-field select {
   width: 100%;
   font-size: 0.8rem;
   height: 1.6rem;
@@ -55,7 +56,7 @@ fieldset {
   line-height: 1.6;
   box-shadow: none;
 }
-.form-group .control-label {
+.form-field .form-label {
   position: absolute;
   top: 0.25rem;
   pointer-events: none;
@@ -67,25 +68,8 @@ fieldset {
   -webkit-transition: all 0.28s ease;
   transition: all 0.28s ease;
 }
-.form-group .bar {
-  position: relative;
-  border-bottom: 0.0625rem solid #ddd;
-  display: block;
-}
-.form-group .bar::before {
-  content: '';
-  height: 0.125rem;
-  width: 0;
-  left: 50%;
-  bottom: -0.0625rem;
-  position: absolute;
-  background: #337ab7;
-  -webkit-transition: left 0.28s ease, width 0.28s ease;
-  transition: left 0.28s ease, width 0.28s ease;
-  z-index: 2;
-}
-.form-group input,
-.form-group textarea {
+.form-field input,
+.form-field textarea {
   display: block;
   background: none;
   padding: 0.125rem 0.125rem 0.0625rem;
@@ -99,56 +83,65 @@ fieldset {
   transition: all 0.28s ease;
   box-shadow: none;
 }
-.form-group input[type="file"] {
+.form-field input[type="file"] {
   line-height: 1;
 }
-.form-group input[type="file"] ~ .bar {
-  display: none;
-}
-.form-group select,
-.form-group input:focus,
-.form-group input:valid,
-.form-group input.form-file,
-.form-group input.has-value,
-.form-group textarea:focus,
-.form-group textarea:valid,
-.form-group textarea.form-file,
-.form-group textarea.has-value {
+.form-field select,
+.form-field input:focus,
+.form-field input:valid,
+.form-field input.form-file,
+.form-field input.has-value,
+.form-field textarea:focus,
+.form-field textarea:valid,
+.form-field textarea.form-file,
+.form-field textarea.has-value {
   color: #333;
 }
-.form-group select ~ .control-label,
-.form-group input:focus ~ .control-label,
-.form-group input:valid ~ .control-label,
-.form-group input.form-file ~ .control-label,
-.form-group input.has-value ~ .control-label,
-.form-group textarea:focus ~ .control-label,
-.form-group textarea:valid ~ .control-label,
-.form-group textarea.form-file ~ .control-label,
-.form-group textarea.has-value ~ .control-label {
+.form-field select ~ .form-label,
+.form-field input:focus ~ .form-label,
+.form-field input:valid ~ .form-label,
+.form-field input.form-file ~ .form-label,
+.form-field input.has-value ~ .form-label,
+.form-field textarea:focus ~ .form-label,
+.form-field textarea:valid ~ .form-label,
+.form-field textarea.form-file ~ .form-label,
+.form-field textarea.has-value ~ .form-label {
   font-size: 0.8rem;
   color: gray;
   top: -1rem;
   left: 0;
 }
-.form-group select:focus,
-.form-group input:focus,
-.form-group textarea:focus {
+.form-field select:focus,
+.form-field input:focus,
+.form-field textarea:focus {
   outline: none;
 }
-.form-group select:focus ~ .control-label,
-.form-group input:focus ~ .control-label,
-.form-group textarea:focus ~ .control-label {
+.form-field select:focus ~ .form-label,
+.form-field input:focus ~ .form-label,
+.form-field textarea:focus ~ .form-label {
   color: #337ab7;
 }
-.form-group select:focus ~ .bar::before,
-.form-group input:focus ~ .bar::before,
-.form-group textarea:focus ~ .bar::before {
-  width: 100%;
-  left: 0;
+.form-field > label {
+  text-transform: capitalize;
 }
-
-.checkbox label,
-.form-radio label {
+/****************** DATE ******************/
+.form-field input[type="date"]{
+  font-family:Roboto;
+  max-width: 200px;
+}
+/****************** FIELDSET ******************/
+fieldset {
+  margin: 0 0 3rem;
+  padding: 0;
+  border: none;
+}
+/****************** TEXTAREA ******************/
+textarea{
+  resize:auto;
+}
+/****************** RADIO ******************/
+.form-checkbox label,
+.form-radio-box label {
   position: relative;
   cursor: pointer;
   padding-left: 2rem;
@@ -157,18 +150,17 @@ fieldset {
   display: block;
   font-size: 0.8rem;
 }
-.checkbox input,
-.form-radio input {
+.form-checkbox input,
+.form-radio-box input {
   width: auto;
   opacity: 0.00000001;
   position: absolute;
   left: 0;
 }
-
-.radio {
+.form-radio {
   margin-bottom: 1rem;
 }
-.radio .helper {
+.form-radio .form-helper {
   position: absolute;
   top: -0.25rem;
   left: -0.25rem;
@@ -181,7 +173,7 @@ fieldset {
           user-select: none;
   color: #999;
 }
-.radio .helper::before, .radio .helper::after {
+.form-radio .form-helper::before, .form-radio .form-helper::after {
   content: '';
   position: absolute;
   left: 0;
@@ -196,28 +188,28 @@ fieldset {
   border-radius: 50%;
   border: 0.125rem solid currentColor;
 }
-.radio .helper::after {
+.form-radio .form-helper::after {
   -webkit-transform: scale(0);
           transform: scale(0);
-     background-color: #337ab7;
-    border-color: #2196f3;
+  background-color: #337ab7;
+  border-color: #2196f3;
 }
-.radio label:hover .helper {
+.form-radio label:hover .form-helper {
   color: #337ab7;
 }
-.radio input:checked ~ .helper::after {
+.form-radio input:checked ~ .form-helper::after {
   -webkit-transform: scale(0.5);
           transform: scale(0.5);
 }
-.radio input:checked ~ .helper::before {
+.form-radio input:checked ~ .form-helper::before {
   color: #2196f3;
 }
-
-.checkbox {
+/****************** CHECKBOX ******************/
+.form-checkbox {
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
-.checkbox .helper {
+.form-checkbox .form-helper {
   color: #999;
   position: absolute;
   top: 0;
@@ -230,11 +222,11 @@ fieldset {
   -webkit-transition: border-color 0.28s ease;
   transition: border-color 0.28s ease;
 }
-.checkbox .helper::before, .checkbox .helper::after {
+.form-checkbox .form-helper::before, .form-checkbox .form-helper::after {
   position: absolute;
   height: 0;
   width: 0.2rem;
-background-color: #2196f3;
+  background-color: #2196f3;
   display: block;
   -webkit-transform-origin: left top;
           transform-origin: left top;
@@ -244,61 +236,64 @@ background-color: #2196f3;
   transition: opacity 0.28s ease, height 0s linear 0.28s;
   opacity: 0;
 }
-.checkbox .helper::before {
+.form-checkbox .form-helper::before {
   top: 0.65rem;
   left: 0.38rem;
   -webkit-transform: rotate(-135deg);
           transform: rotate(-135deg);
   box-shadow: 0 0 0 0.0625rem #fff;
 }
-.checkbox .helper::after {
+.form-checkbox .form-helper::after {
   top: 0.3rem;
   left: 0;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-.checkbox label:hover .helper {
+.form-checkbox label:hover .form-helper {
   color: #337ab7;
 }
-.checkbox input:checked ~ .helper {
+.form-checkbox input:checked ~ .form-helper {
   color: #337ab7;
 }
-.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {
+.form-checkbox input:checked ~ .form-helper::after, 
+.form-checkbox input:checked ~ .form-helper::before {
   opacity: 1;
   -webkit-transition: height 0.28s ease;
   transition: height 0.28s ease;
 }
-.checkbox input:checked ~ .helper::after {
+.form-checkbox input:checked ~ .form-helper::after {
   height: 0.5rem;
 }
-.checkbox input:checked ~ .helper::before {
+.form-checkbox input:checked ~ .form-helper::before {
   height: 1.2rem;
   -webkit-transition-delay: 0.28s;
           transition-delay: 0.28s;
 }
-
-.radio + .radio,
-.checkbox + .checkbox {
+.form-radio + .form-radio,
+.form-checkbox + .form-checkbox {
   margin-top: 1rem;
 }
-
-.has-error .legend.legend, .has-error.form-group .control-label.control-label {
-  color: #d9534f;
+input[type="checkbox"]:checked ~ label {
+  background: #aed7f8;
 }
-.has-error.form-group .form-help,
-.has-error.form-group .helper, .has-error.checkbox .form-help,
-.has-error.checkbox .helper, .has-error.radio .form-help,
-.has-error.radio .helper, .has-error.form-radio .form-help,
-.has-error.form-radio .helper {
-  color: #d9534f;
+input[type="checkbox"]:checked ~ label:after {
+  left: 15px;
+  background: #2196f3;
 }
-.has-error .bar::before {
-  background: #d9534f;
-  left: 0;
-  width: 100%;
+input[type="checkbox"]:disabled ~ label {
+  background: #d5d5d5;
+  pointer-events: none;
 }
-
-.button {
+input[type="checkbox"]:disabled ~ label:after {
+  background: #bcbdbc;
+}
+/****************** BUTTON ******************/
+.form-button-box {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.form-button {
   position: relative;
   background: currentColor;
   border: 1px solid currentColor;
@@ -312,12 +307,12 @@ background-color: #2196f3;
   overflow: hidden;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
-.button span {
+.form-button span {
   color: #fff;
   position: relative;
   z-index: 1;
 }
-.button::before {
+.form-button::before {
   content: '';
   position: absolute;
   background: #071017;
@@ -333,7 +328,7 @@ background-color: #2196f3;
   -webkit-transform: translate(-50%, -50%) scale(0);
           transform: translate(-50%, -50%) scale(0);
 }
-.button.cancel::before {
+.form-button.form-cancel::before {
   content: '';
   position: absolute;
   background: #071017;
@@ -349,15 +344,15 @@ background-color: #2196f3;
   -webkit-transform: translate(-50%, -50%) scale(0);
           transform: translate(-50%, -50%) scale(0);
 }
-.button.cancel:hover {
+.form-button.form-cancel:hover {
   color: #d9534f;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
-.button:hover {
+.form-button:hover {
   color: #337ab7;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
-.button:active::before, .button:focus::before {
+.form-button:active::before, .form-button:focus::before {
   -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
   transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
   transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
@@ -366,15 +361,15 @@ background-color: #2196f3;
   transform: translate(-50%, -50%) scale(1);
   opacity: 0;
 }
-.button:focus {
+.form-button:focus {
   outline: none;
 }
-.cancel{
-    margin-left:20px;
-    background: #ff3e3e;
-    color: #ff3e3e;
+.form-cancel{
+  margin-left:20px;
+  background: #ff3e3e;
+  color: #ff3e3e;
 }
-.button.cancel:active::before, .button.cancel:focus::before {
+.form-button.form-cancel:active::before, .form-button.form-cancel:focus::before {
   -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
   transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
   transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
@@ -383,133 +378,51 @@ background-color: #2196f3;
   transform: translate(-50%, -50%) scale(1);
   opacity: 0;
 }
-
-.dropdown{
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+/****************** SELECT DROPDOWN ******************/
+.form-dropdown{
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }	
-.form-group select.dropdown:focus options{
+.form-field select.form-dropdown:focus options{
 	height:30px;
 	padding:20px;
 	border:3px solid black;
 }
-.labelgroupfield {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    font-size: 0.7rem;
-    background: rgba(139, 139, 139, 0.07);
-    text-transform: uppercase;
-    color: #505869;
+/****************** TOGGLE ******************/
+.form-toggle > label {
+  position: relative;
+  display: block;
+  height: 14px;
+  width: 30px;
+  background: #d8d8d8;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-form {
-    padding: 3rem 5rem 0;
-    font-family: Roboto;
+.form-toggle > label:after {
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  background: #898989;
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+  content: '';
+  transition: all 0.3s ease;
 }
-.form-group input[type="date"]{
-    font-family:Roboto;
-    max-width: 200px;
-    
+.form-toggle > label:active:after {
+  transform: scale(1.15, 0.85);
 }
-i.bar.date{
-    max-width: 200px;
+.form-toggle > span {
+  text-align: left;
+  display: block;
+  margin-top: -1.0rem;
+  margin-left: 2.8rem;
+  font-size: 0.8rem;
+  color: #34495e;
 }
-textarea{
-      resize:auto;
-}
-
- /***********Toggle*************/
-.lbl {
-    position: relative;
-    display: block;
-    height: 14px;
-    width: 30px;
-    background: #d8d8d8;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.lbl:after {
-    position: absolute;
-    left: -2px;
-    top: -3px;
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-radius: 100px;
-    background: #898989;
-    box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
-    content: '';
-    transition: all 0.3s ease;
-}
-.lbl:active:after {
-    transform: scale(1.15, 0.85);
-}
-.cbx:checked ~ label {
-    background: #aed7f8;
-}
-.cbx:checked ~ label:after {
-    left: 15px;
-    background: #2196f3;
-}
-.cbx:disabled ~ label {
-    background: #d5d5d5;
-    pointer-events: none;
-}
-.cbx:disabled ~ label:after {
-    background: #bcbdbc;
-}
- .hidden {
-    display: none;
-}
-span.ToggleLabel {
-    text-align: left;
-    display: block;
-    margin-top: -1.0rem;
-    margin-left: 2.8rem;
-    font-size: 0.8rem;
-    color: #34495e;
-}
-
-.modal-body .form-group {
-    position: relative;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    height: auto;
-}
-.modal-body.form-toggle{
-    margin-top: 10px;
-    margin: 10px;
-    margin-bottom: 20px;
-}
-.container {
-    width: 80%;
-    min-width: 500px;
-    background: #fff;
-    margin: auto;
-    box-shadow: 0 2px 2px 0 #bababa;
-    margin-top: 30px;
-    transition: all 0.2s;
-}
-.container:hover {
-    box-shadow: 0 4px 8px 0 #bababa;
-    transition: all 0.2s;
-}
-.button-container {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.sample-button{
-    margin-top: 2px!important;
-    margin-bottom: 2px!important;
-    width: 200px !important;
-}
-.sample-button span{
-    color: #fff;
-}
-
-/************range type******************/
+/****************** INPUT ******************/
 input[type=range] {
   box-sizing: border-box;
   font-size: 16px;
@@ -601,4 +514,33 @@ input[type=range]::-ms-track {
 input[type="range"] {
   border-bottom: 3px solid #80c7e7;
 }
-
+/****************** FIELD-BAR ******************/
+.form-field .form-bar {
+  position: relative;
+  border-bottom: 0.0625rem solid #ddd;
+  display: block;
+}
+.form-field .form-bar::before {
+  content: '';
+  height: 0.125rem;
+  width: 0;
+  left: 50%;
+  bottom: -0.0625rem;
+  position: absolute;
+  background: #337ab7;
+  -webkit-transition: left 0.28s ease, width 0.28s ease;
+  transition: left 0.28s ease, width 0.28s ease;
+  z-index: 2;
+}
+.form-field input[type="file"] ~ .form-bar {
+  display: none;
+}
+.form-field select:focus ~ .form-bar::before,
+.form-field input:focus ~ .form-bar::before,
+.form-field textarea:focus ~ .form-bar::before {
+  width: 100%;
+  left: 0;
+}
+i.form-bar.form-bar-short {
+  max-width: 200px;
+}

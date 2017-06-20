@@ -1,10 +1,10 @@
 <template>    
-    <div class="form-group select-local">
-        <select :id="id" value="selected" v-on:change="setLocale($event.target.value)" class="dropdown">
+    <div class="form-field select-locale">
+        <select :id="id" value="selected" v-on:change="setLocale($event.target.value)" class="form-dropdown">
             <option value="fr" :selected="selected === 'fr'">Français</option>
             <option value="en" :selected="selected === 'en'">English</option>
         </select>
-        <i class="bar"></i>
+        <i class="field-bar"></i>
     </div>
 </template>
 

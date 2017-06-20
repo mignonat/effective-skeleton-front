@@ -1,4 +1,6 @@
 ------ LAURENT --------
+- CSS Form : add variable for color and sizes
+- CSS Form : manage errors and help (with javascript)
 - CSS work on contextual panel and top bar
 - Add visual extensions to Flo : git blame, git history, vetur
 - Translate (and setTranslation) in 404 page

@@ -11,11 +11,11 @@
                    <div class="modal-body-content">{{ data.text }}</div>
                 </div>
                 <div class="modal-footer">
-                    <div class="button-container">
-                        <button @click="confirm()" class="button" ref="focusButton">
+                    <div class="form-button-box">
+                        <button @click="confirm()" class="form-button" ref="focusButton">
                             <span>{{ confirmLabel }}</span>
                         </button>
-                        <button @click="close()" class="button cancel">
+                        <button @click="close()" class="form-button form-cancel">
                             <span>{{ closeLabel }}</span>
                         </button>
                     </div>

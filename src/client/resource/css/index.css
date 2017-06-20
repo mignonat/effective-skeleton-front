@@ -12,6 +12,7 @@
 @import "./layout/sidenav.css";
 @import "./layout/sidenav-button.css";
 @import "./layout/topbar.css";
+@import "./layout/select-locale.css";
 @import "./layout/userinfo.css";
 @import "./layout/scrollbar.css";
 @import "./layout/contextual/contextual-panel.css";
@@ -24,5 +25,5 @@
 
 /******** CONTENT ********/
 @import "./content/form-content.css";
-@import "./content/sample2.css";
 @import "./content/sample1.css";
+@import "./content/sample2.css";
