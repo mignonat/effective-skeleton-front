@@ -1,4 +1,4 @@
-.modal-mask {
+.popup-mask {
     position: fixed; /* Stay in place */
     left: 0;
     top: 0;
@@ -10,7 +10,7 @@
     padding-top: 60px;
     z-index: 12;
 }
-.modal-container {
+.popup-container {
     display: table;
     text-align: left;
     background-color: #fefefe;
@@ -19,7 +19,7 @@
     max-width: 600px;
     min-width: 200px;
 }
-.modal-header {
+.popup-header {
     position: relative ;
     display: inline-block;
     width: 100%;
@@ -28,18 +28,18 @@
     line-height: 40px;
     background: #eaeaea;
 }
-.modal-type-icon {
+.popup-type-icon {
     position: absolute;
     top: 8px;
     left: 1rem;
 }
-.modal-title {
+.popup-title {
     font-family: Roboto;
     font-size: 1rem;
     color:#34495e;
     margin-left: 3rem;
 }
-.modal-close-button {
+.popup-close-button {
     position: relative;
     color: #8f8f8f;
     line-height: 100%;
@@ -48,34 +48,34 @@
     float: right;
     margin-right: 1rem;
 }
-.modal-close-button:hover,
-.modal-close-button:focus {
+.popup-close-button:hover,
+.popup-close-button:focus {
     color: red;
     cursor: pointer;
 }
-.modal-body-content {
+.popup-body-content {
     font-size: 1rem;
     font-family: Roboto;
     color: #34495e;
     padding: 40px;
 }
-.modal-footer .button {
+.popup-footer .button {
     margin-top: 12px;
     margin-bottom: 12px;
 }
-.modal-footer {
+.popup-footer {
     background: #f1f1f1;
 }
 /* Animation */
-.modal-enter-active {
-    animation: modal-zoom 0.6s;
-    -webkit-animation: modal-zoom 0.6s;
+.popup-enter-active {
+    animation: popup-zoom 0.6s;
+    -webkit-animation: popup-zoom 0.6s;
 }
-@-webkit-keyframes modal-zoom {
+@-webkit-keyframes popup-zoom {
     from {-webkit-transform: scale(0)} 
     to {-webkit-transform: scale(1)}
 }   
-@keyframes modal-zoom {
+@keyframes popup-zoom {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }

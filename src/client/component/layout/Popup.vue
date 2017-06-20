@@ -1,16 +1,16 @@
 <template>
-    <div class="modal-mask noselect" @click="close()" v-show="data.show">
-        <transition name="modal">
-            <div class="modal-container" @click.stop v-show="data.show">
-                <div class="modal-header">
-                    <i class="material-icons modal-type-icon">{{ typeIcon }}</i>
-                    <span class="modal-title">{{ data.title }}</span>
-                    <span @click="close()" class="modal-close-button">&times;</span>
+    <div class="popup-mask noselect" @click="close()" v-show="data.show">
+        <transition name="popup">
+            <div class="popup-container" @click.stop v-show="data.show">
+                <div class="popup-header">
+                    <i class="material-icons popup-type-icon">{{ typeIcon }}</i>
+                    <span class="popup-title">{{ data.title }}</span>
+                    <span @click="close()" class="popup-close-button">&times;</span>
                 </div>
-                <div class="modal-body">
-                   <div class="modal-body-content">{{ data.text }}</div>
+                <div class="popup-body">
+                   <div class="popup-body-content">{{ data.text }}</div>
                 </div>
-                <div class="modal-footer">
+                <div class="popup-footer">
                     <div class="form-button-box">
                         <button @click="confirm()" class="form-button" ref="focusButton">
                             <span>{{ confirmLabel }}</span>
