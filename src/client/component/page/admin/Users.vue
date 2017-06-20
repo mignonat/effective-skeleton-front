@@ -4,34 +4,34 @@
         <i @click="loadUsers" v-show="!loading" class="material-icons link page-reload-button" :title="label.refresh">refresh</i>
         <i @click="addUser" v-show="!loading" class="material-icons link page-add-button" :title="label.add">person_add</i>
         <transition name="fade-in">
-            <div v-if="users.length > 0" v-show="!loading" class="users_list table">
-                <div class="user_header_row user_row table-row">
-                    <span class="cell">{{ label.id }}</span>
-                    <span class="cell">{{ label.lastname }}</span>
-                    <span class="cell">{{ label.firstname }}</span>
-                    <span class="cell">{{ label.login }}</span>
-                    <span class="cell">{{ label.admin }}</span>
-                    <span class="cell">password</span>
-                    <span class="cell">{{ label.actions }}</span>
+            <div v-if="users.length > 0" v-show="!loading" class="list">
+                <div class="list-header">
+                    <span>{{ label.id }}</span>
+                    <span>{{ label.lastname }}</span>
+                    <span>{{ label.firstname }}</span>
+                    <span>{{ label.login }}</span>
+                    <span>{{ label.admin }}</span>
+                    <span>password</span>
+                    <span>{{ label.actions }}</span>
                 </div>
-                <div v-for="user in users" class="user_row table-row">
-                    <span class="cell">{{ user._id }}</span>
-                    <span class="cell">{{ user.lastname }}</span>
-                    <span class="cell">{{ user.firstname }}</span>
-                    <span class="cell">{{ user.login }}</span>
-                    <span class="cell">{{ displayIsAdmin(user.admin) }}</span>
-                    <span class="cell">{{ user.password }}</span>
-                    <span class="cell">
+                <div v-for="user in users" class="list-row">
+                    <span>{{ user._id }}</span>
+                    <span>{{ user.lastname }}</span>
+                    <span>{{ user.firstname }}</span>
+                    <span>{{ user.login }}</span>
+                    <span>{{ displayIsAdmin(user.admin) }}</span>
+                    <span>{{ user.password }}</span>
+                    <span>
                         <i @click="deleteUser(user._id)" class="material-icons link" :title="label.del+' '+user.login">delete_forever</i>
                         <i @click="editUser(user)" class="material-icons link" :title="label.edit+' '+user.login">mode_edit</i>
                     </span>
                 </div>
             </div>
-            <div v-else v-show="!loading" class="empty">
+            <div v-else v-show="!loading" class="list-empty">
                 {{ label.empty }}
             </div>
         </transition>
-        <loader v-show="loading" size="big"></loader>
+        <loader v-show="loading"></loader>
     </div>
 </template>
 

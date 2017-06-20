@@ -1,0 +1,43 @@
+:root {
+    --list-row-height : 40px;
+    --list-background: #fff;
+    --list-header-background: #f9f9f9;
+    --list-header-color: #37474f;
+}
+.list {
+    display: table;
+    border-collapse: collapse;
+    width: calc(100% - 80px);
+    margin: var(--list-row-height);
+    box-shadow: 0 2px 3px 0 #c6cacc;
+}
+.list-empty {
+    box-shadow: 0 2px 3px 0 #c6cacc;
+    margin: var(--list-row-height);
+    width: calc(100% - 80px);
+    background: var(--list-background);
+}
+.list:hover, .list-empty:hover {
+    box-shadow: 0px 4px 8px 0px #b0b0b0;
+}
+.list-row, .list-header {
+    display: table-row;
+    vertical-align: top;
+    background: var(--list-background);
+    border-bottom: 1px solid #eee;
+}
+.list-header {
+    border-right: 1px solid #e7e7e7;
+    border-bottom: 1px solid #ccc;
+    height: var(--list-row-height);
+    background: var(--list-header-background);
+}
+.list-row > span, .list-header > span  {
+    display: table-cell;
+    vertical-align: top;
+    padding : 20px;
+}
+.list-header > span {
+    font-weight: bold;
+    color: var(--list-header-color);
+}

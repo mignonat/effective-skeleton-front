@@ -8,6 +8,7 @@
 
 /******** LAYOUT ********/
 @import "./layout/loader.css";
+@import "./layout/list.css";
 @import "./layout/popup.css";
 @import "./layout/sidenav.css";
 @import "./layout/sidenav-button.css";
