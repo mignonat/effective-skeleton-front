@@ -12,7 +12,7 @@ Init the project :
     git clone https://github.com/mignonat/effective-project-skeleton
 
 
-For production environment, install global dependencies () :
+For production environment, install global dependencies :
 
     sudo npm install --global forever //https://www.npmjs.com/package/forever
     sudo npm install --global forever-monitor //https://www.npmjs.com/package/forever-monitor
