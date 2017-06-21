@@ -12,7 +12,7 @@ Init the project :
     git clone https://github.com/mignonat/effective-project-skeleton
 
 
-Install global dependencies (for production) :
+For production environment, install global dependencies () :
 
     sudo npm install --global forever //https://www.npmjs.com/package/forever
     sudo npm install --global forever-monitor //https://www.npmjs.com/package/forever-monitor
@@ -40,7 +40,7 @@ Start app :
     npm run start-back-prod  //build and run back app in prod env (using forever)
 
 
-Environement :
+Environment :
 
     Set your differents environments in the properties files in env/ directories
 
