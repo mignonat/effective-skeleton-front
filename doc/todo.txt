@@ -1,4 +1,5 @@
 ------ LAURENT --------
+- Check data binding in child component ... and think about undo/redo
 - Refactor contextual transition : use javascript height transition
 - CSS Form : add variable for color and sizes
 - CSS Form : manage errors and help (with javascript)

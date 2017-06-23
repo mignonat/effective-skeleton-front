@@ -293,6 +293,9 @@ input[type="checkbox"]:disabled ~ label:after {
   padding-left: 10px;
   padding-right: 10px;
 }
+.form-button-box > .form-button {
+  margin-left:20px;
+}
 .form-button {
   position: relative;
   background: currentColor;
@@ -365,7 +368,6 @@ input[type="checkbox"]:disabled ~ label:after {
   outline: none;
 }
 .form-cancel{
-  margin-left:20px;
   background: #ff3e3e;
   color: #ff3e3e;
 }

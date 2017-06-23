@@ -1,7 +1,7 @@
 <template>    
     <div class="contextual-panel">
-        <contextual-panel-item :data.sync="panel1" ></contextual-panel-item>
-        <contextual-panel-item :data.sync="panel2" ></contextual-panel-item>
+        <contextual-panel-item :data="panel1" ></contextual-panel-item>
+        <contextual-panel-item :data="panel2" ></contextual-panel-item>
     </div>
 </template>
 
@@ -19,7 +19,7 @@
                 show : false,
                 title : 'Loan Resume',
                 type : 'sample2'
-            },
+            }
         }},
         components : { ContextualPanelItem }
     }

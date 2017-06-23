@@ -4,12 +4,12 @@
         <i @click="loadUsers" v-show="!loading" class="material-icons link page-reload-button" :title="label.refresh">refresh</i>
         <i @click="addUser" v-show="!loading" class="material-icons link page-add-button" :title="label.add">person_add</i>
         <list 
-            :loading.sync = "loading" 
-            :objects.sync = "users" 
+            :loading = "loading" 
+            :objects = "users" 
             :options = "list" 
-            :titles = "column_titles" 
-            @edit = "editUser" 
-            @delete = "deleteUser">
+            :titles  = "column_titles" 
+            @edit    = "editUser" 
+            @delete  = "deleteUser">
         </list>
     </div>
 </template>

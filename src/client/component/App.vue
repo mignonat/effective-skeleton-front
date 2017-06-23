@@ -9,7 +9,7 @@
                 </transition>
             </div>
         </div>
-        <popup :data.sync="popup" @close="closePopup"></popup>
+        <popup :data="popup" @close="closePopup"></popup>
     </div>
 </template>
 
