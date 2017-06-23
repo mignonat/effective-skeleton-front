@@ -1,6 +1,6 @@
 <template>
     <div class="form-field">
-        <input type="date" v-model="value"></input>
+        <input type="email" v-model="value"></input>
         <label class="form-label" for="input">{{ label }}</label>
         <i class="form-bar form-bar-short"></i>
     </div>

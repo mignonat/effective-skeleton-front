@@ -26,6 +26,18 @@
                         :format = "field.format? field.format : 'yyyy-MM-mm'"
                         :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
                     </field-date>
+                    <field-email 
+                        v-if="field.type=='email'"
+                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                    </field-email>
+                    <field-checkbox 
+                        v-if="field.type=='checkbox'"
+                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                    </field-checkbox>
+                    <field-radio 
+                        v-if="field.type=='radio'"
+                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                    </field-radio>
                 </template>
                 
                 <div class="form-field">
@@ -41,34 +53,8 @@
                     <i class="form-bar"></i>
                 </div>
                 
-                <div class="form-field">
-                    <input type="email" required="required"></input>
-                    <label class="form-label" for="input">enter email</label>
-                    <i class="form-bar form-bar-short"></i>
-                </div>
-                <div class="form-checkbox">
-                    <label>
-                        <input type="checkbox" checked="checked"></input>
-                        <i class="form-helper"></i>
-                        Checkbox label
-                    </label>
-                </div>
-                <div class="form-radio-box">
-                    <div class="form-radio">
-                        <label>
-                            <input type="radio" name="radio" checked="checked"></input>
-                            <i class="form-helper"></i>
-                            Radio label
-                        </label>
-                    </div>
-                    <div class="form-radio">
-                        <label>
-                            <input type="radio" name="radio"></input>
-                            <i class="form-helper"></i>
-                            Radio label
-                        </label>
-                    </div>
-                </div>
+                
+                
                 <div class="form-toggle">
                     <input type="checkbox" id="checked" class="form-hidden"></input>
                     <label for="checked"></label>
@@ -98,6 +84,9 @@
     import FieldTextArea from './field/FieldTextArea.vue'
     import FieldNumber from './field/FieldNumber.vue'
     import FieldDate from './field/FieldDate.vue'
+    import FieldEmail from './field/FieldEmail.vue'
+    import FieldCheckbox from './field/FieldCheckbox.vue'
+    import FieldRadio from './field/FieldRadio.vue'
     import FieldSelect from './field/FieldSelect.vue'
 
     //TODO : manage history for undo/redo
@@ -127,6 +116,15 @@
                 })
             })
         },
-        components: { FieldText, FieldTextArea, FieldNumber, FieldSelect }
+        components: { 
+            FieldText,
+            FieldTextArea,
+            FieldNumber,
+            FieldDate,
+            FieldEmail,
+            FieldCheckbox,
+            FieldRadio,
+            FieldSelect
+        }
     }
 </script>

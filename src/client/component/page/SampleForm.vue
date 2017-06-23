@@ -27,7 +27,9 @@
                 field2 : 'This is a test',
                 field3 : 2,
                 field4 : 'user1',
-                field5 : '2015-05-17'
+                field5 : '2015-05-17',
+                field6 : 'mignonat@gmail.com',
+                field7 : true
             },
             error : false,
             fields : [{
@@ -65,6 +67,18 @@
                 id : 'field5',
                 type : 'date',
                 label : 'Date'
+            },{
+                id : 'field6',
+                type : 'email',
+                label : 'Email'
+            },{
+                id : 'field7',
+                type : 'checkbox',
+                label : 'Checkbox'
+            },{
+                id : 'field8',
+                type : 'radio',
+                label : 'Radio'
             }],
             labels : {
                 valid : 'Apply',
