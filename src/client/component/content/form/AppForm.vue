@@ -3,63 +3,51 @@
             <div class="form-title">{{ title }}</div>
             <form>
                 <template v-for="field in fields">
-                    <field-text 
+                    <field-text
                         v-if="field.type=='text'"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-text>
                     <field-text-area
                         v-else-if="field.type=='textarea'"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-text-area>
                     <field-number
                         v-else-if="field.type=='number'"
-                        :min = "field.min" :max = "field.max"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-number>
-                    <field-select
-                        v-else-if="field.type=='option'"
-                        :options="field.options" :optValue="field.value" :display="field.display"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
-                    </field-select>
-                    <field-date 
+                    <field-slider
+                        v-else-if="field.type=='slider'"
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
+                    </field-slider>
+                    <field-date
                         v-if="field.type=='date'"
-                        :format = "field.format? field.format : 'yyyy-MM-mm'"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-date>
-                    <field-email 
+                    <field-email
                         v-if="field.type=='email'"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-email>
-                    <field-checkbox 
+                    <field-checkbox
                         v-if="field.type=='checkbox'"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-checkbox>
-                    <field-radio 
+                    <field-radio
                         v-if="field.type=='radio'"
-                        :id = "field.id" :initValue = "entity[field.id]" :label = "field.label" @update= "update">
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-radio>
+                    <field-toggle
+                        v-if="field.type=='toggle'"
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
+                    </field-toggle>
+                    <field-select
+                        v-else-if="field.type=='select'"
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
+                    </field-select>
+                    <field-data-list
+                        v-else-if="field.type=='datalist'"
+                        :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
+                    </field-data-list>
                 </template>
-                
-                <div class="form-field">
-                    <input list="Managers" name="managers">
-                    <datalist id="Managers" class="form-dropdown">
-                        <option value="A name "></option>
-                        <option value="AA name"></option>
-                        <option value="B name"></option>
-                        <option value="BB name"></option>
-                        <option value="AAC name"></option>
-                    </datalist>
-                    <label class="form-label" for="Manager">dataList label</label>
-                    <i class="form-bar"></i>
-                </div>
-                
-                
-                
-                <div class="form-toggle">
-                    <input type="checkbox" id="checked" class="form-hidden"></input>
-                    <label for="checked"></label>
-                    <span>Toggle label</span> 
-                </div>
             </form>
 
             <div class="form-button-box">
@@ -83,11 +71,14 @@
     import FieldText from './field/FieldText.vue'
     import FieldTextArea from './field/FieldTextArea.vue'
     import FieldNumber from './field/FieldNumber.vue'
+    import FieldSlider from './field/FieldSlider.vue'
     import FieldDate from './field/FieldDate.vue'
     import FieldEmail from './field/FieldEmail.vue'
     import FieldCheckbox from './field/FieldCheckbox.vue'
     import FieldRadio from './field/FieldRadio.vue'
+    import FieldToggle from './field/FieldToggle.vue'
     import FieldSelect from './field/FieldSelect.vue'
+    import FieldDataList from './field/FieldDataList.vue'
 
     //TODO : manage history for undo/redo
     //TODO : use mixins
@@ -95,18 +86,15 @@
     export default {
         mixins : mixin.get(mixin.TRANSLATE),
         props : [ 'id', 'title', 'entity', 'fields', 'labels', 'buttons' ],
-        data : function() { return {
-            temp_options : [{label:"Value 1", value: "val1"}, {label:"Value 2", value: "val2"}, {label:"Value 3", value: "val3"}]
-        }},
         methods : {
             update : function(params) {
                 this.$emit('update', params) //params : id, value
             },
             valid : function() {
-                $emit('valid')
+                this.$emit('valid')
             },
             cancel : function() {
-                $emit('cancel')
+                this.$emit('cancel')
             }
         },
         mounted: function () {
@@ -116,15 +104,9 @@
                 })
             })
         },
-        components: { 
-            FieldText,
-            FieldTextArea,
-            FieldNumber,
-            FieldDate,
-            FieldEmail,
-            FieldCheckbox,
-            FieldRadio,
-            FieldSelect
+        components: {
+            FieldText, FieldTextArea, FieldNumber, FieldSlider, FieldDate, FieldEmail, FieldCheckbox,
+            FieldRadio, FieldToggle, FieldSelect, FieldDataList
         }
     }
 </script>

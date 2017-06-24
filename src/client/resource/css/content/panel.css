@@ -1,0 +1,38 @@
+.app-panel {
+    width: 80%;
+    min-width: 500px;
+    background: #fff;
+    margin: auto;
+    box-shadow: 0 2px 2px 0 #bababa;
+    margin-top: 2em;
+    transition: all 0.2s;
+}
+.app-panel-title {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1.6em;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: rgba(139, 139, 139, 0.07);
+    text-transform: capitalize;
+    color: #505869;
+}
+.app-panel-body {
+    padding: 1em 2em 0;
+    font-family: Roboto;
+}
+.app-panel-footer {
+    min-height: 2em;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.app-panel-label {
+    line-height: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.app-panel-body .table-cell {
+    padding-left:5px;
+    text-align: center;
+}

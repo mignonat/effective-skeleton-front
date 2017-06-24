@@ -1,10 +1,9 @@
 ------ LAURENT --------
-- Check data binding in child component ... and think about undo/redo
+- CSS Form : refactoring of css classes and div, use of em
+- Form : undo/redo history
 - Refactor contextual transition : use javascript height transition
-- CSS Form : add variable for color and sizes
 - CSS Form : manage errors and help (with javascript)
 - Add visual extensions to Flo : git blame, git history, vetur
-- Don't use Object.assign => bad compatibility because not it's transpiled by babel and IE doesnt support
 - Create a component to display non persistent messages 
 - Test all regex in model
 - Add sample page with all icons available

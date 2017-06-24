@@ -1,9 +1,16 @@
 <template>
     <div class="form-checkbox">
+        <label v-if="model.label" class="field-title">{{ model.label }}</label>
         <label>
-            <input type="checkbox" v-model="value" checked="checked"></input>
+            <input 
+                type="checkbox"
+                v-model="value"
+                :id="htmlId"
+                :autofocus="model.autofocus"
+                :checked="checkedFirst">
+            </input>
             <i class="form-helper"></i>
-            {{ label }}
+            {{ toggleLabel }}
         </label>
     </div>
 </template>
@@ -12,6 +19,6 @@
     import mixins from './mixins.js'
 
     export default {
-        mixins : [ mixins.SIMPLE ]
+        mixins : [ mixins.CHECKBOX ]
     }
 </script>

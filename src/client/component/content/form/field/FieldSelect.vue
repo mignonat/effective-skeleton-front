@@ -1,11 +1,19 @@
 <template>
     <div class="form-field">
-        <select class="form-dropdown" v-model="value">
-            <option v-for="opt in options" v-bind:key="opt[optValue]" v-bind:value="opt[optValue]">
-                {{ opt[display] }}
+        <select 
+            class="form-dropdown"
+            v-model="value"
+            :id="htmlId"
+            :autofocus="model.autofocus">
+            <option 
+                v-for="opt in model.options"
+                v-bind:key="opt[model.value]"
+                v-bind:value="opt[model.value]"
+                :selected="value==opt[model.value]? 'selected' : undefined">
+                {{ opt[model.display] }}
             </option>
         </select>
-        <label class="form-label" for="select">{{ label }}</label>
+        <label class="form-label" for="select">{{ model.label }}</label>
         <i class="form-bar"></i>
     </div>
 </template>
@@ -14,7 +22,6 @@
     import mixins from './mixins.js'
 
     export default {
-        mixins : [ mixins.SIMPLE ],
-        props : [ 'optValue', 'display', 'options', 'optValue' ]
+        mixins : [ mixins.SIMPLE ]
     }
 </script>

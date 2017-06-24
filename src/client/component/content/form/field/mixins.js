@@ -1,18 +1,48 @@
-const simpleField = {
-    props : [ 'id', 'initValue', 'label' ],
+const simple = {
+    props : [ 'formId', 'model', 'id', 'initValue', 'label', 'disabled', 'autofocus' ],
     data : function() { return {
-        value : this.initValue
+        value : this.initValue,
+        timeoutFn : undefined
     }},
+    computed : {
+        htmlId : function() {
+            return (this.formId? this.formId+'-' : '') + this.model.id
+        }
+    },
     watch : {
         value : function() {
-            this.$emit('update', {
-                id : this.id,
-                value : this.value
-            })
+            clearTimeout(this.timeoutFn);
+            const me = this
+            // Trigger just one update 0.4 sec after last user input
+            this.timeoutFn = setTimeout(function(){ 
+                if (!this.disabled)
+                    me.$emit('update', {
+                        id : me.model.id,
+                        value : me.value
+                    })
+            }, 400);
         }
     }
 }
 
+const checkbox = Object.assign({}, simple, {
+    computed : Object.assign({}, simple.computed, {
+        checkedFirst : function() {
+            if (this.model.initValue===this.model.firstValue) return 'checked'
+        },
+        checkedSecond : function() {
+            if (this.model.initValue===this.model.secondValue) return 'checked'
+        },
+        toggleLabel : function() {
+            if (this.value)
+                return this.model.activeLabel
+            else 
+                return this.model.inactiveLabel
+        }
+    })
+})
+
 export default {
-    SIMPLE : simpleField
+    SIMPLE : simple,
+    CHECKBOX : checkbox
 }

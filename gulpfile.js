@@ -97,6 +97,10 @@ gulp.task('start-front-prod', gulpSync.sync([
     'front-run-forever'
 ]))
 
+gulp.task('start-front-prod-no-build', gulpSync.sync([
+    'front-run-forever'
+]))
+
 gulp.task('start-back-dev', gulpSync.sync([ 
     'back-run-nodemon'
 ]))

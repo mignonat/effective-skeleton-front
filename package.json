@@ -14,10 +14,11 @@
     "start-back-dev": "gulp start-back-dev",
     "webpack-dev": "gulp webpack-dev",
     "webpack-prod": "gulp webpack-prod",
-    "start": "gulp start-both-prod-no-build",
+    "start-both": "gulp start-both-prod-no-build",
+    "start": "gulp start-front-prod-no-build",
+    "build": "gulp build",
     "build-and-start": "gulp start-both-prod",
-    "build" : "gulp build",
-    "build-dev" : "gulp build-dev"
+    "build-dev": "gulp build-dev"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",
@@ -42,6 +43,7 @@
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.2.2",
     "babel-preset-es2015": "^6.24.0",

@@ -1,14 +1,14 @@
 <template>
     <div class="form-field">
         <input 
-            type="number"
+            type="range"
             v-model="value"
             :id="htmlId"
             :min="model.min"
             :max="model.max"
             :autofocus="model.autofocus">
         </input>
-        <label class="form-label" for="input">{{ model.label }}</label>
+        <label class="form-label" for="input">{{ model.label }} : {{ value }}</label>
         <i class="form-bar"></i>
     </div>
 </template>

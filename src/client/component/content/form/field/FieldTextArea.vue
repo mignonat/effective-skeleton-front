@@ -1,7 +1,14 @@
 <template>
     <div class="form-field">
-        <textarea v-model="value"></textarea>
-        <label class="form-label" for="textarea">{{ label }}</label>
+        <textarea 
+            v-model="value"
+            :id="htmlId"
+            :maxlength="model.maxlength"
+            :rows="model.rows"
+            :autofocus="model.autofocus"
+            :readonly="model.disabled">
+        </textarea>
+        <label class="form-label" for="textarea">{{ model.label }}</label>
         <i class="form-bar"></i>
     </div>
 </template>

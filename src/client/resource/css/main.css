@@ -99,7 +99,7 @@ button {
     display: table-row;
     vertical-align: top;
 }
-.cell {
+.table-cell {
     display: table-cell;
     vertical-align: top;
     padding-top: 8px;
