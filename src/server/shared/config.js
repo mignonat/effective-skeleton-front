@@ -1,3 +1,8 @@
+/**
+ * App config param tool
+ * For a given param, search in this tool cache before searching in env.properties files
+ * We can also add other params as it's done for ABS_ROOT_PATH
+ */
 const Const = require('./const.js')
 const reader = require('properties-reader')
 

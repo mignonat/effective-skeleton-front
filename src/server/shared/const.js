@@ -1,3 +1,6 @@
+/**
+ * All back & front constants
+ */
 module.exports = {
     APP_ENV : 'app.env',
     APP_STACK : 'app.stack',
@@ -15,8 +18,5 @@ module.exports = {
     DB_USER : 'db.user',
     DB_PASSWORD : 'db.password',
     BACK_URL : 'app.back.url',
-    BACK_PATH : 'app.back.path',
-    URL_AUTHENTICATE : '/authenticate',
-    URL_USER : '/user',
-    URL_USERS : '/users'
+    BACK_PATH : 'app.back.path'
 }

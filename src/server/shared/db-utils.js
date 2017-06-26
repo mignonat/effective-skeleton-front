@@ -1,3 +1,6 @@
+/**
+ * Database interface
+ */
 const mongoose = require('mongoose')
 const config = require('./config.js')
 const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')

@@ -1,3 +1,7 @@
+/**
+ * Used to print a label
+ * TODO : test because not yet used, merge print & printD into one configurable function
+ */
 const reader = require('properties-reader')
 const config = require('./config.js')
 const Const = require('./const.js')
