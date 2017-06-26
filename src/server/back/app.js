@@ -87,7 +87,6 @@ const processSafeRoute = (req, res, routeFn) => {
     })
 })*/
 
-
 routes.post('/authenticate', (req, res) => {
     try {
         auth.doAuth(req.body.login, req.body.password)
@@ -138,7 +137,7 @@ routes.get('/users', (req, res) => {
     processSafeRoute(req, res, user_model.getRouteFn('/users'))
 })
 
-app.use('/api', routes)
+app.use(config.get(Const.API_PATH), routes)
 
 const port = config.get(Const.APP_PORT) || 5151
 app.listen(port)

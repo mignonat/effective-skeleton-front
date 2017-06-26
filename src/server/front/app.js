@@ -2,6 +2,7 @@ const config = require(__dirname+'/../shared/config.js')
 const path = require('path')
 config.setAbsRootPath(path.resolve("."))
 
+const url = require("url")
 const http = require("http")
 const express = require('express')
 const locale = require("locale")
@@ -18,7 +19,21 @@ app.use(locale(locales.getSupportedLocales()))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+log.info('Creating api url')
+
 const api_url = config.get(Const.API_URL)
+const api_url_path = config.get(Const.API_PATH) // to add to the url /api
+const apiUrl = ((urlName) => {
+    urls = {} //cache
+    return {
+         get : (urlName) => {
+            if (!urls.hasOwnProperty(urlName))
+                urls[urlName] = url.resolve(api_url, path.join(api_url_path, urlName))
+            
+            return urls[urlName]
+        }
+    }
+})()
 
 log.info('Starting on environment "'+config.get(Const.APP_ENV)+'"')
 
@@ -81,8 +96,7 @@ app.get('/admin/maintenance', homePageFn)
 app.get('/admin/logs', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
-const authUrl = path.join(api_url, 'authenticate')
-app.post('/authenticate', (req, res) => {
+app.post(Const.URL_AUTHENTICATE, (req, res) => {
     try {
         const params = req.body
         if (!params || !params.login || !params.password) {
@@ -91,7 +105,7 @@ app.post('/authenticate', (req, res) => {
         }
         options = {
             method: 'POST',
-            uri: authUrl,
+            uri: apiUrl.get(Const.URL_AUTHENTICATE),
             form: {
                 login: params.login,
                 password: params.password
@@ -120,7 +134,7 @@ app.post('/authenticate', (req, res) => {
     }
 })
 
-app.post('/users', (req, res) => {
+app.post(Const.URL_USERS, (req, res) => {
     try {
         const token = req.body.token || req.query.token || req.headers['x-access-token']
         if (!token) {
@@ -130,7 +144,7 @@ app.post('/users', (req, res) => {
 
         const options = {
             method: 'GET',
-            uri: api_url+'users',
+            uri: apiUrl.get(Const.URL_USERS),
             headers: { 
                 'User-Agent': 'Request-Promise',
                 'x-access-token': token
@@ -155,7 +169,7 @@ app.post('/users', (req, res) => {
     }
 })
 
-app.delete('/user', (req, res) => {
+app.delete(Const.URL_USER, (req, res) => {
     try {
         //todo
     } catch(ex) {

@@ -14,5 +14,9 @@ module.exports = {
     DB_URL : 'db.url',
     DB_USER : 'db.user',
     DB_PASSWORD : 'db.password',
-    API_URL : 'api.url'
+    API_URL : 'app.api.url',
+    URL_AUTHENTICATE : '/authenticate',
+    URL_USER : '/user',
+    URL_USERS : '/users',
+    API_PATH : 'app.api.path'
 }
