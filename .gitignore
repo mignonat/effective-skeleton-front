@@ -4,3 +4,4 @@ npm-debug.log
 log/
 env.properties
 src/client/vuex/modules/locale/translations
+package.json

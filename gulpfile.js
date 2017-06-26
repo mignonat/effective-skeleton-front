@@ -85,52 +85,59 @@ gulp.task('front-run-nodemon', () => {
         })
 })
 
+/****************** BUILD ******************/
+
+gulp.task('build-back-prod', gulpSync.sync([
+    //TODO
+]))
+
+gulp.task('build-back-dev', gulpSync.sync([
+    //TODO
+]))
+
+gulp.task('build-front-prod', gulpSync.sync([
+    'front-translations',
+    'webpack-prod',
+]))
+
+gulp.task('build-front-dev', gulpSync.sync([
+    'front-translations',
+    'webpack-dev',
+]))
+
+//TODO : add build-back-prod & dev for translation builds
+
 /****************** START ******************/
 
 gulp.task('start-back-prod', gulpSync.sync([
     'back-run-forever'
 ]))
 
-gulp.task('start-front-prod', gulpSync.sync([
-    'front-translations',
-    'webpack-prod',
-    'front-run-forever'
-]))
-
-gulp.task('start-front-prod-no-build', gulpSync.sync([
-    'front-run-forever'
-]))
-
 gulp.task('start-back-dev', gulpSync.sync([ 
     'back-run-nodemon'
 ]))
 
-gulp.task('start-front-dev', gulpSync.sync([ 
-    'front-translations',
-    'webpack-dev',
+gulp.task('start-front-prod', gulpSync.sync([
+    'front-run-forever'
+]))
+
+gulp.task('start-front-dev', gulpSync.sync([
     'front-run-nodemon'
 ]))
 
-gulp.task('start-both-prod-no-build', gulpSync.sync([
-    'back-run-forever',
-    'front-run-forever'
-]))
+/****************** START BOTH ******************/
 
 gulp.task('start-both-prod', gulpSync.sync([
     'start-back-prod',
     'start-front-prod'
 ]))
 
-/****************** BUILD ******************/
+/****************** BUILD AND START ******************/
 
-gulp.task('build', gulpSync.sync([
-    'front-translations',
-    'webpack-prod',
-]))
-
-gulp.task('build-dev', gulpSync.sync([
-    'front-translations',
-    'webpack-dev',
+gulp.task('build-and-start-dev', gulpSync.sync([ 
+    'build-front-dev',
+    'start-back-prod',
+    'start-front-dev'
 ]))
 
 /****************** WEBPACK ******************/

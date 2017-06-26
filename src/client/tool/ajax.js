@@ -2,7 +2,7 @@ import store from '../vuex/store.js'
 import event from './event.js'
 import * as action_types from '../vuex/actions.js'
 
-const defaultTimeOut = 4000
+const defaultTimeOut = 40000
 
 const translate = (key, params) => {
     return store.getters.translate(key, params)

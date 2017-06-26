@@ -4,18 +4,8 @@
   "description": "Skeleton of web application with minimum functionalities",
   "main": "public/html/index.html",
   "scripts": {
-    "test-mac": "export PATH=$PATH:/Users/mignonat/project-marie/node_modules/chromedriver/bin/ ; node src/test/selenium/main.js",
-    "test-ubuntu": "export PATH=$PATH:/home/laurent/Documents/project-marie/node_modules/chromedriver/bin/ ; node src/test/selenium/main.js",
-    "mongo": "mongod --auth --port 12345",
-    "mongo-shell": "mongo --port 12345 -u 'myUserAdmin' -p 'abc123' --authenticationDatabase 'admin'",
-    "start-front-prod": "gulp start-front-prod",
-    "start-front-dev": "gulp start-front-dev",
-    "start-back-prod": "gulp start-back-prod",
-    "start-back-dev": "gulp start-back-dev",
-    "webpack-dev": "gulp webpack-dev",
-    "webpack-prod": "gulp webpack-prod",
-    "start": "gulp build-and-start-dev",
-    "build": "gulp build-dev"
+    "start": "gulp start-back-prod",
+    "build": "gulp build-back-prod"
   },
   "author": "Mignonat Laurent",
   "license": "ISC",
@@ -31,9 +21,6 @@
     "properties-reader": "0.0.15",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "vue": "^2.2.6",
-    "vue-router": "^2.3.0",
-    "vuex": "^2.2.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -60,21 +47,6 @@
     "gulp-props2json": "^2.0.0",
     "gulp-shell": "^0.6.3",
     "gulp-sync": "^0.1.4",
-    "loader-utils": "^1.1.0",
-    "material-design-icons": "^3.0.1",
-    "nodemon": "^1.11.0",
-    "postcss-loader": "^1.3.3",
-    "selenium-webdriver": "^3.4.0",
-    "style-loader": "^0.16.1",
-    "url-loader": "^0.5.8",
-    "vinyl-source-stream": "^1.1.0",
-    "vue-html-loader": "^1.2.4",
-    "vue-loader": "^11.3.4",
-    "vue-template-compiler": "^2.2.6",
-    "webpack": "^2.4.1",
-    "webpack-stream": "^3.2.0"
-  },
-  "browser": {
-    "vue": "vue/dist/vue.common.js"
+    "vinyl-source-stream": "^1.1.0"
   }
 }

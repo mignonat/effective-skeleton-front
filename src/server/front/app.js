@@ -56,8 +56,6 @@ const err500Fn = (res, err) => {
     })
 }
 
-
-
 const homePageFn = (req, res) => {
     try {
         log.debug('New request on url = "'+req.url+'"')
@@ -83,6 +81,7 @@ app.get('/admin/maintenance', homePageFn)
 app.get('/admin/logs', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
+const authUrl = path.join(api_url, 'authenticate')
 app.post('/authenticate', (req, res) => {
     try {
         const params = req.body
@@ -92,7 +91,7 @@ app.post('/authenticate', (req, res) => {
         }
         options = {
             method: 'POST',
-            uri: api_url+'authenticate',
+            uri: authUrl,
             form: {
                 login: params.login,
                 password: params.password
