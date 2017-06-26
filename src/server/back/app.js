@@ -128,7 +128,7 @@ routes.get('/', (req, res) => {
     try {
         res.json({
             success : true,
-            message: "REST API on version "+config.get(Const.APP_API_VERSION)+" is running" + ((req.decoded._doc)? (" | request user '"+req.decoded._doc.login+"'") : "")
+            message: "REST API on version "+config.get(Const.API_VERSION)+" is running" + ((req.decoded._doc)? (" | request user '"+req.decoded._doc.login+"'") : "")
         })
     } catch (ex) { err500Fn(res, '/ : '+ex) }
 })
@@ -137,7 +137,7 @@ routes.get('/users', (req, res) => {
     processSafeRoute(req, res, user_model.getRouteFn('/users'))
 })
 
-app.use(config.get(Const.API_PATH), routes)
+app.use(config.get(Const.BACK_PATH), routes)
 
 const port = config.get(Const.APP_PORT) || 5151
 app.listen(port)

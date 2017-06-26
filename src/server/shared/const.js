@@ -4,7 +4,7 @@ module.exports = {
     APP_PORT : 'app.port',
     ABS_ROOT_PATH: 'absolute.root.path',
     APP_VERSION : 'app.version',
-    APP_API_VERSION : 'app.api.version',
+    API_VERSION : 'app.api.version',
     LOG_DIR : 'log.dir',
     LOG_APP_FILE : 'log.app.file',
     LOG_APP_LEVEL : 'log.app.level',
@@ -14,9 +14,9 @@ module.exports = {
     DB_URL : 'db.url',
     DB_USER : 'db.user',
     DB_PASSWORD : 'db.password',
-    API_URL : 'app.api.url',
+    BACK_URL : 'app.back.url',
+    BACK_PATH : 'app.back.path',
     URL_AUTHENTICATE : '/authenticate',
     URL_USER : '/user',
-    URL_USERS : '/users',
-    API_PATH : 'app.api.path'
+    URL_USERS : '/users'
 }

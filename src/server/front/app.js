@@ -20,15 +20,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 log.info('Creating api url')
-
-const api_url = config.get(Const.API_URL)
-const api_url_path = config.get(Const.API_PATH) // to add to the url /api
 const apiUrl = ((urlName) => {
-    urls = {} //cache
+    const back_url = config.get(Const.BACK_URL)
+    const back_path = config.get(Const.BACK_PATH) // => /api
+    const urls = {} //cache
+    
     return {
          get : (urlName) => {
             if (!urls.hasOwnProperty(urlName))
-                urls[urlName] = url.resolve(api_url, path.join(api_url_path, urlName))
+                urls[urlName] = url.resolve(back_url, path.join(back_path, urlName))
             
             return urls[urlName]
         }
