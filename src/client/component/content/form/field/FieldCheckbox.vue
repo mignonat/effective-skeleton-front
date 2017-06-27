@@ -1,17 +1,16 @@
 <template>
-    <div class="form-checkbox">
-        <label v-if="model.label" class="field-title">{{ model.label }}</label>
-        <label>
-            <input 
+    <div class="field checkbox">
+        <label class="field-title">{{ model.label }}</label>
+        <div class="field-input">
+            <input
                 type="checkbox"
                 v-model="value"
                 :id="htmlId"
                 :autofocus="model.autofocus"
                 :checked="checkedFirst">
             </input>
-            <i class="form-helper"></i>
-            {{ toggleLabel }}
-        </label>
+            <label class="field-label">{{ toggleLabel }}</label>
+        </div>
     </div>
 </template>
 

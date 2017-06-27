@@ -1,5 +1,5 @@
 <template>
-    <div class="form-field">
+    <div class="field">
         <input 
             type="text" 
             v-model="value"

@@ -1,7 +1,9 @@
 <template>
-        <div class="form-container">
-            <div class="form-title">{{ title }}</div>
-            <form>
+        <div class="form-panel">
+            <div class="form-header">
+                <span class="form-title">{{ title }}</span>
+            </div>
+            <form class="form-body">
                 <template v-for="field in fields">
                     <field-text
                         v-if="field.type=='text'"
@@ -49,17 +51,18 @@
                     </field-data-list>
                 </template>
             </form>
-
-            <div class="form-button-box">
-                <button v-for="button in buttons" v-bind:key="button.id" @click="$emit(button.action)" :class="'form-button form-button-'+button.id" type="button">
-                    <span>{{ button.label }}</span>
-                </button>
-                <button @click="valid" class="form-button" type="button">
-                    <span>{{ labels.valid }}</span>
-                </button>
-                <button @click="cancel" class="form-button form-cancel" type="button">
-                    <span>{{ labels.cancel }}</span>
-                </button>
+            <div class="form-footer">
+                <div class="button-container">
+                    <button v-for="button in buttons" v-bind:key="button.id" @click="$emit(button.action)" :class="'button button-'+button.id" type="button">
+                        <span>{{ button.label }}</span>
+                    </button>
+                    <button @click="valid" class="button" type="button">
+                        <span>{{ labels.valid }}</span>
+                    </button>
+                    <button @click="cancel" class="button button-cancel" type="button">
+                        <span>{{ labels.cancel }}</span>
+                    </button>
+                </div>
             </div>
         </div>
 </template>

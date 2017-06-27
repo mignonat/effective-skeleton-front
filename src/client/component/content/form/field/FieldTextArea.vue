@@ -1,5 +1,5 @@
 <template>
-    <div class="form-field">
+    <div class="field">
         <textarea 
             v-model="value"
             :id="htmlId"

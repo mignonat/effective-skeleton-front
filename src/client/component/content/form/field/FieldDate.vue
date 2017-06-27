@@ -1,13 +1,15 @@
 <template>
-    <div class="form-field">
-        <input
-            type="date" 
-            v-model="value"
-            :id="htmlId"
-            :autofocus="model.autofocus">
-        </input>
-        <label class="form-label" for="input">{{ model.label }}</label>
-        <i class="form-bar form-bar-short"></i>
+    <div class="field date">
+        <label class="field-title">{{ model.label }}</label>
+        <div class="field-content">
+            <input
+                type="date" 
+                v-model="value"
+                :id="htmlId"
+                :autofocus="model.autofocus">
+            </input>
+            <div class="focus-bar"></div>
+        </div>
     </div>
 </template>
 

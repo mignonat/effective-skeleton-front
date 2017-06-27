@@ -1,5 +1,5 @@
 <template>
-    <div class="form-toggle">
+    <div class="field toggle">
         <label v-if="model.label" class="field-title">{{ model.label }}</label>
         <input
             type="checkbox"
@@ -7,9 +7,9 @@
             :id="htmlId"
             :checked="checkedFirst"
             :autofocus="autofocus"
-            class="form-hidden">
+            class="field-hidden">
         </input>
-        <label :for="htmlId" class="form-toggle-text"></label>
+        <label :for="htmlId" class="toggle-text"></label>
         <span>{{ toggleLabel }}</span>
     </div>
 </template>

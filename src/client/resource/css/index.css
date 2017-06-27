@@ -25,7 +25,11 @@
 @import "./page/admin/users.css";
 
 /******** CONTENT ********/
-@import "./content/form.css";
 @import "./content/panel.css";
+@import "./content/form/form.css";
+@import "./content/form/button.css";
+@import "./content/form/field/field.css";
+@import "./content/form/field/text.css";
+@import "./content/form/field/checkbox.css";
 @import "./content/sample1.css";
 @import "./content/sample2.css";

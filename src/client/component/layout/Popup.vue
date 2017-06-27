@@ -11,11 +11,11 @@
                    <div class="popup-body-content">{{ data.text }}</div>
                 </div>
                 <div class="popup-footer">
-                    <div class="form-button-box">
-                        <button @click="confirm()" class="form-button" ref="focusButton">
+                    <div class="button-container">
+                        <button @click="confirm()" class="button" ref="focusButton">
                             <span>{{ confirmLabel }}</span>
                         </button>
-                        <button @click="close()" class="form-button form-cancel">
+                        <button @click="close()" class="button button-cancel">
                             <span>{{ closeLabel }}</span>
                         </button>
                     </div>

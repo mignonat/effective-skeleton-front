@@ -1,15 +1,17 @@
 <template>
-    <div class="form-field">
-        <input 
-            type="number"
-            v-model="value"
-            :id="htmlId"
-            :min="model.min"
-            :max="model.max"
-            :autofocus="model.autofocus">
-        </input>
-        <label class="form-label" for="input">{{ model.label }}</label>
-        <i class="form-bar"></i>
+    <div class="field number">
+        <label class="field-title">{{ model.label }}</label>
+        <div class="field-content">
+            <input 
+                type="number"
+                v-model="value"
+                :id="htmlId"
+                :min="model.min"
+                :max="model.max"
+                :autofocus="model.autofocus">
+            </input>
+            <div class="focus-bar"></div>
+        </div>
     </div>
 </template>
 

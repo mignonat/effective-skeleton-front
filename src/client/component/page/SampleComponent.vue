@@ -3,16 +3,16 @@
         <br/><br/>
         <span>Modal popup sample</span>
         <br/><br/>
-        <button class="form-button sample-button" @click="openInfo()">
+        <button class="button sample-button" @click="openInfo()">
             <span>Info modal</span>
         </button>
-        <button class="form-button sample-button" @click="openWarning()">
+        <button class="button sample-button" @click="openWarning()">
             <span>Warning modal</span>
         </button>
-        <button class="form-button sample-button" @click="openError()">
+        <button class="button sample-button" @click="openError()">
             <span>Error modal</span>
         </button>
-        <button class="form-button sample-button" @click="openConfirm()">
+        <button class="button sample-button" @click="openConfirm()">
             <span>Confirm modal</span>
         </button>
         <br/><br/>

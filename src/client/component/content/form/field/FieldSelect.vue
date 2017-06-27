@@ -1,7 +1,6 @@
 <template>
-    <div class="form-field">
+    <div class="field select">
         <select 
-            class="form-dropdown"
             v-model="value"
             :id="htmlId"
             :autofocus="model.autofocus">

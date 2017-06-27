@@ -1,8 +1,8 @@
 <template>
-    <div class="form-radio-box">
+    <div class="field radio">
         <label v-if="model.label" class="field-title">{{ model.label }}</label>
-        <div class="form-radio">
-            <label>
+        <div class="field-content">
+            <div class="radio-input">
                 <input 
                     type="radio"
                     v-model="value"
@@ -12,12 +12,9 @@
                     :autofocus="model.autofocus"
                     :checked="checkedFirst">
                 </input>
-                <i class="form-helper"></i>
-                {{ model.firstLabel }}
-            </label>
-        </div>
-        <div class="form-radio">
-            <label>
+                <label>{{ model.firstLabel }}</label>
+            </div>
+            <div class="radio-input">
                 <input 
                     type="radio"
                     v-model="value"
@@ -26,9 +23,9 @@
                     :name="htmlId"
                     :checked="checkedSecond">
                 </input>
-                <i class="form-helper"></i>
-                {{ model.secondLabel }}
-            </label>
+                <label>{{ model.secondLabel }}</label>
+            </div>
+            <div class="focus-bar"></div>
         </div>
     </div>
 </template>
