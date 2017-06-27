@@ -1,3 +1,6 @@
+/**
+ * User controller
+ */
 const config = require(__dirname+'/../../shared/config.js')
 const api = require(config.getAbsRootPath()+'/src/server/front/tool/api.js')
 const error = require(config.getAbsRootPath()+'/src/server/shared/error.js')

@@ -15,10 +15,10 @@ const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 const locales = require(config.getAbsRootPath()+'/src/server/shared/locales.js')
 const api = require(config.getAbsRootPath()+'/src/server/front/tool/api.js')
 const error = require(config.getAbsRootPath()+'/src/server/shared/error.js')
-const authentication = require(config.getAbsRootPath()+'/src/server/front/authentication.js')
 
-/** MODELS */
-const model_user = require(config.getAbsRootPath()+'/src/server/front/model/user.js')
+/** CONTROLLER */
+const authentication = require(config.getAbsRootPath()+'/src/server/front/controller/authentication.js')
+const user_ctrl = require(config.getAbsRootPath()+'/src/server/front/controller/user.js')
 
 /** STARTING */
 log.info('Starting on environment "'+config.get(Const.APP_ENV)+'"')
@@ -61,8 +61,8 @@ app.get('/error-404', homePageFn)
 app.post(authentication.URL, authentication.ACTION)
 
 /** USER */
-app.post(model_user.urls.USERS, model_user[model_user.actions.LIST])
-app.delete(model_user.urls.USER, model_user[model_user.actions.DELETE])
+app.post(user_ctrl.urls.USERS, user_ctrl[user_ctrl.actions.LIST])
+app.delete(user_ctrl.urls.USER, user_ctrl[user_ctrl.actions.DELETE])
 
 /*TESTING
 app.get("/locales", function(req, res) {

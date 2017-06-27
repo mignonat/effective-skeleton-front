@@ -1,8 +1,10 @@
-const config = require(__dirname+'/../shared/config.js')
+const request = require('request-promise')
+const config = require(__dirname+'/../../shared/config.js')
 const api = require(config.getAbsRootPath()+'/src/server/front/tool/api.js')
 const error = require(config.getAbsRootPath()+'/src/server/shared/error.js')
+const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
-module.exports = {
+const exp = {
     URL : '/authenticate',
     ACTION : (req, res) => {
         try {
@@ -13,7 +15,7 @@ module.exports = {
             }
             options = {
                 method: 'POST',
-                uri: api.getUrl(Const.URL_AUTHENTICATE),
+                uri: api.getUrl(exp.URL),
                 form: {
                     login: params.login,
                     password: params.password
@@ -42,4 +44,6 @@ module.exports = {
         }
     }
 }
+
+module.exports = exp
 

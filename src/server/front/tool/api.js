@@ -1,4 +1,8 @@
+/**
+ * Tool to get the backend api url 
+ */
 const url = require("url")
+const path = require('path')
 const config = require(__dirname+'/../../shared/config.js')
 const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
 
