@@ -1,7 +1,7 @@
 <template>
-    <div class="field checkbox">
-        <label class="field-title">{{ model.label }}</label>
-        <div class="field-input">
+    <div class="field">
+        <div class="field-title">{{ model.label }}</div>
+        <div class="field-input checkbox">
             <input
                 type="checkbox"
                 v-model="value"
@@ -10,6 +10,11 @@
                 :checked="checkedFirst">
             </input>
             <label class="field-label">{{ toggleLabel }}</label>
+            <div class="focus-bar"></div>
+        </div>
+        <div v-if="hasMessage" class="field-message">
+            <div v-if="hasHelp"  class="field-help"></div>
+            <div v-if="hasError" class="field-error"></div>
         </div>
     </div>
 </template>

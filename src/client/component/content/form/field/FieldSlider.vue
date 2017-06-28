@@ -1,15 +1,21 @@
 <template>
     <div class="field">
-        <input 
-            type="range"
-            v-model="value"
-            :id="htmlId"
-            :min="model.min"
-            :max="model.max"
-            :autofocus="model.autofocus">
-        </input>
-        <label class="form-label" for="input">{{ model.label }} : {{ value }}</label>
-        <i class="form-bar"></i>
+        <div v-if="model.label" class="field-title">{{ model.label }}</div>
+        <div class="field-input slider">
+            <input 
+                type="range"
+                v-model="value"
+                :id="htmlId"
+                :min="model.min"
+                :max="model.max"
+                :autofocus="model.autofocus">
+            </input>
+            <div class="focus-bar"></div>
+        </div>
+        <div v-if="hasMessage" class="field-message">
+            <div v-if="hasHelp"  class="field-help"></div>
+            <div v-if="hasError" class="field-error"></div>
+        </div>
     </div>
 </template>
 

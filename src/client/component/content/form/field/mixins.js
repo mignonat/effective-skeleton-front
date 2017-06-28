@@ -2,11 +2,22 @@ const simple = {
     props : [ 'formId', 'model', 'id', 'initValue', 'label', 'disabled', 'autofocus' ],
     data : function() { return {
         value : this.initValue,
-        timeoutFn : undefined
+        timeoutFn : undefined,
+        error : undefined,
+        help : undefined
     }},
     computed : {
         htmlId : function() {
             return (this.formId? this.formId+'-' : '') + this.model.id
+        },
+        hasMessage : function() {
+            return error!=undefined || help!=undefined
+        },
+        hasHelp : function() {
+            return help!=undefined
+        },
+        hasError : function() {
+            return error!=undefined
         }
     },
     watch : {

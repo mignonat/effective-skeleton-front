@@ -1,7 +1,7 @@
 <template>
-    <div class="field date">
-        <label class="field-title">{{ model.label }}</label>
-        <div class="field-content">
+    <div class="field">
+        <div class="field-title">{{ model.label }}</div>
+        <div class="field-input date">
             <input
                 type="date" 
                 v-model="value"
@@ -9,6 +9,10 @@
                 :autofocus="model.autofocus">
             </input>
             <div class="focus-bar"></div>
+        </div>
+        <div v-if="hasMessage" class="field-message">
+            <div v-if="hasHelp"  class="field-help"></div>
+            <div v-if="hasError" class="field-error"></div>
         </div>
     </div>
 </template>

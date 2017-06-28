@@ -13,10 +13,10 @@
                         v-else-if="field.type=='textarea'"
                         :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
                     </field-text-area>
-                    <field-number
-                        v-else-if="field.type=='number'"
+                    <field-spiner
+                        v-else-if="field.type=='spiner'"
                         :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
-                    </field-number>
+                    </field-spiner>
                     <field-slider
                         v-else-if="field.type=='slider'"
                         :formId="id" :model="field" :initValue = "entity[field.id]" @update= "update">
@@ -73,7 +73,7 @@
     
     import FieldText from './field/FieldText.vue'
     import FieldTextArea from './field/FieldTextArea.vue'
-    import FieldNumber from './field/FieldNumber.vue'
+    import FieldSpiner from './field/FieldSpiner.vue'
     import FieldSlider from './field/FieldSlider.vue'
     import FieldDate from './field/FieldDate.vue'
     import FieldEmail from './field/FieldEmail.vue'
@@ -108,7 +108,7 @@
             })
         },
         components: {
-            FieldText, FieldTextArea, FieldNumber, FieldSlider, FieldDate, FieldEmail, FieldCheckbox,
+            FieldText, FieldTextArea, FieldSpiner, FieldSlider, FieldDate, FieldEmail, FieldCheckbox,
             FieldRadio, FieldToggle, FieldSelect, FieldDataList
         }
     }
