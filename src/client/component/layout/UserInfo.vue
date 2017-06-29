@@ -211,16 +211,17 @@
             }
         },
         mounted: function () {
+            const me = this
             this.$nextTick(function () {
                 document.addEventListener("keydown", (e) => { // enter key is pressed
-                    if (!this.user && this.show && e.keyCode == 13)
-                        this.auth()
+                    if (!me.user && me.show && e.keyCode == 13)
+                        me.auth()
                 })
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
+                event.on(event.LOCALE_CHANGE, function UserInfo() {
+                    me.setTranslation()
                 })
-                event.on(event.LOGOUT, () => {
-                    this.setDataToLogoutState()
+                event.on(event.LOGOUT, function UserInfo() {
+                    me.setDataToLogoutState()
                 })
             })
         }

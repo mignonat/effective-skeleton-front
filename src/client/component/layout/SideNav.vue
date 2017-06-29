@@ -118,24 +118,25 @@
             }
         },
         mounted: function () {
+            const me = this
             this.$nextTick(function () {
-                const meEl = document.getElementById(this.id)
+                const meEl = document.getElementById(me.id)
                 const mainPanelEl = document.getElementById('main-panel')
 
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
+                event.on(event.LOCALE_CHANGE, function SideNav() {
+                    me.setTranslation()
                 })
-                event.on(event.LOGIN, () => {
-                    this.isAdmin = this.$store.getters.isAdmin()
+                event.on(event.LOGIN, function SideNav() {
+                    me.isAdmin = me.$store.getters.isAdmin()
                 })
-                event.on(event.LOGOUT, () => {
-                    this.isAdmin = false
+                event.on(event.LOGOUT, function SideNav() {
+                    me.isAdmin = false
                 })
-                event.on(event.SIDENAV_OPENED, () => {
+                event.on(event.SIDENAV_OPENED, function SideNav() {
                     meEl.classList.remove("sidenav-hidden")
                     mainPanelEl.classList.remove("main-panel-expanded")
                 })
-                event.on(event.SIDENAV_CLOSED, () => {
+                event.on(event.SIDENAV_CLOSED, function SideNav() {
                     meEl.classList.add("sidenav-hidden")
                     mainPanelEl.classList.add("main-panel-expanded")
                 })

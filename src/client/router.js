@@ -78,7 +78,7 @@ const router = new VueRouter({
 })
 
 // redirect on home page when user logout and was on an admin page
-event.on(event.LOGOUT, () => {
+event.on(event.LOGOUT, function Router() {
     if (router.currentRoute.path && router.currentRoute.path.startsWith('/admin/'))
         router.push(homeRoute)
 })

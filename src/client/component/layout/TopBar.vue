@@ -31,13 +31,14 @@
         },
         components : { SelectLocale, UserInfo, SideNavButton },
         mounted: function () {
+            const me = this
             this.$nextTick(function () {
-                event.on(event.SIDENAV_CHANGE, (menu) => {
-                    this.menuLabelKey = menu.id
-                    this.setTranslation()
+                event.on(event.SIDENAV_CHANGE, function TopBar(menu) {
+                    me.menuLabelKey = menu.id
+                    me.setTranslation()
                 })
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
+                event.on(event.LOCALE_CHANGE, function TopBar() {
+                    me.setTranslation()
                 })
             })
         }

@@ -51,9 +51,10 @@
             }
         },
         mounted: function () {
+            const me = this
             this.$nextTick(function () {
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
+                event.on(event.LOCALE_CHANGE, function Loader() {
+                    me.setTranslation()
                 })
             })
         }

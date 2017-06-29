@@ -100,13 +100,6 @@
                 this.$emit('cancel')
             }
         },
-        mounted: function () {
-            this.$nextTick(function () {
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
-                })
-            })
-        },
         components: {
             FieldText, FieldTextArea, FieldSpiner, FieldSlider, FieldDate, FieldEmail, FieldCheckbox,
             FieldRadio, FieldToggle, FieldSelect, FieldDataList

@@ -73,7 +73,7 @@
         mounted: function () {
             const me = this
             me.$nextTick(function () { // here the document is ready
-                event.on(event.POPUP, function(params) {
+                event.on(event.POPUP, function App(params) {
                     me.displayPopup(params)
                 })
             })

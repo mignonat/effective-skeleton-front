@@ -25,7 +25,11 @@ const methods = {
         var handlers = handlersByEventName[eventName]
         if (handlers) {
             handlers.forEach(function(handler) {
-                handler(args)
+                try {
+                    handler(args)
+                } catch (ex) {
+                    console.error('Error : event="'+eventName+'", handler="'+handler.name+'" : '+ex)
+                }
             });
         }
     },

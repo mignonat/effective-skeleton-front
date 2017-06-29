@@ -83,16 +83,17 @@
                 this.label.close = this.translate('all.close')
             }
         },
-        mounted () {
+        mounted : function () {
+            const me = this
             this.$nextTick(function () { // here the document is ready
                 document.addEventListener("keydown", (e) => { 
-                    if (this.data.show && e.keyCode == 27)      // escape key is pressed
-                        this.close()
+                    if (me.data.show && e.keyCode == 27)      // escape key is pressed
+                        me.close()
                     else if (this.data.show && e.keyCode == 13) // enter key is pressed
-                        this.$emit('confirm')
+                        me.$emit('confirm')
                 })
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
+                event.on(event.LOCALE_CHANGE, function Popup() {
+                    me.setTranslation()
                 })
             })
         }

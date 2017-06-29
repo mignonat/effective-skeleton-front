@@ -102,10 +102,11 @@
             }
         },
         mounted: function () {
+            const me = this
             this.$nextTick(function () {
-                this.loadUsers()
-                event.on(event.LOCALE_CHANGE, () => {
-                    this.setTranslation()
+                me.loadUsers()
+                event.on(event.LOCALE_CHANGE, function Users() {
+                    me.setTranslation()
                 })
             })
         },
