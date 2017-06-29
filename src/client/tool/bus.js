@@ -1,5 +1,6 @@
-const handlersByEventName = {}
+const handlersByEventName = {} // Will contain all function handler by event name
 
+// We authorized only pre-defined events
 const events = {
     POPUP : 'POPUP',
     LOCALE_CHANGE : 'LOCALE_CHANGE',
@@ -10,39 +11,60 @@ const events = {
     SIDENAV_CHANGE : 'SIDENAV_CHANGE'
 }
 
-const methods = {
-    isEventNameOk (eventName) {
-        const isOk = events.hasOwnProperty(eventName)
-        if (!isOk)
-            console.warn('signal.emit : unknown signal '+eventName)
-        
-        return isOk
-    },
-    emit (eventName, args) {
-        if (!this.isEventNameOk(eventName))
-            return
-        
-        var handlers = handlersByEventName[eventName]
-        if (handlers) {
-            handlers.forEach(function(handler) {
-                try {
-                    handler(args)
-                } catch (ex) {
-                    console.error('Error : event="'+eventName+'", handler="'+handler.name+'" : '+ex)
-                }
-            });
-        }
-    },
-    on (eventName, handler) {
-        if (!this.isEventNameOk(eventName))
-            return
+const checkName = (eventName) => {
+    if (events.hasOwnProperty(eventName))
+        return true
+    
+    console.warn('event.checkname : unknown eventName '+eventName)
+    return false
+}
 
-        var handlers = handlersByEventName[eventName]
-        if (!handlers) {
-            handlers = []
-            handlersByEventName[eventName] = handlers
+const addEvent = (eventName, handlerId, handler) => {
+    var handlers = handlersByEventName[eventName]
+    if (!handlers) {
+        handlers = {}
+        handlersByEventName[eventName] = handlers
+    }
+    handlers[handlerId] = handler
+}
+
+const removeEvent = (eventName, handlerId) => {
+    var handlers = handlersByEventName[eventName]
+    if (handlers) {
+        delete handlers[handlerId]
+    }
+}
+
+const processEvent = (eventName, args) => {
+    const handlers = handlersByEventName[eventName]
+    if (handlers) {
+        for (var handlerId in handlers) {
+            if (handlers.hasOwnProperty(handlerId)) {
+                try {
+                    handlers[handlerId](args)
+                } catch (ex) {
+                    console.error('Error : event="'+eventName+'", handlerId="'+handlerId+'" : '+ex)
+                }
+            }
         }
-        handlers.push(handler)
+    }
+}
+
+const methods = {
+    fire (eventName, args) {
+        if (!checkName(eventName)) return
+        
+        processEvent(eventName, args)
+    },
+    listen (eventName, handlerId, handler) {
+        if (!checkName(eventName)) return
+
+        addEvent(eventName, handlerId, handler)
+    },
+    remove (eventName, handlerId) {
+        if (!checkName(eventName)) return
+
+        removeEvent(eventName, handlerId)
     }
 }
 

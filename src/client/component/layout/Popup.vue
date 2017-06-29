@@ -26,7 +26,7 @@
 </template>
 
 <script>
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
     
     export default {
@@ -84,16 +84,15 @@
             }
         },
         mounted : function () {
-            const me = this
             this.$nextTick(function () { // here the document is ready
                 document.addEventListener("keydown", (e) => { 
-                    if (me.data.show && e.keyCode == 27)      // escape key is pressed
-                        me.close()
+                    if (this.data.show && e.keyCode == 27)      // escape key is pressed
+                        this.close()
                     else if (this.data.show && e.keyCode == 13) // enter key is pressed
-                        me.$emit('confirm')
+                        this.$emit('confirm')
                 })
-                event.on(event.LOCALE_CHANGE, function Popup() {
-                    me.setTranslation()
+                bus.listen(bus.LOCALE_CHANGE, 'Popup', () => {
+                    this.setTranslation()
                 })
             })
         }

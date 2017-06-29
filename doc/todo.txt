@@ -1,4 +1,5 @@
 ------ LAURENT --------
+- Event : remove handlers when component is destroyed
 - CSS Form : refactoring of css classes and div, use of em
 - Form : undo/redo history
 - Refactor contextual transition : use javascript height transition

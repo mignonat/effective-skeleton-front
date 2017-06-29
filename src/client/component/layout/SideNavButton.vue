@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
     
     export default {
@@ -25,9 +25,9 @@
             toggle() {
                 this.open = !this.open
                 if (this.open)
-                    event.emit(event.SIDENAV_OPENED)
+                    bus.fire(bus.SIDENAV_OPENED)
                 else
-                    event.emit(event.SIDENAV_CLOSED)
+                    bus.fire(bus.SIDENAV_CLOSED)
             },
             setTranslation() {
                 this.label.show = this.translate('all.show.main.menu')
@@ -35,10 +35,9 @@
             }
         },
         mounted: function () {
-            const me = this
             this.$nextTick(function () {
-                event.on(event.LOCALE_CHANGE, function SideNavButton() {
-                    me.setTranslation()
+                bus.listen(bus.LOCALE_CHANGE, 'SideNavButton', () => {
+                    this.setTranslation()
                 })
             })
         }

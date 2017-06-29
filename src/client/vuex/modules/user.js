@@ -1,7 +1,7 @@
 import preference from '../../tool/preferences.js'
 import * as action_types from '../actions.js'
 import * as mutation_types from '../mutations.js'
-import event from '../../tool/event.js'
+import bus from '../../tool/bus.js'
 
 /**************** STATE ****************/
 
@@ -35,7 +35,7 @@ const methods = {
             preference.set(preference.TOKEN, state.token)
             preference.set(preference.TOKEN_TIME, state.token_time)
             preference.set(preference.USER, state.user)
-            event.emit(event.LOGIN)
+            bus.emit(bus.LOGIN)
         } else {
             state.token = undefined
             state.token_time = undefined
@@ -43,7 +43,7 @@ const methods = {
             preference.remove(preference.TOKEN)
             preference.remove(preference.TOKEN_TIME)
             preference.remove(preference.USER)
-            event.emit(event.LOGOUT)
+            bus.emit(bus.LOGOUT)
         }
     },
     getToken : (state) => {

@@ -69,7 +69,7 @@
 
 <script>
     import mixin from '../../../tool/mixin.js'
-    import event from '../../../tool/event.js'
+    import bus from '../../../tool/bus.js'
     
     import FieldText from './field/FieldText.vue'
     import FieldTextArea from './field/FieldTextArea.vue'
@@ -99,6 +99,17 @@
             cancel : function() {
                 this.$emit('cancel')
             }
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+                console.debug('EVENT AppForm init')
+                bus.listen(bus.LOCALE_CHANGE, 'AppForm', () => {
+                    console.debug('EVENT AppForm processed')
+                })
+            })
+        },
+        beforeDestroy : function() {
+            console.debug('beforeDestroy AppForm called')
         },
         components: {
             FieldText, FieldTextArea, FieldSpiner, FieldSlider, FieldDate, FieldEmail, FieldCheckbox,

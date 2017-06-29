@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import event from '../../../tool/event.js'
+    import bus from '../../../tool/bus'
     import ajax from '../../../tool/ajax.js'
     import List from '../../layout/List.vue'
     import mixin from '../../../tool/mixin.js'
@@ -102,11 +102,12 @@
             }
         },
         mounted: function () {
-            const me = this
+            console.debug('EVENT Users init')
             this.$nextTick(function () {
-                me.loadUsers()
-                event.on(event.LOCALE_CHANGE, function Users() {
-                    me.setTranslation()
+                this.loadUsers()
+                bus.listen(bus.LOCALE_CHANGE, 'Users', () => {
+                    console.debug('EVENT Users processed')
+                    this.setTranslation()
                 })
             })
         },

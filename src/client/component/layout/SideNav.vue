@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
 
     export default {
@@ -111,32 +111,31 @@
                 this.app_by = this.translate('app.by')
             },
             notify(item) {
-                event.emit(event.SIDENAV_CHANGE, { 
+                bus.fire(bus.SIDENAV_CHANGE, { 
                     id : item.id,
                     router_link : item.router_link
                 })
             }
         },
         mounted: function () {
-            const me = this
             this.$nextTick(function () {
-                const meEl = document.getElementById(me.id)
+                const meEl = document.getElementById(this.id)
                 const mainPanelEl = document.getElementById('main-panel')
 
-                event.on(event.LOCALE_CHANGE, function SideNav() {
-                    me.setTranslation()
+                bus.listen(bus.LOCALE_CHANGE, 'SideNav', () => {
+                    this.setTranslation()
                 })
-                event.on(event.LOGIN, function SideNav() {
-                    me.isAdmin = me.$store.getters.isAdmin()
+                bus.listen(bus.LOGIN, 'SideNav', () => {
+                    this.isAdmin = this.$store.getters.isAdmin()
                 })
-                event.on(event.LOGOUT, function SideNav() {
-                    me.isAdmin = false
+                bus.listen(bus.LOGOUT, 'SideNav', () => {
+                    this.isAdmin = false
                 })
-                event.on(event.SIDENAV_OPENED, function SideNav() {
+                bus.listen(bus.SIDENAV_OPENED, 'SideNav', () => {
                     meEl.classList.remove("sidenav-hidden")
                     mainPanelEl.classList.remove("main-panel-expanded")
                 })
-                event.on(event.SIDENAV_CLOSED, function SideNav() {
+                bus.listen(bus.SIDENAV_CLOSED, 'SideNav', () => {
                     meEl.classList.add("sidenav-hidden")
                     mainPanelEl.classList.add("main-panel-expanded")
                 })
