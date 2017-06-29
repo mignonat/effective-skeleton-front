@@ -11,27 +11,27 @@ const simple = {
             return (this.formId? this.formId+'-' : '') + this.model.id
         },
         hasMessage : function() {
-            return error!=undefined || help!=undefined
+            return this.error!=undefined || this.help!=undefined
         },
         hasHelp : function() {
-            return help!=undefined
+            return this.help!=undefined
         },
         hasError : function() {
-            return error!=undefined
+            return this.error!=undefined
         }
     },
     watch : {
         value : function() {
             clearTimeout(this.timeoutFn);
             const me = this
-            // Trigger just one update 0.4 sec after last user input
+            // Trigger just one update 0.6 sec after last user input
             this.timeoutFn = setTimeout(function(){ 
                 if (!this.disabled)
                     me.$emit('update', {
                         id : me.model.id,
                         value : me.value
                     })
-            }, 400);
+            }, 600);
         }
     }
 }

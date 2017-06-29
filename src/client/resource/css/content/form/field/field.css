@@ -1,3 +1,11 @@
+:root {
+  --field-input-height : 12px;
+  --field-el-margin-top : 16px;
+  --field-el-margin-top : 16px;
+}
+.field {
+  min-height: 38px;
+}
 .field-hidden {
   display: none;
 }
