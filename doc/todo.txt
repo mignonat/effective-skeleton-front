@@ -37,3 +37,4 @@
 - définir des medias queries
 - rajouter les transitions @-webkit-keyframes
 - reprendre les noms css de la 404
+- suppr les font Or et garder les materials google
