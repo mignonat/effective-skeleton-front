@@ -105,6 +105,11 @@ gulp.task('build-front-dev', gulpSync.sync([
     'webpack-dev',
 ]))
 
+gulp.task('build-dev', gulpSync.sync([
+    'build-back-dev',
+    'build-front-dev',
+]))
+
 //TODO : add build-back-prod & dev for translation builds
 
 /****************** START ******************/

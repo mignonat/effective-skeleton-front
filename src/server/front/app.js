@@ -6,7 +6,6 @@ const http = require("http")
 const express = require('express')
 const locale = require("locale")
 const compression = require('compression')
-const request = require('request-promise')
 const bodyParser  = require('body-parser')
 
 /** TOOLS */
