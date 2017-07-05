@@ -90,6 +90,14 @@
                         id : 'menu.sample.form',
                         router_link : '/sample-form',
                         label : this.translate('menu.sample.form')
+                    },{
+                        id : 'menu.sample.error404',
+                        router_link : '/error-404',
+                        label : this.translate('menu.sample.error404')
+                    },{
+                        id : 'menu.sample.error500',
+                        router_link : '/error-500',
+                        label : this.translate('menu.sample.error500')
                     }]
                 }]
             }

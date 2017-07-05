@@ -56,6 +56,7 @@ app.get('/admin/maintenance', homePageFn)
 app.get('/admin/logs', homePageFn)
 app.get('/error', homePageFn)
 app.get('/error-404', homePageFn)
+app.get('/error-500', homePageFn)
 
 /** AUTHENTICATION */
 app.post(authentication.URL, authentication.ACTION)

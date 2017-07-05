@@ -15,6 +15,7 @@ import SampleContextualPanel from './component/page/SampleContextualPanel.vue'
 import SampleForm from './component/page/SampleForm.vue'
 import ErrorUnknown from './component/page/Error.vue'
 import Error404 from './component/page/Error404.vue'
+import Error500 from './component/page/Error500.vue'
 
 Vue.use(VueRouter)
 
@@ -73,6 +74,10 @@ const router = new VueRouter({
             name : 'error-404',
             path: '/error-404', 
             component: Error404 
+        },{
+            name : 'error-500',
+            path: '/error-500', 
+            component: Error500 
         }
     ]
 })
