@@ -20,7 +20,7 @@
 
 <script>
     import mixin from '../../tool/mixin.js'
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     
     export default {
         mixins : mixin.get(mixin.TRANSLATE),
@@ -52,7 +52,7 @@
         },
         mounted: function () {
             this.$nextTick(function () {
-                event.on(event.LOCALE_CHANGE, () => {
+                bus.listen(bus.LOCALE_CHANGE, 'Loader', () => {
                     this.setTranslation()
                 })
             })

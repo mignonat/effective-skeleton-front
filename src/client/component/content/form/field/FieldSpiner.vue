@@ -1,13 +1,14 @@
 <template>
     <div class="field">
-        <div v-if="model.label" class="field-title">{{ model.label }}</div>
-        <div class="field-input text">
+        <div class="field-title">{{ model.label }}</div>
+        <div class="field-input number">
             <input 
-                type="text" 
+                type="number"
                 v-model="value"
                 :id="htmlId"
-                :autofocus="model.autofocus"
-                :readonly="model.disabled">
+                :min="model.min"
+                :max="model.max"
+                :autofocus="model.autofocus">
             </input>
             <div class="focus-bar"></div>
         </div>

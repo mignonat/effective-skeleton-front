@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import event from './tool/event.js'
+import bus from './tool/bus.js'
 
 import Home from './component/page/Home.vue'
 import AdminUsers from './component/page/admin/Users.vue'
@@ -15,6 +15,7 @@ import SampleContextualPanel from './component/page/SampleContextualPanel.vue'
 import SampleForm from './component/page/SampleForm.vue'
 import ErrorUnknown from './component/page/Error.vue'
 import Error404 from './component/page/Error404.vue'
+import Error500 from './component/page/Error500.vue'
 
 Vue.use(VueRouter)
 
@@ -73,12 +74,16 @@ const router = new VueRouter({
             name : 'error-404',
             path: '/error-404', 
             component: Error404 
+        },{
+            name : 'error-500',
+            path: '/error-500', 
+            component: Error500 
         }
     ]
 })
 
 // redirect on home page when user logout and was on an admin page
-event.on(event.LOGOUT, () => {
+bus.listen(bus.LOGOUT, function Router() {
     if (router.currentRoute.path && router.currentRoute.path.startsWith('/admin/'))
         router.push(homeRoute)
 })

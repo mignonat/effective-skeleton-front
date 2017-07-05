@@ -13,7 +13,7 @@
     import SelectLocale from './SelectLocale.vue'
     import UserInfo from './UserInfo.vue'
     import SideNavButton from './SideNavButton.vue'
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
 
     export default {
@@ -32,11 +32,11 @@
         components : { SelectLocale, UserInfo, SideNavButton },
         mounted: function () {
             this.$nextTick(function () {
-                event.on(event.SIDENAV_CHANGE, (menu) => {
+                bus.listen(bus.SIDENAV_CHANGE, 'TopBar', (menu) => {
                     this.menuLabelKey = menu.id
                     this.setTranslation()
                 })
-                event.on(event.LOCALE_CHANGE, () => {
+                bus.listen(bus.LOCALE_CHANGE, 'TopBar', () => {
                     this.setTranslation()
                 })
             })

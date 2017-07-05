@@ -1,21 +1,27 @@
 <template>
-    <div class="form-field">
-        <input
-             v-model="value"
-             :id="htmlId"
-             :list="'datalist-'+htmlId"
-             :autofocus="model.autofocus">
-        </input>
-        <datalist :id="'datalist-'+htmlId" class="form-dropdown">
-            <option 
-                v-for="opt in model.options"
-                v-bind:key="opt[model.value]"
-                v-bind:value="opt[model.value]">
-                {{ opt[model.display] }}
-            </option>
-        </datalist>
-        <label class="form-label" :for="'datalist-'+htmlId">{{ model.label }}</label>
-        <i class="form-bar"></i>
+    <div class="field">
+        <div class="field-title">{{ model.label }}</div>
+        <div class="field-input datalist">
+            <input
+                v-model="value"
+                :id="htmlId"
+                :list="'datalist-'+htmlId"
+                :autofocus="model.autofocus">
+            </input>
+            <datalist :id="'datalist-'+htmlId">
+                <option 
+                    v-for="opt in model.options"
+                    v-bind:key="opt[model.value]"
+                    v-bind:value="opt[model.value]">
+                    {{ opt[model.display] }}
+                </option>
+            </datalist>
+            <div class="focus-bar"></div>
+        </div>
+        <div v-if="hasMessage" class="field-message">
+            <div v-if="hasHelp"  class="field-help"></div>
+            <div v-if="hasError" class="field-error"></div>
+        </div>
     </div>
 </template>
 

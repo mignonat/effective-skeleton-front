@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
 
     export default {
@@ -90,6 +90,14 @@
                         id : 'menu.sample.form',
                         router_link : '/sample-form',
                         label : this.translate('menu.sample.form')
+                    },{
+                        id : 'menu.sample.error404',
+                        router_link : '/error-404',
+                        label : this.translate('menu.sample.error404')
+                    },{
+                        id : 'menu.sample.error500',
+                        router_link : '/error-500',
+                        label : this.translate('menu.sample.error500')
                     }]
                 }]
             }
@@ -111,7 +119,7 @@
                 this.app_by = this.translate('app.by')
             },
             notify(item) {
-                event.emit(event.SIDENAV_CHANGE, { 
+                bus.fire(bus.SIDENAV_CHANGE, { 
                     id : item.id,
                     router_link : item.router_link
                 })
@@ -122,20 +130,20 @@
                 const meEl = document.getElementById(this.id)
                 const mainPanelEl = document.getElementById('main-panel')
 
-                event.on(event.LOCALE_CHANGE, () => {
+                bus.listen(bus.LOCALE_CHANGE, 'SideNav', () => {
                     this.setTranslation()
                 })
-                event.on(event.LOGIN, () => {
+                bus.listen(bus.LOGIN, 'SideNav', () => {
                     this.isAdmin = this.$store.getters.isAdmin()
                 })
-                event.on(event.LOGOUT, () => {
+                bus.listen(bus.LOGOUT, 'SideNav', () => {
                     this.isAdmin = false
                 })
-                event.on(event.SIDENAV_OPENED, () => {
+                bus.listen(bus.SIDENAV_OPENED, 'SideNav', () => {
                     meEl.classList.remove("sidenav-hidden")
                     mainPanelEl.classList.remove("main-panel-expanded")
                 })
-                event.on(event.SIDENAV_CLOSED, () => {
+                bus.listen(bus.SIDENAV_CLOSED, 'SideNav', () => {
                     meEl.classList.add("sidenav-hidden")
                     mainPanelEl.classList.add("main-panel-expanded")
                 })

@@ -1,5 +1,5 @@
 <template>    
-    <div class="form-field select-locale">
+    <div class="field select-locale">
         <select :id="id" value="selected" v-on:change="setLocale($event.target.value)" class="form-dropdown">
             <option value="fr" :selected="selected === 'fr'">Français</option>
             <option value="en" :selected="selected === 'en'">English</option>
@@ -10,7 +10,7 @@
 
 <script>
     import * as action_types from '../../vuex/actions.js'
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
 
     export default {
         props : [ 'id' ],
@@ -29,7 +29,7 @@
                     .catch((ex) => {
                         console.error('locale.setLocale : error, '+ex)
                         this.selected = oldLocale
-                        event.emit(event.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.locale.set') ]);
+                        bus.fire(bus.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.locale.set') ]);
                     })
             },
             translate (key, params) {

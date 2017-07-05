@@ -1,5 +1,5 @@
 import store from '../vuex/store.js'
-import event from './event.js'
+import bus from './bus.js'
 import * as action_types from '../vuex/actions.js'
 
 const defaultTimeOut = 40000
@@ -12,7 +12,7 @@ const isTokenValid = () => {
     if (!store.getters.isTokenValid) {
         store.dispatch(action_types.INVALIDATE_TOKEN)
             .then(() => {
-                event.emit(event.POPUP_ERROR, [ translate('all.error'), translate('all.error.token.timeout') ])
+                bus.fire(bus.POPUP_ERROR, [ translate('all.error'), translate('all.error.token.timeout') ])
             })
             .catch((err) => {
                 console.error('Ajax.isTokenValid | error while invalidate token '+err)

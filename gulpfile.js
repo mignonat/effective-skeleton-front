@@ -105,6 +105,11 @@ gulp.task('build-front-dev', gulpSync.sync([
     'webpack-dev',
 ]))
 
+gulp.task('build-prod', gulpSync.sync([
+    'build-back-prod',
+    'build-front-prod',
+]))
+
 gulp.task('build-dev', gulpSync.sync([
     'build-back-dev',
     'build-front-dev',

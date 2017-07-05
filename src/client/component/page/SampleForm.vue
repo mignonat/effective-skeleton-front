@@ -76,7 +76,7 @@
                 rows : 6
             },{
                 id : 'Field_3',
-                type : 'number',
+                type : 'spiner',
                 label : 'Field_3 : number with min(10) and max(50)',
                 min : 10,
                 max : 50

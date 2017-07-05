@@ -62,7 +62,7 @@
 <script>
     import ajax from '../../tool/ajax.js'
     import * as action_types from '../../vuex/actions.js'
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
 
     export default {
@@ -159,7 +159,7 @@
                     })
                     .catch((ex) => {
                         console.error('user.auth.logout : error, '+ex)
-                        event.emit(event.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.logout') ]);
+                        bus.fire(bus.POPUP_ERROR, [ this.translate('all.error'), this.translate('all.error.logout') ]);
                     })
             },
             setDataToLogoutState() {
@@ -182,7 +182,7 @@
                 this.show = false
             },
             showConfirmPopup() {
-                event.emit(event.POPUP, {
+                bus.fire(bus.POPUP, {
                     type : 'warning',
                     title : this.label.popup_title,
                     text : this.label.popup_text,
@@ -213,13 +213,12 @@
         mounted: function () {
             this.$nextTick(function () {
                 document.addEventListener("keydown", (e) => { // enter key is pressed
-                    if (!this.user && this.show && e.keyCode == 13)
-                        this.auth()
+                    if (!this.user && this.show && e.keyCode == 13) this.auth()
                 })
-                event.on(event.LOCALE_CHANGE, () => {
+                bus.listen(bus.LOCALE_CHANGE, 'UserInfo', () => {
                     this.setTranslation()
                 })
-                event.on(event.LOGOUT, () => {
+                bus.listen(bus.LOGOUT, 'UserInfo', () => {
                     this.setDataToLogoutState()
                 })
             })

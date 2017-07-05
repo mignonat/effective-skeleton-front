@@ -17,7 +17,7 @@
     import TopBar from './layout/TopBar.vue'
     import SideNav from './layout/SideNav.vue'
     import Popup from './layout/Popup.vue'
-    import event from '../tool/event.js'
+    import bus from '../tool/bus.js'
     import mixin from '../tool/mixin.js'
 
     export default {
@@ -71,10 +71,9 @@
         },  
         components : { TopBar, SideNav, Popup },
         mounted: function () {
-            const me = this
-            me.$nextTick(function () { // here the document is ready
-                event.on(event.POPUP, function(params) {
-                    me.displayPopup(params)
+            this.$nextTick(function () { // here the document is ready
+                bus.listen(bus.POPUP, 'App', (params) => {
+                    this.displayPopup(params)
                 })
             })
         }

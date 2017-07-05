@@ -38,7 +38,7 @@
 </template>
 
 <script>
-    import event from '../../tool/event.js'
+    import bus from '../../tool/bus.js'
     import mixin from '../../tool/mixin.js'
     import Loader from './Loader.vue'
 
@@ -74,7 +74,7 @@
         },
         mounted: function () {
             this.$nextTick(function () {
-                event.on(event.LOCALE_CHANGE, () => {
+                bus.listen(bus.LOCALE_CHANGE, 'List', () => {
                     this.setTranslation()
                 })
             })

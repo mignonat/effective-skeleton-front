@@ -4,7 +4,7 @@ import preference from '../../../tool/preferences.js'
 import urlParam from '../../../tool/url-params.js'
 import * as action_types from '../../actions.js'
 import * as mutation_types from '../../mutations.js'
-import event from '../../../tool/event.js'
+import bus from '../../../tool/bus.js'
 
 /**************** STATE ****************/
 
@@ -106,7 +106,7 @@ const mutations = {
         if (methods.getLocale(state) != locale) {
             methods.setLocale(state, locale)
             methods.setTranslationMap(state, locale)
-            event.emit(event.LOCALE_CHANGE)
+            bus.fire(bus.LOCALE_CHANGE)
         }
     }
 
