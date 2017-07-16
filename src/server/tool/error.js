@@ -1,8 +1,8 @@
 /**
  * Handle json errors message
  */
-const config = require(__dirname+'/config.js')
-const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
+const config = require('./config.js')
+const log = require('./log.js')
 
 module.exports = {
     fn401 : (res, err) => {

@@ -6,13 +6,7 @@
 - CSS Form : manage errors and help (with javascript)
 - Add visual extensions to Flo : git blame, git history, vetur
 - Create a component to display non persistent messages 
-- Test all regex in model
 - Add sample page with all icons available
-- Mongodb : how to reconnect automatically, put constraints on schema
-- User info : login, firstName, lastName, email, mail, locale, phone, creationDate, isActive
-- Crypt user password => bcrypt
-- Securize token => not use a simple hash, put in the token an object without user password
-- Translate all back-end message => how to get the locale ...
 - Create a list component : pagination, properties to display, hide/show column, sort, etc ...
 - Possibility to set an icon for popup : warning, info, error
 - Manage responsive design (at least for top bar)
@@ -20,12 +14,8 @@
 - All input : test params injection with owasp in ajax util for all parameters
 - Define minimum version of browser then check & block old browser
 - Webpack : smart caching, vendors and uglify (not removed licenses), HTML5 app manifest
-- Use node-report on prod (maybe dev too) => https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/
 - Possibility to change properties and restart the app
 - Make selenium and unit test for each functionality
-- Paypal payments
-- Send emails : https://nodemailer.com/about/
-- Scalable asynch notification & alert system => to define more precisely the need ...
 
 - Manage Users & groups
 - Consult logs file (and search on it)

@@ -8,9 +8,8 @@ const reader = require('properties-reader')
 
 const cache = {}
 
-const app_type = process.env.APP_TYPE=='back'? 'back' : 'front'
 const env_type = process.env.NODE_ENV=='production'? 'prod' : 'dev'
-const env_file_path = __dirname+'/../../../env/'+app_type+'-'+env_type+'.properties'
+const env_file_path = __dirname+'/../../../env/'+env_type+'.properties'
 
 const exportFn = {
     get : (key) => {

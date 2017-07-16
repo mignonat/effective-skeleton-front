@@ -1,8 +1,7 @@
 const webdriver = require('selenium-webdriver')
-const config = require(__dirname+'/../../server/shared/config.js')
+const config = require(__dirname+'/../../server/tool/config.js')
 const path = require('path')
-config.setAbsRootPath(path.resolve("."))
-const Const = require(__dirname+'/../../server/shared/const.js')
+const Const = require(__dirname+'/../../server/tool/const.js')
 const port = config.get(Const.APP_PORT) || 8080
 
 const By = webdriver.By

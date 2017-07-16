@@ -16,27 +16,14 @@ const gulpSync = require('gulp-sync')(gulp)
 const dir_client_translation = './src/client/vuex/modules/locale/translations'
 const dir_asset_src = './src/client/resource/*'
 const dir_asset_dest = './public'
-const file_front_app = './src/server/front/app.js'
-const file_back_app = './src/server/back/app.js'
+const app_index = './src/server/app.js'
 
 /****************** FOREVER ******************/
 
-gulp.task('back-run-forever', () => {
-    return new (forever.Monitor)(file_back_app, {
-            'env': {
-                NODE_ENV : 'production', 
-                APP_TYPE : 'back'
-            },
-            'killTree': true, //kills the entire child process tree on `exit`
-        })
-        .start()
-})
-
-gulp.task('front-run-forever', () => {
-    return new (forever.Monitor)(file_front_app, {
+gulp.task('run-forever', () => {
+    return new (forever.Monitor)(app_index, {
             'env': { 
-                NODE_ENV : 'production', 
-                APP_TYPE : 'front'
+                NODE_ENV : 'production'
             },
             'killTree': true, //kills the entire child process tree on `exit`
             //'max': 2 //remove it, for testing purpose
@@ -46,108 +33,50 @@ gulp.task('front-run-forever', () => {
 
 /****************** NODEMON ******************/
 
-const nodemon_common_ignore = [
-    // nodemon is only listening for .js and .vue files
-    'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
-]
-const files_front_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/back/'
-])
-const files_back_nodemon_ignore = nodemon_common_ignore.concat([
-    'src/server/front/'
-])
-
-gulp.task('back-run-nodemon', () => {
-    return nodemon({
-            exec : 'node --debug', //node-inspector & node --inspect
-            script : file_back_app,
-            ext : 'js',
-            env : { 
-                'NODE_ENV': 'development', 
-                'APP_TYPE': 'back' 
-            },
-            ignore : files_back_nodemon_ignore
-        })
-})
-
 gulp.task('front-run-nodemon', () => {
     return nodemon({
             exec : 'node --debug',
             verbose: true,
-            script : file_front_app,
+            script : app_index,
             ext : 'js vue css html',
             env : { 
                 'NODE_ENV': 'development', 
                 'APP_TYPE': 'front' 
             },
             tasks : [ /* 'webpack' */ ],
-            ignore : files_front_nodemon_ignore
+            ignore : [ // nodemon is only listening for .js and .vue files
+                'gulpfile.js', 'node-modules', 'public', 'src/test', '.git', 'src/client/', 'package.json'
+            ]
         })
 })
 
 /****************** BUILD ******************/
 
-gulp.task('build-back-prod', gulpSync.sync([
-    //TODO
-]))
-
-gulp.task('build-back-dev', gulpSync.sync([
-    //TODO
-]))
-
-gulp.task('build-front-prod', gulpSync.sync([
+gulp.task('build-prod', gulpSync.sync([
     'front-translations',
     'webpack-prod',
 ]))
 
-gulp.task('build-front-dev', gulpSync.sync([
+gulp.task('build-dev', gulpSync.sync([
     'front-translations',
     'webpack-dev',
 ]))
 
-gulp.task('build-prod', gulpSync.sync([
-    'build-back-prod',
-    'build-front-prod',
-]))
-
-gulp.task('build-dev', gulpSync.sync([
-    'build-back-dev',
-    'build-front-dev',
-]))
-
-//TODO : add build-back-prod & dev for translation builds
-
 /****************** START ******************/
 
-gulp.task('start-back-prod', gulpSync.sync([
-    'back-run-forever'
-]))
-
-gulp.task('start-back-dev', gulpSync.sync([ 
-    'back-run-nodemon'
-]))
-
-gulp.task('start-front-prod', gulpSync.sync([
+gulp.task('start-prod', gulpSync.sync([
     'front-run-forever'
 ]))
 
-gulp.task('start-front-dev', gulpSync.sync([
+gulp.task('start-dev', gulpSync.sync([
     'front-run-nodemon'
-]))
-
-/****************** START BOTH ******************/
-
-gulp.task('start-both-prod', gulpSync.sync([
-    'start-back-prod',
-    'start-front-prod'
 ]))
 
 /****************** BUILD AND START ******************/
 
 gulp.task('build-and-start-dev', gulpSync.sync([ 
-    'build-front-dev',
-    'start-back-prod',
-    'start-front-dev'
+    'build-dev',
+    'start-dev'
 ]))
 
 /****************** WEBPACK ******************/

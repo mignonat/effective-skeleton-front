@@ -1,29 +1,17 @@
 /**
- * Used to print a label
- * TODO : test because not yet used, merge print & printD into one configurable function
+ * Print the translation of a label key
  */
 const reader = require('properties-reader')
 const config = require('./config.js')
 const Const = require('./const.js')
-const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
+const log = require('./log.js')
 
 const locales = [ 'fr', 'en']
 const default_locale = locales[0]
 const cache = {}
 locales.forEach((locale) => { cache[locale] = {} })
 
-const file_hierarchy = (config.get(Const.APP_STACK) == 'back')? 
-    [
-        config.getAbsRootPath()+'/translations/server/back/',
-        config.getAbsRootPath()+'/translations/server/shared/',
-        config.getAbsRootPath()+'/translations/server/front/'
-    ] : [
-        config.getAbsRootPath()+'/translations/server/front/',
-        config.getAbsRootPath()+'/translations/server/shared/',
-        config.getAbsRootPath()+'/translations/server/back/'
-    ]
-
-const getInFileHierarchyFn = (key, locale) => {
+const getInFileFn = (key, locale) => {
     var i=0, file, result, properties
     const len = file_hierarchy.length
     for (;i<len;i++) {
@@ -35,15 +23,14 @@ const getInFileHierarchyFn = (key, locale) => {
             if (result)
                 return result
         } catch(ex) {
-            log.error('locales.getInFileHierarchyFn : problem while reading file '+filePath)
+            log.error('locales.getInFileFn : problem while reading file '+filePath)
         }
     }
 }
 
 const exportsFn = {
     print : (key, locale) => {
-        if (!locale)
-            locale = default_locale
+        if (!locale) locale = default_locale
 
         if (locales.indexOf(locale) == -1) {
             log.debug('Language:print : locale '+locale+' unknown (key='+key+')')
@@ -54,19 +41,17 @@ const exportsFn = {
         if (translations.hasOwnProperty(key))
             return translations[key]
         else {
-            var translation = getInFileHierarchyFn(key, locale)
-            if (!translation)
-                translation = '???-'+key+'_'+locale+'-???'
+            var translation = getInFileFn(key, locale)
+            if (!translation) translation = '???-'+key+'_'+locale+'-???'
             translations[key] = translation
             return translation
         }
     },
 
-    // d for dynamic label
+    // TODO remove and use just one parametrized method
     printD : (key, params, locale) => {
         var translation = exportsFn.print(key)
-        if (translation.indexOf("??") > -1)
-            return translation
+        if (translation.indexOf("??") > -1) return translation
 
         if (params == undefined) {
             log.debug('Language:printDynamic : missing params argument for key '+key+' ('+translation+') !')

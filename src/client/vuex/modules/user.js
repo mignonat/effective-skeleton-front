@@ -35,7 +35,7 @@ const methods = {
             preference.set(preference.TOKEN, state.token)
             preference.set(preference.TOKEN_TIME, state.token_time)
             preference.set(preference.USER, state.user)
-            bus.emit(bus.LOGIN)
+            bus.fire(bus.LOGIN)
         } else {
             state.token = undefined
             state.token_time = undefined
@@ -43,7 +43,7 @@ const methods = {
             preference.remove(preference.TOKEN)
             preference.remove(preference.TOKEN_TIME)
             preference.remove(preference.USER)
-            bus.emit(bus.LOGOUT)
+            bus.fire(bus.LOGOUT)
         }
     },
     getToken : (state) => {

@@ -2,10 +2,10 @@
  * User controller
  */
 const request = require('request-promise')
-const config = require(__dirname+'/../../shared/config.js')
-const api = require(config.getAbsRootPath()+'/src/server/front/tool/api.js')
-const error = require(config.getAbsRootPath()+'/src/server/shared/error.js')
-const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
+const config = require('../tool/config.js')
+const api = require('../tool/api.js')
+const error = require('../tool/error.js')
+const Const = require('../tool/const.js')
 
 const URLS = {
     USER : '/user',

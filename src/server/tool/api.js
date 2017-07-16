@@ -3,8 +3,8 @@
  */
 const url = require("url")
 const path = require('path')
-const config = require(__dirname+'/../../shared/config.js')
-const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
+const config = require('./config.js')
+const Const = require('./const.js')
 
 const back_url = config.get(Const.BACK_URL)
 const back_path = config.get(Const.BACK_PATH) // => /api

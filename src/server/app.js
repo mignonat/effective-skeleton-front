@@ -1,4 +1,4 @@
-const config = require(__dirname+'/../shared/config.js')
+const config = require('./tool/config.js')
 const path = require('path')
 config.setAbsRootPath(path.resolve("."))
 
@@ -9,18 +9,19 @@ const compression = require('compression')
 const bodyParser  = require('body-parser')
 
 /** TOOLS */
-const log = require(config.getAbsRootPath()+'/src/server/shared/log.js')
-const Const = require(config.getAbsRootPath()+'/src/server/shared/const.js')
-const locales = require(config.getAbsRootPath()+'/src/server/shared/locales.js')
-const api = require(config.getAbsRootPath()+'/src/server/front/tool/api.js')
-const error = require(config.getAbsRootPath()+'/src/server/shared/error.js')
+const log = require('./tool/log.js')
+const Const = require('./tool/const.js')
+const locales = require('./tool/locales.js')
+const api = require('./tool/api.js')
+const error = require('./tool/error.js')
 
 /** CONTROLLER */
-const authentication = require(config.getAbsRootPath()+'/src/server/front/controller/authentication.js')
-const user_ctrl = require(config.getAbsRootPath()+'/src/server/front/controller/user.js')
+const authentication = require('./controller/authentication.js')
+const user_ctrl = require('./controller/user.js')
 
 /** STARTING */
 log.info('Starting on environment "'+config.get(Const.APP_ENV)+'"')
+
 const app = express()
 app.use(locale(locales.getSupportedLocales()))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -34,9 +35,9 @@ app.use(compression()) // Compress data to reduce network package size
 const homePageFn = (req, res) => {
     try {
         log.debug('New request on url = "'+req.url+'"')
-        res.sendFile(path.join(__dirname+'/../../../public/')+'/index.html')
+        res.sendFile(path.join(config.getAbsRootPath(), 'public/index.html'))
     }
-    catch (ex) { log.error('Send file index.html file failed !') }
+    catch (ex) { log.error('homePageFn : '+ex) }
 }
 app.get('/', (req, res) => {
     try {
