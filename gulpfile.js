@@ -16,7 +16,7 @@ const gulpSync = require('gulp-sync')(gulp)
 const dir_client_translation = './src/client/vuex/modules/locale/translations'
 const dir_asset_src = './src/client/resource/*'
 const dir_asset_dest = './public'
-const app_index = './src/server/app.js'
+const app_index = './src/server/index.js'
 
 /****************** FOREVER ******************/
 
@@ -33,15 +33,14 @@ gulp.task('run-forever', () => {
 
 /****************** NODEMON ******************/
 
-gulp.task('front-run-nodemon', () => {
+gulp.task('run-nodemon', () => {
     return nodemon({
             exec : 'node --debug',
             verbose: true,
             script : app_index,
             ext : 'js vue css html',
             env : { 
-                'NODE_ENV': 'development', 
-                'APP_TYPE': 'front' 
+                'NODE_ENV': 'development'
             },
             tasks : [ /* 'webpack' */ ],
             ignore : [ // nodemon is only listening for .js and .vue files
@@ -53,23 +52,23 @@ gulp.task('front-run-nodemon', () => {
 /****************** BUILD ******************/
 
 gulp.task('build-prod', gulpSync.sync([
-    'front-translations',
+    'client-translations',
     'webpack-prod',
 ]))
 
 gulp.task('build-dev', gulpSync.sync([
-    'front-translations',
+    'client-translations',
     'webpack-dev',
 ]))
 
 /****************** START ******************/
 
 gulp.task('start-prod', gulpSync.sync([
-    'front-run-forever'
+    'run-forever'
 ]))
 
 gulp.task('start-dev', gulpSync.sync([
-    'front-run-nodemon'
+    'run-nodemon'
 ]))
 
 /****************** BUILD AND START ******************/
@@ -95,16 +94,16 @@ gulp.task('webpack-prod', () => {
         .pipe(gulp.dest('public/assets'));
 })
 
-/****************** FRONT TRANSLATIONS ******************/
+/****************** ADAPT CLIENT TRANSLATIONS ******************/
 
-gulp.task('front-translations', gulpSync.sync([
-    'front-translation-prop-to-json',
-    'front-translation-add-js-variable',
-    'front-translation-rename-json-to-js',
-    'front-translation-remove-temp-files'
+gulp.task('client-translations', gulpSync.sync([
+    'client-translation-prop-to-json',
+    'client-translation-add-js-variable',
+    'client-translation-rename-json-to-js',
+    'client-translation-remove-temp-files'
 ]))
 
-gulp.task('front-translation-remove-temp-files', () => {
+gulp.task('client-translation-remove-temp-files', () => {
     return gulp.src([
             dir_client_translation+'/json',
             dir_client_translation+'/*.json'
@@ -112,13 +111,13 @@ gulp.task('front-translation-remove-temp-files', () => {
         .pipe(clean())
 })
 
-gulp.task('front-translation-rename-json-to-js', () => {
+gulp.task('client-translation-rename-json-to-js', () => {
     return gulp.src(dir_client_translation+'/*.json')
         .pipe(extReplace('js'))
         .pipe(gulp.dest(dir_client_translation))
 })
 
-gulp.task('front-translation-add-js-variable', () => {
+gulp.task('client-translation-add-js-variable', () => {
     return gulp.src(dir_client_translation+'/json/*')
         .pipe(insert.transform(function(contents, file) {
             return 'export default '+contents+'\r\n'
@@ -126,12 +125,8 @@ gulp.task('front-translation-add-js-variable', () => {
         .pipe(gulp.dest(dir_client_translation))
 })
 
-gulp.task('front-translation-prop-to-json', () => {
+gulp.task('client-translation-prop-to-json', () => {
     return gulp.src('./translations/client/*.properties')
         .pipe(props2json({ minify : false }))
         .pipe(gulp.dest(dir_client_translation+'/json'))
 })
-
-/****************** BACK TRANSLATIONS ******************/
-
-gulp.task('back-translations', gulpSync.sync([ '' ]))
