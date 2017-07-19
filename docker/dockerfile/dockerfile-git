@@ -1,0 +1,9 @@
+FROM node:alpine
+RUN apk update && apk upgrade && apk add --no-cache git
+WORKDIR /
+RUN git clone https://github.com/mignonat/effective-skeleton-front app
+WORKDIR /app
+RUN npm install
+RUN npm run build
+EXPOSE 8080
+CMD ["npm", "start"]
